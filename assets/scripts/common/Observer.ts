@@ -1,19 +1,34 @@
 export default class Observer {  
-    private suscribedEvents: Array<Object>;
+    private suscribedElements: Array<Object>;
+    private eventList: Array<Object>;
 
     suscribeEvent(event: Object) : void {
-        this.suscribedEvents.push(event);
+        this.suscribedElements.push(event);
     }
 
-    statusUpdate(element: Object) : void {
-        for(let item of this.suscribedEvents) {
-            if(item["trigger"] === element["trigger"]) {
-                console.log("triggered event");
+    addEvent(event: Object) : void {
+        this.eventList.push(event);
+    }
+
+    newFrame() : void {
+        this.eventList = [];
+    }
+
+    notifyEvents() : void {
+        for(let element of this.suscribedElements) {
+            for(let event of this.eventList) {
+                if(element["type"] === event["type"]) {
+                    console.log("event notified");
+                    console.log(element);
+                    console.log(event);
+                }
             }
         }
     }
 
     constructor() {
+        this.suscribedElements = [];
+        this.eventList = [];
     }
 }  
 
