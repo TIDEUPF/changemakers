@@ -31,7 +31,6 @@ export default class SceneInit extends cc.Component {
         var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed: function(keyCode, event) {
-                console.log(keyCode);
                 let gameEvent = {
                     type : GameEventType.Input,
                     subtype : GameInputEventType.Key,
@@ -45,7 +44,8 @@ export default class SceneInit extends cc.Component {
     }
 
     update (dt) {
-        console.log(dt);
         this.observer.notifyEvents();
+
+        this.observer.newFrame();
     }
 }
