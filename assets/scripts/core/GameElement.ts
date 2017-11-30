@@ -21,7 +21,13 @@ export default class GameElement {
     processAction(): void {
         var actionResult = this.elementAction.processAction(this.elementStatus);
 
-        if(actionResult[""])
+        if(actionResult.elementAction) {
+            this.elementAction = actionResult.elementAction;
+        }
+
+        if(actionResult.elementAction) {
+            this.elementAction = actionResult.elementAction;
+        }
     }
 
     emitEvents(): void {
