@@ -1,3 +1,3 @@
 export default abstract class ElementEmitter {  
-    abstract emitEvents(): Array<Object>;
+    abstract emitEvents(status: Object): Array<Object>;
 }  
