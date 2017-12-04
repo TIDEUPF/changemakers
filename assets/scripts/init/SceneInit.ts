@@ -1,6 +1,8 @@
 const {ccclass, property} = cc._decorator;
 
 import Observer from "../common/Observer";
+//import { actions } from "../core/actions";
+import * as nn from "../core/actions";
 
 enum GameEventType {
     Input = 1,
@@ -41,6 +43,11 @@ export default class SceneInit extends cc.Component {
         });
 
         cc.eventManager.addListener(keyEventListener, 1000);
+
+        //console.log(gamenn.moveUp);
+        console.log(nn);
+
+        console.log(cc.find('/Canvas/background1/queen'));
     }
 
     update (dt) {

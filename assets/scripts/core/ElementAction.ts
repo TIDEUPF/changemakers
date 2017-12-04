@@ -1,10 +1,6 @@
 import ElementEmitter from "./ElementEmitter";
+import ActionResult from "./ActionResult";
 
-interface ActionResult {
-    elementAction?: ElementAction,
-    elementEmitter?: ElementEmitter,
-}
-
-export default abstract class ElementAction {  
-    abstract processAction(elementStatus: Object): ActionResult;
+export default abstract class ElementAction<T> {  
+    abstract processAction(elementStatus: Object, element: T): ActionResult;
 }  
