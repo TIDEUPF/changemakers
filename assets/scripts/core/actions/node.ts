@@ -6,7 +6,7 @@ import ElementAction from "../ElementAction";
 import * as moveUp from './node/moveUp';
 import * as moveDown from './node/moveDown';
 
-export type ActionList = {[s: string]: ElementAction<cc.Node>};
+export type ActionList = {[s: string]: (element: cc.Node) => ElementAction<cc.Node>};
 
 export const node: ActionList = {
     "moveUp" : moveUp.moveUp,

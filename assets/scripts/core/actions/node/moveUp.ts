@@ -9,12 +9,8 @@ import ActionResult from "../../ActionResult";
                 result = {};
                 return result;
             }
-
-            constructor() {
-                super();
-            }
         }
 
-        export const moveUp: MoveUp = new MoveUp();
+        export const moveUp: (element: cc.Node) => ElementAction<cc.Node> = function(element: cc.Node): ElementAction<cc.Node> {return new MoveUp(element)};
     //}
 //}
