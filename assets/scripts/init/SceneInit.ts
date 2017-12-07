@@ -1,8 +1,10 @@
 const {ccclass, property} = cc._decorator;
 
 import Observer from "../common/Observer";
+import GameElement from "../core/GameElement";
 //import { actions } from "../core/actions";
 import * as nn from "../core/actions";
+
 
 enum GameEventType {
     Input = 1,
@@ -48,6 +50,17 @@ export default class SceneInit extends cc.Component {
         console.log(nn);
 
         console.log(cc.find('/Canvas/background1/queen'));
+
+        var queen_status = {
+            "type": "node",
+            "action": "moveUp",
+            "emitter": "alarm"
+        };
+
+        var gameelement: any = new GameElement(queen_status, cc.find('/Canvas/background1/queen'));
+
+        console.log(queen_status);
+
     }
 
     update (dt) {

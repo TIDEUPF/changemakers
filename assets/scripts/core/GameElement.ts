@@ -1,7 +1,8 @@
 import IGameElement from "./IGameElement";
 import ElementAction from "./ElementAction";
 import ElementEmitter from "./ElementEmitter";
-import * as actions from "./actions";
+import * as emitters from "./emittersIndex";
+import * as actions from "./actionsIndex";
 
 export default class GameElement<T> extends IGameElement {
     private elementStatus: Object;
@@ -22,24 +23,27 @@ export default class GameElement<T> extends IGameElement {
     }
 
     processAction(): void {
-        var actionResult = this.elementAction.processAction(this.elementStatus, this._element);
+        var actionResult = this.elementAction.processAction();
 
-        if(actionResult.elementAction) {
-            this.elementAction = actionResult.elementAction;
+        if(actionResult.updateElementAction) {
+            //update
         }
 
-        if(actionResult.elementEmitter) {
-            this.elementEmitter = actionResult.elementEmitter;
+        if(actionResult.updateElementEmitter) {
+            //update
         }
     }
 
     emitEvents(): void {
-        this.elementEmitter.emitEvents(this.elementStatus);
+        this.elementEmitter.emitEvents();
     }
 
-    constructor(element: T, elementStatus: Object) {
+    constructor(elementStatus: Object, element: T) {
         super();
         this._element = element;
-        this.setElementStatus(actions.actions[elementStatus["type"]][elementStatus["action"]]);
+        this.setElementStatus(element);
+        console.log(actions.actions);
+        this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](element));
+        this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](element));
     }
 }

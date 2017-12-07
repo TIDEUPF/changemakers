@@ -1,5 +1,7 @@
+import EmitterResult from "./EmitterResult";
+
 export default abstract class ElementEmitter<T> {  
-    abstract emitEvents(status: Object): Array<Object>;
-    constructor(element: T) {
+    abstract emitEvents(): EmitterResult;
+    constructor(elementStatus: Object, element: T) {
     }
 }  
