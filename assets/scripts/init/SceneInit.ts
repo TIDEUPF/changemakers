@@ -1,9 +1,9 @@
 const {ccclass, property} = cc._decorator;
 
-import Observer from "../common/Observer";
+import Observer from "../core/Observer";
 import GameElement from "../core/GameElement";
 //import { actions } from "../core/actions";
-import * as nn from "../core/actions";
+//import * as nn from "../core/actions";
 
 
 enum GameEventType {
@@ -25,19 +25,17 @@ export default class SceneInit extends cc.Component {
         this.observer = new Observer();
         console.log("observer created");
         
-        let elementListener = {
-            type : GameEventType.Input,
-            subtype : GameInputEventType.Key,
-        };
-        this.observer.suscribeEvent(elementListener);
-        console.log("listener added");
-
         var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed: function(keyCode, event) {
                 let gameEvent = {
-                    type : GameEventType.Input,
-                    subtype : GameInputEventType.Key,
+                    emitter : {
+                        type : GameEventType.Input,
+                        subtype : GameInputEventType.Key,
+                    },
+                    data : {
+                        key : keyCode
+                    }
                 };
 
                 this.observer.addEvent(gameEvent);
@@ -47,17 +45,40 @@ export default class SceneInit extends cc.Component {
         cc.eventManager.addListener(keyEventListener, 1000);
 
         //console.log(gamenn.moveUp);
-        console.log(nn);
-
+        var id_count=0;
         console.log(cc.find('/Canvas/background1/queen'));
 
         var queen_status = {
             "type": "node",
             "action": "moveUp",
-            "emitter": "alarm"
+            "emitter": "alarm",
+            "id": (id_count++).toString(10),
+            "element_id" : "/Canvas/background1/queen",
         };
 
         var gameelement: any = new GameElement(queen_status, cc.find('/Canvas/background1/queen'));
+
+        let elementListener = {
+            receiver : queen_status.id,
+            emitter : {
+                type : GameEventType.Input,
+                subtype : GameInputEventType.Key,
+                },
+        };
+        this.observer.suscribeEvent(elementListener);
+        console.log("listener added");
+
+        this.observer.suscribeEvent({
+            receiver : queen_status.id,
+            attributes : {
+                "speed" : "high",
+                "altitude" : "low",
+                },
+            emitter : {
+                type : "npc",
+                subtype : "farmer",
+                },
+        });
 
         console.log(queen_status);
 

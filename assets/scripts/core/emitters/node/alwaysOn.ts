@@ -10,7 +10,7 @@ class AlwaysOnEmitter extends ElementEmitter<cc.Node> {
     }
 }
 
-export const alarm: (elementStatus: Object, element: cc.Node) => ElementEmitter<cc.Node> = 
+export const alwaysOn: (elementStatus: Object, element: cc.Node) => ElementEmitter<cc.Node> = 
     function(elementStatus: Object, element: cc.Node): ElementEmitter<cc.Node> {
         return new AlwaysOnEmitter(elementStatus, element);
     };
