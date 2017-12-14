@@ -31,5 +31,3 @@ export default class Observer {
         this.eventList = [];
     }
 }  
-
-var obs = 2;
