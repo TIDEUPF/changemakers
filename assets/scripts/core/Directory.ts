@@ -1,9 +1,17 @@
-export default class Directory {  
+import IGameElement from "./IGameElement";
+import * as Loki from "lokijs";
+
+export default class Directory {
     private elements: Array<Object>;
     private elementKeys: Object;
-    private elementId: Object;
+    private statusId: Object;
 
-    addElement(element: Object) : void {
+    _db: Loki;
+    _cl: Collection<any>;
+
+    addStatus(status: Object) : void {
+
+        /*
         this.elements.push(element);
 
         var addValueKey: (key: string, elementId: string) => void =
@@ -12,7 +20,7 @@ export default class Directory {
                     this.elementKeys[key] = [];
                 }
                 this.elementKeys[key].push(elementId);
-            }
+            }.bind(this);
 
         var addObject: (prefix: string, element: Object) => void =
             function(prefix: string, element: Object): void {
@@ -22,7 +30,7 @@ export default class Directory {
                             var value_key = prefix + element_key + ':' + element_item;
                             addValueKey(value_key, element["id"]);
                         }
-                    } else if(element[element_key] instanceof String) {
+                    } else if(typeof element[element_key] === "string") {
                         var value_key = prefix + element_key + ':' + element[element_key];
                         addValueKey(value_key, element["id"]);
                     } else if(element[element_key] instanceof Object) {
@@ -32,11 +40,22 @@ export default class Directory {
             }
             
             addObject("", element);
+*/
 
-            this.elementId[element["id"]] = element;
+        this._cl.insert(status);
+        this.statusId[status["id"]] = status;
+    }
+
+    addElement(element: IGameElement) {
+        this.elementKeys[element.getId()] = element;
+    }
+
+    getElement(elementId: string): IGameElement {
+        return this.elementKeys[elementId];
     }
 
     search(properties : Object) : Array<Object> {
+        /*
         var keys: Array<string> = [];
         var elementCount: Object;
         var result: Array<Object>;
@@ -66,7 +85,7 @@ export default class Directory {
                     elementCount[elementId] = {};
                 }
 
-                elementCount[elementId][elementId] = true;
+                elementCount[elementId][keys_item] = true;
             }
         }
 
@@ -77,10 +96,18 @@ export default class Directory {
         }
 
         return result;
+        */
+
+        return this._cl.find(properties);
     }
 
     constructor() {
         this.elements = [];
+        this.statusId = {};
+        this.elementKeys = {};
+
+        this._db = new Loki('directory.json');
+        this._cl = this._db.addCollection('directory')
     }
 }  
 

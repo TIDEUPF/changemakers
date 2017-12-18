@@ -4,7 +4,7 @@ import ActionResult from "../../ActionResult";
 //namespace gamenn {
 //        export namespace node {
         class MoveDown extends ElementAction<cc.Node> {
-            processAction(): ActionResult {
+            processAction(events?: Array<Object>): ActionResult {
                 let result: ActionResult;
                 result = {};
                 return result;

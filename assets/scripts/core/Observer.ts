@@ -1,33 +1,61 @@
-export default class Observer {  
-    private suscribedElements: Array<Object>;
-    private eventList: Array<Object>;
+import * as Loki from "lokijs";
+import Directory from "../core/Directory";
+import * as gd from "../core/GameData";
 
-    suscribeEvent(event: Object) : void {
-        this.suscribedElements.push(event);
+export default class Observer {
+    private directory: Directory;
+    private suscriptionList: Array<Object>;
+
+    _db: Loki;
+    _cl: Collection<any>;
+
+    addSubscription(subscription: Object) : void {
+        //this.suscribedElements.push(event);
+        this.suscriptionList.push(subscription);
+    }
+
+    sendSyncMessage(message: Object) : void {
+        var matched = this.directory.search(message["receiver"]);
+        matched.forEach(function(item) {
+            var element = this.directory.getElement(item["id"]);
+            element.processAction([message["content"]]);
+        }.bind(this));
     }
 
     addEvent(event: Object) : void {
-        this.eventList.push(event);
+        this._cl.insert(event);
     }
 
     newFrame() : void {
-        this.eventList = [];
+        this._cl = this._db.addCollection('gameEvents');
     }
 
     notifyEvents() : void {
-        for(let element of this.suscribedElements) {
-            for(let event of this.eventList) {
-                if(element["type"] === event["type"]) {
-                    console.log("event notified");
-                    console.log(element);
-                    console.log(event);
+        var result: Object = {};
+
+        for(let susbcription of this.suscriptionList) {
+            var matched = this._cl.find(susbcription["event"]);
+            var receiver = susbcription["listener"];
+
+            matched.forEach(function(item) {
+                if(typeof result[receiver] === "undefined") {
+                    result[receiver] = [];
                 }
-            }
+
+                result[receiver].push(item);
+            });
+        }
+
+        for(let key in result) {
+            var element = this.directory.getElement(key);
+            element.processAction(result[key]);
         }
     }
 
     constructor() {
-        this.suscribedElements = [];
-        this.eventList = [];
+        this.suscriptionList = [];
+        this.directory = gd.directory;
+        this._db = new Loki('eventsdb');
+        this._cl = this._db.addCollection('gameEvents')
     }
 }  

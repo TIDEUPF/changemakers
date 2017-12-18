@@ -2,7 +2,7 @@ import ElementAction from "../../ElementAction";
 import ActionResult from "../../ActionResult";
 
 class MoveUp extends ElementAction<cc.Node> {
-    processAction(): ActionResult {
+    processAction(events?: Array<Object>): ActionResult {
         let result: ActionResult;
         result = {};
         console.log("moveup");
