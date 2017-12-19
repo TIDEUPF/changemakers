@@ -46,7 +46,7 @@ export default class GameElement<T> extends IGameElement {
         this._element = element;
         this.setElementStatus(elementStatus);
         console.log(actions.actions);
-        this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](element));
-        this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](element));
+        this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](elementStatus, element));
+        this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](elementStatus, element));
     }
 }

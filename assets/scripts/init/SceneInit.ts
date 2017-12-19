@@ -77,19 +77,49 @@ export default class SceneInit extends cc.Component {
             "emitter": "alarm",
             "id": (id_count++).toString(10),
             "element_id" : "/Canvas/background1/queen",
+            "resources": {
+                "node" : { "queen" : "/Canvas/background1/queen"}
+            },
             "metals" : [
                 "copper",
                 "ore"
             ]
         };
 
-        //this.cl.insert(queen_status)
-
         gd.directory.addStatus(queen_status);
 
         var gameelement: any = new GameElement(queen_status, cc.find('/Canvas/background1/queen'));
 
         gd.directory.addElement(gameelement);
+
+
+        var dialog_status = {
+            "type": "node",
+            "action": "dialog",
+            "emitter": "alarm",
+            "id": (id_count++).toString(10),
+            "element_id" : "/Canvas/background1/queen",
+            "resources": {
+                "node" : {
+                    "queen" : "/Canvas/background1/queen",
+                    "dialog" : "/Canvas/background1/dialog"
+                },
+                "text" : {
+                    "d1" : "some text here",
+                },
+            },
+            "metals" : [
+                "copper",
+                "ore"
+            ]
+        };
+
+        gd.directory.addStatus(dialog_status);
+
+        var dialogelement: any = new GameElement(dialog_status, cc.find('/Canvas/background1/queen'));
+
+        gd.directory.addElement(dialogelement);
+
 
         let elementListener = {
             listener : gameelement.getId(),
@@ -98,6 +128,15 @@ export default class SceneInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(elementListener);
+
+        var dialogListener = {
+            listener : dialogelement.getId(),
+            event : {
+                    type : "keyinput",
+            }
+        };
+        gd.observer.addSubscription(dialogListener);
+
         console.log("listener added");
 
         gd.observer.sendSyncMessage({
@@ -116,7 +155,7 @@ export default class SceneInit extends cc.Component {
 
 
 
-        let gameEvent = {
+        /*let gameEvent = {
             type: "keyinput",
             emitter : {
                 type : GameEventType.Input,
@@ -126,6 +165,7 @@ export default class SceneInit extends cc.Component {
 
         gd.observer.addEvent(gameEvent);
         console.log(queen_status);
+        */
     }
 
     update (dt) {

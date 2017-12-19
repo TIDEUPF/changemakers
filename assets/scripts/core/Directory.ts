@@ -5,6 +5,7 @@ export default class Directory {
     private elements: Array<Object>;
     private elementKeys: Object;
     private statusId: Object;
+    private nodePath: Object;
 
     _db: Loki;
     _cl: Collection<any>;
@@ -52,6 +53,14 @@ export default class Directory {
 
     getElement(elementId: string): IGameElement {
         return this.elementKeys[elementId];
+    }
+
+    getNode(nodePath: string): cc.Node {
+        if(typeof this.nodePath[nodePath] === "undefined") {
+            this.nodePath[nodePath] = cc.find(nodePath);
+        }
+
+        return this.nodePath[nodePath];
     }
 
     search(properties : Object) : Array<Object> {
@@ -105,9 +114,9 @@ export default class Directory {
         this.elements = [];
         this.statusId = {};
         this.elementKeys = {};
+        this.nodePath = {};
 
         this._db = new Loki('directory.json');
         this._cl = this._db.addCollection('directory')
     }
-}  
-
+}
