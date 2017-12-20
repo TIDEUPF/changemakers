@@ -7,8 +7,9 @@ class Dialog extends ElementAction<cc.Node> {
         let result: ActionResult;
 
         var queen = gd.directory.getNode(this.elementStatus["resources"]["node"]["queen"]);
-        var dialog = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+        var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
 
+        dialog.active = !dialog.active;
         result = {};
         return result;
     }

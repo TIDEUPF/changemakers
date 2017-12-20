@@ -365,7 +365,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 2000,
-      "height": 723
+      "height": 623
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -373,8 +373,8 @@
     "_scaleY": 0.3,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 6.2,
-      "y": 242
+      "x": 6,
+      "y": 217
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -417,7 +417,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 1800,
-      "height": 0
+      "height": 420
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -426,7 +426,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 202
+      "y": 12
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -443,12 +443,12 @@
       "__id__": 9
     },
     "_enabled": true,
-    "_N$string": "<color=#343434><b>Hello!</b></color>",
+    "_N$string": "<color=#343434><b> And I am the queen of Lalandia. I will also be using this new carriage to go around the kingdom.</b></color>",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 100,
     "_N$font": null,
     "_N$maxWidth": 1800,
-    "_N$lineHeight": 0,
+    "_N$lineHeight": 140,
     "_N$imageAtlas": null
   },
   {
@@ -494,7 +494,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -392,
-      "y": -405
+      "y": -354.2
     },
     "_skewX": 0,
     "_skewY": 0,
