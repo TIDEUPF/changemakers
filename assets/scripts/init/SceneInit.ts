@@ -3,8 +3,11 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
+import * as Polyglot from "node-polyglot";
+
 //import { actions } from "../core/actions";
 //import * as nn from "../core/actions";
 
@@ -28,6 +31,9 @@ export default class SceneInit extends cc.Component {
         var init = this;
         console.log("game init");
         
+        text.i18n.init("en");
+        console.log(text.i18n.t("captain_d1"));
+
         gd.frame["dt"] = 0;
         //gd.directory = new Directory();
         //this.observer = new Observer();
@@ -99,19 +105,26 @@ export default class SceneInit extends cc.Component {
             "emitter": "alarm",
             "id": (id_count++).toString(10),
             "element_id" : "/Canvas/background1/queen",
+            "language" : "en",
             "resources": {
                 "node" : {
                     "queen" : "/Canvas/background1/queen",
-                    "dialog" : "/Canvas/background1/dialog"
+                    "dialog" : "/Canvas/background1/dialog",
+                    "dialog_text" : "/Canvas/background1/dialog/dialog_text",
                 },
-                "text" : {
-                    "d1" : "some text here",
+                "dialog_list" : {
+                    "d1" : {
+                        "text_id" : "librarian_female_d1",
+                        "speaker" : "queen"
+                    },
+                    "d2" : {
+                        "text_id" : "tailor_female_d1",
+                        "speaker" : "queen"
+                    },
                 },
             },
-            "metals" : [
-                "copper",
-                "ore"
-            ]
+            "current_dialog" : null,
+            "last_char_displayed" : 0,
         };
 
         gd.directory.addStatus(dialog_status);
