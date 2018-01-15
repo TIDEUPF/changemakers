@@ -1,7 +1,7 @@
 import IInitElement from "../IInitElement";
 
 class ClickEvent extends IInitElement {
-    init(events?: Array<Object>): void {
+    init(): void {
         var result = {};
         console.log("moveup");
     }
@@ -10,7 +10,7 @@ class ClickEvent extends IInitElement {
     }
 }
 
-export const clickEvent: () => IInitElement = 
-    function(): IInitElement {
-        return new ClickEvent()
+export const clickEvent: (elementStatus: Object) => IInitElement = 
+    function(elementStatus: Object): IInitElement {
+        return new ClickEvent(elementStatus);
     };
