@@ -77,8 +77,37 @@ export default class WorkshopInit extends cc.Component {
 
         gd.directory.addElement(front_wheel_element);
 
+
+        var selection_chasis = {
+            "type": "node",
+            "action": "showElement",
+            "emitter": "alarm",
+            "id": (id_count++).toString(10),
+            "element_id" : "Canvas/background/selection/chasis",
+            "resources": {
+                "node" : {
+                    "selection_chasis" : "Canvas/background/selection/chasis",
+                },
+            },
+        };
+
+        gd.directory.addStatus(selection_chasis);
+        var selection_chasis_element: any = new GameElement(selection_chasis, cc.find('Canvas/background/selection/chasis'));
+        gd.directory.addElement(selection_chasis_element);
+
+        //listen to the wheel click event
+        var dialogListener = {
+            listener : selection_chasis_element.getId(),
+            event : {
+                    type : "click",
+                    origin: "front_wheel",
+            }
+        };
+        gd.observer.addSubscription(dialogListener);
     }
 
     update (dt) {
+        gd.frame["dt"] = dt;
+        gd.observer.notifyEvents();
     }
 }

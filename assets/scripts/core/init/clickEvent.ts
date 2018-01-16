@@ -5,21 +5,15 @@ import * as EventType from "../../core/Events";
 class ClickEvent extends IInitElement {
     init(): void {
         
-        for(var clickableElement in this.elementStatus["init"]["clickEvent"]) {
+        for(let clickableElement in this.elementStatus["init"]["clickEvent"]) {
             var elementPath = this.elementStatus["resources"]["node"][clickableElement]
 
             var element: cc.Node = gd.directory.getNode(elementPath);
 
             element.on(cc.Node.EventType.MOUSE_DOWN, function(event) {
                 let gameEvent = {
-                    type: "clickinput",
-                    emitter : {
-                        type : EventType.Game.Input,
-                        subtype : EventType.GameInput.Button,
-                    },
-                    data : {
-                        key : event
-                    }
+                    type: "click",
+                    origin: clickableElement,
                 };
 
                 gd.observer.addEvent(gameEvent);
