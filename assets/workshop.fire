@@ -64,6 +64,9 @@
     "_components": [
       {
         "__id__": 101
+      },
+      {
+        "__id__": 102
       }
     ],
     "_prefab": null,
@@ -167,7 +170,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Node",
+    "_name": "carriage",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -4222,5 +4225,14 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
+  },
+  {
+    "__type__": "8ae5akW+C5K2IYP+YnBC4cX",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true
   }
 ]

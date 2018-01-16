@@ -3,6 +3,7 @@ import ElementAction from "./ElementAction";
 import ElementEmitter from "./ElementEmitter";
 import * as emitters from "./emittersIndex";
 import * as actions from "./actionsIndex";
+import * as inits from "./init/initsIndex";
  
 export default class GameElement<T> extends IGameElement {
     private elementAction: ElementAction<T>;
@@ -46,7 +47,17 @@ export default class GameElement<T> extends IGameElement {
         this._element = element;
         this.setElementStatus(elementStatus);
         console.log(actions.actions);
-        this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](elementStatus, element));
-        this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](elementStatus, element));
+        if(elementStatus["action"]) {
+            this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](elementStatus, element));
+        }
+
+        if(elementStatus["emitter"]) {
+            this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](elementStatus, element));
+        }
+
+        for(let initTarget in elementStatus["init"]) {
+            var initInstance = inits.inits[initTarget](elementStatus);
+            initInstance.init();
+        }
     }
 }
