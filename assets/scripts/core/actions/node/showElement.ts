@@ -4,9 +4,14 @@ import * as gd from "../../../core/GameData";
 
 class ShowElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
-        var node: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"][Object.keys(this.elementStatus["resources"]["node"])[0]]);
+        var element: cc.Node = gd.directory.getNode('/Canvas/background/selection/' + events[0]["origin"]);
+        var available_parts: cc.Node = gd.directory.getNode('/Canvas/background/selection');
 
-        node.active = true;
+        for (var i = 0; i < available_parts.children.length; ++i) {
+            available_parts.children[i].active = false;
+        }
+
+        element.active = true;
         var result = {};
         return result;
     }

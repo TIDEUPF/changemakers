@@ -62,11 +62,23 @@ export default class WorkshopInit extends cc.Component {
             "resources": {
                 "node" : {
                     "front_wheel" : "/Canvas/background/carriage/front_wheel",
+                    "chasis" : "/Canvas/background/carriage/chasis",
+                    "pattern" : "/Canvas/background/carriage/pattern",
+                    "seat" : "/Canvas/background/carriage/seat",
+                    "stairs" : "/Canvas/background/carriage/stairs",
+                    "top" : "/Canvas/background/carriage/top",
+                    "rear_wheel" : "/Canvas/background/carriage/rear_wheel",
                 },
             },
             "init": {
                 "clickEvent": {
-                    "front_wheel" : {}
+                    "front_wheel" : {},
+                    "chasis" : {},
+                    "pattern" : {},
+                    "seat" : {},
+                    "stairs" : {},
+                    "top" : {},
+                    "rear_wheel" : {},
                 }
             }
         };
@@ -100,14 +112,64 @@ export default class WorkshopInit extends cc.Component {
             listener : selection_chasis_element.getId(),
             event : {
                     type : "click",
-                    origin: "front_wheel",
+                    origin_type: "carriage",
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
             }
         };
         gd.observer.addSubscription(dialogListener);
+
+
+        //set a carriage piece
+        var set_carriage_element = {
+            "type": "node",
+            "action": "selectCarriageElement",
+            "emitter": "alarm",
+            "id": (id_count++).toString(10),
+            "element_id" : "Canvas/background/carriage",
+            "resources": {
+                "node" : {
+                    "front_wheel" : "/Canvas/background/selection/front_wheel",
+                    "chasis" : "/Canvas/background/selection/chasis",
+                    "pattern" : "/Canvas/background/selection/pattern",
+                    "seat" : "/Canvas/background/selection/seat",
+                    "stairs" : "/Canvas/background/selection/stairs",
+                    "top" : "/Canvas/background/selection/top",
+                    "rear_wheel" : "/Canvas/background/selection/rear_wheel",
+                },
+            },
+            "init": {
+                "clickEvent": {
+                    "front_wheel" : {},
+                    "chasis" : {},
+                    "pattern" : {},
+                    "seat" : {},
+                    "stairs" : {},
+                    "top" : {},
+                    "rear_wheel" : {},
+                }
+            }
+        };
+
+        gd.directory.addStatus(set_carriage_element);
+        var carriage_element: any = new GameElement(set_carriage_element, cc.find('Canvas/background/carriage'));
+        gd.directory.addElement(carriage_element);
+
+        //listen to the wheel click event
+        var selection_listener = {
+            listener : carriage_element.getId(),
+            event : {
+                    type : "click",
+                    origin_type: "selection",
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
+            }
+        };
+        gd.observer.addSubscription(selection_listener);
+
     }
 
     update (dt) {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
+        gd.observer.newFrame();
     }
 }

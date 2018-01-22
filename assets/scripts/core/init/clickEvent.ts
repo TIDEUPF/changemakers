@@ -6,19 +6,22 @@ class ClickEvent extends IInitElement {
     init(): void {
         
         for(let clickableElement in this.elementStatus["init"]["clickEvent"]) {
-            var elementPath = this.elementStatus["resources"]["node"][clickableElement]
+            let elementPath = this.elementStatus["resources"]["node"][clickableElement]
 
-            var element: cc.Node = gd.directory.getNode(elementPath);
+            let element: cc.Node = gd.directory.getNode(elementPath);
 
-            element.on(cc.Node.EventType.MOUSE_DOWN, function(event) {
-                let gameEvent = {
-                    type: "click",
-                    origin: clickableElement,
-                };
-
-                gd.observer.addEvent(gameEvent);
-            });
-  
+            for (let i = 0; i < element.children.length; ++i) {
+                element.children[i].on('touchstart', function(event) {
+                    let gameEvent = {
+                        type: "click",
+                        origin: clickableElement,
+                        origin_type: element.parent.name,
+                        element_path: elementPath + '/' + element.children[i].name,
+                    };
+    
+                    gd.observer.addEvent(gameEvent);
+                });
+            }
         }
     }
 
