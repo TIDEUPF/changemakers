@@ -24,6 +24,11 @@ export default class WorkshopInit extends cc.Component {
     cl: Collection<any>;
 
     onLoad() {
+        //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
+        //cc.audioEngine.play("db://assets/sound/fx/testaudio.mp3", true, 1);
+
+        cc.audioEngine.play("res/raw-assets/sound/fx/testaudio.mp3", true, 1);
+
         // init logic
         var init = this;
         console.log("game init");
