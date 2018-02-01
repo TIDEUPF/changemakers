@@ -36,6 +36,13 @@ class Dialog extends ElementAction<cc.Node> {
 
         var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"][current_dialog_data["speaker"]]);
         var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+        
+        //set dialog position
+        dialog.x = character.x;
+        //dialog.y = (character.height * ( 1 - character.anchorY )) * character.scaleY + character.y + dialog.height;
+        //dialog.y = -character.y * character.scaleY - dialog.height;
+        dialog.y = character.y +(character.height * ( 1 - character.anchorY )) * character.scaleY + dialog.height * ( 1 - dialog.anchorY ) * dialog.scaleY;
+        
         var dialog_text: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog_text"]);
         var dialog_text_component: cc.RichText = dialog_text.getComponent('cc.RichText');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');
