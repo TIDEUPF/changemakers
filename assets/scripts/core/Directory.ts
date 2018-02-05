@@ -10,41 +10,16 @@ export default class Directory {
     _db: Loki;
     _cl: Collection<any>;
 
-    addStatus(status: Object) : void {
-
-        /*
-        this.elements.push(element);
-
-        var addValueKey: (key: string, elementId: string) => void =
-            function(key: string, elementId: string): void {
-                if(typeof this.elementKeys[key] === "undefined") {
-                    this.elementKeys[key] = [];
-                }
-                this.elementKeys[key].push(elementId);
-            }.bind(this);
-
-        var addObject: (prefix: string, element: Object) => void =
-            function(prefix: string, element: Object): void {
-                for(var element_key in element) {
-                    if(element[element_key] instanceof Array) {
-                        for(var element_item of element[element_key]) {
-                            var value_key = prefix + element_key + ':' + element_item;
-                            addValueKey(value_key, element["id"]);
-                        }
-                    } else if(typeof element[element_key] === "string") {
-                        var value_key = prefix + element_key + ':' + element[element_key];
-                        addValueKey(value_key, element["id"]);
-                    } else if(element[element_key] instanceof Object) {
-                        addObject(prefix + element_key + ':' + element_key + ':', element[element_key]);
-                    }
-                }
-            }
-            
-            addObject("", element);
-*/
+    addStatus(status: Object): Object {
+        var stored_status = this._cl.find({"id": status["id"]});
+        if(stored_status.length > 0) {
+            return stored_status[0];
+        }
 
         this._cl.insert(status);
         this.statusId[status["id"]] = status;
+
+        return status;
     }
 
     addElement(element: IGameElement) {
@@ -53,6 +28,15 @@ export default class Directory {
 
     getElement(elementId: string): IGameElement {
         return this.elementKeys[elementId];
+    }
+
+
+    clearElements() {
+        this.elementKeys = [];
+    }
+
+    clearNodes() {
+        this.nodePath = [];
     }
 
     getNode(nodePath: string): cc.Node {

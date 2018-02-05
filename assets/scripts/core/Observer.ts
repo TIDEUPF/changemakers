@@ -4,14 +4,21 @@ import * as gd from "../core/GameData";
 
 export default class Observer {
     private directory: Directory;
-    private suscriptionList: Array<Object>;
+    private _susbcriptions: Collection<any>;
 
     _db: Loki;
     _cl: Collection<any>;
 
     addSubscription(subscription: Object) : void {
-        //this.suscribedElements.push(event);
-        this.suscriptionList.push(subscription);
+        this._susbcriptions.insert(subscription);
+    }
+
+    removeSubscription(subscription: Object) : void {
+        this._susbcriptions.chain().find(subscription).remove();
+    }
+
+    clearSubscriptions() : void {
+        this._susbcriptions.clear();
     }
 
     sendSyncMessage(message: Object) : void {
@@ -33,7 +40,7 @@ export default class Observer {
     notifyEvents() : void {
         var result: Object = {};
 
-        for(let susbcription of this.suscriptionList) {
+        for(let susbcription of this._susbcriptions.find()) {
             var matched = this._cl.find(susbcription["event"]);
             var receiver = susbcription["listener"];
 
@@ -53,9 +60,9 @@ export default class Observer {
     }
 
     constructor() {
-        this.suscriptionList = [];
         this.directory = gd.directory;
         this._db = new Loki('eventsdb');
-        this._cl = this._db.addCollection('gameEvents')
+        this._cl = this._db.addCollection('gameEvents');
+        this._susbcriptions = this._db.addCollection('subscriptions');
     }
 }  

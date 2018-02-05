@@ -29,6 +29,10 @@ export default class GameElement<T> extends IGameElement {
     processAction(events = []): void {
         var actionResult = this.elementAction.processAction(events);
  
+        if(typeof actionResult !== "object") {
+            return;
+        }
+
         if(actionResult.updateElementAction) {
             //update
         }

@@ -24,6 +24,19 @@ class Dialog extends ElementAction<cc.Node> {
 
             if(current_index + 2 > dialog_key_list.length) {
                 //finish
+                var dialogListener = {
+                    "listener" : this.elementStatus["id"],
+                    "event.type" : "keyinput",
+                };
+
+                gd.observer.removeSubscription(dialogListener);
+
+                var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+                dialog.active = false;
+
+                cc.director.loadScene('carriage');
+
+                return;
             }
 
             current_dialog = dialog_key_list[current_index+1];
@@ -36,13 +49,17 @@ class Dialog extends ElementAction<cc.Node> {
 
         var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"][current_dialog_data["speaker"]]);
         var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
-        
+        var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
+
+        dialog.active = true;
         //set dialog position
         dialog.x = character.x;
         //dialog.y = (character.height * ( 1 - character.anchorY )) * character.scaleY + character.y + dialog.height;
         //dialog.y = -character.y * character.scaleY - dialog.height;
-        dialog.y = character.y +(character.height * ( 1 - character.anchorY )) * character.scaleY + dialog.height * ( 1 - dialog.anchorY ) * dialog.scaleY;
-        
+        dialog.y = character.y + (character.height * ( 1 - character.anchorY )) * character.scaleY + dialog.height * ( 1 - dialog.anchorY ) * dialog.scaleY + callout_arrow.height * callout_arrow.scaleY * dialog.scaleY;
+        //callout_arrow.x = character.x;// + ((character.width * ( 1 - character.anchorX ))) * character.scaleX;
+        callout_arrow.x = 0;
+
         var dialog_text: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog_text"]);
         var dialog_text_component: cc.RichText = dialog_text.getComponent('cc.RichText');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');

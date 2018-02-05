@@ -31,15 +31,17 @@ export default class SceneInit extends cc.Component {
         var init = this;
         console.log("game init");
         
-        text.i18n.init("en");
+        gd.observer.clearSubscriptions();
+        gd.directory.clearElements();
+        gd.directory.clearNodes();
+
+        //text.i18n.init("en");
         console.log(text.i18n.t("captain_d1"));
 
         gd.frame["dt"] = 0;
-        //gd.directory = new Directory();
-        //this.observer = new Observer();
-        console.log("observer created");
+
         
-        var keyEventListener = cc.EventListener.create({
+        /*var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed: function(keyCode, event) {
                 let gameEvent = {
@@ -58,6 +60,7 @@ export default class SceneInit extends cc.Component {
         });
 
         cc.eventManager.addListener(keyEventListener, 1000);
+*/
 
         //console.log(gamenn.moveUp);
         var id_count=0;
@@ -77,11 +80,11 @@ export default class SceneInit extends cc.Component {
         console.log(this.cl.find( { legs: { '$gt' : 2 } } ))
 */
 
-        var queen_status = {
+        var queen_status: Object = {
             "type": "node",
             "action": "moveUp",
             "emitter": "alarm",
-            "id": (id_count++).toString(10),
+            "id": "palace" + (id_count++).toString(10),
             "element_id" : "/Canvas/background1/queen",
             "resources": {
                 "node" : { "queen" : "/Canvas/background1/queen"}
@@ -92,14 +95,14 @@ export default class SceneInit extends cc.Component {
             ]
         };
 
-        gd.directory.addStatus(queen_status);
+        queen_status = gd.directory.addStatus(queen_status);
 
         var gameelement: any = new GameElement(queen_status, cc.find('/Canvas/background1/queen'));
 
         gd.directory.addElement(gameelement);
 
 
-        var dialog_status = {
+        var dialog_status: Object = {
             "type": "node",
             "action": "dialog",
             "emitter": "alarm",
@@ -109,6 +112,7 @@ export default class SceneInit extends cc.Component {
             "resources": {
                 "node" : {
                     "queen" : "/Canvas/background1/queen",
+                    "king" : "/Canvas/background1/king",
                     "dialog" : "/Canvas/background1/dialog",
                     "dialog_text" : "/Canvas/background1/dialog/dialog_text",
                 },
@@ -119,7 +123,7 @@ export default class SceneInit extends cc.Component {
                     },
                     "d2" : {
                         "text_id" : "tailor_female_d1",
-                        "speaker" : "queen"
+                        "speaker" : "king"
                     },
                 },
             },
@@ -127,12 +131,11 @@ export default class SceneInit extends cc.Component {
             "last_char_displayed" : 0,
         };
 
-        gd.directory.addStatus(dialog_status);
+        dialog_status = gd.directory.addStatus(dialog_status);
 
         var dialogelement: any = new GameElement(dialog_status, cc.find('/Canvas/background1/queen'));
 
         gd.directory.addElement(dialogelement);
-
 
         let elementListener = {
             listener : gameelement.getId(),
@@ -153,7 +156,7 @@ export default class SceneInit extends cc.Component {
         console.log("listener added");
 
         gd.observer.sendSyncMessage({
-            receiver : {id : queen_status.id},
+            receiver : {id : queen_status["id"]},
             content: {
                 attributes : {
                 "speed" : "high",
