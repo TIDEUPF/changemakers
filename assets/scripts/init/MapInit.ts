@@ -17,7 +17,7 @@ enum GameInputEventType {
 };
 
 @ccclass
-export default class WorkshopInit extends cc.Component {
+export default class MapInit extends cc.Component {
     observer: Observer;
     directory: Directory;
     db: Loki;
@@ -33,118 +33,46 @@ export default class WorkshopInit extends cc.Component {
 
         var elements_path = "/Canvas/background/npcs/";
         
-        var element_click = {
+        var map_click = {
             "type": "node",
-            "action": null,
-            "emitter": "alarm",
-            "id": (id_count++).toString(10),
-            "element_id" : "/Canvas/background/carriage/front_wheel",
+            "action": "switchScene",
+            "emitter": null,
+            "id": "map" + (id_count++).toString(10),
+            "element_id" : "/Canvas/background/npcs",
             "resources": {
                 "node" : {
-                    "front_wheel" : "/Canvas/background/npcs/front_wheel",
-                    "chasis" : "/Canvas/background/carriage/chasis",
-                    "pattern" : "/Canvas/background/carriage/pattern",
-                    "seat" : "/Canvas/background/carriage/seat",
-                    "stairs" : "/Canvas/background/carriage/stairs",
-                    "top" : "/Canvas/background/carriage/top",
-                    "rear_wheel" : "/Canvas/background/carriage/rear_wheel",
+                    "butler" : elements_path + "butler",
+                    "chef" : elements_path + "chef",
+                    "librarian" : elements_path + "librarian",
+                },
+                "switch" : {
+                    "butler" : "palace",
+                    "chef" : "palace",
+                    "librarian" : "palace",
                 },
             },
             "init": {
                 "clickEvent": {
-                    "front_wheel" : {},
-                    "chasis" : {},
-                    "pattern" : {},
-                    "seat" : {},
-                    "stairs" : {},
-                    "top" : {},
-                    "rear_wheel" : {},
+                    "butler" : {},
+                    "chef" : {},
+                    "librarian" : {},
                 }
             }
         };
 
-        gd.directory.addStatus(element_click);
+        gd.directory.addStatus(map_click);
+        var map_element: any = new GameElement(map_click, cc.find('/Canvas/background/npcs'));
+        gd.directory.addElement(map_element);
 
-        var front_wheel_element: any = new GameElement(element_click, cc.find('/Canvas/background/carriage/front_wheel'));
-
-        gd.directory.addElement(front_wheel_element);
-
-
-        var selection_chasis = {
-            "type": "node",
-            "action": "showElement",
-            "emitter": "alarm",
-            "id": (id_count++).toString(10),
-            "element_id" : "Canvas/background/selection/chasis",
-            "resources": {
-                "node" : {
-                    "selection_chasis" : "Canvas/background/selection/chasis",
-                },
-            },
-        };
-
-        gd.directory.addStatus(selection_chasis);
-        var selection_chasis_element: any = new GameElement(selection_chasis, cc.find('Canvas/background/selection/chasis'));
-        gd.directory.addElement(selection_chasis_element);
-
-        //listen to the wheel click event
-        var dialogListener = {
-            listener : selection_chasis_element.getId(),
+        var clickEventListener = {
+            listener : map_element.getId(),
             event : {
                     type : "click",
-                    origin_type: "carriage",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
+                    origin_type: "npcs",
+                    /*origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},*/
             }
         };
-        gd.observer.addSubscription(dialogListener);
-
-
-        //set a carriage piece
-        var set_carriage_element = {
-            "type": "node",
-            "action": "selectCarriageElement",
-            "emitter": "alarm",
-            "id": (id_count++).toString(10),
-            "element_id" : "Canvas/background/carriage",
-            "resources": {
-                "node" : {
-                    "front_wheel" : "/Canvas/background/selection/front_wheel",
-                    "chasis" : "/Canvas/background/selection/chasis",
-                    "pattern" : "/Canvas/background/selection/pattern",
-                    "seat" : "/Canvas/background/selection/seat",
-                    "stairs" : "/Canvas/background/selection/stairs",
-                    "top" : "/Canvas/background/selection/top",
-                    "rear_wheel" : "/Canvas/background/selection/rear_wheel",
-                },
-            },
-            "init": {
-                "clickEvent": {
-                    "front_wheel" : {},
-                    "chasis" : {},
-                    "pattern" : {},
-                    "seat" : {},
-                    "stairs" : {},
-                    "top" : {},
-                    "rear_wheel" : {},
-                }
-            }
-        };
-
-        gd.directory.addStatus(set_carriage_element);
-        var carriage_element: any = new GameElement(set_carriage_element, cc.find('Canvas/background/carriage'));
-        gd.directory.addElement(carriage_element);
-
-        //listen to the wheel click event
-        var selection_listener = {
-            listener : carriage_element.getId(),
-            event : {
-                    type : "click",
-                    origin_type: "selection",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
-            }
-        };
-        gd.observer.addSubscription(selection_listener);
-
+        gd.observer.addSubscription(clickEventListener);
     }
 
     update (dt) {

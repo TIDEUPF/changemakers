@@ -50,7 +50,7 @@ export default class SceneInit extends cc.Component {
 
         cc.eventManager.addListener(keyEventListener, 1000);
 
-        cc.director.loadScene('palace');
+        cc.director.loadScene('map');
     }
 
     update (dt) {
