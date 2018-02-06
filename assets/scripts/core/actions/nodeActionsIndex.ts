@@ -5,6 +5,7 @@ import * as dialog from './node/dialog';
 import * as showElement from './node/showElement';
 import * as switchScene from './node/switchScene';
 import * as selectCarriageElement from './node/selectCarriageElement';
+import * as updateValue from './node/updateValue';
 
 export type ActionList = {[s: string]: (elementStatus: Object, element: cc.Node) => ElementAction<cc.Node>};
 
@@ -15,4 +16,5 @@ export const node: ActionList = {
     "showElement" : showElement.showElement,
     "switchScene" : switchScene.switchScene,
     "selectCarriageElement" : selectCarriageElement.selectCarriageElement,
+    "updateValue" : updateValue.updateValue,
 };

@@ -33,7 +33,7 @@ export default class MapInit extends cc.Component {
 
         var elements_path = "/Canvas/background/npcs/";
         
-        var map_click = {
+        var map_click: Object = {
             "type": "node",
             "action": "switchScene",
             "emitter": null,
@@ -60,6 +60,7 @@ export default class MapInit extends cc.Component {
             }
         };
 
+        map_click = gd.directory.addStatus(map_click);
         gd.directory.addStatus(map_click);
         var map_element: any = new GameElement(map_click, cc.find('/Canvas/background/npcs'));
         gd.directory.addElement(map_element);

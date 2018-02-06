@@ -1,5 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
+import * as gd from "../core/GameData";
+
 @ccclass
 export default class ReadSlider extends cc.Component {
 
@@ -12,7 +14,14 @@ export default class ReadSlider extends cc.Component {
     text: string = 'hello';
 
 
-    readValue(val) {
-        console.log(val);
+    readValue(val, extra) {
+        let gameEvent = {
+            type: "slider",
+            origin: extra,
+            origin_type: this.node.name,
+            value: val.progress,
+        };
+
+        gd.observer.addEvent(gameEvent);
     }
 }
