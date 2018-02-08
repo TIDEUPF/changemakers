@@ -33,7 +33,32 @@ export default class MapInit extends cc.Component {
 
         var elements_path = "/notebook";
         
-        var map_click: Object = {
+        var notebook: Object = {
+            "type": "node",
+            "action": "notebookManagement",
+            "emitter": null,
+            "id": "notebook" + (id_count++).toString(10),
+            "element_id" : "/notebook",
+            "resources": {
+                "text": [],
+                "badges": [],
+            },
+        };
+
+        notebook = gd.directory.addStatus(notebook);
+        var notebook_element: any = new GameElement(notebook, cc.find('/notebook'));
+        gd.directory.addElement(notebook_element);
+
+        var clickEventListener = {
+            listener : notebook_element.getId(),
+            event : {
+                    type : {'$containsAny' : ['dialog', 'step_start', 'step_finish']},
+            }
+        };
+        gd.observer.addSubscription(clickEventListener);
+
+
+        var notebook_browsing: Object = {
             "type": "node",
             "action": "notebookBrowsing",
             "emitter": null,
@@ -43,37 +68,29 @@ export default class MapInit extends cc.Component {
                 "node" : {
                     "page_1" : elements_path + "background/page_1",
                     "page_2" : elements_path + "background/page_2",
-                    "librarian" : elements_path + "librarian",
+                    "badges" : elements_path + "background/page_1/badges",
+                    "back" : elements_path + "background/page_2/back",
+                    "next" : elements_path + "background/page_2/next",
                 },
-                "switch" : {
-                    "butler" : "palace",
-                    "chef" : "palace",
-                    "librarian" : "palace",
-                },
+                "data_id": notebook_element.getId(),
             },
-            "init": {
-                "clickEvent": {
-                    "butler" : {},
-                    "chef" : {},
-                    "librarian" : {},
-                }
-            }
         };
 
-        map_click = gd.directory.addStatus(map_click);
-        gd.directory.addStatus(map_click);
-        var map_element: any = new GameElement(map_click, cc.find('/Canvas/background/npcs'));
-        gd.directory.addElement(map_element);
+        notebook_browsing = gd.directory.addStatus(notebook_browsing);
+        var notebook_browsing_element: any = new GameElement(notebook_browsing, cc.find('/notebook'));
+        gd.directory.addElement(notebook_browsing_element);
 
         var clickEventListener = {
-            listener : map_element.getId(),
+            listener : notebook_browsing_element.getId(),
             event : {
                     type : "click",
-                    origin_type: "npcs",
+                    origin_type: "notebook",
                     /*origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},*/
             }
         };
         gd.observer.addSubscription(clickEventListener);
+
+
     }
 
     update (dt) {
