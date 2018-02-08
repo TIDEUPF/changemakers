@@ -40,7 +40,7 @@ export default class MapInit extends cc.Component {
             "id": "notebook" + (id_count++).toString(10),
             "element_id" : "/notebook",
             "resources": {
-                "text": [],
+                "dialog": [],
                 "badges": [],
             },
         };
@@ -57,7 +57,7 @@ export default class MapInit extends cc.Component {
         };
         gd.observer.addSubscription(clickEventListener);
 
-
+/*
         var notebook_browsing: Object = {
             "type": "node",
             "action": "notebookBrowsing",
@@ -80,16 +80,16 @@ export default class MapInit extends cc.Component {
         var notebook_browsing_element: any = new GameElement(notebook_browsing, cc.find('/notebook'));
         gd.directory.addElement(notebook_browsing_element);
 
+
         var clickEventListener = {
             listener : notebook_browsing_element.getId(),
             event : {
                     type : "click",
                     origin_type: "notebook",
-                    /*origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},*/
             }
         };
         gd.observer.addSubscription(clickEventListener);
-
+*/
 
     }
 

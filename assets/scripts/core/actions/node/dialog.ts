@@ -81,8 +81,16 @@ class Dialog extends ElementAction<cc.Node> {
         dialog_text_component.string = '<color=#343434><b>' + dialog_text_string + '</b></color>';
         console.log(text.i18n.t("coachman_male_d1"));
 
-        //dialog.active = !dialog.active;
-        result = {};
+        
+        result.events = [
+                {
+                    "type": "dialog",
+                    "data": {
+                        "speaker": this.elementStatus["resources"]["node"][current_dialog_data["speaker"]],
+                        "text": this.elementStatus["resources"]["node"]["dialog_text"],
+                    },
+                },
+            ];
         return result;
     }
 }

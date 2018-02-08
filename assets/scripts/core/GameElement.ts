@@ -1,6 +1,7 @@
 import IGameElement from "./IGameElement";
 import ElementAction from "./ElementAction";
 import ElementEmitter from "./ElementEmitter";
+import * as gd from "../core/GameData";
 import * as emitters from "./emittersIndex";
 import * as actions from "./actionsIndex";
 import * as inits from "./init/initsIndex";
@@ -39,6 +40,13 @@ export default class GameElement<T> extends IGameElement {
  
         if(actionResult.updateElementEmitter) {
             //update
+        }
+
+        if(actionResult.events) {
+
+            for(let e of actionResult.events) {
+                gd.observer.addEvent(e);
+            }
         }
     }
  

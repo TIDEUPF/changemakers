@@ -5,4 +5,5 @@ import ElementEmitter from "./ElementEmitter";
 export default interface ActionResult {
     updateElementAction?: boolean,
     updateElementEmitter?: boolean,
+    events?: Array<Object>,
 }
