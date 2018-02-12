@@ -69,7 +69,7 @@ class Dialog extends ElementAction<cc.Node> {
             dialog_text_string = text.i18n.t(current_dialog_data["text_id"]);
         }
 
-        var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"][current_dialog_data["speaker"]]);
+        var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["speakers"] + current_dialog_data["speaker"]);
         var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
         var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
 
@@ -82,7 +82,7 @@ class Dialog extends ElementAction<cc.Node> {
         //callout_arrow.x = character.x;// + ((character.width * ( 1 - character.anchorX ))) * character.scaleX;
         callout_arrow.x = 0;
 
-        var dialog_text: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog_text"]);
+        var dialog_text: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + "/dialog_text");
         var dialog_text_component: cc.RichText = dialog_text.getComponent('cc.RichText');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');
         var char_width: number = w_size.width*0.65;

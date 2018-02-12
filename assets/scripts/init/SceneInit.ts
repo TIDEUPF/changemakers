@@ -27,80 +27,40 @@ export default class SceneInit extends cc.Component {
     cl: Collection<any>;
 
     onLoad() {
-        // init logic
-        var init = this;
-        console.log("game init");
-        
+        gd.scene["current"] = gd.scene["next"];
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
         gd.directory.clearNodes();
 
-        //text.i18n.init("en");
-        console.log(text.i18n.t("captain_d1"));
-
         gd.frame["dt"] = 0;
 
-        
-        /*var keyEventListener = cc.EventListener.create({
-            event: cc.EventListener.KEYBOARD,
-            onKeyPressed: function(keyCode, event) {
-                let gameEvent = {
-                    type: "keyinput",
-                    emitter : {
-                        type : GameEventType.Input,
-                        subtype : GameInputEventType.Key,
-                    },
-                    data : {
-                        key : keyCode
-                    }
-                };
-
-                gd.observer.addEvent(gameEvent);
-            }.bind(this)
-        });
-
-        cc.eventManager.addListener(keyEventListener, 1000);
-*/
-
-        //console.log(gamenn.moveUp);
         var id_count=0;
-        console.log(cc.find('/Canvas/background1/queen'));
 
-        /*this.db = new Loki('mydb');
-        this.cl = this.db.addCollection('children')
-        this.cl.insert({name:'Sleipnir', legs: 8})
-        this.cl.insert({name:'Jormungandr', legs: 0})
-        this.cl.insert({name:'Hel', legs: 2})
-
-        for(var i=0;i<500;i++)
-        this.cl.insert({name:'Hel'+i, legs: 2+i});
-
-        console.log(this.cl.get(1)); // returns Sleipnir
-        console.log(this.cl.find( {'name':'Sleipnir'} ))
-        console.log(this.cl.find( { legs: { '$gt' : 2 } } ))
-*/
-
-        var queen_status: Object = {
-            "type": "node",
-            "action": "moveUp",
-            "emitter": "alarm",
-            "id": "palace" + (id_count++).toString(10),
-            "element_id" : "/Canvas/background1/queen",
-            "resources": {
-                "node" : { "queen" : "/Canvas/background1/queen"}
-            },
-            "metals" : [
-                "copper",
-                "ore"
-            ]
-        };
-
-        queen_status = gd.directory.addStatus(queen_status);
-
-        var gameelement: any = new GameElement(queen_status, cc.find('/Canvas/background1/queen'));
-
-        gd.directory.addElement(gameelement);
-
+        var cutscene_dialogs = {
+            "workshop_messenger": {
+                "d1" : {
+                    "text_id" : "stage1_scene1_messenger_d1",
+                    "speaker" : "Messenger_horse",
+                    "data": {"name": "Phil"}
+                },
+                "d2" : {
+                    "text_id" : "stage1_scene1_player_d1",
+                    "speaker" : "main_character",
+                },
+                "d3" : {
+                    "text_id" : "stage1_scene1_messenger_d2",
+                    "speaker" : "Messenger_horse",
+                },
+                "d4" : {
+                    "text_id" : "stage1_scene1_player_d2",
+                    "speaker" : "main_character",
+                },
+                "d5" : {
+                    "text_id" : "stage1_scene1_messenger_d3",
+                    "speaker" : "Messenger_horse",
+                },
+            }
+        }
 
         var dialog_status: Object = {
             "type": "node",
@@ -111,25 +71,11 @@ export default class SceneInit extends cc.Component {
             "language" : "en",
             "resources": {
                 "node" : {
-                    "queen" : "/Canvas/background1/queen",
-                    "king" : "/Canvas/background1/king",
-                    "dialog" : "/Canvas/background1/dialog",
-                    "dialog_text" : "/Canvas/background1/dialog/dialog_text",
+                    "speakers" : "/Canvas/background/",
+                    "dialog" : "/Canvas/background/dialog",
                 },
-                "dialog_list" : {
-                    "d1" : {
-                        "text_id" : "librarian_female_d1",
-                        "speaker" : "queen"
-                    },
-                    "d2" : {
-                        "text_id" : "tailor_female_d1",
-                        "speaker" : "king"
-                    },
-                },
+                "dialog_list" : cutscene_dialogs[gd.scene["current"]],
             },
-            /*"init": {
-                "dialogProgression": {},
-            },*/
             "current_dialog" : null,
             "last_char_displayed" : 0,
         };
@@ -139,15 +85,7 @@ export default class SceneInit extends cc.Component {
         var dialogelement: any = new GameElement(dialog_status, cc.find('/Canvas/background1/queen'));
 
         gd.directory.addElement(dialogelement);
-/*
-        let elementListener = {
-            listener : gameelement.getId(),
-            event : {
-                    type : "keyinput",
-            }
-        };
-        gd.observer.addSubscription(elementListener);
-*/
+
         var dialogListener: Object = {
             listener : dialogelement.getId(),
             event : {
@@ -169,45 +107,10 @@ export default class SceneInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(finishScene);
-
-        /*
-        gd.observer.sendSyncMessage({
-            receiver : {id : queen_status["id"]},
-            content: {
-                attributes : {
-                "speed" : "high",
-                "altitude" : "low",
-                },
-                emitter : {
-                    type : "npc",
-                    subtype : "farmer",
-                }
-            }
-        });
-*/
-
-
-        /*let gameEvent = {
-            type: "keyinput",
-            emitter : {
-                type : GameEventType.Input,
-                subtype : GameInputEventType.Key,
-            },
-        };
-
-        gd.observer.addEvent(gameEvent);
-        console.log(queen_status);
-        */
     }
 
     update (dt) {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
-
-        //gd.observer.newFrame();
-        //console.log(this.cl.find( { legs: { '$gt' : 2 } } ));
-        var b = Math.random();
-        //for(var i=b;i<b+50;i++)
-        //    gd.cl.find( { legs: { '$gt' : i } } );
     }
 }

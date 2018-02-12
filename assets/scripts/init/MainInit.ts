@@ -50,7 +50,8 @@ export default class SceneInit extends cc.Component {
 
         cc.eventManager.addListener(keyEventListener, 1000);
 
-        cc.director.loadScene('palace');
+        gd.scene["next"] = "workshop_messenger";
+        cc.director.loadScene('cutscene_1');
     }
 
     update (dt) {
