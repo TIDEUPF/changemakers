@@ -39,8 +39,8 @@ export default class MapInit extends cc.Component {
             "emitter": null,
             "id": "notebook" + (id_count++).toString(10),
             "element_id" : "/notebook",
-            "resources": {
-                "dialog": [],
+            "data": {
+                "dialogs": [],
                 "badges": [],
             },
         };
@@ -57,10 +57,10 @@ export default class MapInit extends cc.Component {
         };
         gd.observer.addSubscription(clickEventListener);
 
-/*
-        var notebook_browsing: Object = {
+
+        var notebook_browser: Object = {
             "type": "node",
-            "action": "notebookBrowsing",
+            "action": "notebookBrowser",
             "emitter": null,
             "id": "notebook" + (id_count++).toString(10),
             "element_id" : "/notebook",
@@ -76,26 +76,25 @@ export default class MapInit extends cc.Component {
             },
         };
 
-        notebook_browsing = gd.directory.addStatus(notebook_browsing);
-        var notebook_browsing_element: any = new GameElement(notebook_browsing, cc.find('/notebook'));
-        gd.directory.addElement(notebook_browsing_element);
+        notebook_browser = gd.directory.addStatus(notebook_browser);
+        var notebook_browser_element: any = new GameElement(notebook_browser, cc.find('/notebook'));
+        gd.directory.addElement(notebook_browser_element);
 
-
-        var clickEventListener = {
-            listener : notebook_browsing_element.getId(),
-            event : {
-                    type : "click",
-                    origin_type: "notebook",
+        var keyListener = {
+            listener : notebook_browser_element.getId(),
+            event: {
+                    "type" : "keyinput",
+                    "data.key" : "n",
             }
         };
-        gd.observer.addSubscription(clickEventListener);
-*/
+        gd.observer.addSubscription(keyListener);
+
 
     }
 
     update (dt) {
         gd.frame["dt"] = dt;
-        gd.observer.notifyEvents();
-        gd.observer.newFrame();
+        //gd.observer.notifyEvents();
+        //gd.observer.newFrame();
     }
 }

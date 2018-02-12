@@ -40,7 +40,7 @@ export default class SceneInit extends cc.Component {
                         subtype : GameInputEventType.Key,
                     },
                     data : {
-                        key : keyCode
+                        key : String.fromCharCode(keyCode).toLowerCase()
                     }
                 };
 

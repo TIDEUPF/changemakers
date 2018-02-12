@@ -7,6 +7,7 @@ class Dialog extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
         const balloon_max_size = 150;
         const balloon_max_lines = 3;
+        let result: ActionResult = {};
 
         var current_dialog = this.elementStatus["current_dialog"];
         var last_char_displayed = this.elementStatus["last_char_displayed"];
@@ -18,6 +19,20 @@ class Dialog extends ElementAction<cc.Node> {
         var dialog_text_string: string = text.i18n.t(current_dialog_data["text_id"]);
 
         if(last_char_displayed + 1 > dialog_text_string.length) {
+            //text unit finished
+
+            result.events = [
+                {
+                    "type": "dialog",
+                    "subtype": "turn_finished",
+                    "data": {
+                        "id": this.elementStatus["id"],
+                        "speaker": this.elementStatus["resources"]["node"][current_dialog_data["speaker"]],
+                        "text": this.elementStatus["resources"]["node"]["dialog_text"],
+                    },
+                },
+            ];
+
             last_char_displayed = 0;
             var dialog_key_list = Object.keys(this.elementStatus["resources"]["dialog_list"]);
             var current_index = dialog_key_list.indexOf(current_dialog);
@@ -36,7 +51,16 @@ class Dialog extends ElementAction<cc.Node> {
 
                 cc.director.loadScene('carriage');
 
-                return;
+                result.events.push({
+                        "type": "dialog",
+                        "subtype": "dialog_finished",
+                        "data": {
+                            "id": this.elementStatus["id"],
+                        },
+                    },
+                );
+
+                return result;
             }
 
             current_dialog = dialog_key_list[current_index+1];
@@ -44,8 +68,6 @@ class Dialog extends ElementAction<cc.Node> {
             current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
             dialog_text_string = text.i18n.t(current_dialog_data["text_id"]);
         }
-
-        let result: ActionResult;
 
         var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"][current_dialog_data["speaker"]]);
         var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
@@ -81,16 +103,6 @@ class Dialog extends ElementAction<cc.Node> {
         dialog_text_component.string = '<color=#343434><b>' + dialog_text_string + '</b></color>';
         console.log(text.i18n.t("coachman_male_d1"));
 
-        
-        result.events = [
-                {
-                    "type": "dialog",
-                    "data": {
-                        "speaker": this.elementStatus["resources"]["node"][current_dialog_data["speaker"]],
-                        "text": this.elementStatus["resources"]["node"]["dialog_text"],
-                    },
-                },
-            ];
         return result;
     }
 }

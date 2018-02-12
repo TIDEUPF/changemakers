@@ -6,14 +6,14 @@ class NotebookManagement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
 
         if(events[0]["type"] === "step_finish") {
-            this.elementStatus["data"]["badge"].push({
+            this.elementStatus["data"]["badges"].push({
                 "step": events[0]["data"]["step"],
             });
         }
 
         if(events[0]["type"] === "dialog") {
-            this.elementStatus["data"]["dialog"].push({
-                "character": events[0]["data"]["character"],
+            this.elementStatus["data"]["dialogs"].push({
+                "speaker": events[0]["data"]["character"],
                 "text": events[0]["data"]["text"],
             });
         }

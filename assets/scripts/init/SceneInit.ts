@@ -127,6 +127,9 @@ export default class SceneInit extends cc.Component {
                     },
                 },
             },
+            /*"init": {
+                "dialogProgression": {},
+            },*/
             "current_dialog" : null,
             "last_char_displayed" : 0,
         };
@@ -136,7 +139,7 @@ export default class SceneInit extends cc.Component {
         var dialogelement: any = new GameElement(dialog_status, cc.find('/Canvas/background1/queen'));
 
         gd.directory.addElement(dialogelement);
-
+/*
         let elementListener = {
             listener : gameelement.getId(),
             event : {
@@ -144,17 +147,30 @@ export default class SceneInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(elementListener);
-
-        var dialogListener = {
+*/
+        var dialogListener: Object = {
             listener : dialogelement.getId(),
             event : {
                     type : "keyinput",
+                    "data.key": "d",
             }
         };
         gd.observer.addSubscription(dialogListener);
 
         console.log("listener added");
 
+        var finishScene: Object = {
+            listener : function() {
+                cc.director.loadScene("cutscene_1");
+            },
+            event:{
+                "type": "dialog",
+                "subtype": "dialog_finished",
+            }
+        };
+        gd.observer.addSubscription(finishScene);
+
+        /*
         gd.observer.sendSyncMessage({
             receiver : {id : queen_status["id"]},
             content: {
@@ -168,7 +184,7 @@ export default class SceneInit extends cc.Component {
                 }
             }
         });
-
+*/
 
 
         /*let gameEvent = {
@@ -188,7 +204,7 @@ export default class SceneInit extends cc.Component {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
 
-        gd.observer.newFrame();
+        //gd.observer.newFrame();
         //console.log(this.cl.find( { legs: { '$gt' : 2 } } ));
         var b = Math.random();
         //for(var i=b;i<b+50;i++)

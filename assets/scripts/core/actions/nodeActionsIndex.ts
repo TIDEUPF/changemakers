@@ -6,6 +6,7 @@ import * as showElement from './node/showElement';
 import * as switchScene from './node/switchScene';
 import * as selectCarriageElement from './node/selectCarriageElement';
 import * as updateValue from './node/updateValue';
+import * as notebookBrowser from './node/notebookBrowser';
 import * as notebookManagement from './node/notebookManagement';
 
 
@@ -20,4 +21,5 @@ export const node: ActionList = {
     "selectCarriageElement" : selectCarriageElement.selectCarriageElement,
     "updateValue" : updateValue.updateValue,
     "notebookManagement" : notebookManagement.notebookManagement,
+    "notebookBrowser" : notebookBrowser.notebookBrowser,
 };

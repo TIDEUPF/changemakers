@@ -38,24 +38,49 @@ export default class Observer {
     }
 
     notifyEvents() : void {
-        var result: Object = {};
+        var matched_subscriptions = [];
 
         for(let susbcription of this._susbcriptions.find()) {
             var matched = this._cl.find(susbcription["event"]);
-            var receiver = susbcription["listener"];
-
-            matched.forEach(function(item) {
-                if(typeof result[receiver] === "undefined") {
-                    result[receiver] = [];
-                }
-
-                result[receiver].push(item);
+            matched_subscriptions.push({
+                "subscription": susbcription,
+                "matched": matched,
             });
         }
 
-        for(let key in result) {
-            var element = this.directory.getElement(key);
-            element.processAction(result[key]);
+        this._cl.clear();
+
+        for(let matched_subscription of matched_subscriptions) {
+            var result: Object = {};
+            var function_receiver = [];
+            
+            var susbcription = matched_subscription["subscription"];
+            var receiver = susbcription["listener"];
+            var matched:Array<any> = matched_subscription["matched"];
+
+            matched.forEach(function(item) {
+                if(typeof receiver === "function") {
+                    function_receiver.push({
+                        "matched": item,
+                        "subscription": susbcription,
+                    });
+                } else {
+                    if(typeof result[receiver] === "undefined") {
+                        result[receiver] = [];
+                    }
+
+                    result[receiver].push(item);
+                }
+            });
+
+            for(let key in function_receiver) {
+                function_receiver[key]["subscription"]["listener"](function_receiver[key]["matched"]);
+            }
+
+            for(let key in result) {
+                var element = this.directory.getElement(key);
+                element.processAction(result[key]);
+            }
         }
     }
 

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "0d4083fd-2a29-48df-9c5c-d830f5a516c6",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "civil_engineer": {
+      "ver": "1.0.3",
+      "uuid": "3da039fd-3ce1-4432-9fdf-1dec9c3333ec",
+      "rawTextureUuid": "0d4083fd-2a29-48df-9c5c-d830f5a516c6",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 546,
+      "height": 920,
+      "rawWidth": 546,
+      "rawHeight": 920,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

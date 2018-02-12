@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "92d025b0-b55d-4599-b9d6-ede1e061c27e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "CM_Disruptive_Royal Family": {
+      "ver": "1.0.3",
+      "uuid": "2cd3bae8-2b34-4f12-9c05-c811eed69be0",
+      "rawTextureUuid": "92d025b0-b55d-4599-b9d6-ede1e061c27e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1024,
+      "height": 768,
+      "rawWidth": 1024,
+      "rawHeight": 768,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
