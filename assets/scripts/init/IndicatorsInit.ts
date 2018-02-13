@@ -72,6 +72,17 @@ export default class IndicatorsInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(sliderEventListener);
+
+        gd.observer.addSubscription({
+            listener : function() {
+                cc.director.loadScene('map');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "m",
+            }
+        });
+
     }
 
     update (dt) {

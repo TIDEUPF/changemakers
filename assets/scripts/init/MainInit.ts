@@ -53,11 +53,11 @@ export default class SceneInit extends cc.Component {
         //gd.scene["next"] = "courtyard";
         //cc.director.loadScene('cutscene_4');
 
-        cc.director.loadScene('map');
+        //cc.director.loadScene('map');
         //gd.scene["next"] = "stage3_ideation_patricia";
 
-        //gd.scene["next"] = "workshop_messenger";
-        //cc.director.loadScene('cutscene_1');
+        gd.scene["next"] = "workshop_messenger";
+        cc.director.loadScene('cutscene_1');
     }
 
     update (dt) {

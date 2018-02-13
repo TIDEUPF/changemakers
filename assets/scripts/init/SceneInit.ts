@@ -66,6 +66,10 @@ export default class SceneInit extends cc.Component {
                     "text_id" : "stage1_scene2_player_d1",
                     "speaker" : "main_character",
                 },
+                "d5" : {
+                    "text_id" : "stage1_scene2_king_d3",
+                    "speaker" : "king",
+                },            
             },
             "courtyard": {
                 "d1" : {
@@ -226,6 +230,31 @@ export default class SceneInit extends cc.Component {
                 },
             },
 
+            "stage5_feedback_captain": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_captain",
+                    "speaker" : "Captain",
+                },
+            },
+
+            "stage5_feedback_coachman": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_coachman",
+                    "speaker" : "Driver",
+                },
+            },
+
+            "stage5_feedback_oldlady": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_oldlady",
+                    "speaker" : "old_lady",
+                },
+                "d2" : {
+                    "text_id" : "stage5_feedback_narrator",
+                    "speaker" : "narrator",
+                },
+            },
+
             "disruption_1": {
                 "d1" : {
                     "text_id" : "stage5_disruption1_narrator_d2",
@@ -262,7 +291,7 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map",
             },
 
-            "stage1_scene4_captain_d1": {
+            "stage1_scene4_captain": {
                 "next_scene": "map",
             },
 
@@ -353,6 +382,20 @@ export default class SceneInit extends cc.Component {
             "stage3_ideation_tharrenos": {
 
                     "next_scene": "map",
+            },
+
+            "stage5_feedback_captain": {
+                "next_scene": "cutscene_6",
+                "next_dialog": "stage5_feedback_coachman",
+            },
+
+            "stage5_feedback_coachman": {
+                "next_scene": "cutscene_6",
+                "next_dialog": "stage5_feedback_oldlady",
+            },
+
+            "stage5_feedback_oldlady": {
+                "next_scene": "map",
             },
 
             "disruption_1": {

@@ -27,6 +27,9 @@ export default class MapInit extends cc.Component {
         // init logic
         var init = this;
 
+        gd.observer.clearSubscriptions();
+        gd.directory.clearElements();
+        gd.directory.clearNodes();
 
         //console.log(gamenn.moveUp);
         var id_count=0;
@@ -243,6 +246,27 @@ export default class MapInit extends cc.Component {
             }
         });
 
+        
+        gd.observer.addSubscription({
+            listener : function() {
+                gd.scene["next"] = "stage5_feedback_captain";
+                cc.director.loadScene('cutscene_6');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "f",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                cc.director.loadScene('indicators');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "n",
+            }
+        });
 
     }
 

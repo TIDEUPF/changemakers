@@ -10,9 +10,9 @@ class ClickEvent extends IInitElement {
 
             let element: cc.Node = gd.directory.getNode(elementPath);
 
-            var apply_to_elements = element.children.length ? element.children : [element];
+            let apply_to_elements = element.children.length ? element.children : [element];
 
-            for (let i = 0; i < apply_to_elements.length; ++i) {
+            for (let i = 0; i < apply_to_elements.length; i++) {
                 apply_to_elements[i].on('touchstart', function(event) {
                     let gameEvent = {
                         type: "click",
