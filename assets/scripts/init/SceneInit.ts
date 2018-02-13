@@ -8,17 +8,6 @@ import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
 import * as Polyglot from "node-polyglot";
 
-//import { actions } from "../core/actions";
-//import * as nn from "../core/actions";
-
-enum GameEventType {
-    Input = 1,
-};
-
-enum GameInputEventType {
-    Key = 1,
-};
-
 @ccclass
 export default class SceneInit extends cc.Component {
     observer: Observer;
@@ -59,15 +48,333 @@ export default class SceneInit extends cc.Component {
                     "text_id" : "stage1_scene1_messenger_d3",
                     "speaker" : "Messenger_horse",
                 },
-            }
+            },
+            "palace": {
+                "d1" : {
+                    "text_id" : "stage1_scene2_king_d1",
+                    "speaker" : "king",
+                },
+                "d2" : {
+                    "text_id" : "stage1_scene2_queen_d1",
+                    "speaker" : "queen",
+                },
+                "d3" : {
+                    "text_id" : "stage1_scene2_king_d2",
+                    "speaker" : "king",
+                },
+                "d4" : {
+                    "text_id" : "stage1_scene2_player_d1",
+                    "speaker" : "main_character",
+                },
+            },
+            "courtyard": {
+                "d1" : {
+                    "text_id" : "stage1_scene2_player_d2",
+                    "speaker" : "main_character",
+                },
+                "d2" : {
+                    "text_id" : "stage1_scene3_narrator_d1",
+                    "speaker" : "narrator",
+                },
+                "d3" : {
+                    "text_id" : "stage1_scene3_kings_captain_d1",
+                    "speaker" : "Captain",
+                },
+                "d4" : {
+                    "text_id" : "stage1_scene3_kings_player_d1",
+                    "speaker" : "main_character",
+                },
+            },
+
+            "stage1_scene4_captain": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_captain_d1",
+                    "speaker" : "Captain",
+                },
+            },
+
+            "stage1_scene4_coachman_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_coachman_male_d1",
+                    "speaker" : "Driver",
+                },
+            },
+
+            "stage1_scene4_tailor_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_tailor_female_d1",
+                    "speaker" : "Tailor",
+                },
+            },
+
+            "stage1_scene4_butler_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_butler_male_d1",
+                    "speaker" : "butler",
+                },
+            },
+
+            "stage1_scene4_stable_boy": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_stable_boy_d1",
+                    "speaker" : "the_stable_boy",
+                },
+            },
+
+            "stage1_scene4_doctor_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_doctor_male_d1",
+                    "speaker" : "Doctor",
+                },
+            },
+
+            "stage1_scene4_chef_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_chef_female_d1",
+                    "speaker" : "Chef",
+                },
+            },
+
+            "stage1_scene4_civil_engineer_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_civil_engineer_female_d1",
+                    "speaker" : "civil_engineer",
+                },
+            },
+
+            "stage1_scene4_merchant_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_merchant_male_d1",
+                    "speaker" : "Merchant",
+                },
+            },
+
+            "stage1_scene4_old_lady_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_old_lady_female_d1",
+                    "speaker" : "old_lady",
+                },
+            },
+
+            "stage1_scene4_librarian_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_librarian_female_d1",
+                    "speaker" : "Librarian",
+                },
+            },
+
+            "stage1_scene4_butcher_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_librarian_female_d1",
+                    "speaker" : "the_grumpy_butcher",
+                },
+            },
+
+            "stage1_scene4_potter_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_potter_female_d1",
+                    "speaker" : "potter",
+                },
+            },
+
+            "stage1_scene4_vagabond_male": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_vagabond_male_d1",
+                    "speaker" : "vagabond",
+                },
+            },
+
+            "stage1_scene4_huntress_female": {
+                "d1" : {
+                    "text_id" : "stage1_scene4_huntress_female_d1",
+                    "speaker" : "Huntress",
+                },
+            },
+
+            "stage3_ideation_patricia": {
+                "d1" : {
+                    "text_id" : "stage3_ideation_patricia",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "stage3_ideation_mihaela": {
+                "d1" : {
+                    "text_id" : "stage3_ideation_mihaela",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "stage3_ideation_pablo": {
+                "d1" : {
+                    "text_id" : "stage3_ideation_pablo",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "stage3_ideation_ana": {
+                "d1" : {
+                    "text_id" : "stage3_ideation_ana",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "stage3_ideation_tharrenos": {
+                "d1" : {
+                    "text_id" : "stage3_ideation_tharrenos",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "disruption_1": {
+                "d1" : {
+                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "disruption_2": {
+                "d1" : {
+                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "speaker" : "narrator",
+                },
+            },
+
+            "disruption_3": {
+                "d1" : {
+                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "speaker" : "narrator",
+                },
+            },
+
+        }
+
+        var next_scene = {
+            "workshop_messenger": {
+                "next_scene": "cutscene_2",
+                "next_dialog": "palace",
+            },
+            "palace": {
+                "next_scene": "cutscene_4",
+                "next_dialog": "courtyard",
+            },
+            "courtyard": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_captain_d1": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_coachman_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_tailor_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_butler_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_stable_boy": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_doctor_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_chef_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_civil_engineer_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_merchant_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_old_lady_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_librarian_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_butcher_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_potter_female": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_vagabond_male": {
+                "next_scene": "map",
+            },
+
+            "stage1_scene4_huntress_female": {
+                "next_scene": "map",
+            },
+
+            "stage3_ideation_patricia": {
+
+                    "next_scene": "ideation_2",
+                    "next_dialog": "stage3_ideation_mihaela",
+
+            },
+
+            "stage3_ideation_mihaela": {
+
+                    "next_scene": "ideation_3",
+                    "next_dialog": "stage3_ideation_pablo",
+
+            },
+
+            "stage3_ideation_pablo": {
+
+                    "next_scene": "ideation_4",
+                    "next_dialog": "stage3_ideation_ana",
+
+            },
+
+            "stage3_ideation_ana": {
+
+                    "next_scene": "ideation_5",
+                    "next_dialog": "stage3_ideation_tharrenos",
+
+            },
+
+            "stage3_ideation_tharrenos": {
+
+                    "next_scene": "map",
+            },
+
+            "disruption_1": {
+                "next_scene": "workshop",
+            },
+
+            "disruption_2": {
+                "next_scene": "workshop",
+            },
+
+            "disruption_3": {
+                "next_scene": "workshop",
+            },
+
         }
 
         var dialog_status: Object = {
             "type": "node",
             "action": "dialog",
             "emitter": "alarm",
-            "id": (id_count++).toString(10),
-            "element_id" : "/Canvas/background1/queen",
+            "id": gd.scene["current"] + "_" + (id_count++).toString(10),
+            "element_id" : "/Canvas/background/" + gd.scene["current"],
             "language" : "en",
             "resources": {
                 "node" : {
@@ -86,6 +393,12 @@ export default class SceneInit extends cc.Component {
 
         gd.directory.addElement(dialogelement);
 
+        for(let item in cutscene_dialogs[gd.scene["current"]]) {
+            if(cutscene_dialogs[gd.scene["current"]][item]["speaker"] != "narrator") {
+                cc.find("/Canvas/background/" + cutscene_dialogs[gd.scene["current"]][item]["speaker"]).active = true;
+            }
+        }
+
         var dialogListener: Object = {
             listener : dialogelement.getId(),
             event : {
@@ -99,7 +412,10 @@ export default class SceneInit extends cc.Component {
 
         var finishScene: Object = {
             listener : function() {
-                cc.director.loadScene("cutscene_1");
+                if(next_scene[gd.scene["current"]]["next_dialog"]) {
+                    gd.scene["next"] = next_scene[gd.scene["current"]]["next_dialog"];
+                }
+                cc.director.loadScene(next_scene[gd.scene["current"]]["next_scene"]);
             },
             event:{
                 "type": "dialog",
@@ -107,6 +423,17 @@ export default class SceneInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(finishScene);
+
+        gd.observer.addSubscription({
+            listener : function() {
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "w",
+            }
+        });
+
     }
 
     update (dt) {

@@ -170,6 +170,15 @@ export default class WorkshopInit extends cc.Component {
         };
         gd.observer.addSubscription(selection_listener);
 
+        gd.observer.addSubscription({
+            listener : function() {
+                cc.director.loadScene('map');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "m",
+            }
+        });
     }
 
     update (dt) {

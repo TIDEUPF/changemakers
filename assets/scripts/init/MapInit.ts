@@ -65,28 +65,80 @@ export default class MapInit extends cc.Component {
                     "Tailor" : elements_path + "Tailor",
                 },
                 "switch" : {
-                    "Captain" : "cutscene_5",
-                    "Chef" : "cutscene_5",
-                    "Doctor" : "cutscene_5",
-                    "Driver" : "cutscene_5",
-                    "Huntress" : "cutscene_5",
-                    "Librarian" : "cutscene_5",
-                    "Merchant" : "cutscene_5",
-                    "Messenger_horse" : "cutscene_5",
-                    "Messenger" : "cutscene_5",
-                    "butler" : "cutscene_5",
-                    "civil_engineer" : "cutscene_5",
-                    "kingandqueen_1" : "cutscene_5",
-                    "king" : "cutscene_5",
-                    "main_character_1" : "cutscene_5",
-                    "potter" : "cutscene_5",
-                    "old_lady" : "cutscene_5",
-                    "queen" : "cutscene_5",
-                    "soldier" : "cutscene_5",
-                    "the_grumpy_butcher" : "cutscene_5",
-                    "the_stable_boy" : "cutscene_5",
-                    "vagabond" : "cutscene_5",
-                    "Tailor" : "cutscene_5",
+                    "Captain" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_captain",
+                    },
+                    "Chef" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_chef_female",
+                    },
+
+                    "Doctor" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_doctor_male",
+                    },
+
+                    "Driver" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_coachman_male",
+                    },
+
+                    "Huntress" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_huntress_female",
+                    },
+
+                    "Librarian" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_librarian_female",
+                    },
+
+                    "Merchant" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_merchant_male",
+                    },
+
+                    "butler" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_butler_male",
+                    },
+
+                    "civil_engineer" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_civil_engineer_female",
+                    },
+
+                    "potter" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_potter_female",
+                    },
+
+                    "old_lady" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_old_lady_female",
+                    },
+
+                    "the_grumpy_butcher" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_butcher_male",
+                    },
+
+                    "the_stable_boy" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_stable_boy",
+                    },
+
+                    "vagabond" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_vagabond_male",
+                    },
+
+                    "Tailor" : {
+                        "scene" : "cutscene_5",
+                        "dialog" : "stage1_scene4_tailor_female",
+                    },
+
                 },
             },
             "data": {
@@ -135,6 +187,63 @@ export default class MapInit extends cc.Component {
         };
         gd.observer.addSubscription(clickEventListener);
         
+
+        gd.observer.addSubscription({
+            listener : function() {
+
+                gd.scene["next"] = "stage3_ideation_patricia";
+                cc.director.loadScene('ideation_1');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "i",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "w",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                gd.scene["next"] = 'disruption_1';
+                cc.director.loadScene('disruption_1');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "1",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                gd.scene["next"] = 'disruption_2';
+                cc.director.loadScene('disruption_2');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "2",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                gd.scene["next"] = 'disruption_3';
+                cc.director.loadScene('disruption_3');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "3",
+            }
+        });
+
+
     }
 
     update (dt) {

@@ -49,8 +49,6 @@ class Dialog extends ElementAction<cc.Node> {
                 var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
                 dialog.active = false;
 
-                cc.director.loadScene('carriage');
-
                 result.events.push({
                         "type": "dialog",
                         "subtype": "dialog_finished",
@@ -69,20 +67,37 @@ class Dialog extends ElementAction<cc.Node> {
             dialog_text_string = text.i18n.t(current_dialog_data["text_id"]);
         }
 
-        var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["speakers"] + current_dialog_data["speaker"]);
-        var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
-        var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
 
-        dialog.active = true;
-        //set dialog position
-        dialog.x = character.x;
-        //dialog.y = (character.height * ( 1 - character.anchorY )) * character.scaleY + character.y + dialog.height;
-        //dialog.y = -character.y * character.scaleY - dialog.height;
-        dialog.y = character.y + (character.height * ( 1 - character.anchorY )) * character.scaleY + dialog.height * ( 1 - dialog.anchorY ) * dialog.scaleY + callout_arrow.height * callout_arrow.scaleY * dialog.scaleY;
-        //callout_arrow.x = character.x;// + ((character.width * ( 1 - character.anchorX ))) * character.scaleX;
-        callout_arrow.x = 0;
-
+        var dialog: cc.Node;
         var dialog_text: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + "/dialog_text");
+
+        if(current_dialog_data["speaker"] == "narrator") {
+            var speaker_dialog = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+            speaker_dialog.active = false;
+            dialog = gd.directory.getNode('/Canvas/dialog');
+            dialog_text = gd.directory.getNode('/Canvas/dialog' + "/dialog_text");
+            dialog.active = true;
+            var canvas: cc.Node = gd.directory.getNode('/Canvas');
+            dialog.x = 0;
+            dialog.y = (canvas.height/2)*1.5;
+        } else {
+            var narrator_dialog = gd.directory.getNode('/Canvas/dialog');
+            narrator_dialog.active = false;
+            var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["speakers"] + current_dialog_data["speaker"]);
+            var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
+            character.active = true;
+            dialog = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+            dialog_text = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + "/dialog_text");
+            dialog.active = true;
+            
+            callout_arrow.active = true;
+            //set dialog position
+            dialog.x = character.x;
+            dialog.y = character.y + (character.height * ( 1 - character.anchorY )) * character.scaleY + dialog.height * ( 1 - dialog.anchorY ) * dialog.scaleY + callout_arrow.height * callout_arrow.scaleY * dialog.scaleY;
+            callout_arrow.x = 0;
+        }
+
+        
         var dialog_text_component: cc.RichText = dialog_text.getComponent('cc.RichText');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');
         var char_width: number = w_size.width*0.65;
