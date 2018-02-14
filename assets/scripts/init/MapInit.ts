@@ -36,6 +36,27 @@ export default class MapInit extends cc.Component {
 
         var elements_path = "/Canvas/background/npcs/";
         
+        var player: Object = {
+            "boy": elements_path + "main_character_1",
+            "girl": elements_path + "main_character_2",
+        }
+
+        for(let player_key in player) {
+            var player_node = gd.directory.getNode(player[player_key]);
+
+            if(player_node === null) {
+                continue;
+            }
+
+            player_node.active = false;
+            var player_data = gd.directory.searchId("player");
+
+            if(player_data["data"]["gender"] == player_key) {
+                player_node.active = true;
+                player_node.name = 'main_character';
+            }
+        }
+
         var map_click: Object = {
             "type": "node",
             "action": "switchScene",

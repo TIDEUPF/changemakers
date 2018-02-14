@@ -50,7 +50,7 @@ export default class PlayeSelect extends cc.Component {
             listener : function(event) {
                 var player = gd.directory.searchId("player");
                 player["data"]["name"] = event.data.node.parent.getComponent('cc.EditBox').string;
-                cc.director.loadScene('map');
+                cc.director.loadScene('cutscene_1');
             },
             event:{
                 type : "click",
@@ -58,11 +58,11 @@ export default class PlayeSelect extends cc.Component {
             }
         });
 
-        var url = cc.url.raw("sprites/characters/main_character_1.png");
+        /*var url = cc.url.raw("sprites/characters/main_character_1.png");
         var texture = cc.textureCache.addImage(url);
         var a = cc.find('Canvas/background/player_select/girl')
         var s = a.getComponent('cc.Sprite')
-        s.spriteFrame = new cc.SpriteFrame(texture)
+        s.spriteFrame = new cc.SpriteFrame(texture)*/
 
     }
 
