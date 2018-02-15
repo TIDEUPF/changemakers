@@ -10,11 +10,7 @@ import * as Polyglot from "node-polyglot";
 
 @ccclass
 export default class SceneInit extends cc.Component {
-    observer: Observer;
-    directory: Directory;
-    db: Loki;
-    cl: Collection<any>;
-
+    
     onLoad() {
         gd.scene["current"] = gd.scene["next"];
         gd.observer.clearSubscriptions();

@@ -18,10 +18,6 @@ enum GameInputEventType {
 
 @ccclass
 export default class MapInit extends cc.Component {
-    observer: Observer;
-    directory: Directory;
-    db: Loki;
-    cl: Collection<any>;
 
     onLoad() {
         // init logic

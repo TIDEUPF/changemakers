@@ -17,51 +17,52 @@ enum GameInputEventType {
 };
 
 @ccclass
-export default class MapInit extends cc.Component {
-    observer: Observer;
-    directory: Directory;
-    db: Loki;
-    cl: Collection<any>;
-
+export default class NotebookInit extends cc.Component {
     onLoad() {
-        // init logic
-        var init = this;
-
-        gd.observer.clearSubscriptions();
-        gd.directory.clearElements();
-        gd.directory.clearNodes();
-
-
-        //console.log(gamenn.moveUp);
-        var id_count=0;
-
-        var elements_path = "/notebook";
         
-        var notebook: Object = {
-            "type": "node",
-            "action": "notebookManagement",
-            "emitter": null,
-            "id": "notebook" + (id_count++).toString(10),
-            "element_id" : "/notebook",
+        gd.directory.addStatus({
+            "id": "notebookDataCollection",
             "data": {
                 "dialogs": [],
                 "badges": [],
             },
-        };
+        });
 
-        notebook = gd.directory.addStatus(notebook);
-        var notebook_element: any = new GameElement(notebook, cc.find('/notebook'));
-        gd.directory.addElement(notebook_element);
-
-        var clickEventListener = {
-            listener : notebook_element.getId(),
-            event : {
-                    type : {'$containsAny' : ['dialog', 'step_start', 'step_finish']},
+        new GameElement({
+            "action": "notebookManagement",
+            "data": {
+                "notebook_id": "notebookDataCollection"
+            },
+            "listen" : {
+                "type" : {'$containsAny' : ['dialog', 'step_start', 'step_finish']},
             }
-        };
-        gd.observer.addSubscription(clickEventListener);
+        });
 
+        new GameElement({
+            "action": "notebookBrowser",
+            "id": "notebookPresentation",
+            "data": {
+                "notebook_id": "notebookDataCollection",
+                "current_page": 0,
+            },
+            "listen" : {
+                "type" : {'$containsAny' : ['show_notebook', 'next_page', 'previous_page', 'first_page']},
+            }
+        });
 
+        gd.observer.addSubscription({
+            listener : function() {
+                gd.observer.addEvent({
+                    type: "show_notebook",
+                });
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "k",
+            }
+        });
+
+        /*
         var notebook_browser: Object = {
             "type": "node",
             "action": "notebookBrowser",
@@ -92,13 +93,6 @@ export default class MapInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(keyListener);
-
-
-    }
-
-    update (dt) {
-        gd.frame["dt"] = dt;
-        //gd.observer.notifyEvents();
-        //gd.observer.newFrame();
+        */
     }
 }

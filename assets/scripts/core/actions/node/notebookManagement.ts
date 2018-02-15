@@ -4,15 +4,16 @@ import * as gd from "../../../core/GameData";
 
 class NotebookManagement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
+        var data: Object = gd.directory.searchId(this.elementStatus["notebook_id"]);
 
         if(events[0]["type"] === "step_finish") {
-            this.elementStatus["data"]["badges"].push({
+            data["data"]["badges"].push({
                 "step": events[0]["data"]["step"],
             });
         }
 
         if(events[0]["type"] === "dialog") {
-            this.elementStatus["data"]["dialogs"].push({
+            data["data"]["dialogs"].push({
                 "speaker": events[0]["data"]["character"],
                 "text": events[0]["data"]["text"],
             });

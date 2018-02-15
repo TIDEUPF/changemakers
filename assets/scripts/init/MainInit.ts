@@ -59,6 +59,7 @@ export default class SceneInit extends cc.Component {
         gd.scene["next"] = "workshop_messenger";
         //cc.director.loadScene('cutscene_1');
 
+        cc.game.addPersistRootNode(cc.find('notebook'));
         cc.director.loadScene('player_select');
     }
 

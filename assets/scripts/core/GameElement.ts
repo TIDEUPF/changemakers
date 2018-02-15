@@ -42,8 +42,8 @@ export default class GameElement<T> extends IGameElement {
             //update
         }
 
+        //emitted events
         if(actionResult.events) {
-
             for(let e of actionResult.events) {
                 gd.observer.addEvent(e);
             }
@@ -54,22 +54,41 @@ export default class GameElement<T> extends IGameElement {
         this.elementEmitter.emitEvents();
     }
  
-    constructor(elementStatus: Object, element: T) {
+    constructor(elementStatus: Object, element?: T) {
         super();
-        this._element = element;
+        
+        //deprecated
+        if(element) {
+            this._element = element;
+        } else {
+            element = null;
+        }
+
         this.setElementStatus(elementStatus);
-        console.log(actions.actions);
+
         if(elementStatus["action"]) {
-            this.setElementAction(actions.actions[elementStatus["type"]][elementStatus["action"]](elementStatus, element));
+            this.setElementAction(actions.actions["node"][elementStatus["action"]](elementStatus, element));
         }
 
         if(elementStatus["emitter"]) {
-            this.setElementEmitter(emitters.emitters[elementStatus["type"]][elementStatus["emitter"]](elementStatus, element));
+            this.setElementEmitter(emitters.emitters["node"][elementStatus["emitter"]](elementStatus, element));
         }
 
-        for(let initTarget in elementStatus["init"]) {
-            var initInstance = inits.inits[initTarget](elementStatus);
-            initInstance.init();
+        if(elementStatus["init"]) {
+            for(let initTarget in elementStatus["init"]) {
+                var initInstance = inits.inits[initTarget](elementStatus);
+                initInstance.init();
+            }
+        }
+
+        gd.directory.addStatus(elementStatus);
+        gd.directory.addElement(this);
+
+        if(elementStatus["listen"]) {
+            gd.observer.addSubscription({
+                "listener" : elementStatus["id"],
+                "event" : elementStatus["listen"],
+            });
         }
     }
 }
