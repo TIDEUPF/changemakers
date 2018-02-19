@@ -9,6 +9,14 @@ class NotebookBrowser extends ElementAction<cc.Node> {
 
         canvas.active = false;
         element.active = true;
+
+        var last_displayed_entry: number = this.elementStatus["last_displayed_entry"];
+        var notebookDataCollection = gd.directory.searchId("notebookDataCollection");
+
+        var dialog_list = notebookDataCollection["data"]["dialogs"];
+        var n_element_to_draw = Math.min(dialog_list.length - last_displayed_entry, 6);
+        var element_to_draw = dialog_list.splice(last_displayed_entry, last_displayed_entry + n_element_to_draw);
+
         return;
     }
 }
