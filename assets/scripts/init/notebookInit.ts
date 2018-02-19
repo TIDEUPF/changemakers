@@ -23,7 +23,12 @@ export default class NotebookInit extends cc.Component {
         gd.directory.addStatus({
             "id": "notebookDataCollection",
             "data": {
-                "dialogs": [],
+                "dialogs": [
+                    'item1',
+                    'item2',
+                    'item3',
+                    'item4',
+                ],
                 "badges": [],
             },
         });
@@ -44,6 +49,7 @@ export default class NotebookInit extends cc.Component {
             "data": {
                 "notebook_id": "notebookDataCollection",
                 "current_page": 0,
+                "last_displayed_entry": 0,
             },
             "listen" : {
                 "type" : {'$containsAny' : ['show_notebook', 'next_page', 'previous_page', 'first_page']},

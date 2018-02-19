@@ -143,7 +143,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_id": "37WZGqDllPSIdHdsZeFnxa",
@@ -1441,7 +1441,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": 189
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3478,7 +3478,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": 41
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -5515,7 +5515,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": -115
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -7610,7 +7610,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": 194
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -9514,7 +9514,7 @@
     "_actualFontSize": 40,
     "_fontSize": 40,
     "_lineHeight": 40,
-    "_enableWrapText": false,
+    "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -9647,7 +9647,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": 36
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -11684,7 +11684,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 214
+      "y": -115
     },
     "_skewX": 0,
     "_skewY": 0,
