@@ -1,0 +1,147 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "cutscene_4_2",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.2,
+  "sample": 60,
+  "speed": 0.11,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "main_character": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -794,
+                -228
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.016666666666666666,
+              "value": [
+                -685,
+                -189
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.03333333333333333,
+              "value": [
+                -571,
+                -228
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.05,
+              "value": [
+                -448,
+                -187
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.06666666666666667,
+              "value": [
+                -343,
+                -228
+              ],
+              "motionPath": []
+            }
+          ]
+        }
+      },
+      "Captain": {
+        "props": {
+          "position": [
+            {
+              "frame": 0.05,
+              "value": [
+                1490,
+                -221
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.06666666666666667,
+              "value": [
+                1393,
+                -189
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.08333333333333333,
+              "value": [
+                1276,
+                -221
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.1,
+              "value": [
+                1155,
+                -186
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.11666666666666667,
+              "value": [
+                1058,
+                -221
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.13333333333333333,
+              "value": [
+                923,
+                -165
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.15,
+              "value": [
+                815,
+                -221
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": [
+                696,
+                -198.8
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": [
+                567,
+                -221
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.2,
+              "value": [
+                467.1,
+                -210.1
+              ],
+              "motionPath": []
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

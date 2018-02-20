@@ -1,0 +1,73 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "cutscene_2_1",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.08333333333333333,
+  "sample": 60,
+  "speed": 0.18,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "main_character/main_character_1": {
+        "props": {}
+      },
+      "main_character": {
+        "props": {
+          "position": [
+            {
+              "frame": 0,
+              "value": [
+                -1575,
+                -685
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.016666666666666666,
+              "value": [
+                -1413,
+                -635
+              ],
+              "motionPath": [
+                [
+                  -1272,
+                  -614,
+                  -1278,
+                  -623,
+                  -1251,
+                  -607
+                ]
+              ]
+            },
+            {
+              "frame": 0.05,
+              "value": [
+                -1150,
+                -557
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.06666666666666667,
+              "value": [
+                -973,
+                -475
+              ],
+              "motionPath": []
+            },
+            {
+              "frame": 0.08333333333333333,
+              "value": [
+                -802,
+                -420
+              ],
+              "motionPath": []
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
