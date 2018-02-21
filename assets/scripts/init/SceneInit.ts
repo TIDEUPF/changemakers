@@ -22,8 +22,8 @@ export default class SceneInit extends cc.Component {
         var id_count=0;
 
         var player: Object = {
-            "boy": "Canvas/background/main_character_1",
-            "girl": "Canvas/background/main_character_2",
+            "boy": "Canvas/background/main_character/main_character_1",
+            "girl": "Canvas/background/main_character/main_character_2",
         }
 
         for(let player_key in player) {
@@ -38,7 +38,8 @@ export default class SceneInit extends cc.Component {
 
             if(player_data["data"]["gender"] == player_key) {
                 player_node.active = true;
-                player_node.name = 'main_character';
+                player_node.parent.height = player_node.height;
+                player_node.parent.width = player_node.width;
             }
         }
 
