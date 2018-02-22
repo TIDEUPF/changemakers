@@ -77,6 +77,7 @@ export default class WorkshopInit extends cc.Component {
                     "stairs" : "/Canvas/background/carriage/stairs",
                     "top" : "/Canvas/background/carriage/top",
                     "rear_wheel" : "/Canvas/background/carriage/rear_wheel",
+                    "boot" : "/Canvas/background/carriage/boot",
                 },
             },
             "init": {
@@ -88,6 +89,7 @@ export default class WorkshopInit extends cc.Component {
                     "stairs" : {},
                     "top" : {},
                     "rear_wheel" : {},
+                    "boot" : {},
                 }
             }
         };
@@ -122,7 +124,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "carriage",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis']},
             }
         };
         gd.observer.addSubscription(dialogListener);
@@ -144,6 +146,7 @@ export default class WorkshopInit extends cc.Component {
                     "stairs" : "/Canvas/background/selection/stairs",
                     "top" : "/Canvas/background/selection/top",
                     "rear_wheel" : "/Canvas/background/selection/rear_wheel",
+                    "boot" : "/Canvas/background/selection/boot",
                 },
             },
             "init": {
@@ -155,6 +158,7 @@ export default class WorkshopInit extends cc.Component {
                     "stairs" : {},
                     "top" : {},
                     "rear_wheel" : {},
+                    "boot" : {},
                 }
             }
         };
@@ -169,7 +173,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "selection",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'top', 'seat', 'chasis']},
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis']},
             }
         };
         gd.observer.addSubscription(selection_listener);

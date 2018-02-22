@@ -1480,7 +1480,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 42
@@ -1802,7 +1802,7 @@
       }
     ],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 50
@@ -3080,9 +3080,6 @@
       null,
       {
         "__uuid__": "342be2ac-3b6f-4e24-9160-252a18dad969"
-      },
-      {
-        "__uuid__": "a84c4ba4-2abc-45ca-a237-6d22afa047f1"
       }
     ],
     "playOnLoad": false

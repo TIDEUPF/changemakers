@@ -43,6 +43,50 @@ export default class SceneInit extends cc.Component {
             }
         }
 
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var animations = gd.directory.getNode('Canvas/background').getComponent('cc.Animation');
+                animations.play('cutscene_4_2');
+            },
+            event:{
+                "type" : "dialog",
+                "subtype": "turn_finished",
+                "data.text_id": "stage1_scene3_narrator_d1",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                gd.scene["current"] = "courtyard_2";
+
+                new GameElement({
+                    "type": "node",
+                    "action": "dialog",
+                    "emitter": "alarm",
+                    "id": gd.scene["current"] + "_" + (id_count++).toString(10),
+                    "element_id" : "/Canvas/background/" + gd.scene["current"],
+                    "language" : "en",
+                    "resources": {
+                        "node" : {
+                            "speakers" : "/Canvas/background/",
+                            "dialog" : "/Canvas/background/dialog",
+                        },
+                        "dialog_list" : cutscene_dialogs[gd.scene["current"]],
+                    },
+                    "current_dialog" : null,
+                    "last_char_displayed" : 0,
+                    "listen" : {
+                        "type" : "keyinput",
+                        "data.key" : "t",
+                    },
+                });
+            },
+            "event": {
+                "type" : "anim",
+                "data.event": "cutscene_4_2",
+            }
+        });
+
         var cutscene_dialogs = {
             "workshop_messenger": {
                 "d1" : {
@@ -97,7 +141,26 @@ export default class SceneInit extends cc.Component {
                 "d2" : {
                     "text_id" : "stage1_scene3_narrator_d1",
                     "speaker" : "narrator",
+                },/*
+                "d3" : {
+                    "text_id" : "stage1_scene3_kings_captain_d1",
+                    "speaker" : "Captain",
                 },
+                "d4" : {
+                    "text_id" : "stage1_scene3_kings_player_d1",
+                    "speaker" : "main_character",
+                },*/
+            },
+
+            "courtyard_2": {
+/*                "d1" : {
+                    "text_id" : "stage1_scene2_player_d2",
+                    "speaker" : "main_character",
+                },
+                "d2" : {
+                    "text_id" : "stage1_scene3_narrator_d1",
+                    "speaker" : "narrator",
+                },*/
                 "d3" : {
                     "text_id" : "stage1_scene3_kings_captain_d1",
                     "speaker" : "Captain",
@@ -305,7 +368,7 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "cutscene_4",
                 "next_dialog": "courtyard",
             },
-            "courtyard": {
+            "courtyard_2": {
                 "next_scene": "map",
             },
 
@@ -471,8 +534,13 @@ export default class SceneInit extends cc.Component {
 
         console.log("listener added");
 
+        
         var finishScene: Object = {
             listener : function() {
+                if(!next_scene[gd.scene["current"]]) {
+                    return;
+                }
+
                 if(next_scene[gd.scene["current"]]["next_dialog"]) {
                     gd.scene["next"] = next_scene[gd.scene["current"]]["next_dialog"];
                 }

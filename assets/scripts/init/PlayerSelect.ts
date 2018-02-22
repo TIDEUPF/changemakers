@@ -50,7 +50,8 @@ export default class PlayeSelect extends cc.Component {
             listener : function(event) {
                 var player = gd.directory.searchId("player");
                 player["data"]["name"] = event.data.node.parent.getComponent('cc.EditBox').string;
-                cc.director.loadScene('cutscene_1');
+                
+                //cc.director.loadScene('cutscene_1');
             },
             event:{
                 type : "click",

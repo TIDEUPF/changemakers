@@ -27,8 +27,8 @@ class Dialog extends ElementAction<cc.Node> {
                     "subtype": "turn_finished",
                     "data": {
                         "id": this.elementStatus["id"],
-                        "speaker": this.elementStatus["resources"]["node"][current_dialog_data["speaker"]],
-                        "text": this.elementStatus["resources"]["node"]["dialog_text"],
+                        "speaker": current_dialog_data["speaker"],
+                        "text_id": current_dialog_data["text_id"],
                     },
                 },
             ];
@@ -48,6 +48,8 @@ class Dialog extends ElementAction<cc.Node> {
 
                 var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
                 dialog.active = false;
+
+                gd.directory.getNode('/Canvas/dialog').active = false;
 
                 result.events.push({
                         "type": "dialog",

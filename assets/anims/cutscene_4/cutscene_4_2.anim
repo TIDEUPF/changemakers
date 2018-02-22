@@ -143,5 +143,13 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.2,
+      "func": "onAnimEvent",
+      "params": [
+        "cutscene_4_2"
+      ]
+    }
+  ]
 }

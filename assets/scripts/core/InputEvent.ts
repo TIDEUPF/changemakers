@@ -22,4 +22,13 @@ export default class InputEvent extends cc.Component {
             },
         });
     }
+
+    onAnimEvent(event) {
+        gd.observer.addEvent({
+            "type": "anim",
+            "data": {
+                "event": event,
+            },
+        });
+    }
 }
