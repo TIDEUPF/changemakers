@@ -178,6 +178,38 @@ export default class WorkshopInit extends cc.Component {
         };
         gd.observer.addSubscription(selection_listener);
 
+
+        //user built carriage
+        gd.directory.addStatus({
+            "id": "user_built_carriage",
+            "data": {
+                "front_wheel" : {
+                    "part": "none",
+                },
+                "chasis" : {
+                    "part": "none",
+                },
+                "pattern" : {
+                    "part": "none",
+                },
+                "seat" : {
+                    "part": "none",
+                },
+                "stairs" : {
+                    "part": "none",
+                },
+                "top" : {
+                    "part": "none",
+                },
+                "rear_wheel" : {
+                    "part": "none",
+                },
+                "boot" : {
+                    "part": "none",
+                },
+            },
+        });
+
         gd.observer.addSubscription({
             listener : function() {
                 cc.director.loadScene('map');

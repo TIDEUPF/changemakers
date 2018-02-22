@@ -77,7 +77,7 @@ export default class SceneInit extends cc.Component {
                     "last_char_displayed" : 0,
                     "listen" : {
                         "type" : "keyinput",
-                        "data.key" : "t",
+                        "data.key" : "d",
                     },
                 });
             },
