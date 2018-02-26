@@ -1,8 +1,10 @@
 import * as Polyglot from "node-polyglot";
 import * as en from "./langs/en";
+import * as es from "./langs/es";
 
 const text_data = {
-    "en" : en.data
+    "en" : en.data,
+    "es" : es.data,
 }
 
 let polyglot = new Polyglot();

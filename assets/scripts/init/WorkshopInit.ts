@@ -75,6 +75,8 @@ export default class WorkshopInit extends cc.Component {
                     "top" : "/Canvas/background/carriage/top",
                     "rear_wheel" : "/Canvas/background/carriage/rear_wheel",
                     "boot" : "/Canvas/background/carriage/boot",
+                    "shield" : "/Canvas/background/carriage/shield",
+                    "entertainers" : "/Canvas/background/carriage/entertainers",
                 },
             },
             "init": {
@@ -87,6 +89,8 @@ export default class WorkshopInit extends cc.Component {
                     "top" : {},
                     "rear_wheel" : {},
                     "boot" : {},
+                    "shield" : {},
+                    "entertainers" : {},
                 }
             }
         };
@@ -121,7 +125,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "carriage",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis']},
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis', 'shield', 'entertainers']},
             }
         };
         gd.observer.addSubscription(dialogListener);
@@ -145,6 +149,8 @@ export default class WorkshopInit extends cc.Component {
                     "top" : "/Canvas/background/selection/top",
                     "rear_wheel" : "/Canvas/background/selection/rear_wheel",
                     "boot" : "/Canvas/background/selection/boot",
+                    "shield" : "/Canvas/background/selection/shield",
+                    "entertainers" : "/Canvas/background/selection/entertainers",
                 },
             },
             "init": {
@@ -157,6 +163,8 @@ export default class WorkshopInit extends cc.Component {
                     "top" : {},
                     "rear_wheel" : {},
                     "boot" : {},
+                    "shield" : {},
+                    "entertainers" : {},
                 }
             }
         };
@@ -171,7 +179,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "selection",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis']},
+                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis', 'shield', 'entertainers']]},
             }
         };
         gd.observer.addSubscription(selection_listener);
@@ -194,7 +202,23 @@ export default class WorkshopInit extends cc.Component {
                     "seat" : {
                         "part": "seat1",
                     },
-/*                    "stairs" : {
+                    "pseat" : {
+                        "part": "pseat1",
+                    },
+                    "dseat" : {
+                        "part": "dseat1",
+                        "active": false,
+                    },
+                    "shield" : {
+                        "part": "shield1",
+                        "active": false,
+                    },
+                    "entertainers" : {
+                        "part": "entertainers1",
+                        "active": false,
+                    },
+
+                    /*                    "stairs" : {
                         "part": "none",
                     },
                     "top" : {
@@ -206,22 +230,10 @@ export default class WorkshopInit extends cc.Component {
                     "boot" : {
                         "part": "boot1",
                     },
-                    "entertainers" : {
-                        "part": "entertainers1",
-                        "active": false,
-                    },
-                    "sharing" : {
-                        "part": "sharing1",
-                        "active": false,
-                    },
-                    "defense" : {
-                        "part": "defense1",
-                        "active": false,
-                    },
                 },
             },
         });
-
+/*
         gd.observer.addSubscription({
             listener : function() {
                 cc.director.loadScene('map');
@@ -231,7 +243,7 @@ export default class WorkshopInit extends cc.Component {
                 "data.key": "m",
             }
         });
-
+*/
 
         var player_data = gd.directory.searchId('player');
         var carriage_data = gd.directory.searchId('user_built_carriage');
@@ -277,7 +289,7 @@ export default class WorkshopInit extends cc.Component {
         if(player_data["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruptions"].length < 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    var next_disruption = ["disruption_1", "disruption_2", "disruption_3"];
+                    var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
                     gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
                     player_data["data"]["current_step"] = 5;
                     cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
@@ -288,8 +300,25 @@ export default class WorkshopInit extends cc.Component {
             });
         }
 
+        //update the carriage
+        new GameElement({
+            "action": "selectCarriageElement",
+            "id": "disruption_carriage",
+            "resources": {
+                "carriage_data": "user_built_carriage",
+            },
+            "listen" : {
+                "type" : "carriage",
+                "subtype" : "update",
+            },
+        });
+        gd.observer.addEvent({
+            "type": "carriage",
+            "subtype": "update",
+        });
+
         //go to ending
-        if(player_data["current_step"] >= 5 && player_data["data"]["steps"]["5"]["disruptions"].length >= 2) {
+        if(player_data["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruptions"].length >= 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     gd.scene["next"] = "ending";

@@ -613,7 +613,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 120,
       "height": 50
     },
     "_rotationX": 0,
@@ -696,11 +696,11 @@
     "_actualFontSize": 23.8,
     "_fontSize": 23.8,
     "_lineHeight": 50,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Go!",
+    "_N$string": "Empezar!",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -833,7 +833,7 @@
       "b": 0,
       "a": 255
     },
-    "_N$placeholder": " Enter your name...",
+    "_N$placeholder": "Escribe tu nombre...",
     "_N$placeholderFontSize": 20,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
@@ -884,9 +884,6 @@
       null,
       {
         "__uuid__": "342be2ac-3b6f-4e24-9160-252a18dad969"
-      },
-      {
-        "__uuid__": "a84c4ba4-2abc-45ca-a237-6d22afa047f1"
       }
     ],
     "playOnLoad": false

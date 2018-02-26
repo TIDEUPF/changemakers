@@ -16,6 +16,10 @@ export default class PlayeSelect extends cc.Component {
     cl: Collection<any>;
 
     onLoad() {
+        //cc.audioEngine.play("assets/sound/introduction.ogg", true, 1);
+        //cc.loader.load(cc.url.raw('assets/sound/introduction.ogg'));
+        cc.audioEngine.play("res/raw-assets/sound/music/introduction.ogg", true, 1);
+
         gd.scene["current"] = gd.scene["next"];
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
@@ -27,18 +31,10 @@ export default class PlayeSelect extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function(event) {
-                gd.directory.addStatus({
-                    "type": "data",
-                    "id": "player",
-                    "data": {
-                        "gender": event.data.name,
-                    }
-                });
-
+                var player_data = gd.directory.searchId('player');
+                player_data["data"]["gender"] = event.data.name;
                 event.data.node.parent.active = false;
                 event.data.node.parent.parent.getChildByName('name_input').active = true;
-
-                //cc.director.loadScene('map');
             },
             event:{
                 type : "click",
@@ -51,7 +47,8 @@ export default class PlayeSelect extends cc.Component {
                 var player = gd.directory.searchId("player");
                 player["data"]["name"] = event.data.node.parent.getComponent('cc.EditBox').string;
                 
-                //cc.director.loadScene('cutscene_1');
+                gd.scene["next"] = "workshop_messenger";
+                cc.director.loadScene('cutscene_1');
             },
             event:{
                 type : "click",

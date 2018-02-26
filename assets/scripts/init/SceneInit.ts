@@ -21,6 +21,15 @@ export default class SceneInit extends cc.Component {
 
         var id_count=0;
 
+        var background_node = gd.directory.getNode('/Canvas/background');
+
+        background_node.on('touchstart', function(event) {
+            let gameEvent = {
+                type: "keyinput",
+            };
+            gd.observer.addEvent(gameEvent);
+        });
+
         var player: Object = {
             "boy": "Canvas/background/main_character/main_character_1",
             "girl": "Canvas/background/main_character/main_character_2",
@@ -77,7 +86,7 @@ export default class SceneInit extends cc.Component {
         if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    player_data["data"]["steps"]["1"]["info_dialogs"].push(event["speaker"]);
+                    player_data["data"]["steps"]["1"]["info_dialogs"].push(event["data"]["speaker"]);
                 },
                 event:{
                     "type" : "dialog",
@@ -125,18 +134,24 @@ export default class SceneInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var next_disruption = {
-                        "disruption_1": "entertainers", 
-                        "disruption_2": "sharing", 
-                        "disruption_3": "defense",
+                        "disruption_1_0": "entertainers", 
+                        //"disruption_2_0": "dseat", 
+                        "disruption_3_0": "shield",
                     };
 
-                    carriage_data["data"]["parts"][event[0]["data"]["id"]]["active"] = true;
+                    player_data["data"]["steps"]["5"]["disruptions"].push(gd.scene["current"]);
+                    carriage_data["data"]["parts"][next_disruption[event["data"]["id"]]]["active"] = true;
                     cc.director.loadScene('workshop');
                 },
                 event:{
                     "type" : "dialog",
                     "subtype": "dialog_finished",
-                    "data.id": "disruption_1",
+                    "data.id": {
+                        "$containsAny": [
+                            "disruption_1",
+                            "disruption_2",
+                            "disruption_3",
+                        ]},
                 }
             });
 
@@ -181,7 +196,7 @@ export default class SceneInit extends cc.Component {
                     "last_char_displayed" : 0,
                     "listen" : {
                         "type" : "keyinput",
-                        "data.key" : "d",
+                        /*"data.key" : "d",*/
                     },
                 });
             },
@@ -191,12 +206,39 @@ export default class SceneInit extends cc.Component {
             }
         });
 
+        var animation_start = ["workshop_messenger", "palace", "courtyard", "ending", "cutscene_1", "cutscene_2", "cutscene_4_1", "cutscene_4_2", "ending"];
+        //autoplay after animation
+        gd.observer.addSubscription({
+            listener : function(event) {
+                gd.observer.addEvent({
+                    "type": "keyinput",
+                    "data": {
+                        "key": "d",
+                    },
+                });
+            },
+            "event": {
+                "type" : "anim",
+                "data.event": {"$containsAny": animation_start},
+            }
+        });
+
+        //execute dialog for non animated stages
+        if(animation_start.indexOf(gd.scene["current"]) === -1) {
+            gd.observer.addEvent({
+                "type": "keyinput",
+                "data": {
+                    "key": "d",
+                },
+            });
+        }
+
         var cutscene_dialogs = {
             "workshop_messenger": {
                 "d1" : {
                     "text_id" : "stage1_scene1_messenger_d1",
                     "speaker" : "Messenger_horse",
-                    "data": {"name": "Phil"}
+                    "data": {"name": player_data["data"]["name"]},
                 },
                 "d2" : {
                     "text_id" : "stage1_scene1_player_d1",
@@ -641,7 +683,7 @@ export default class SceneInit extends cc.Component {
             listener : dialogelement.getId(),
             event : {
                     type : "keyinput",
-                    "data.key": "d",
+                    /*"data.key": "d",*/
             }
         };
         gd.observer.addSubscription(dialogListener);
@@ -667,6 +709,7 @@ export default class SceneInit extends cc.Component {
         };
         gd.observer.addSubscription(finishScene);
 
+        /*
         gd.observer.addSubscription({
             listener : function() {
                 cc.director.loadScene('workshop');
@@ -676,6 +719,7 @@ export default class SceneInit extends cc.Component {
                 "data.key": "w",
             }
         });
+        */
     }
 
     update (dt) {

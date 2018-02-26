@@ -69,5 +69,13 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.08333333333333333,
+      "func": "onAnimEvent",
+      "params": [
+        "cutscene_2"
+      ]
+    }
+  ]
 }

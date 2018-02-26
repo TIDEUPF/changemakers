@@ -28,7 +28,10 @@ export default class SceneInit extends cc.Component {
         var init = this;
         console.log("game init");
         
-        text.i18n.init("en");
+        text.i18n.init("es");
+
+        //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
+        //cc.audioEngine.play("res/raw-assets/sound/introduction.ogg", true, 1);
         
         var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
@@ -53,7 +56,6 @@ export default class SceneInit extends cc.Component {
         //gd.scene["next"] = "courtyard";
         //cc.director.loadScene('cutscene_4');
 
-        //cc.director.loadScene('map');
         //gd.scene["next"] = "stage3_ideation_patricia";
 
         //gd.scene["next"] = "workshop_messenger";
@@ -80,17 +82,20 @@ export default class SceneInit extends cc.Component {
             }
         });
 
-        //cc.game.addPersistRootNode(cc.find('notebook'));
-        //cc.director.loadScene('player_select');
+        cc.game.addPersistRootNode(cc.find('notebook'));
+        cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
-        var player_data = gd.directory.searchId('player');
+        //var player_data = gd.directory.searchId('player');
 
-        player_data["current_step"] = 4;
-        cc.director.loadScene('workshop');
+        //player_data["current_step"] = 4;
+        //cc.director.loadScene('workshop');
 
+        //player_data["data"]["current_step"] = 1;
+        //player_data["data"]["steps"]["1"]["stage"] = 4;
+        //cc.director.loadScene('map');
     }
 
     update (dt) {

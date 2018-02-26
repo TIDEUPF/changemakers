@@ -16,7 +16,7 @@ class Dialog extends ElementAction<cc.Node> {
         }
 
         var current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
-        var dialog_text_string: string = text.i18n.t(current_dialog_data["text_id"]);
+        var dialog_text_string: string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
 
         if(last_char_displayed + 1 > dialog_text_string.length) {
             //text unit finished
@@ -66,7 +66,7 @@ class Dialog extends ElementAction<cc.Node> {
             current_dialog = dialog_key_list[current_index+1];
             this.elementStatus["current_dialog"] = current_dialog;
             current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
-            dialog_text_string = text.i18n.t(current_dialog_data["text_id"]);
+            dialog_text_string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
         }
 
 

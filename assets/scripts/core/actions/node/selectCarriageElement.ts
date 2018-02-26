@@ -34,6 +34,10 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
                 continue;
             }
 
+            if(carriage_data["data"]["parts"][selected_carriage_part_type.name]["active"] === false) {
+                selected_carriage_part_type.active = false;
+            }
+
             for (var concrete_part in selected_carriage_part_type.children) {
                 selected_carriage_part_type.children[concrete_part].active = false;
             }
