@@ -55,6 +55,89 @@ export default class SceneInit extends cc.Component {
             }
         });
 
+        var player_data = gd.directory.searchId('player');
+        var carriage_data = gd.directory.searchId('user_built_carriage');
+
+        //stage4 pre start
+        if(gd.scene["current"] == "courtyard") {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["steps"]["1"]["stage"] = 4;
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                    "data.id": "courtyard_2_1",
+                },
+            });
+        }
+
+
+        //stage4 dialogue counter increase
+        if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["steps"]["1"]["info_dialogs"].push(event["speaker"]);
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "turn_finished",
+                }
+            });
+        }
+
+        //go to ideation
+        if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    if(player_data["data"]["steps"]["1"]["info_dialogs"].length > 2) {
+                        gd.scene["next"] = "stage3_ideation_patricia";
+                        player_data["data"]["current_step"] = 3;
+                        cc.director.loadScene('ideation_1');
+                    } else {
+                        cc.director.loadScene('map');
+                    }
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                }
+            });
+        }
+
+        //finish ideation and go to workshop
+        if(gd.scene["current"] == "stage3_ideation_tharrenos") {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["current_step"] = 4;
+                    cc.director.loadScene('workshop');
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                    "data.id": "stage3_ideation_tharrenos",
+                },
+            });
+        }
+
+        //disruptions
+        "disruption_1";
+        if(player_data["current_step"] == 5) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    var next_disruption = ["entertainers", "sharing", "defense"];
+                    carriage_data["data"]["parts"]["entertainers"]["active"] = true;
+                    cc.director.loadScene('workshop');
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                    "data.id": "disruption_1",
+                }
+            });
+        }
+
+
         gd.observer.addSubscription({
             listener : function(event) {
                 gd.scene["current"] = "courtyard_2";
@@ -357,6 +440,17 @@ export default class SceneInit extends cc.Component {
                 },
             },
 
+            "ending": {
+                "d1" : {
+                    "text_id" : "stage6_ending_queen",
+                    "speaker" : "queen",
+                },
+                "d2" : {
+                    "text_id" : "stage6_ending_king",
+                    "speaker" : "king",
+                },
+            },
+
         }
 
         var next_scene = {
@@ -372,7 +466,7 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map",
             },
 
-            "stage1_scene4_captain": {
+/*            "stage1_scene4_captain": {
                 "next_scene": "map",
             },
 
@@ -431,7 +525,7 @@ export default class SceneInit extends cc.Component {
             "stage1_scene4_huntress_female": {
                 "next_scene": "map",
             },
-
+*/
             "stage3_ideation_patricia": {
 
                     "next_scene": "ideation_2",
@@ -461,7 +555,6 @@ export default class SceneInit extends cc.Component {
             },
 
             "stage3_ideation_tharrenos": {
-
                     "next_scene": "map",
             },
 

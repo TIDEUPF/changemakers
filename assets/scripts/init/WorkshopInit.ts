@@ -138,6 +138,7 @@ export default class WorkshopInit extends cc.Component {
             "id": (id_count++).toString(10),
             "element_id" : "Canvas/background/carriage",
             "resources": {
+                "carriage_data": "user_built_carriage",
                 "node" : {
                     "front_wheel" : "/Canvas/background/selection/front_wheel",
                     "chasis" : "/Canvas/background/selection/chasis",
@@ -183,29 +184,43 @@ export default class WorkshopInit extends cc.Component {
         gd.directory.addStatus({
             "id": "user_built_carriage",
             "data": {
-                "front_wheel" : {
-                    "part": "none",
-                },
-                "chasis" : {
-                    "part": "none",
-                },
-                "pattern" : {
-                    "part": "none",
-                },
-                "seat" : {
-                    "part": "none",
-                },
-                "stairs" : {
-                    "part": "none",
-                },
-                "top" : {
-                    "part": "none",
-                },
-                "rear_wheel" : {
-                    "part": "none",
-                },
-                "boot" : {
-                    "part": "none",
+                "parts": {
+                    "front_wheel" : {
+                        "part": "none",
+                    },
+                    "chasis" : {
+                        "part": "none",
+                    },
+                    "pattern" : {
+                        "part": "none",
+                    },
+                    "seat" : {
+                        "part": "seat1",
+                    },
+                    "stairs" : {
+                        "part": "none",
+                    },
+                    "top" : {
+                        "part": "none",
+                    },
+                    "rear_wheel" : {
+                        "part": "none",
+                    },
+                    "boot" : {
+                        "part": "boot1",
+                    },
+                    "entertainers" : {
+                        "part": "entertainers1",
+                        "active": false,
+                    },
+                    "sharing" : {
+                        "part": "sharing1",
+                        "active": false,
+                    },
+                    "defense" : {
+                        "part": "defense1",
+                        "active": false,
+                    },
                 },
             },
         });
@@ -219,6 +234,40 @@ export default class WorkshopInit extends cc.Component {
                 "data.key": "m",
             }
         });
+
+
+        var player_data = gd.directory.searchId('player');
+        var carriage_data = gd.directory.searchId('user_built_carriage');
+        
+        //stage5 disruption
+        if(player_data["current_step"] >= 5 && player_data["steps"]["5"]["disruptions"].length < 2) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    var next_disruption = ["disruption_1", "disruption_2", "disruption_3"];
+                    gd.scene["next"] = next_disruption[player_data["steps"]["5"]["disruptions"].length];
+                    cc.director.loadScene(next_disruption[player_data["steps"]["5"]["disruptions"].length]);
+                },
+                event:{
+                    "subtype" : "workshop_finish",
+                }
+            });
+        }
+
+        //go to ending
+        if(player_data["current_step"] >= 5 && player_data["steps"]["5"]["disruptions"].length >= 2) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    gd.scene["next"] = "ending";
+                    cc.director.loadScene("cutscene_2");
+                },
+                event:{
+                    "subtype" : "workshop_finish",
+                }
+            });
+        }
+
+
+
     }
 
     update (dt) {

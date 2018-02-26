@@ -4,15 +4,32 @@ import * as gd from "../../../core/GameData";
 
 class SelectCarriageElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
-        var element: cc.Node = gd.directory.getNode(events[0]["element_path"]);
-        var selected_carriage_part_type: cc.Node = element.parent;
-        var selected_carriage_part: cc.Node = gd.directory.getNode('/Canvas/background/carriage/' + selected_carriage_part_type.name + '/' + element.name);
+        var carriage_data = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]);
 
-        for (var i = 0; i < selected_carriage_part.parent.children.length; i++) {
-            selected_carriage_part.parent.children[i].active = false;
+        if(events[0]["type"] == "click") {
+            var element: cc.Node = gd.directory.getNode(events[0]["element_path"]);
+            var selected_carriage_part_type: cc.Node = element.parent;
+            carriage_data["data"]["parts"][selected_carriage_part_type.name]["part"] = element.name;
         }
 
-        selected_carriage_part.active = true;
+        //just update all elements
+        for(var part in carriage_data["data"]["parts"]) {
+            var selected_carriage_part_type: cc.Node = gd.directory.getNode('/Canvas/background/carriage/' + part);
+
+            if(!selected_carriage_part_type) {
+                continue;
+            }
+
+            for (var concrete_part in selected_carriage_part_type.children) {
+                selected_carriage_part_type.children[concrete_part].active = false;
+            }
+ 
+            var concrete_selected_part = selected_carriage_part_type.getChildByName(carriage_data["data"]["parts"][part]["part"]);
+            if(concrete_selected_part) {
+                concrete_selected_part.active = true;
+            }
+        }
+
         var result = {};
         return result;
     }

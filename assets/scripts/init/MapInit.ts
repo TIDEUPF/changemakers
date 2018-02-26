@@ -53,6 +53,16 @@ export default class MapInit extends cc.Component {
             }
         }
 
+        var player_data = gd.directory.searchId('player');
+
+        //stage4 disable visited dialogues
+        if(player_data["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
+            for(var character in player_data["data"]["steps"]["1"]["info_dialogs"]) {
+                var character_node = gd.directory.getNode(elements_path + character);
+                character_node.active = false;
+            }
+        }
+
         var map_click: Object = {
             "type": "node",
             "action": "switchScene",

@@ -1,0 +1,49 @@
+{
+  "appKey": "",
+  "appSecret": "",
+  "excludeScenes": [
+    "6ff005ba-cfaf-41b4-90ed-35c449a70acf",
+    "a4375748-7fac-4455-9ee2-a80fd60c6057",
+    "9f44bd25-864b-4d7d-b577-0ef97f810a94",
+    "70a63173-0e85-44ca-888c-b8cb29ac8b03",
+    "4ec7d76c-d30b-4ee2-839d-add7c6ce245e",
+    "c8e17782-938b-4c1c-b082-b924ee052502",
+    "f9c122f6-3af5-4930-97b5-7ade9811abc1",
+    "07cc50f4-2f80-43c6-9e19-5973f2758d8c",
+    "840c89c4-5ca3-4305-8ca0-3ccbc3bcf47c",
+    "8b40fb9e-0f20-4386-a3e8-965e744f57a3",
+    "eecec233-0918-41f6-98fb-bb7306b2d9dc",
+    "0121d79f-a542-4b85-9759-f02eafc7703c",
+    "9cfa982d-1b83-4198-8aca-b3308821da39",
+    "bc6bde45-866b-482e-90d6-e9dc9cebf28d",
+    "4313f39e-f39c-42b8-9051-67774439338f",
+    "6521da30-3ee1-4dc9-980b-93fb45bae866",
+    "58ca5ccf-bb79-49f2-b614-e9d1d1aea11c",
+    "986e354a-29a1-4017-82f8-0553e7d6f658",
+    "21f3d2db-16fa-4477-97ce-d7ba40583d20",
+    "c7f580d1-8c98-4928-8a07-63ad5e52cb61"
+  ],
+  "includeAnySDK": false,
+  "includeSDKBox": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "inlineSpriteFrames": false,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": false,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.cmk-game",
+  "privateKey": "",
+  "renderMode": "0",
+  "startScene": "3a576c82-0b82-45f6-8a40-54c33fb5d673",
+  "title": "cmk-game",
+  "webOrientation": "auto"
+}

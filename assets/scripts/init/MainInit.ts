@@ -50,20 +50,33 @@ export default class SceneInit extends cc.Component {
 
         cc.eventManager.addListener(keyEventListener, 1000);
 
-        gd.scene["next"] = "courtyard";
-        cc.director.loadScene('cutscene_4');
+        //gd.scene["next"] = "courtyard";
+        //cc.director.loadScene('cutscene_4');
 
         //cc.director.loadScene('map');
         //gd.scene["next"] = "stage3_ideation_patricia";
 
-        //gd.scene["next"] = "workshop_messenger";
-        //cc.director.loadScene('cutscene_1');
+        gd.scene["next"] = "workshop_messenger";
+        cc.director.loadScene('cutscene_1');
 
         gd.directory.addStatus({
             "type": "data",
             "id": "player",
             "data": {
                 "gender": "boy",
+                "steps": {
+                    "0" : {},
+                    "1" : {
+                        "dialogs": [],
+                        "stage": 0,
+                        "info_dialogs": [],
+                    },
+                    "5" : {
+                        "disruptions": [],
+                        "current_disruption": null,
+                    },
+                },
+                "current_step": 1,
             }
         });
 
@@ -72,6 +85,8 @@ export default class SceneInit extends cc.Component {
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
+
+        //cc.director.loadScene('workshop');
 
     }
 

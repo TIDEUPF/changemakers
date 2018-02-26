@@ -51,4 +51,7 @@ export const data = {
 
     "stage5_disruption3_narrator_d1": "New options have just appeared in your workshop, go back to it to discover them.",
     "stage5_disruption3_narrator_d2": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
+
+    "stage6_ending_queen": "Well done! You have done a fantastic job. I am very happy with it.",
+    "stage6_ending_king": "Yes! That carriage is perfect!",
 }
