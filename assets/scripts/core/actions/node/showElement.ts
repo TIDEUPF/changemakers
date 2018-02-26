@@ -12,7 +12,7 @@ class ShowElement extends ElementAction<cc.Node> {
         }
 
         element.active = true;
-        var result = {};
+        var result: ActionResult;
         return result;
     }
 }

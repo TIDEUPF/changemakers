@@ -115,18 +115,22 @@ export default class SceneInit extends cc.Component {
                 event:{
                     "type" : "dialog",
                     "subtype": "dialog_finished",
-                    "data.id": "stage3_ideation_tharrenos",
+                    "data.id": "stage3_ideation_tharrenos_0",
                 },
             });
         }
 
         //disruptions
-        "disruption_1";
-        if(player_data["current_step"] == 5) {
+        if(player_data["data"]["current_step"] == 5) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    var next_disruption = ["entertainers", "sharing", "defense"];
-                    carriage_data["data"]["parts"]["entertainers"]["active"] = true;
+                    var next_disruption = {
+                        "disruption_1": "entertainers", 
+                        "disruption_2": "sharing", 
+                        "disruption_3": "defense",
+                    };
+
+                    carriage_data["data"]["parts"][event[0]["data"]["id"]]["active"] = true;
                     cc.director.loadScene('workshop');
                 },
                 event:{
@@ -134,6 +138,23 @@ export default class SceneInit extends cc.Component {
                     "subtype": "dialog_finished",
                     "data.id": "disruption_1",
                 }
+            });
+
+            new GameElement({
+                "action": "selectCarriageElement",
+                "id": "disruption_carriage",
+                "resources": {
+                    "carriage_data": "user_built_carriage",
+                },
+                "listen" : {
+                    "type" : "carriage",
+                    "subtype" : "update",
+                },
+            });
+
+            gd.observer.addEvent({
+                "type": "carriage",
+                "subtype": "update",
             });
         }
 
@@ -554,9 +575,9 @@ export default class SceneInit extends cc.Component {
 
             },
 
-            "stage3_ideation_tharrenos": {
+/*            "stage3_ideation_tharrenos": {
                     "next_scene": "map",
-            },
+            },*/
 
             "stage5_feedback_captain": {
                 "next_scene": "cutscene_6",

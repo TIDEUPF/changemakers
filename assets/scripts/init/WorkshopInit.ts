@@ -34,10 +34,7 @@ export default class WorkshopInit extends cc.Component {
         //cc.audioEngine.play("res/raw-assets/sound/fx/testaudio.mp3", true, 1);
 
         // init logic
-        var init = this;
-        console.log("game init");
-        
-        text.i18n.init("en");
+        var init = this;  
 
         var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
@@ -197,12 +194,12 @@ export default class WorkshopInit extends cc.Component {
                     "seat" : {
                         "part": "seat1",
                     },
-                    "stairs" : {
+/*                    "stairs" : {
                         "part": "none",
                     },
                     "top" : {
                         "part": "none",
-                    },
+                    },*/
                     "rear_wheel" : {
                         "part": "none",
                     },
@@ -238,14 +235,52 @@ export default class WorkshopInit extends cc.Component {
 
         var player_data = gd.directory.searchId('player');
         var carriage_data = gd.directory.searchId('user_built_carriage');
-        
+    
+        //enable stage 5
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var n_selected_parts = 0;
+                var n_total_parts = 0;
+                for(var carriage_part in carriage_data["data"]["parts"]) {
+                    if(carriage_data["data"]["parts"][carriage_part]["active"] || carriage_data["data"]["parts"][carriage_part]["active"] === undefined) {
+                        n_total_parts++;
+                        if(carriage_data["data"]["parts"][carriage_part]["part"] != "none") {
+                            n_selected_parts++;
+                        }
+                    }
+                }
+
+                if(n_selected_parts == n_total_parts) {
+                    gd.directory.getNode('/Canvas/background/next_step').active = true;
+                }
+            },
+            event:{
+                "type" : "carriage",
+                "subtype" : "part_assigned",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                gd.observer.addEvent({
+                    "type": "action",
+                    "subtype": "workshop_finish",
+                });
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "next_step",
+            }
+        });
+
         //stage5 disruption
-        if(player_data["current_step"] >= 5 && player_data["steps"]["5"]["disruptions"].length < 2) {
+        if(player_data["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruptions"].length < 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var next_disruption = ["disruption_1", "disruption_2", "disruption_3"];
-                    gd.scene["next"] = next_disruption[player_data["steps"]["5"]["disruptions"].length];
-                    cc.director.loadScene(next_disruption[player_data["steps"]["5"]["disruptions"].length]);
+                    gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
+                    player_data["data"]["current_step"] = 5;
+                    cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -254,7 +289,7 @@ export default class WorkshopInit extends cc.Component {
         }
 
         //go to ending
-        if(player_data["current_step"] >= 5 && player_data["steps"]["5"]["disruptions"].length >= 2) {
+        if(player_data["current_step"] >= 5 && player_data["data"]["steps"]["5"]["disruptions"].length >= 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     gd.scene["next"] = "ending";
@@ -273,6 +308,5 @@ export default class WorkshopInit extends cc.Component {
     update (dt) {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
-        gd.observer.newFrame();
     }
 }

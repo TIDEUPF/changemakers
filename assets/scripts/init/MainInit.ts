@@ -56,8 +56,8 @@ export default class SceneInit extends cc.Component {
         //cc.director.loadScene('map');
         //gd.scene["next"] = "stage3_ideation_patricia";
 
-        gd.scene["next"] = "workshop_messenger";
-        cc.director.loadScene('cutscene_1');
+        //gd.scene["next"] = "workshop_messenger";
+        //cc.director.loadScene('cutscene_1');
 
         gd.directory.addStatus({
             "type": "data",
@@ -86,7 +86,10 @@ export default class SceneInit extends cc.Component {
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
-        //cc.director.loadScene('workshop');
+        var player_data = gd.directory.searchId('player');
+
+        player_data["current_step"] = 4;
+        cc.director.loadScene('workshop');
 
     }
 

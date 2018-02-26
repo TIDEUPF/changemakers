@@ -4,12 +4,26 @@ import * as gd from "../../../core/GameData";
 
 class SelectCarriageElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
+        var result: ActionResult = {};
         var carriage_data = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]);
 
         if(events[0]["type"] == "click") {
             var element: cc.Node = gd.directory.getNode(events[0]["element_path"]);
             var selected_carriage_part_type: cc.Node = element.parent;
             carriage_data["data"]["parts"][selected_carriage_part_type.name]["part"] = element.name;
+
+            result.events = [
+                {
+                    "type": "carriage",
+                    "subtype": "part_assigned",
+                    "data": {
+                        "id": this.elementStatus["id"],
+                        "part_type": selected_carriage_part_type.name,
+                        "part": element.name,
+                    },
+                },
+            ];
+    
         }
 
         //just update all elements
@@ -30,7 +44,6 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
             }
         }
 
-        var result = {};
         return result;
     }
 }
