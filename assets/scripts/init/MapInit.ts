@@ -31,7 +31,7 @@ export default class MapInit extends cc.Component {
         var id_count=0;
 
         var elements_path = "/Canvas/background/npcs/";
-        
+        /*
         var player: Object = {
             "boy": elements_path + "main_character_1",
             "girl": elements_path + "main_character_2",
@@ -52,7 +52,7 @@ export default class MapInit extends cc.Component {
                 player_node.name = 'main_character';
             }
         }
-
+*/
         var player_data = gd.directory.searchId('player');
 
         //stage4 disable visited dialogues
@@ -84,7 +84,7 @@ export default class MapInit extends cc.Component {
                     "civil_engineer" : elements_path + "civil_engineer",
                     "kingandqueen_1" : elements_path + "kingandqueen_1",
                     "king" : elements_path + "king",
-                    "main_character_1" : elements_path + "main_character_1",
+                    //"main_character_1" : elements_path + "main_character_1",
                     "potter" : elements_path + "potter",
                     "old_lady" : elements_path + "old_lady",
                     "queen" : elements_path + "queen",
@@ -189,7 +189,7 @@ export default class MapInit extends cc.Component {
                     "civil_engineer" : {},
                     "kingandqueen_1" : {},
                     "king" : {},
-                    "main_character_1" : {},
+                    //"main_character_1" : {},
                     "potter" : {},
                     "old_lady" : {},
                     "queen" : {},

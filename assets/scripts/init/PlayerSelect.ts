@@ -30,6 +30,31 @@ export default class PlayeSelect extends cc.Component {
         var id_count=0;
 
         gd.observer.addSubscription({
+            listener : function() {
+                var player_data = gd.directory.searchId('player');
+                player_data["current_step"] = 4;
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "w",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function() {
+                var player_data = gd.directory.searchId('player');
+                player_data["data"]["current_step"] = 1;
+                player_data["data"]["steps"]["1"]["stage"] = 4;
+                cc.director.loadScene('map');
+            },
+            event:{
+                type : "keyinput",
+                "data.key": "m",
+            }
+        });
+
+        gd.observer.addSubscription({
             listener : function(event) {
                 var player_data = gd.directory.searchId('player');
                 player_data["data"]["gender"] = event.data.name;
