@@ -83,6 +83,7 @@ export default class SceneInit extends cc.Component {
         });
 
         cc.game.addPersistRootNode(cc.find('notebook'));
+        cc.game.addPersistRootNode(cc.find('badges'));
         cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";

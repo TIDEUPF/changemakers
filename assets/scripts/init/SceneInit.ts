@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Badge} from "../core/Badge";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -71,6 +72,7 @@ export default class SceneInit extends cc.Component {
         if(gd.scene["current"] == "courtyard") {
             gd.observer.addSubscription({
                 listener : function(event) {
+                    Badge.add({"badge_id": "critical_thinker_g"});
                     player_data["data"]["steps"]["1"]["stage"] = 4;
                 },
                 event:{
