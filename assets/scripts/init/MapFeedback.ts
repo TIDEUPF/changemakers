@@ -50,7 +50,7 @@ export default class MapFeedback extends cc.Component {
         var player_data = gd.directory.searchId('player');
 
         //stage5 disable visited dialogues
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
+        if(player_data["data"]["current_step"] == 5) {
             for(var character in player_data["data"]["steps"]["5"]["feedback"]) {
                 var character_node = gd.directory.getNode(elements_path + player_data["data"]["steps"]["5"]["feedback"][character]);
                 character_node.active = false;
@@ -58,6 +58,31 @@ export default class MapFeedback extends cc.Component {
 
             MessageBox.text("Click on a character to recieve feedback");
         }
+
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+            gd.directory.getNode('/Canvas/background/next_step').active = true;
+            gd.directory.getNode('/Canvas/background/go_to_workshop').active = true;
+        }
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                cc.director.loadScene('map_disruption');
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "next_step",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "go_to_workshop",
+            }
+        });
 
         var map_click: Object = {
             "type": "node",

@@ -4,7 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Badge} from "../core/Badge";
-import {characters_information} from "../steps/empathise/npc";
+//import {characters_information} from "../steps/empathise/npc";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -22,6 +22,24 @@ export default class SceneInit extends cc.Component {
         gd.frame["dt"] = 0;
 
         var id_count=0;
+
+        const characters_information:Object = {
+            "Captain":"high",
+            "Driver":"high",
+            "Tailor":"high",
+            "butler":"high",
+            "the_stable_boy":"high",
+            "Doctor":"informative",
+            "Chef":"informative",
+            "civil_engineer":"informative",
+            "Merchant":"informative",
+            "old_lady":"informative",
+            "Librarian":"informative",
+            "the_grumpy_butcher":"futile",
+            "potter":"futile",
+            "vagabond":"futile",
+            "Huntress":"futile",
+        }
 
         var background_node = gd.directory.getNode('/Canvas/background');
 
@@ -115,6 +133,7 @@ export default class SceneInit extends cc.Component {
         }
              
         //go to ideation
+        /*
         if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
             gd.observer.addSubscription({
                 listener : function(event) {
@@ -131,7 +150,7 @@ export default class SceneInit extends cc.Component {
                     "subtype": "dialog_finished",
                 }
             });
-        }
+        }*/
 
         //step5 disruptions counter increase
         /*
@@ -160,8 +179,8 @@ export default class SceneInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     if(player_data["data"]["steps"]["5"]["feedback"].length > 2) {
-                        player_data["data"]["steps"]["5"]["scene"] = 1;
-                        next_scene[gd.scene["current"]]["next_scene"] = 'workshop';
+                        player_data["data"]["steps"]["5"]["stage"] = 1;
+                        //next_scene[gd.scene["current"]]["next_scene"] = 'workshop';
                         //cc.director.loadScene('map_disruptions');
                     } else {
                         //cc.director.loadScene('map_feedback');
@@ -694,15 +713,15 @@ export default class SceneInit extends cc.Component {
             },
 
             "disruption_1": {
-                "next_scene": "workshop",
+                "next_scene": "map_disruption",
             },
 
             "disruption_2": {
-                "next_scene": "workshop",
+                "next_scene": "map_disruption",
             },
 
             "disruption_3": {
-                "next_scene": "workshop",
+                "next_scene": "map_disruption",
             },
 
         }

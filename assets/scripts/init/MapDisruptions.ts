@@ -56,7 +56,7 @@ export default class MapDisruptions extends cc.Component {
                 disruption_node.active = false;
             }
 
-            MessageBox.text("Click on a character to recieve feedback");
+            MessageBox.text("Click on a character to test the carriage");
         }
         
         var map_click: Object = {

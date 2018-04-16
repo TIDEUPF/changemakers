@@ -121,3 +121,4 @@ export const characters_information:Object = {
                     "speaker" : "Huntress",
                 },
             },
+*/

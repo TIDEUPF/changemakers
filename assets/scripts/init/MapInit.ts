@@ -65,9 +65,9 @@ export default class MapInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var informative_results = {
-                        "informative_silver": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 5,
-                        "informative_gold": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 6,
-                        "informative_futile": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 1 && player_data["data"]["steps"]["1"]["information"]["futile"].length >= 1,
+                        "informative_silver": player_data["data"]["steps"]["1"]["information"]["high"].length >= 5,
+                        "informative_gold": player_data["data"]["steps"]["1"]["information"]["high"].length >= 6,
+                        "informative_futile": player_data["data"]["steps"]["1"]["information"]["futile"].length >= 1 && player_data["data"]["steps"]["1"]["information"]["futile"].length >= 1,
                     };
         
                     if(informative_results.informative_gold) {
@@ -107,10 +107,11 @@ export default class MapInit extends cc.Component {
         if(player_data["data"]["current_step"] == 1 && 
         player_data["data"]["steps"]["1"]["stage"] == 4 &&
         player_data["data"]["steps"]["1"]["next_step_unlocked"] == false) {
-            if(player_data["data"]["steps"]["1"]["information"]["informative"].length >= 5) {
+            if(player_data["data"]["steps"]["1"]["information"]["high"].length >= 5) {
                 player_data["data"]["steps"]["1"]["next_step_unlocked"] = true;
                 MessageBox.text("Now that you have gathered enough opinions you may return to your workshop to start working on the carriage project or continue meeting with other people.");
 
+                /*
                 gd.observer.addSubscription({
                     listener : function(event) {
                         player_data["data"]["current_step"] = 4;
@@ -121,6 +122,7 @@ export default class MapInit extends cc.Component {
                         subtype: "close",
                     }
                 });
+                */
             }
         }
 

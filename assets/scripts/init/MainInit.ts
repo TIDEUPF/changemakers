@@ -57,6 +57,7 @@ export default class SceneInit extends cc.Component {
         //cc.director.loadScene('cutscene_4');
 
         //gd.scene["next"] = "stage3_ideation_patricia";
+        //cc.director.loadScene('ideation_1');
 
         //gd.scene["next"] = "workshop_messenger";
         //cc.director.loadScene('cutscene_1');
@@ -136,27 +137,35 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('notebook'));
         cc.game.addPersistRootNode(cc.find('badges'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
+
         //cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
         var player_data = gd.directory.searchId('player');
-
+        
         //player_data["current_step"] = 4;
         //cc.director.loadScene('workshop');
+                
+        //player_data["data"]["current_step"] = 1;
+        //player_data["data"]["steps"]["1"]["stage"] = 4;
+        //player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
+        //player_data["data"]["steps"]["1"]["information"]["high"] = ["the_stable_boy", "Captain", "butler", "Driver", "Tailor"];
+        //player_data["data"]["steps"]["1"]["information"]["futile"] = ["the_grumpy_butcher"];
+        //player_data["data"]["steps"]["1"]["information"]["informative"] = ["civil_engineer"];
 
-        /*
-        player_data["data"]["current_step"] = 1;
-        player_data["data"]["steps"]["1"]["stage"] = 4;
-        cc.director.loadScene('map');
-        */
+        //cc.director.loadScene('map');
+        
+        //cc.director.loadScene('indicators');
 
         /*
         player_data["data"]["current_step"] = 5;
         player_data["data"]["steps"]["5"]["stage"] = 0;
         cc.director.loadScene('map_feedback');
         */
+        
+        
 
         player_data["data"]["current_step"] = 5;
         player_data["data"]["steps"]["5"]["feedback"].push({});
@@ -165,13 +174,7 @@ export default class SceneInit extends cc.Component {
         player_data["data"]["steps"]["5"]["stage"] = 1;
         cc.director.loadScene('map_disruption');
 
-        /*
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
-            gd.observer.addSubscription({
-                listener : function(event) {
-                    if(player_data["data"]["steps"]["5"]["feedback"].length > 2) {
-                        player_data["data"]["steps"]["5"]["scene"] = 1;
-                        next_scene[gd.scene["current"]]["next_scene"] = 'workshop';*/
+
     }
 
     update (dt) {

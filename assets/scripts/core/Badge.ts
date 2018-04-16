@@ -57,7 +57,7 @@ export class Badge {
     }
 
     static close() {
-        var badges: cc.Node = gd.directory.getNode('/bagdes');
+        var badges: cc.Node = gd.directory.getNode('/badges');
         badges.active = false;
     }
 };

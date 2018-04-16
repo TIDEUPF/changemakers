@@ -74,25 +74,28 @@ export default class IndicatorsInit extends cc.Component {
             listener : slider_update_element.getId(),
             event : {
                     type : "slider",
-                    origin_type: "indicators",
-                    adjusted: true,
+                    origin_type: "indicators_fixed",
             }
         };
         gd.observer.addSubscription(sliderEventListener);
 
         gd.observer.addSubscription({
-            listener : function(events) {
-                if(events[0]["value"] < 0.4) {
-                    events[0]["value"] = 0;
-                } else if(events[0]["value"] > 0.6) {
-                    events[0]["value"] = 1.0;
+            listener : function(event) {
+                var value = 0;
+                if(event["value"] < 0.4) {
+                    value = 0;
+                } else if(event["value"] > 0.6) {
+                    value = 1.0;
                 } else {
-                    events[0]["value"] = 0.5;
+                    value = 0.5;
                 }
-                
-                events[0]["adjusted"] = true;
 
-                gd.observer.addEvent(events[0]);
+                gd.observer.addEvent({
+                    origin: event["origin"],
+                    origin_type:"indicators_fixed",
+                    type:"slider",
+                    value: value,
+                });
             },
             event:{
                 type : "slider",
@@ -129,12 +132,13 @@ export default class IndicatorsInit extends cc.Component {
                     gd.observer.addSubscription({
                         listener : function(event) {
                             gd.observer.addEvent({
-                                type: "messagebox",
-                                subtype: "close",
+                                "type" : "badges",
+                                "subtype" : "add",
                             });
                         },
                         event:{
-                            "subtype" : "indicators_finish",
+                            type: "messagebox",
+                            subtype: "close",
                         }
                     });
                 } else {
