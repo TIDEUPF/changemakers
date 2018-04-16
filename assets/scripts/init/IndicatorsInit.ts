@@ -1,5 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
+import {MessageBox} from "../core/MessageBox";
+import {Badge} from "../core/Badge";
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
@@ -27,8 +29,12 @@ export default class IndicatorsInit extends cc.Component {
         // init logic
         var init = this;
 
+        gd.observer.clearSubscriptions();
+        gd.directory.clearElements();
+        gd.directory.clearNodes();
 
-        //console.log(gamenn.moveUp);
+        var player_data = gd.directory.searchId("player");
+
         var id_count=0;
 
         var elements_path = "/Canvas/background/sliders/";
@@ -69,10 +75,32 @@ export default class IndicatorsInit extends cc.Component {
             event : {
                     type : "slider",
                     origin_type: "indicators",
+                    adjusted: true,
             }
         };
         gd.observer.addSubscription(sliderEventListener);
 
+        gd.observer.addSubscription({
+            listener : function(events) {
+                if(events[0]["value"] < 0.4) {
+                    events[0]["value"] = 0;
+                } else if(events[0]["value"] > 0.6) {
+                    events[0]["value"] = 1.0;
+                } else {
+                    events[0]["value"] = 0.5;
+                }
+                
+                events[0]["adjusted"] = true;
+
+                gd.observer.addEvent(events[0]);
+            },
+            event:{
+                type : "slider",
+                origin_type: "indicators",
+            }
+        });
+
+        /*
         gd.observer.addSubscription({
             listener : function() {
                 cc.director.loadScene('map');
@@ -80,6 +108,76 @@ export default class IndicatorsInit extends cc.Component {
             event:{
                 type : "keyinput",
                 "data.key": "m",
+            }
+        });
+        */
+
+        MessageBox.text("Welcome back to your workshop ! Based on of you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.");
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var modified_sliders = 0;
+                for(var item in slider_update["resources"]["value"]) {
+                    if(slider_update["resources"]["value"][item] != 0.5) {
+                        modified_sliders++;
+                    }
+                }
+
+                if(modified_sliders >= 4) {
+                    MessageBox.text("What a promising carriage! Well done!");
+
+                    gd.observer.addSubscription({
+                        listener : function(event) {
+                            gd.observer.addEvent({
+                                type: "messagebox",
+                                subtype: "close",
+                            });
+                        },
+                        event:{
+                            "subtype" : "indicators_finish",
+                        }
+                    });
+                } else {
+                    MessageBox.text("My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.");
+                }
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "next_step",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                Badge.add({
+                    "badge_id": "critical_thinker_g",
+                });
+
+                gd.observer.addSubscription({
+                    listener : function(event) {
+                        gd.observer.addEvent({
+                            "subtype": "indicators_finish",
+                        });
+                    },
+                    event:{
+                        type: "bagdes",
+                        subtype: "close",
+                    }
+                });
+            },
+            event:{
+                "type" : "badges",
+                "subtype" : "add",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                player_data["data"]["current_step"] = 4;
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                "subtype" : "indicators_finish",
             }
         });
 

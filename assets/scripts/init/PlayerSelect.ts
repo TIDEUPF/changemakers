@@ -18,7 +18,7 @@ export default class PlayeSelect extends cc.Component {
     onLoad() {
         //cc.audioEngine.play("assets/sound/introduction.ogg", true, 1);
         //cc.loader.load(cc.url.raw('assets/sound/introduction.ogg'));
-        cc.audioEngine.play("res/raw-assets/sound/music/introduction.ogg", true, 1);
+        //cc.audioEngine.play("res/raw-assets/sound/music/introduction.ogg", true, 1);
 
         gd.scene["current"] = gd.scene["next"];
         gd.observer.clearSubscriptions();

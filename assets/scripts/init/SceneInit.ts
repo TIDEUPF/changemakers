@@ -4,6 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Badge} from "../core/Badge";
+import {characters_information} from "../steps/empathise/npc";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -89,6 +90,7 @@ export default class SceneInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     player_data["data"]["steps"]["1"]["info_dialogs"].push(event["data"]["speaker"]);
+                    player_data["data"]["steps"]["1"]["information"][characters_information[event["data"]["speaker"]]].push(event["data"]["speaker"]);
                 },
                 event:{
                     "type" : "dialog",
@@ -97,6 +99,21 @@ export default class SceneInit extends cc.Component {
             });
         }
 
+        //step5 feedback dialogue counter increase
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    if(event["data"]["speaker"] != "narrator") {
+                        player_data["data"]["steps"]["5"]["feedback"].push(event["data"]["speaker"]);
+                    }
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "turn_finished",
+                }
+            });
+        }
+             
         //go to ideation
         if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
             gd.observer.addSubscription({
@@ -116,11 +133,52 @@ export default class SceneInit extends cc.Component {
             });
         }
 
-        //finish ideation and go to workshop
-        if(gd.scene["current"] == "stage3_ideation_tharrenos") {
+        //step5 disruptions counter increase
+        /*
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    player_data["current_step"] = 4;
+                    var disruption = {
+                        "disruption_1": "entertainers", 
+                        "disruption_2": "dseat", 
+                        "disruption_3": "shield",
+                    };
+
+                    if(event["data"]["speaker"] !== "narrator") {
+                        player_data["data"]["steps"]["5"]["disruption"].push(disruption[event["data"]["speaker"]]);
+                    }
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "turn_finished",
+                }
+            });
+        }*/
+            
+        //go to disruptions
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    if(player_data["data"]["steps"]["5"]["feedback"].length > 2) {
+                        player_data["data"]["steps"]["5"]["scene"] = 1;
+                        next_scene[gd.scene["current"]]["next_scene"] = 'workshop';
+                        //cc.director.loadScene('map_disruptions');
+                    } else {
+                        //cc.director.loadScene('map_feedback');
+                    }
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                }
+            });
+        }
+        
+        //finish ideation and go to workshop
+        /*if(gd.scene["current"] == "stage3_ideation_tharrenos") {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["current_step"] = 4;
                     cc.director.loadScene('workshop');
                 },
                 event:{
@@ -129,20 +187,20 @@ export default class SceneInit extends cc.Component {
                     "data.id": "stage3_ideation_tharrenos_0",
                 },
             });
-        }
+        }*/
 
-        //disruptions
-        if(player_data["data"]["current_step"] == 5) {
+        //activate a new carriage item after a disruption
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    var next_disruption = {
-                        "disruption_1_0": "entertainers", 
-                        //"disruption_2_0": "dseat", 
-                        "disruption_3_0": "shield",
+                    var disruption = {
+                        "disruption_1": "shield", 
+                        "disruption_2": "dseat", 
+                        "disruption_3": "entertainers",
                     };
 
-                    player_data["data"]["steps"]["5"]["disruptions"].push(gd.scene["current"]);
-                    carriage_data["data"]["parts"][next_disruption[event["data"]["id"]]]["active"] = true;
+                    player_data["data"]["steps"]["5"]["disruption"].push(disruption[gd.scene["current"]]);
+                    carriage_data["data"]["parts"][disruption[gd.scene["current"]]]["active"] = true;
                     cc.director.loadScene('workshop');
                 },
                 event:{
@@ -531,7 +589,7 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map",
             },
 
-/*            "stage1_scene4_captain": {
+            "stage1_scene4_captain": {
                 "next_scene": "map",
             },
 
@@ -590,7 +648,7 @@ export default class SceneInit extends cc.Component {
             "stage1_scene4_huntress_female": {
                 "next_scene": "map",
             },
-*/
+
             "stage3_ideation_patricia": {
 
                     "next_scene": "ideation_2",
@@ -624,17 +682,15 @@ export default class SceneInit extends cc.Component {
             },*/
 
             "stage5_feedback_captain": {
-                "next_scene": "cutscene_6",
-                "next_dialog": "stage5_feedback_coachman",
+                "next_scene": "map_feedback",
             },
 
             "stage5_feedback_coachman": {
-                "next_scene": "cutscene_6",
-                "next_dialog": "stage5_feedback_oldlady",
+                "next_scene": "map_feedback",
             },
 
             "stage5_feedback_oldlady": {
-                "next_scene": "map",
+                "next_scene": "map_feedback",
             },
 
             "disruption_1": {

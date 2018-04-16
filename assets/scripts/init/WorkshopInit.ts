@@ -8,14 +8,6 @@ import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
 import * as Polyglot from "node-polyglot";
 
-enum GameEventType {
-    Input = 1,
-};
-
-enum GameInputEventType {
-    Key = 1,
-};
-
 @ccclass
 export default class WorkshopInit extends cc.Component {
     observer: Observer;
@@ -35,26 +27,6 @@ export default class WorkshopInit extends cc.Component {
 
         // init logic
         var init = this;  
-
-        var keyEventListener = cc.EventListener.create({
-            event: cc.EventListener.KEYBOARD,
-            onKeyPressed: function(keyCode, event) {
-                let gameEvent = {
-                    type: "keyinput",
-                    emitter : {
-                        type : GameEventType.Input,
-                        subtype : GameInputEventType.Key,
-                    },
-                    data : {
-                        key : keyCode
-                    }
-                };
-
-                gd.observer.addEvent(gameEvent);
-            }.bind(this)
-        });
-
-        cc.eventManager.addListener(keyEventListener, 1000);
 
         //console.log(gamenn.moveUp);
         var id_count=0;
@@ -184,55 +156,6 @@ export default class WorkshopInit extends cc.Component {
         };
         gd.observer.addSubscription(selection_listener);
 
-
-        //user built carriage
-        gd.directory.addStatus({
-            "id": "user_built_carriage",
-            "data": {
-                "parts": {
-                    "front_wheel" : {
-                        "part": "none",
-                    },
-                    "chasis" : {
-                        "part": "none",
-                    },
-                    "pattern" : {
-                        "part": "none",
-                    },
-                    "seat" : {
-                        "part": "seat1",
-                    },
-                    "pseat" : {
-                        "part": "pseat1",
-                    },
-                    "dseat" : {
-                        "part": "dseat1",
-                        "active": false,
-                    },
-                    "shield" : {
-                        "part": "shield1",
-                        "active": false,
-                    },
-                    "entertainers" : {
-                        "part": "entertainers1",
-                        "active": false,
-                    },
-
-                    /*                    "stairs" : {
-                        "part": "none",
-                    },
-                    "top" : {
-                        "part": "none",
-                    },*/
-                    "rear_wheel" : {
-                        "part": "none",
-                    },
-                    "boot" : {
-                        "part": "boot1",
-                    },
-                },
-            },
-        });
 /*
         gd.observer.addSubscription({
             listener : function() {
@@ -285,14 +208,48 @@ export default class WorkshopInit extends cc.Component {
             }
         });
 
-        //stage5 disruption
-        if(player_data["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruptions"].length < 2) {
+        //stage5
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 0) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
-                    gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
-                    player_data["data"]["current_step"] = 5;
-                    cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
+                    //var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
+                    //gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
+                    //player_data["data"]["current_step"] = 5;
+                    //cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
+                    cc.director.loadScene('map_feedback');
+                },
+                event:{
+                    "subtype" : "workshop_finish",
+                }
+            });
+        }
+        
+        //stage5 disruption
+        if(player_data["data"]["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruption"].length < 2) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    //var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
+                    //gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
+                    //player_data["data"]["current_step"] = 5;
+                    //cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
+                    cc.director.loadScene('map_disruption');
+                },
+                event:{
+                    "subtype" : "workshop_finish",
+                }
+            });
+        }
+
+        //stage5 disruptions completed
+        if(player_data["data"]["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruption"].length == 2) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    //var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
+                    //gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
+                    //player_data["data"]["current_step"] = 5;
+                    //cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
+                    gd.scene["next"] = 'ending';
+                    cc.director.loadScene('cutscene_2');
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -316,21 +273,6 @@ export default class WorkshopInit extends cc.Component {
             "type": "carriage",
             "subtype": "update",
         });
-
-        //go to ending
-        if(player_data["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruptions"].length >= 2) {
-            gd.observer.addSubscription({
-                listener : function(event) {
-                    gd.scene["next"] = "ending";
-                    cc.director.loadScene("cutscene_2");
-                },
-                event:{
-                    "subtype" : "workshop_finish",
-                }
-            });
-        }
-
-
 
     }
 

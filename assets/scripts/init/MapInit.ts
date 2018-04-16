@@ -3,18 +3,13 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {MessageBox} from "../core/MessageBox";
+import {Scene} from "../core/Scene";
+import {Badge} from "../core/Badge";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
 import * as Polyglot from "node-polyglot";
-
-enum GameEventType {
-    Input = 1,
-};
-
-enum GameInputEventType {
-    Key = 1,
-};
 
 @ccclass
 export default class MapInit extends cc.Component {
@@ -61,7 +56,104 @@ export default class MapInit extends cc.Component {
                 var character_node = gd.directory.getNode(elements_path + player_data["data"]["steps"]["1"]["info_dialogs"][character]);
                 character_node.active = false;
             }
+
+            MessageBox.text("Click on a character");
         }
+
+        //stage4 dialogue counter increase
+        if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    var informative_results = {
+                        "informative_silver": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 5,
+                        "informative_gold": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 6,
+                        "informative_futile": player_data["data"]["steps"]["1"]["information"]["informative"].length >= 1 && player_data["data"]["steps"]["1"]["information"]["futile"].length >= 1,
+                    };
+        
+                    if(informative_results.informative_gold) {
+                        Badge.add({
+                            "badge_id": "listener_g",
+                        });
+                    } else if(informative_results.informative_silver) {
+                        Badge.add({
+                            "badge_id": "listener_s",
+                        });
+                    } else if(informative_results.informative_futile) {
+                        Badge.add({
+                            "badge_id": "listener_b",
+                        });
+                    }
+        
+                    gd.observer.addSubscription({
+                        listener : function(event) {
+                            gd.observer.addEvent({
+                                "subtype": "map_finish",
+                            });
+                        },
+                        event:{
+                            type: "bagdes",
+                            subtype: "close",
+                        }
+                    });
+                        },
+                event:{
+                    "type" : "badges",
+                    "subtype" : "add",
+                }
+            });
+        }
+
+        //stage4 dialogue counter increase
+        if(player_data["data"]["current_step"] == 1 && 
+        player_data["data"]["steps"]["1"]["stage"] == 4 &&
+        player_data["data"]["steps"]["1"]["next_step_unlocked"] == false) {
+            if(player_data["data"]["steps"]["1"]["information"]["informative"].length >= 5) {
+                player_data["data"]["steps"]["1"]["next_step_unlocked"] = true;
+                MessageBox.text("Now that you have gathered enough opinions you may return to your workshop to start working on the carriage project or continue meeting with other people.");
+
+                gd.observer.addSubscription({
+                    listener : function(event) {
+                        player_data["data"]["current_step"] = 4;
+                        cc.director.loadScene('workshop');
+                    },
+                    event:{
+                        type: "messagebox",
+                        subtype: "close",
+                    }
+                });
+            }
+        }
+
+        //activate next level button
+        if(player_data["data"]["steps"]["1"]["next_step_unlocked"]) {
+            gd.directory.getNode('/Canvas/background/next_step').active = true;
+
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    gd.observer.addEvent({
+                        "type": "badges",
+                        "subtype": "add",
+                    });
+                },
+                event:{
+                    "type" : "click",
+                    "subtype" : "next_step",
+                }
+            });
+        }
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                player_data["data"]["current_step"] = 4;
+                cc.director.loadScene('workshop');
+            },
+            event:{
+                "subtype" : "map_finish",
+            }
+        });
+
+
+
 
         var map_click: Object = {
             "type": "node",
@@ -82,8 +174,8 @@ export default class MapInit extends cc.Component {
                     "Messenger" : elements_path + "Messenger",
                     "butler" : elements_path + "butler",
                     "civil_engineer" : elements_path + "civil_engineer",
-                    "kingandqueen_1" : elements_path + "kingandqueen_1",
-                    "king" : elements_path + "king",
+                    //"kingandqueen_1" : elements_path + "kingandqueen_1",
+                    //"king" : elements_path + "king",
                     //"main_character_1" : elements_path + "main_character_1",
                     "potter" : elements_path + "potter",
                     "old_lady" : elements_path + "old_lady",
@@ -187,8 +279,8 @@ export default class MapInit extends cc.Component {
                     "Messenger" : {},
                     "butler" : {},
                     "civil_engineer" : {},
-                    "kingandqueen_1" : {},
-                    "king" : {},
+                    //"kingandqueen_1" : {},
+                    //"king" : {},
                     //"main_character_1" : {},
                     "potter" : {},
                     "old_lady" : {},
@@ -301,6 +393,5 @@ export default class MapInit extends cc.Component {
     update (dt) {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
-        //gd.observer.newFrame();
     }
 }
