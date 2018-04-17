@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {calculate_indicator} from "../steps/prototype/carriage";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -93,14 +94,14 @@ export default class SceneInit extends cc.Component {
         });
 
         //user built carriage
-        gd.directory.addStatus({
+        var carriage = gd.directory.addStatus({
             "id": "user_built_carriage",
             "data": {
                 "parts": {
-                    "front_wheel" : {
+                    "wheels" : {
                         "part": "none",
                     },
-                    "chasis" : {
+                    "chassis" : {
                         "part": "none",
                     },
                     "pattern" : {
@@ -124,9 +125,6 @@ export default class SceneInit extends cc.Component {
                         "part": "entertainers1",
                         "active": false,
                     },
-                    "rear_wheel" : {
-                        "part": "none",
-                    },
                     "boot" : {
                         "part": "boot1",
                     },
@@ -145,6 +143,7 @@ export default class SceneInit extends cc.Component {
 
         var player_data = gd.directory.searchId('player');
         
+        var result = calculate_indicator(carriage["data"], "speed");
         //player_data["current_step"] = 4;
         //cc.director.loadScene('workshop');
                 

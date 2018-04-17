@@ -54,4 +54,20 @@ export const data = {
 
     "stage6_ending_queen": "Well done! You have done a fantastic job. I am very happy with it.",
     "stage6_ending_king": "Yes! That carriage is perfect!",
+
+
+//carriage defines
+    "stage4_min_cost": "Your carriage is too cheap. You are building the royal family's carriage! Not a merchant's cart!",
+    "stage4_max_cost": "You are ruining the kingdom !  Reconsider your design by choosing less expensive elements.",
+
+    "stage4_min_time_to_build": "Your carraige is so simple that it will only take a couple of weeks to build it. We can invest more time as we have 6 months to deliver it. Let's improve our carriage",
+    "stage4_max_time_to_build": "The royal family needs the carriage to be ready in 6 months. Choose some more simple elements to reduce the building time.",
+
+    "stage4_min_speed": "Your carriage is way too heavy and slow. Journeys will take forever",
+
+    "stage4_min_aesthetics": "You carriage is too rough for a royal carriage, it looks like a peasant's carriage",
+
+    "stage4_min_ergonomy": "You have to make a carriage not a chariot. Make it more convenient!",
+
+    "stage4_min_robustness": "Your carriage is way too fragile as it is built. It will break apart at the first cobble stone it will hit",
 }
