@@ -292,3 +292,64 @@ export function calculate_indicator(carriage_data, indicator) {
     
     return result;
 }
+
+export function evaluate_indicator(carriage_data, indicator) {
+    var indicator_value = calculate_indicator(carriage_data, indicator);
+    var pass = true;
+    var warning = "";
+
+    if(carriage_next_step[indicator]["min"] !== null) {
+        if(!(indicator_value >= carriage_next_step[indicator]["min"])) {
+            pass = false;
+            warning = carriage_next_step[indicator]["min_warning"];
+            return {
+                "pass": pass,
+                "warning": warning,
+                "failed_condition": "min",
+            };
+        }
+    }
+
+    if(carriage_next_step[indicator]["max"] !== null) {
+        if(!(indicator_value <= carriage_next_step[indicator]["max"])) {
+            pass = false;
+            warning = carriage_next_step[indicator]["max_warning"];
+            return {
+                "pass": pass,
+                "warning": warning,
+                "failed_condition": "max",
+            };
+        }
+    }
+
+    return {
+        "pass": pass,
+        "warning": warning,
+        "failed_condition": null,
+    };
+}
+
+export function check_carriage(carriage_data) {
+    var indicators_result = {};
+    var failed = [];
+    var passed = [];
+
+    for(var indicator in carriage_next_step) {
+        var step_result = evaluate_indicator(carriage_data, indicator);
+
+        if(step_result["pass"]) {
+            passed.push(indicator);
+        } else {
+            failed.push(indicator);
+        }
+
+        indicators_result[indicator] = step_result;
+    }
+
+    return {
+        "pass": (failed.length === 0),
+        "passed": passed,
+        "failed": failed,
+        "indicators_result": indicators_result,
+    }
+}

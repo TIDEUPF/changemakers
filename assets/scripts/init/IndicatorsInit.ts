@@ -82,9 +82,9 @@ export default class IndicatorsInit extends cc.Component {
         gd.observer.addSubscription({
             listener : function(event) {
                 var value = 0;
-                if(event["value"] < 0.4) {
+                if(event["value"] < 0.35) {
                     value = 0;
-                } else if(event["value"] > 0.6) {
+                } else if(event["value"] > 0.65) {
                     value = 1.0;
                 } else {
                     value = 0.5;

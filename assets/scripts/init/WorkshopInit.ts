@@ -113,13 +113,12 @@ export default class WorkshopInit extends cc.Component {
             "resources": {
                 "carriage_data": "user_built_carriage",
                 "node" : {
-                    "front_wheel" : "/Canvas/background/selection/front_wheel",
-                    "chasis" : "/Canvas/background/selection/chasis",
+                    "wheels" : "/Canvas/background/selection/wheels",
+                    "chassis" : "/Canvas/background/selection/chassis",
                     "pattern" : "/Canvas/background/selection/pattern",
                     "seat" : "/Canvas/background/selection/seat",
                     "stairs" : "/Canvas/background/selection/stairs",
                     "top" : "/Canvas/background/selection/top",
-                    "rear_wheel" : "/Canvas/background/selection/rear_wheel",
                     "boot" : "/Canvas/background/selection/boot",
                     "shield" : "/Canvas/background/selection/shield",
                     "entertainers" : "/Canvas/background/selection/entertainers",
@@ -127,13 +126,14 @@ export default class WorkshopInit extends cc.Component {
             },
             "init": {
                 "clickEvent": {
-                    "front_wheel" : {},
-                    "chasis" : {},
+                    "wheels" : {
+                        "hitbox": ["front_wheel", "rear_wheel"],
+                    },
+                    "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
                     "stairs" : {},
                     "top" : {},
-                    "rear_wheel" : {},
                     "boot" : {},
                     "shield" : {},
                     "entertainers" : {},
