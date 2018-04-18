@@ -39,13 +39,12 @@ export default class WorkshopInit extends cc.Component {
             "element_id" : "/Canvas/background/carriage/front_wheel",
             "resources": {
                 "node" : {
-                    "front_wheel" : "/Canvas/background/carriage/front_wheel",
-                    "chasis" : "/Canvas/background/carriage/chasis",
+                    "wheels" : "/Canvas/background/carriage/wheels",
+                    "chassis" : "/Canvas/background/carriage/chassis",
                     "pattern" : "/Canvas/background/carriage/pattern",
                     "seat" : "/Canvas/background/carriage/seat",
                     "stairs" : "/Canvas/background/carriage/stairs",
                     "top" : "/Canvas/background/carriage/top",
-                    "rear_wheel" : "/Canvas/background/carriage/rear_wheel",
                     "boot" : "/Canvas/background/carriage/boot",
                     "shield" : "/Canvas/background/carriage/shield",
                     "entertainers" : "/Canvas/background/carriage/entertainers",
@@ -53,13 +52,14 @@ export default class WorkshopInit extends cc.Component {
             },
             "init": {
                 "clickEvent": {
-                    "front_wheel" : {},
-                    "chasis" : {},
+                    "wheels" : {
+                        "hitbox": ["front_wheel", "rear_wheel"],
+                    },
+                    "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
                     "stairs" : {},
                     "top" : {},
-                    "rear_wheel" : {},
                     "boot" : {},
                     "shield" : {},
                     "entertainers" : {},
@@ -97,7 +97,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "carriage",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis', 'shield', 'entertainers']},
+                    origin: {'$containsAny' : ['wheels', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chassis', 'shield', 'entertainers']},
             }
         };
         gd.observer.addSubscription(dialogListener);
@@ -113,7 +113,10 @@ export default class WorkshopInit extends cc.Component {
             "resources": {
                 "carriage_data": "user_built_carriage",
                 "node" : {
-                    "wheels" : "/Canvas/background/selection/wheels",
+                    "wheels" : [
+                        "/Canvas/background/selection/front_wheel",
+                        "/Canvas/background/selection/rear_wheel",
+                    ],
                     "chassis" : "/Canvas/background/selection/chassis",
                     "pattern" : "/Canvas/background/selection/pattern",
                     "seat" : "/Canvas/background/selection/seat",
@@ -126,9 +129,7 @@ export default class WorkshopInit extends cc.Component {
             },
             "init": {
                 "clickEvent": {
-                    "wheels" : {
-                        "hitbox": ["front_wheel", "rear_wheel"],
-                    },
+                    "wheels" : {},
                     "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
