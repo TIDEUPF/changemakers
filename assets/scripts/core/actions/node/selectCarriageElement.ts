@@ -2,6 +2,19 @@ import ElementAction from "../../ElementAction";
 import ActionResult from "../../ActionResult";
 import * as gd from "../../../core/GameData";
 
+const carriage_parts = {
+    "wheels" : [
+        "front_wheel",
+        "rear_wheel",
+    ],
+    "chassis" : null,
+    "pattern" : null,
+    "seat" : null,
+    "boot" : null,
+    "shield" : null,
+    "entertainers" : null,
+}
+
 class SelectCarriageElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
         var result: ActionResult = {};
@@ -46,8 +59,8 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
             [];*/
 
             
-            if(this.elementStatus["resources"]["node"][selected_carriage_part_type.name]) {
-                for(var item of this.elementStatus["resources"]["node"][selected_carriage_part_type.name]) {
+            if(carriage_parts[selected_carriage_part_type.name]) {
+                for(var item of carriage_parts[selected_carriage_part_type.name]) {
                     hitboxes.push(gd.directory.getNode('/Canvas/background/carriage/' + part + '/' + item));
                 }
             } else {
@@ -56,14 +69,20 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
 
             for(var hitboxes_item of hitboxes) {
                 for (var concrete_part in hitboxes_item.children) {
-                    selected_carriage_part_type.children[concrete_part].active = false;
+                    hitboxes_item.children[concrete_part].active = false;
+                }
+                var selected_part = hitboxes_item.getChildByName(carriage_data["data"]["parts"][part]["part"]);
+                if(selected_part) {
+                    selected_part.active = true;
                 }
             }
  
+            /*
             var concrete_selected_part = selected_carriage_part_type.getChildByName(carriage_data["data"]["parts"][part]["part"]);
             if(concrete_selected_part) {
                 concrete_selected_part.active = true;
             }
+            */
         }
 
         return result;

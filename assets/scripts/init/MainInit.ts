@@ -143,9 +143,9 @@ export default class SceneInit extends cc.Component {
 
         var player_data = gd.directory.searchId('player');
         
-        var result = check_carriage(carriage["data"]);
-        //player_data["current_step"] = 4;
-        //cc.director.loadScene('workshop');
+        //var result = check_carriage(carriage["data"]);
+        player_data["current_step"] = 4;
+        cc.director.loadScene('workshop');
                 
         //player_data["data"]["current_step"] = 1;
         //player_data["data"]["steps"]["1"]["stage"] = 4;
@@ -158,21 +158,21 @@ export default class SceneInit extends cc.Component {
         
         //cc.director.loadScene('indicators');
 
-        /*
+/*
         player_data["data"]["current_step"] = 5;
         player_data["data"]["steps"]["5"]["stage"] = 0;
         cc.director.loadScene('map_feedback');
-        */
+*/
         
         
-
+/*
         player_data["data"]["current_step"] = 5;
         player_data["data"]["steps"]["5"]["feedback"].push({});
         player_data["data"]["steps"]["5"]["feedback"].push({});
         player_data["data"]["steps"]["5"]["feedback"].push({});
         player_data["data"]["steps"]["5"]["stage"] = 1;
         cc.director.loadScene('map_disruption');
-
+*/
 
     }
 

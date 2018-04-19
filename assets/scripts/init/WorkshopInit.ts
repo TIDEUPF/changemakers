@@ -43,8 +43,6 @@ export default class WorkshopInit extends cc.Component {
                     "chassis" : "/Canvas/background/carriage/chassis",
                     "pattern" : "/Canvas/background/carriage/pattern",
                     "seat" : "/Canvas/background/carriage/seat",
-                    "stairs" : "/Canvas/background/carriage/stairs",
-                    "top" : "/Canvas/background/carriage/top",
                     "boot" : "/Canvas/background/carriage/boot",
                     "shield" : "/Canvas/background/carriage/shield",
                     "entertainers" : "/Canvas/background/carriage/entertainers",
@@ -58,8 +56,6 @@ export default class WorkshopInit extends cc.Component {
                     "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
-                    "stairs" : {},
-                    "top" : {},
                     "boot" : {},
                     "shield" : {},
                     "entertainers" : {},
@@ -79,10 +75,10 @@ export default class WorkshopInit extends cc.Component {
             "action": "showElement",
             "emitter": "alarm",
             "id": (id_count++).toString(10),
-            "element_id" : "Canvas/background/selection/chasis",
+            "element_id" : "Canvas/background/selection/chassis",
             "resources": {
                 "node" : {
-                    "selection_chasis" : "Canvas/background/selection/chasis",
+                    "selection_chasis" : "Canvas/background/selection/chassis",
                 },
             },
         };
@@ -97,7 +93,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "carriage",
-                    origin: {'$containsAny' : ['wheels', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chassis', 'shield', 'entertainers']},
+                    origin: {'$containsAny' : ['wheels', 'pattern', 'boot', 'seat', 'chassis', 'shield', 'entertainers']},
             }
         };
         gd.observer.addSubscription(dialogListener);
@@ -113,15 +109,10 @@ export default class WorkshopInit extends cc.Component {
             "resources": {
                 "carriage_data": "user_built_carriage",
                 "node" : {
-                    "wheels" : [
-                        "/Canvas/background/selection/front_wheel",
-                        "/Canvas/background/selection/rear_wheel",
-                    ],
+                    "wheels" : "/Canvas/background/selection/wheels",
                     "chassis" : "/Canvas/background/selection/chassis",
                     "pattern" : "/Canvas/background/selection/pattern",
                     "seat" : "/Canvas/background/selection/seat",
-                    "stairs" : "/Canvas/background/selection/stairs",
-                    "top" : "/Canvas/background/selection/top",
                     "boot" : "/Canvas/background/selection/boot",
                     "shield" : "/Canvas/background/selection/shield",
                     "entertainers" : "/Canvas/background/selection/entertainers",
@@ -133,8 +124,6 @@ export default class WorkshopInit extends cc.Component {
                     "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
-                    "stairs" : {},
-                    "top" : {},
                     "boot" : {},
                     "shield" : {},
                     "entertainers" : {},
@@ -152,7 +141,7 @@ export default class WorkshopInit extends cc.Component {
             event : {
                     type : "click",
                     origin_type: "selection",
-                    origin: {'$containsAny' : ['front_wheel', 'rear_wheel', 'pattern', 'stairs', 'boot', 'top', 'seat', 'chasis', 'shield', 'entertainers']]},
+                    origin: {'$containsAny' : ['wheels', 'pattern', 'boot', 'seat', 'chassis', 'shield', 'entertainers']},
             }
         };
         gd.observer.addSubscription(selection_listener);
