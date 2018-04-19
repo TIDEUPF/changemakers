@@ -46,6 +46,8 @@ export default class WorkshopInit extends cc.Component {
                     "boot" : "/Canvas/background/carriage/boot",
                     "shield" : "/Canvas/background/carriage/shield",
                     "entertainers" : "/Canvas/background/carriage/entertainers",
+                    "dseat" : "/Canvas/background/carriage/dseat",
+                    "pseat" : "/Canvas/background/carriage/pseat",
                 },
             },
             "init": {
@@ -61,6 +63,8 @@ export default class WorkshopInit extends cc.Component {
                     },
                     "shield" : {},
                     "entertainers" : {},
+                    "dseat" : {},
+                    "pseat" : {},
                 }
             }
         };
@@ -118,6 +122,8 @@ export default class WorkshopInit extends cc.Component {
                     "boot" : "/Canvas/background/selection/boot",
                     "shield" : "/Canvas/background/selection/shield",
                     "entertainers" : "/Canvas/background/selection/entertainers",
+                    "dseat" : "/Canvas/background/selection/dseat",
+                    "pseat" : "/Canvas/background/selection/pseat",
                 },
             },
             "init": {
@@ -129,6 +135,8 @@ export default class WorkshopInit extends cc.Component {
                     "boot" : {},
                     "shield" : {},
                     "entertainers" : {},
+                    "dseat" : {},
+                    "pseat" : {},
                 }
             }
         };
@@ -188,6 +196,20 @@ export default class WorkshopInit extends cc.Component {
             }
         });
  
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var interior_list = ["dseat", "pseat"];
+
+                for(var interior_list_item of interior_list) {
+                    var item_node = gd.directory.getNode('/Canvas/background/carriage' + '/' + interior_list_item);
+                    item_node.active = !item_node.active;
+                }
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "interior_toggle",
+            }
+        });
 
         gd.observer.addSubscription({
             listener : function(event) {
