@@ -10,7 +10,10 @@ const carriage_parts = {
     "chassis" : null,
     "pattern" : null,
     "seat" : null,
-    "boot" : null,
+    "boot" : [
+        "rear",
+        "top",
+    ],
     "shield" : null,
     "entertainers" : null,
 }

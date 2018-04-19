@@ -1,5 +1,5 @@
 const {ccclass, property} = cc._decorator;
-
+ 
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
@@ -7,30 +7,30 @@ import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
 import * as Polyglot from "node-polyglot";
-
+ 
 @ccclass
 export default class WorkshopInit extends cc.Component {
     observer: Observer;
     directory: Directory;
     db: Loki;
     cl: Collection<any>;
-
+ 
     onLoad() {
         //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
         //cc.audioEngine.play("db://assets/sound/fx/testaudio.mp3", true, 1);
-
+ 
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
         gd.directory.clearNodes();
-
+ 
         //cc.audioEngine.play("res/raw-assets/sound/fx/testaudio.mp3", true, 1);
-
+ 
         // init logic
         var init = this;  
-
+ 
         //console.log(gamenn.moveUp);
         var id_count=0;
-
+ 
         var element_click = {
             "type": "node",
             "action": null,
@@ -51,25 +51,27 @@ export default class WorkshopInit extends cc.Component {
             "init": {
                 "clickEvent": {
                     "wheels" : {
-                        "hitbox": ["front_wheel", "rear_wheel"],
+                        "hitboxes": ["front_wheel", "rear_wheel"],
                     },
                     "chassis" : {},
                     "pattern" : {},
                     "seat" : {},
-                    "boot" : {},
+                    "boot" : {
+                        "hitboxes": ["rear", "top"],
+                    },
                     "shield" : {},
                     "entertainers" : {},
                 }
             }
         };
-
+ 
         gd.directory.addStatus(element_click);
-
+ 
         var front_wheel_element: any = new GameElement(element_click, cc.find('/Canvas/background/carriage/front_wheel'));
-
+ 
         gd.directory.addElement(front_wheel_element);
 
-
+         
         var selection_chasis = {
             "type": "node",
             "action": "showElement",
@@ -82,7 +84,7 @@ export default class WorkshopInit extends cc.Component {
                 },
             },
         };
-
+ 
         gd.directory.addStatus(selection_chasis);
         var selection_chasis_element: any = new GameElement(selection_chasis, cc.find('Canvas/background/selection/chasis'));
         gd.directory.addElement(selection_chasis_element);
@@ -97,8 +99,8 @@ export default class WorkshopInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(dialogListener);
-
-
+    
+    
         //set a carriage piece
         var set_carriage_element = {
             "type": "node",
@@ -130,11 +132,11 @@ export default class WorkshopInit extends cc.Component {
                 }
             }
         };
-
+    
         gd.directory.addStatus(set_carriage_element);
         var carriage_element: any = new GameElement(set_carriage_element, cc.find('Canvas/background/carriage'));
         gd.directory.addElement(carriage_element);
-
+    
         //listen to the wheel click event
         var selection_listener = {
             listener : carriage_element.getId(),
@@ -145,18 +147,19 @@ export default class WorkshopInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(selection_listener);
+    
+        /*
+                gd.observer.addSubscription({
+                    listener : function() {
+                        cc.director.loadScene('map');
+                    },
+                    event:{
+                        type : "keyinput",
+                        "data.key": "m",
+                    }
+                });
+        */
 
-/*
-        gd.observer.addSubscription({
-            listener : function() {
-                cc.director.loadScene('map');
-            },
-            event:{
-                type : "keyinput",
-                "data.key": "m",
-            }
-        });
-*/
 
         var player_data = gd.directory.searchId('player');
         var carriage_data = gd.directory.searchId('user_built_carriage');
@@ -174,7 +177,7 @@ export default class WorkshopInit extends cc.Component {
                         }
                     }
                 }
-
+ 
                 if(n_selected_parts == n_total_parts) {
                     gd.directory.getNode('/Canvas/background/next_step').active = true;
                 }
@@ -184,6 +187,7 @@ export default class WorkshopInit extends cc.Component {
                 "subtype" : "part_assigned",
             }
         });
+ 
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -197,7 +201,7 @@ export default class WorkshopInit extends cc.Component {
                 "subtype" : "next_step",
             }
         });
-
+ 
         //stage5
         if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 0) {
             gd.observer.addSubscription({
@@ -213,7 +217,7 @@ export default class WorkshopInit extends cc.Component {
                 }
             });
         }
-        
+
         //stage5 disruption
         if(player_data["data"]["current_step"] >= 4 && player_data["data"]["steps"]["5"]["disruption"].length < 2) {
             gd.observer.addSubscription({
@@ -246,7 +250,7 @@ export default class WorkshopInit extends cc.Component {
                 }
             });
         }
-
+ 
         //update the carriage
         new GameElement({
             "action": "selectCarriageElement",
@@ -263,9 +267,9 @@ export default class WorkshopInit extends cc.Component {
             "type": "carriage",
             "subtype": "update",
         });
-
+ 
     }
-
+ 
     update (dt) {
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
