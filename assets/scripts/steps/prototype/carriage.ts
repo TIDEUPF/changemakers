@@ -1,5 +1,5 @@
 export const parts_information:Object = {
-    "dseat":{
+    "pseat":{
         "variations": {
             "1": {
                 "cost": 1,
@@ -96,7 +96,7 @@ export const parts_information:Object = {
         "variations": {
             "1": {
                 "cost": 1,
-                "time_to_build": 0,
+                "time_to_build": 1,
                 "speed": 0,
                 "aesthetics": 1,
                 "ergonomy": 1,
@@ -163,7 +163,7 @@ export const parts_information:Object = {
                 "aesthetics": 0,
                 "ergonomy": 0,
                 "size": 1,
-                "robustness": 3,
+                "robustness": 1,
             },
             "2": {
                 "cost": 2,
@@ -195,13 +195,13 @@ export const carriage_indicators:Object = {
     ],
     "aesthetics": [
         "seat",
-        "dseat",
+        "pseat",
         "pattern",
     ],
     "ergonomy": [
         "boot",
         "seat",
-        "pattern",
+        "pseat",
     ],
     "size": [
         "wheels",
@@ -218,7 +218,7 @@ export const carriage_indicators:Object = {
         "chassis",
         "boot",
         "seat",
-        "dseat",
+        "pseat",
         "pattern",
     ],
     "time_to_build": [
@@ -226,7 +226,7 @@ export const carriage_indicators:Object = {
         "chassis",
         "boot",
         "seat",
-        "dseat",
+        "pseat",
         "pattern",
     ],
 }
@@ -253,7 +253,7 @@ export const carriage_next_step:Object = {
     "size": {
         "min": 4,
         "max": null,
-        "min_warning": null,
+        "min_warning": "stage4_min_size",
         "max_warning": null,
     },
     "robustness": {
@@ -306,6 +306,7 @@ export function evaluate_indicator(carriage_data, indicator) {
                 "pass": pass,
                 "warning": warning,
                 "failed_condition": "min",
+                "indicator_value": indicator_value,
             };
         }
     }
@@ -318,6 +319,7 @@ export function evaluate_indicator(carriage_data, indicator) {
                 "pass": pass,
                 "warning": warning,
                 "failed_condition": "max",
+                "indicator_value": indicator_value,
             };
         }
     }
@@ -326,6 +328,7 @@ export function evaluate_indicator(carriage_data, indicator) {
         "pass": pass,
         "warning": warning,
         "failed_condition": null,
+        "indicator_value": indicator_value,
     };
 }
 

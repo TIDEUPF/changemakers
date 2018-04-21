@@ -10,7 +10,7 @@ import * as Polyglot from "node-polyglot";
 
 @ccclass
 export default class InputEvent extends cc.Component {
-    onButtonClick(event) {
+    onButtonClick(event, data) {
         gd.observer.addEvent({
             "type": "click",
             "subtype": event.target.parent.getName(),
@@ -19,6 +19,7 @@ export default class InputEvent extends cc.Component {
                 "location": event.touch.getLocation(),
                 "name": event.target.getName(),
                 "node": event.target,
+                "custom": data,
             },
         });
     }

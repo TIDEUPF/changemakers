@@ -3,6 +3,9 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {MessageBox} from "../core/MessageBox";
+import {check_carriage} from "../steps/prototype/carriage";
+import {Badge} from "../core/Badge";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -31,6 +34,9 @@ export default class WorkshopInit extends cc.Component {
         //console.log(gamenn.moveUp);
         var id_count=0;
  
+        var player_data = gd.directory.searchId('player');
+        var carriage_data = gd.directory.searchId('user_built_carriage');
+
         var element_click = {
             "type": "node",
             "action": null,
@@ -104,6 +110,23 @@ export default class WorkshopInit extends cc.Component {
         };
         gd.observer.addSubscription(dialogListener);
     
+        gd.observer.addSubscription({
+            listener : function(event) {
+                let gameEvent = {
+                    type: "click",
+                    origin: event["data"]["custom"],
+                    origin_type: "carriage",
+                };
+
+                gd.observer.addEvent(gameEvent);
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "category_buttons",
+                "data.custom" : {'$containsAny' : ['wheels', 'pattern', 'boot', 'seat', 'chassis', 'shield', 'entertainers']},
+            }
+        });
+ 
     
         //set a carriage piece
         var set_carriage_element = {
@@ -167,10 +190,6 @@ export default class WorkshopInit extends cc.Component {
                     }
                 });
         */
-
-
-        var player_data = gd.directory.searchId('player');
-        var carriage_data = gd.directory.searchId('user_built_carriage');
     
         //enable stage 5
         gd.observer.addSubscription({
@@ -196,13 +215,16 @@ export default class WorkshopInit extends cc.Component {
             }
         });
  
+        //toogle inetrior elements
         gd.observer.addSubscription({
             listener : function(event) {
                 var interior_list = ["dseat", "pseat"];
 
                 for(var interior_list_item of interior_list) {
-                    var item_node = gd.directory.getNode('/Canvas/background/carriage' + '/' + interior_list_item);
-                    item_node.active = !item_node.active;
+                    if(carriage_data["data"]["parts"][interior_list_item]["active"] !== false) {
+                        var item_node = gd.directory.getNode('/Canvas/background/carriage' + '/' + interior_list_item);
+                        item_node.active = !item_node.active;
+                    }
                 }
             },
             event:{
@@ -211,12 +233,44 @@ export default class WorkshopInit extends cc.Component {
             }
         });
 
+        //print results
         gd.observer.addSubscription({
             listener : function(event) {
-                gd.observer.addEvent({
-                    "type": "action",
-                    "subtype": "workshop_finish",
-                });
+                var result = check_carriage(carriage_data["data"]);
+                console.log(result);
+            },
+            event:{
+                "type": "carriage",
+                "subtype": "part_assigned",
+            }
+        });
+
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var result = check_carriage(carriage_data["data"]);
+
+                if(result["pass"]) {
+                    Badge.add({"badge_id": "problem_solver_g"});
+
+                    gd.observer.addSubscription({
+                        listener : function(event) {
+                            gd.observer.addEvent({
+                                "type": "action",
+                                "subtype": "workshop_finish",
+                            });
+                        },
+                        event:{
+                            type: "bagdes",
+                            subtype: "close",
+                        }
+                    });
+
+                } else {
+                    if(result["failed"].length > 0) {
+                        MessageBox.text(result["indicators_result"][result["failed"][0]]["warning"]);
+                    }
+                }
             },
             event:{
                 "type" : "click",

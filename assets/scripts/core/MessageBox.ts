@@ -1,15 +1,18 @@
 import * as gd from "./GameData";
+import * as text from "../text/i18n";
 import {Scene} from "../core/Scene";
 
 export class MessageBox {
-    static text(text) {
+    static text(content) {
+
+        var tcontent = text.i18n.t(content);
 
         var messagebox: cc.Node = gd.directory.getNode('/messagebox');
         var label: cc.Node = gd.directory.getNode('/messagebox/text');
         messagebox.active = true;
 
         var label_component: cc.Label = label.getComponent('cc.Label');
-        label_component.string = text;
+        label_component.string = tcontent;
 
         Scene.click('/messagebox');
 
