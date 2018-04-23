@@ -49,14 +49,24 @@ export default class MapFeedback extends cc.Component {
 */
         var player_data = gd.directory.searchId('player');
 
+        if(player_data["data"]["current_step"] == 5 && 
+        player_data["data"]["steps"]["5"]["feedback"].length === 0 &&
+        player_data["data"]["steps"]["5"]["noninformative"].length === 0) {
+            MessageBox.text("stage5_feedback_intro");
+        }
+
         //stage5 disable visited dialogues
         if(player_data["data"]["current_step"] == 5) {
-            for(var character in player_data["data"]["steps"]["5"]["feedback"]) {
-                var character_node = gd.directory.getNode(elements_path + player_data["data"]["steps"]["5"]["feedback"][character]);
+            for(var character of player_data["data"]["steps"]["5"]["feedback"]) {
+                var character_node = gd.directory.getNode(elements_path + character);
                 character_node.active = false;
             }
 
-            MessageBox.text("Click on a character to recieve feedback");
+            for(var character of player_data["data"]["steps"]["5"]["noninformative"]) {
+                var character_node = gd.directory.getNode(elements_path + character);
+                character_node.active = false;
+            }
+            //MessageBox.text("Click on a character to recieve feedback");
         }
 
         if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
@@ -95,20 +105,99 @@ export default class MapFeedback extends cc.Component {
                     "Captain" : elements_path + "Captain",
                     "Driver" : elements_path + "Driver",
                     "old_lady" : elements_path + "old_lady",
+                    "Chef" : elements_path + "Chef",
+                    "Doctor" : elements_path + "Doctor",
+                    "Huntress" : elements_path + "Huntress",
+                    "Librarian" : elements_path + "Librarian",
+                    "Merchant" : elements_path + "Merchant",
+                    "Messenger_horse" : elements_path + "Messenger_horse",
+                    "Messenger" : elements_path + "Messenger",
+                    "butler" : elements_path + "butler",
+                    "civil_engineer" : elements_path + "civil_engineer",
+                    "potter" : elements_path + "potter",
+                    "queen" : elements_path + "queen",
+                    "soldier" : elements_path + "soldier",
+                    "the_grumpy_butcher" : elements_path + "the_grumpy_butcher",
+                    "the_stable_boy" : elements_path + "the_stable_boy",
+                    "vagabond" : elements_path + "vagabond",
+                    "Tailor" : elements_path + "Tailor",
                 },
                 "switch" : {
                     "Captain" : {
-                        "scene" : "cutscene_5",
+                        "scene" : "cutscene_6",
                         "dialog" : "stage5_feedback_captain",
                     },
                     "Driver" : {
-                        "scene" : "cutscene_5",
+                        "scene" : "cutscene_6",
                         "dialog" : "stage5_feedback_coachman",
                     },
                     "old_lady" : {
-                        "scene" : "cutscene_5",
+                        "scene" : "cutscene_6",
                         "dialog" : "stage5_feedback_oldlady",
                     },
+
+
+                    "Chef" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Chef",
+                    },
+
+                    "Doctor" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Doctor",
+                    },
+
+                    "Huntress" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Huntress",
+                    },
+
+                    "Librarian" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Librarian",
+                    },
+
+                    "Merchant" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Merchant",
+                    },
+
+                    "butler" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_butler",
+                    },
+
+                    "civil_engineer" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_civil_engineer",
+                    },
+
+                    "potter" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_potter",
+                    },
+
+                    "the_grumpy_butcher" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_the_grumpy_butcher",
+                    },
+
+                    "the_stable_boy" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_the_stable_boy",
+                    },
+
+                    "vagabond" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_vagabond",
+                    },
+
+                    "Tailor" : {
+                        "scene" : "cutscene_6",
+                        "dialog" : "stage5_noninformative_Tailor",
+                    },
+
+
                 },
             },
             "data": {
@@ -116,9 +205,26 @@ export default class MapFeedback extends cc.Component {
             },
             "init": {
                 "clickEvent": {
-                    "Captain" : {},
-                    "Driver" : {},
-                    "old_lady" : {},
+//                    "Captain" : {},
+//                    "Driver" : {},
+//                    "old_lady" : {},
+                    "Chef" : {},
+                    "Doctor" : {},
+                    "Huntress" : {},
+                    "Librarian" : {},
+                    "Merchant" : {},
+                    "Messenger_horse" : {},
+                    "Messenger" : {},
+                    "butler" : {},
+                    "civil_engineer" : {},
+                    "potter" : {},
+                    "queen" : {},
+                    "soldier" : {},
+                    "the_grumpy_butcher" : {},
+                    "the_stable_boy" : {},
+                    "vagabond" : {},
+                    "Tailor" : {},
+
                 }
             }
         };
@@ -136,6 +242,97 @@ export default class MapFeedback extends cc.Component {
             }
         });
         
+        const hints = [
+            "Captain",
+            "Driver",
+            "old_lady",
+        ];
+
+        for(var item of hints) {
+            Scene.click('/Canvas/background/npcs/' + item);
+        }
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                for(var item of hints) {
+                    gd.directory.getNode('/Canvas/background/npcs/' + item + '/balloon').active = true;
+
+                    Scene.click('/Canvas/background/npcs/' + item + '/balloon/s1');
+                    Scene.click('/Canvas/background/npcs/' + item + '/balloon/s2');
+                }
+            },
+            event: {
+                "type" : "hint",
+                "subtype": "feedback",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var balloon = cc.find(event["element_path"]);
+                gd.observer.addEvent({
+                    "type" : "click",
+                    "origin_type": "npcs",
+                    "origin": balloon.parent.parent.name,
+                });
+            },
+            event: {
+                "type" : "click",
+                "origin": {
+                    "$containsAny": [
+                        "s1",
+                        "s2",
+                    ]
+                },
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                var character = cc.find(event["element_path"]);
+                gd.observer.addEvent({
+                    "type" : "click",
+                    "origin_type": "npcs",
+                    "origin": character.name,
+                });
+            },
+            event: {
+                "type" : "click",
+                "subtype": "scene_click",
+                "origin": {
+                    "$containsAny": [
+                        "Captain",
+                        "Driver",
+                        "old_lady",
+                    ]
+                },
+            }
+        });
+
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["hint"] === true) {
+            gd.observer.addEvent({
+                "type" : "hint",
+                "subtype": "feedback",
+            });
+        }
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                player_data["data"]["steps"]["5"]["hint"] = true;
+
+                gd.observer.addEvent({
+                    "type" : "hint",
+                    "subtype": "feedback",
+                });
+            },
+            event:{
+                "type" : "click",
+                "subtype" : "show_hint",
+            }
+        });
+
+
+
 /*
         gd.observer.addSubscription({
             listener : function() {

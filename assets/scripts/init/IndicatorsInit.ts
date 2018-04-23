@@ -115,7 +115,7 @@ export default class IndicatorsInit extends cc.Component {
         });
         */
 
-        MessageBox.text("Welcome back to your workshop ! Based on of you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.");
+        MessageBox.text("stage2_narrator_d1");
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -127,7 +127,7 @@ export default class IndicatorsInit extends cc.Component {
                 }
 
                 if(modified_sliders >= 4) {
-                    MessageBox.text("What a promising carriage! Well done!");
+                    MessageBox.text("stage2_narrator_d3");
 
                     gd.observer.addSubscription({
                         listener : function(event) {
@@ -177,8 +177,9 @@ export default class IndicatorsInit extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function(event) {
-                player_data["data"]["current_step"] = 4;
-                cc.director.loadScene('workshop');
+                player_data["data"]["current_step"] = 3;
+                gd.scene["next"] = "stage3_ideation_patricia";
+                cc.director.loadScene('ideation_1');
             },
             event:{
                 "subtype" : "indicators_finish",

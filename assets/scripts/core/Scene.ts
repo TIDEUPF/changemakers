@@ -6,6 +6,7 @@ export const Scene:{ [s: string]: Function } = {
         node_item.on('touchstart', function(event) {
             gd.observer.addEvent({
                 type: "click",
+                subtype: "scene_click",
                 origin: node_item.name,
                 element_path: item,
             });

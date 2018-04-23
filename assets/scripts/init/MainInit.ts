@@ -84,8 +84,10 @@ export default class SceneInit extends cc.Component {
                     "5" : {
                         "stage": 0,
                         "feedback": [],
+                        "noninformative": [],
                         "disruption": [],
                         "current_disruption": null,
+                        "hint": false,
                     },
                 },
                 "current_step": 1,
@@ -108,32 +110,34 @@ export default class SceneInit extends cc.Component {
                         "part": "none",
                     },
                     "seat" : {
-                        "part": "seat1",
+                        "part": "none",
                     },
                     "pseat" : {
-                        "part": "pseat1",
+                        "part": "none",
                     },
                     "dseat" : {
-                        "part": "dseat1",
+                        "part": "none",
                         "active": false,
                     },
                     "shield" : {
-                        "part": "shield1",
+                        "part": "none",
                         "active": false,
                     },
                     "entertainers" : {
-                        "part": "entertainers1",
+                        "part": "none",
                         "active": false,
                     },
                     "boot" : {
-                        "part": "boot1",
+                        "part": "none",
                     },
                 },
             },
         });
         
         cc.game.addPersistRootNode(cc.find('notebook'));
+        cc.game.addPersistRootNode(cc.find('badges_transparency'));
         cc.game.addPersistRootNode(cc.find('badges'));
+        cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
 
         //cc.director.loadScene('player_select');
@@ -144,8 +148,10 @@ export default class SceneInit extends cc.Component {
         var player_data = gd.directory.searchId('player');
         
         //var result = check_carriage(carriage["data"]);
+        /*
         player_data["current_step"] = 4;
         cc.director.loadScene('workshop');
+        */
                 
         //player_data["data"]["current_step"] = 1;
         //player_data["data"]["steps"]["1"]["stage"] = 4;
@@ -158,21 +164,20 @@ export default class SceneInit extends cc.Component {
         
         //cc.director.loadScene('indicators');
 
-/*
+
+        /*
         player_data["data"]["current_step"] = 5;
-        player_data["data"]["steps"]["5"]["stage"] = 0;
-        cc.director.loadScene('map_feedback');
-*/
-        
-        
-/*
-        player_data["data"]["current_step"] = 5;
-        player_data["data"]["steps"]["5"]["feedback"].push({});
-        player_data["data"]["steps"]["5"]["feedback"].push({});
-        player_data["data"]["steps"]["5"]["feedback"].push({});
         player_data["data"]["steps"]["5"]["stage"] = 1;
+        cc.director.loadScene('map_feedback');
+        */
+    
+        
+        player_data["data"]["current_step"] = 5;
+        player_data["data"]["steps"]["5"]["feedback"].push({});
+        player_data["data"]["steps"]["5"]["feedback"].push({});
+        player_data["data"]["steps"]["5"]["feedback"].push({});
+        player_data["data"]["steps"]["5"]["stage"] = 2;
         cc.director.loadScene('map_disruption');
-*/
 
     }
 

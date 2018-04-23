@@ -41,6 +41,24 @@ export default class SceneInit extends cc.Component {
             "Huntress":"futile",
         }
 
+        const characters_feedback:Object = {
+            "Captain":"feedback",
+            "Driver":"feedback",
+            "old_lady":"feedback",
+            "Tailor":"noninformative",
+            "butler":"noninformative",
+            "the_stable_boy":"noninformative",
+            "Doctor":"noninformative",
+            "Chef":"noninformative",
+            "civil_engineer":"noninformative",
+            "Merchant":"noninformative",
+            "Librarian":"noninformative",
+            "the_grumpy_butcher":"noninformative",
+            "potter":"noninformative",
+            "vagabond":"noninformative",
+            "Huntress":"noninformative",
+        }
+
         var background_node = gd.directory.getNode('/Canvas/background');
 
         background_node.on('touchstart', function(event) {
@@ -118,11 +136,11 @@ export default class SceneInit extends cc.Component {
         }
 
         //step5 feedback dialogue counter increase
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     if(event["data"]["speaker"] != "narrator") {
-                        player_data["data"]["steps"]["5"]["feedback"].push(event["data"]["speaker"]);
+                        player_data["data"]["steps"]["5"][characters_feedback[event["data"]["speaker"]]].push(event["data"]["speaker"]);
                     }
                 },
                 event:{
@@ -131,7 +149,7 @@ export default class SceneInit extends cc.Component {
                 }
             });
         }
-             
+       
         //go to ideation
         /*
         if(player_data["data"]["current_step"] == 1 && player_data["data"]["steps"]["1"]["stage"] == 4) {
@@ -152,11 +170,10 @@ export default class SceneInit extends cc.Component {
             });
         }*/
 
-        //step5 disruptions counter increase
-        /*
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+        //step5 disruptions counter increase      
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 2) {
             gd.observer.addSubscription({
-                listener : function(event) {
+                listener: function(event) {
                     var disruption = {
                         "disruption_1": "entertainers", 
                         "disruption_2": "dseat", 
@@ -167,14 +184,15 @@ export default class SceneInit extends cc.Component {
                         player_data["data"]["steps"]["5"]["disruption"].push(disruption[event["data"]["speaker"]]);
                     }
                 },
-                event:{
+                event: {
                     "type" : "dialog",
                     "subtype": "turn_finished",
                 }
             });
-        }*/
+        }
             
         //go to disruptions
+        /*
         if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 0) {
             gd.observer.addSubscription({
                 listener : function(event) {
@@ -191,7 +209,7 @@ export default class SceneInit extends cc.Component {
                     "subtype": "dialog_finished",
                 }
             });
-        }
+        }*/
         
         //finish ideation and go to workshop
         /*if(gd.scene["current"] == "stage3_ideation_tharrenos") {
@@ -209,7 +227,7 @@ export default class SceneInit extends cc.Component {
         }*/
 
         //activate a new carriage item after a disruption
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var disruption = {
@@ -555,29 +573,110 @@ export default class SceneInit extends cc.Component {
                     "text_id" : "stage5_feedback_oldlady",
                     "speaker" : "old_lady",
                 },
-                "d2" : {
-                    "text_id" : "stage5_feedback_narrator",
-                    "speaker" : "narrator",
+            },
+
+            "stage5_noninformative_Chef": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_1",
+                    "speaker" : "Chef",
                 },
             },
 
+            "stage5_noninformative_Doctor": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_2",
+                    "speaker" : "Doctor",
+                },
+            },
+
+            "stage5_noninformative_Huntress": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_3",
+                    "speaker" : "Huntress",
+                },
+            },
+
+            "stage5_noninformative_Librarian": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_1",
+                    "speaker" : "Librarian",
+                },
+            },
+
+            "stage5_noninformative_Merchant": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_2",
+                    "speaker" : "Merchant",
+                },
+            },
+
+            "stage5_noninformative_butler": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_3",
+                    "speaker" : "butler",
+                },
+            },
+
+            "stage5_noninformative_civil_engineer": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_1",
+                    "speaker" : "civil_engineer",
+                },
+            },
+
+            "stage5_noninformative_potter": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_2",
+                    "speaker" : "potter",
+                },
+            },
+
+            "stage5_noninformative_the_grumpy_butcher": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_3",
+                    "speaker" : "the_grumpy_butcher",
+                },
+            },
+
+            "stage5_noninformative_the_stable_boy": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_1",
+                    "speaker" : "the_stable_boy",
+                },
+            },
+
+            "stage5_noninformative_vagabond": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_2",
+                    "speaker" : "vagabond",
+                },
+            },
+
+            "stage5_noninformative_Tailor": {
+                "d1" : {
+                    "text_id" : "stage5_feedback_noninformative_3",
+                    "speaker" : "Tailor",
+                },
+            },
+
+
             "disruption_1": {
                 "d1" : {
-                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "text_id" : "stage5_disruptions_narrator_d2",
                     "speaker" : "narrator",
                 },
             },
 
             "disruption_2": {
                 "d1" : {
-                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "text_id" : "stage5_disruptions_narrator_d2",
                     "speaker" : "narrator",
                 },
             },
 
             "disruption_3": {
                 "d1" : {
-                    "text_id" : "stage5_disruption1_narrator_d2",
+                    "text_id" : "stage5_disruptions_narrator_d2",
                     "speaker" : "narrator",
                 },
             },
@@ -711,6 +810,55 @@ export default class SceneInit extends cc.Component {
             "stage5_feedback_oldlady": {
                 "next_scene": "map_feedback",
             },
+
+            "stage5_noninformative_Chef": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_Doctor": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_Huntress": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_Librarian": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_Merchant": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_butler": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_civil_engineer": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_potter": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_the_grumpy_butcher": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_the_stable_boy": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_vagabond": {
+                "next_scene": "map_feedback",
+            },
+
+            "stage5_noninformative_Tailor": {
+                "next_scene": "map_feedback",
+            },
+
 
             "disruption_1": {
                 "next_scene": "map_disruption",

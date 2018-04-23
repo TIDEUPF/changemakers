@@ -8,13 +8,16 @@ export class MessageBox {
         var tcontent = text.i18n.t(content);
 
         var messagebox: cc.Node = gd.directory.getNode('/messagebox');
+        var messagebox_transparency: cc.Node = gd.directory.getNode('/messagebox_transparency');
         var label: cc.Node = gd.directory.getNode('/messagebox/text');
+        messagebox_transparency.active = true;
         messagebox.active = true;
 
         var label_component: cc.Label = label.getComponent('cc.Label');
         label_component.string = tcontent;
 
-        Scene.click('/messagebox');
+        //TODO: avoid multiple click events assignment
+        Scene.click('/messagebox_transparency');
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -28,7 +31,7 @@ export class MessageBox {
             },
             event:{
                 "type" : "click",
-                "origin": "messagebox",
+                "origin": "messagebox_transparency",
             }
         });
 
@@ -36,7 +39,9 @@ export class MessageBox {
 
     static close() {
         var messagebox: cc.Node = gd.directory.getNode('/messagebox');
+        var messagebox_transparency: cc.Node = gd.directory.getNode('/messagebox_transparency');
         messagebox.active = false;
+        messagebox_transparency.active = false;
     }
 
     static path() {

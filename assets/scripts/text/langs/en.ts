@@ -32,25 +32,32 @@ export const data = {
     "stage1_scene4_vagabond_male_d1": "He who would travel happily must travel light.",
     "stage1_scene4_huntress_female_d1": "I have no time to discuss. I have meat to catch.",
 
+    "stage2_narrator_d1": "Welcome back to your workshop! Based on of you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.",
+    "stage2_narrator_d2": "My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.",
+    "stage2_narrator_d3": "What a promising carriage! Well done!",
+
     "stage3_ideation_patricia": "The carriage of Queen Patricia is the fastest one within the kingdom but often fails and breaks.",
     "stage3_ideation_mihaela": "The carriage of Queen Mihaela is the most beautiful one but not so convenient, slightly heavy and a nightmare to clean (the mud gets stuck in all the decorative elements of the outer walls).",
     "stage3_ideation_pablo": "The carriage of King Pablo is the strongest one within the kingdom. It survived to all bad roads and even to many attacks and always succeeded at keeping the king and the queen safe.",
     "stage3_ideation_ana": "The carriage of Queen Ana is the most comfortable one. Even the seat for the coachman is made of very soft and comfy materials. It makes every journey very pleasant.",
     "stage3_ideation_tharrenos": "The carriage of King Tharrenos is the largest one. It offers a great space. Traveling with it feels like traveling without getting out of your living room.",
 
+    "stage5_feedback_intro": "Now that your prototype is ready, let’s show it to some people to see what they think of it before presenting it to the king.",
     "stage5_feedback_captain": "Well, it seems quite strong to me. We should try it before giving it to the king and queen.",
     "stage5_feedback_coachman": "Well done. My friend. That's quite a nice carriage. But do you think it can pass through narrow streets? You should try before delivering it.",
     "stage5_feedback_oldlady": "Not bad. Not bad, at all I would say. But do you think it is fancy enough if the royal couple has to go to a ceremony? You should ask what people think about it before handing it over to the king and queen.",
+    "stage5_feedback_noninformative_1": "Sorry lad, no time to chat.",
+    "stage5_feedback_noninformative_2": "I have work to do. Ask someone else.",
+    "stage5_feedback_noninformative_3": "Hum ?",
     "stage5_feedback_narrator": "Based on the feedback you just received, do you wish to review your design or ignore their feedback and keep your design as it is?",
 
-    "stage5_disruption1_narrator_d1": "You are now ready for the real world test. Are you ready to see if your carriage is good enough now? You’re taking the carriage out and encounter and stop at a crossroad. There are 3 paths you may choose from. Pick one of the 3 paths.",
-    "stage5_disruption1_narrator_d2": "New options have just appeared in your workshop, go back to it to discover them.",
-    "stage5_disruption1_narrator_d3": "You have now chosen to surround your carriage with entertainers (musicians, artists, soldiers), flags and fancy animals elephants/giraffe/camel/ostrich, to go to the congress of kings and queens! What is good is that this does not impact the design of your carriage but allows you to respond temporarily to this exceptional need of showing off. Well done!",
+    "stage5_disruptions_narrator_d1": "You are now ready for the real world test. Are you ready to see if your carriage is good enough now? You’re taking the carriage out and encounter and stop at a crossroad. There are 3 paths you may choose from. Pick one of the 3 paths.",
+    "stage5_disruptions_narrator_d2": "New options have just appeared in your workshop, go back to it to discover them.",
+    "stage5_disruptions_narrator_d3": "Now that you have augmented your carriage, take it out for a new test.",
 
+    "stage5_disruption1_narrator_d1": "You have now chosen to surround your carriage with entertainers (musicians, artists, soldiers), flags and fancy animals elephants/giraffe/camel/ostrich, to go to the congress of kings and queens! What is good is that this does not impact the design of your carriage but allows you to respond temporarily to this exceptional need of showing off. Well done!",
     "stage5_disruption2_narrator_d1": "You have now chosen to design the carriage for sharing! Congratulations! Most carriages are parked for 80% of their time, so sharing is caring. Remember to also think about how to divide the time of use of the carriage. Ask a parent/teacher to show you how to design a sharing scheme for both the royal family and their neighbours/friends...",
-
-    "stage5_disruption3_narrator_d1": "New options have just appeared in your workshop, go back to it to discover them.",
-    "stage5_disruption3_narrator_d2": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
+    "stage5_disruption3_narrator_d1": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
 
     "stage6_ending_queen": "Well done! You have done a fantastic job. I am very happy with it.",
     "stage6_ending_king": "Yes! That carriage is perfect!",
@@ -70,4 +77,11 @@ export const data = {
     "stage4_min_ergonomy": "You have to make a carriage not a chariot. Make it more convenient!",
 
     "stage4_min_robustness": "Your carriage is way too fragile as it is built. It will break apart at the first cobble stone it will hit",
+
+    "creative_mind": "Creative mind",
+    "critical_thinker": "Critical thinker",
+    "listener": "Listener",
+    "never_give_up": "\"Never give-up\"-er",
+    "problem_solver": "Problem solver",
+
 }

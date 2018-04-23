@@ -5,6 +5,7 @@ import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {MessageBox} from "../core/MessageBox";
 import {Scene} from "../core/Scene";
+import {Badge} from "../core/Badge";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -50,15 +51,80 @@ export default class MapDisruptions extends cc.Component {
         var player_data = gd.directory.searchId('player');
 
         //stage5 disable visited disruptions
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 2) {
             for(var disruption in player_data["data"]["steps"]["5"]["disruption"]) {
                 var disruption_node = gd.directory.getNode(elements_path + player_data["data"]["steps"]["5"]["disruption"][disruption]);
                 disruption_node.active = false;
             }
-
-            MessageBox.text("Click on a character to test the carriage");
         }
         
+        //show the first message
+        if(player_data["data"]["current_step"] == 5 &&
+        player_data["data"]["steps"]["5"]["stage"] == 2 &&
+        player_data["data"]["steps"]["5"]["disruption"].length === 0) {
+            MessageBox.text("stage5_disruptions_narrator_d1");
+        }
+
+        //show the first message
+        if(player_data["data"]["current_step"] == 5 && 
+        player_data["data"]["steps"]["5"]["stage"] == 2 &&
+        player_data["data"]["steps"]["5"]["disruption"].length > 0) {
+            MessageBox.text("stage5_disruptions_narrator_d3");
+        }
+
+        //next step with 2 disruptions
+        if(player_data["data"]["current_step"] == 5 && 
+        player_data["data"]["steps"]["5"]["stage"] == 2 &&
+        player_data["data"]["steps"]["5"]["disruption"].length >= 2) {
+            MessageBox.text("Now you can proceed to the next step");
+            gd.directory.getNode('/Canvas/background/next_step').active = true;
+        }
+
+        //level 5 badge
+        if(player_data["data"]["current_step"] == 5 && 
+        player_data["data"]["steps"]["5"]["stage"] == 2 &&
+        player_data["data"]["steps"]["5"]["disruption"].length >= 2) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    if(player_data["data"]["steps"]["5"]["disruption"].length === 3) {
+                        Badge.add({"badge_id": "never_give_up_g"});
+                    } else if(player_data["data"]["steps"]["5"]["disruption"].length === 2) {
+                        Badge.add({"badge_id": "never_give_up_s"});
+                    } else if(player_data["data"]["steps"]["5"]["disruption"].length === 1) {
+                        Badge.add({"badge_id": "never_give_up_b"});
+                    }
+
+                    gd.observer.addSubscription({
+                        listener : function(event) {
+                            gd.observer.addEvent({
+                                "type": "step",
+                                "subtype": "disruptions_finish",
+                            });
+                        },
+                        event:{
+                            type: "bagdes",
+                            subtype: "close",
+                        }
+                    });
+                },
+                event:{
+                    "type" : "click",
+                    "subtype" : "next_step",
+                }
+            });
+        }
+        
+        gd.observer.addSubscription({
+            listener : function(event) {
+                gd.scene["next"] = 'ending';
+                cc.director.loadScene('cutscene_2');
+            },
+            event:{
+                "type" : "step",
+                "subtype" : "disruptions_finish",
+            }
+        });
+
         var map_click: Object = {
             "type": "node",
             "action": "switchScene",
@@ -99,7 +165,6 @@ export default class MapDisruptions extends cc.Component {
         };
 
         map_click = gd.directory.addStatus(map_click);
-        //gd.directory.addStatus(map_click);
         var map_element: any = new GameElement(map_click, cc.find('/Canvas/background/npcs'));
         gd.directory.addElement(map_element);
         
