@@ -102,7 +102,7 @@ class Dialog extends ElementAction<cc.Node> {
         
         var dialog_text_component: cc.RichText = dialog_text.getComponent('cc.RichText');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');
-        var char_width: number = w_size.width*0.65;
+        var char_width: number = w_size.width*0.55;
         var max_chars: number = Math.floor(dialog_text.width/char_width) * balloon_max_lines;
 
 

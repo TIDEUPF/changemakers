@@ -554,7 +554,7 @@ export default class SceneInit extends cc.Component {
 
             "stage1_scene4_butcher_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_librarian_female_d1",
+                    "text_id" : "stage1_scene4_butcher_male_d1",
                     "speaker" : "the_grumpy_butcher",
                 },
             },

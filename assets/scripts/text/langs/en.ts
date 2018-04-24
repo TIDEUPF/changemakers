@@ -32,7 +32,7 @@ export const data = {
     "stage1_scene4_vagabond_male_d1": "He who would travel happily must travel light.",
     "stage1_scene4_huntress_female_d1": "I have no time to discuss. I have meat to catch.",
 
-    "stage2_narrator_d1": "Welcome back to your workshop! Based on of you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.",
+    "stage2_narrator_d1": "Welcome back to your workshop! Based on what you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.",
     "stage2_narrator_d2": "My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.",
     "stage2_narrator_d3": "What a promising carriage! Well done!",
 
@@ -55,9 +55,9 @@ export const data = {
     "stage5_disruptions_narrator_d2": "New options have just appeared in your workshop, go back to it to discover them.",
     "stage5_disruptions_narrator_d3": "Now that you have augmented your carriage, take it out for a new test.",
 
-    "stage5_disruption1_narrator_d1": "You have now chosen to surround your carriage with entertainers (musicians, artists, soldiers), flags and fancy animals elephants/giraffe/camel/ostrich, to go to the congress of kings and queens! What is good is that this does not impact the design of your carriage but allows you to respond temporarily to this exceptional need of showing off. Well done!",
+    "stage5_disruption1_narrator_d1": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
     "stage5_disruption2_narrator_d1": "You have now chosen to design the carriage for sharing! Congratulations! Most carriages are parked for 80% of their time, so sharing is caring. Remember to also think about how to divide the time of use of the carriage. Ask a parent/teacher to show you how to design a sharing scheme for both the royal family and their neighbours/friends...",
-    "stage5_disruption3_narrator_d1": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
+    "stage5_disruption3_narrator_d1": "You have now chosen to surround your carriage with entertainers (musicians, artists, soldiers), flags and fancy animals elephants/giraffe/camel/ostrich, to go to the congress of kings and queens! What is good is that this does not impact the design of your carriage but allows you to respond temporarily to this exceptional need of showing off. Well done!",
 
     "stage6_ending_narrator_d1": "It’s the day we have been waiting for! It is time we present our carriage to the King and the Queen.",
     "stage6_ending_queen_d1": "Well done! You have done a fantastic job. I am very happy with it.",

@@ -4,7 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {MessageBox} from "../core/MessageBox";
-import {check_carriage} from "../steps/prototype/carriage";
+import {check_carriage, parts_information} from "../steps/prototype/carriage";
 import {Badge} from "../core/Badge";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -131,6 +131,38 @@ export default class WorkshopInit extends cc.Component {
                 "data.custom" : {'$containsAny' : ['wheels', 'pattern', 'boot', 'seat', 'pseat', 'dseat', 'chassis', 'shield', 'entertainers']},
             }
         });
+
+        //set indicators
+        if(!(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 2)) {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    var origin_path = "/Canvas/background/selection/" + event["origin"];
+                    if(parts_information[event["origin"]]) {
+                        for(var part_variation in parts_information[event["origin"]]["variations"]) {
+                            var variation_infomation = parts_information[event["origin"]]["variations"][part_variation];
+                            var n_indicators = 0;
+                            for(var variation_indicator in variation_infomation) {
+                                var variation_indicator_value = variation_infomation[variation_indicator];
+                                if(variation_indicator_value > 0) {
+                                        for(var i=1; i<=variation_indicator_value; i++) {
+                                        var icon = gd.directory.getNode(origin_path + '/' + event["origin"] + part_variation + '/indicators/' + variation_indicator + '/icon' + i);
+                                        icon.active = true;
+                                        icon.y = 232*n_indicators;
+                                    }
+                                    n_indicators++;
+                                }
+                            }
+                        }
+                    }
+        
+                },
+                event : {
+                        type : "click",
+                        origin_type: "carriage",
+                        origin: {'$containsAny' : ['wheels', 'pattern', 'boot', 'seat', 'pseat', 'dseat', 'chassis', 'shield', 'entertainers']},
+                }
+            });
+        }
 
         //enable inside elements when clicking on the interior seat
         gd.observer.addSubscription({
@@ -386,7 +418,7 @@ export default class WorkshopInit extends cc.Component {
             var disruption = {
                 "disruption_1": "stage5_disruption1_narrator_d1", 
                 "disruption_2": "stage5_disruption2_narrator_d1", 
-                "disruption_3": "stage5_disruption2_narrator_d1",
+                "disruption_3": "stage5_disruption3_narrator_d1",
             };
 
             MessageBox.text(disruption[gd.scene["current"]]);

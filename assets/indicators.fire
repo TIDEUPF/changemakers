@@ -3809,7 +3809,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 777.04,
+      "width": 900.5,
       "height": 40
     },
     "_rotationX": 0,
@@ -3844,7 +3844,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer high velocity or to travel slower but safely through all type of roads?",
+    "_N$string": "Will the king and the queen prefer high velocity or to travel slower but safely through all type of roads?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -3883,7 +3883,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 777.04,
+      "width": 570.27,
       "height": 40
     },
     "_rotationX": 0,
@@ -3918,7 +3918,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer high velocity or to travel slower but safely through all type of roads?",
+    "_N$string": "Will the kings prefer a durable carriage or a pretty fancy vehicle?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -3957,8 +3957,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 777.04,
-      "height": 40
+      "width": 409.08,
+      "height": 120
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -3992,7 +3992,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer high velocity or to travel slower but safely through all type of roads?",
+    "_N$string": "Will the kings prefer a minimalist\n yet practical carriage or a very luxurious one?\n",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -4031,7 +4031,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 777.04,
+      "width": 671.37,
       "height": 40
     },
     "_rotationX": 0,
@@ -4066,7 +4066,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer high velocity or to travel slower but safely through all type of roads?",
+    "_N$string": "Will the kings prefer a small fast carriage or a commodious slower carriage?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -4105,7 +4105,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 777.04,
+      "width": 618.08,
       "height": 40
     },
     "_rotationX": 0,
@@ -4140,7 +4140,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer high velocity or to travel slower but safely through all type of roads?",
+    "_N$string": "Will the kings prefer a light basic carriage or a very robust heavy one?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
