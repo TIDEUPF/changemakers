@@ -38,9 +38,9 @@ export const data = {
 
     "stage3_ideation_patricia": "The carriage of Queen Patricia is the fastest one within the kingdom but often fails and breaks.",
     "stage3_ideation_mihaela": "The carriage of Queen Mihaela is the most beautiful one but not so convenient, slightly heavy and a nightmare to clean (the mud gets stuck in all the decorative elements of the outer walls).",
-    "stage3_ideation_pablo": "The carriage of King Pablo is the strongest one within the kingdom. It survived to all bad roads and even to many attacks and always succeeded at keeping the king and the queen safe.",
+    "stage3_ideation_pablo": "The carriage of King Pablo is the strongest one within the kingdom. It survived to all bad roads and even to many attacks but it slow and heavy.",
     "stage3_ideation_ana": "The carriage of Queen Ana is the most comfortable one. Even the seat for the coachman is made of very soft and comfy materials. It makes every journey very pleasant.",
-    "stage3_ideation_tharrenos": "The carriage of King Tharrenos is the largest one. It offers a great space. Traveling with it feels like traveling without getting out of your living room.",
+    "stage3_ideation_tharrenos": "The carriage of King Tharrenos is the one with the largest storage. It offers a great space. Traveling with it is almost like carrying your house around.",
 
     "stage5_feedback_intro": "Now that your prototype is ready, let’s show it to some people to see what they think of it before presenting it to the king.",
     "stage5_feedback_captain": "Well, it seems quite strong to me. We should try it before giving it to the king and queen.",

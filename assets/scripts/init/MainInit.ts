@@ -54,9 +54,10 @@ export default class SceneInit extends cc.Component {
 
         cc.eventManager.addListener(keyEventListener, 1000);
 
-        //gd.scene["next"] = "courtyard";
-        //cc.director.loadScene('cutscene_4');
-
+        /*
+        gd.scene["next"] = "courtyard";
+        cc.director.loadScene('cutscene_4');
+*/
         //gd.scene["next"] = "stage3_ideation_patricia";
         //cc.director.loadScene('ideation_1');
 
@@ -147,19 +148,19 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
 
-        //cc.director.loadScene('player_select');
+        cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
-        var player_data = gd.directory.searchId('player');
+        //var player_data = gd.directory.searchId('player');
         
         //var result = check_carriage(carriage["data"]);
         
-        
+        /*
         player_data["data"]["current_step"] = 4;
         cc.director.loadScene('workshop');
-        
+        */
         
         
                 

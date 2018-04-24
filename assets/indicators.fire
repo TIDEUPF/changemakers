@@ -3819,7 +3819,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 452
+      "y": 439
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3893,7 +3893,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 307
+      "y": 299
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3957,8 +3957,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 409.08,
-      "height": 120
+      "width": 701.39,
+      "height": 40
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -3967,7 +3967,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 177
+      "y": 178
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3992,7 +3992,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer a minimalist\n yet practical carriage or a very luxurious one?\n",
+    "_N$string": "Will the kings prefer a minimalist  yet practical carriage or a very luxurious one?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -4041,7 +4041,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 45
+      "y": 42
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4115,7 +4115,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -75
+      "y": -86
     },
     "_skewX": 0,
     "_skewY": 0,

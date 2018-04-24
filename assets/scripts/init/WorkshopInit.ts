@@ -137,6 +137,34 @@ export default class WorkshopInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var origin_path = "/Canvas/background/selection/" + event["origin"];
+
+                    const indicators_position = {
+                        "wheels": {
+                            x: 177,
+                            y: 124,
+                        },
+                        "chassis": {
+                            x: -90,
+                            y: 274,
+                        },
+                        "seat": {
+                            x: 130,
+                            y: 124,
+                        },
+                        "pseat": {
+                            x: 140,
+                            y: 114,
+                        },
+                        "boot": {
+                            x: 300,
+                            y: 144,
+                        },
+                        "pattern": {
+                            x: 160,
+                            y: 144,
+                        },
+                    }
+
                     if(parts_information[event["origin"]]) {
                         for(var part_variation in parts_information[event["origin"]]["variations"]) {
                             var variation_infomation = parts_information[event["origin"]]["variations"][part_variation];
@@ -147,7 +175,12 @@ export default class WorkshopInit extends cc.Component {
                                         for(var i=1; i<=variation_indicator_value; i++) {
                                         var icon = gd.directory.getNode(origin_path + '/' + event["origin"] + part_variation + '/indicators/' + variation_indicator + '/icon' + i);
                                         icon.active = true;
-                                        icon.y = 232*n_indicators;
+                                        icon.y = -232*n_indicators + indicators_position[event["origin"]]["y"]/0.3;
+                                        icon.x = 232*i + indicators_position[event["origin"]]["x"]/0.3;
+
+                                        if(event["origin"] == "boot" && part_variation != "3") {
+                                            icon.x -= 800;
+                                        }
                                     }
                                     n_indicators++;
                                 }
@@ -432,7 +465,7 @@ export default class WorkshopInit extends cc.Component {
                     var disruption = {
                         "disruption_1": "disruption_1_result", 
                         "disruption_2": "disruption_2_result", 
-                        "disruption_3": "disruption_2_result",
+                        "disruption_3": "disruption_3_result",
                     };
         
                     gd.scene["next"] = disruption[gd.scene["current"]];
