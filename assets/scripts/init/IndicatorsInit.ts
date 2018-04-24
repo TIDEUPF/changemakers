@@ -127,8 +127,6 @@ export default class IndicatorsInit extends cc.Component {
                 }
 
                 if(modified_sliders >= 4) {
-                    MessageBox.text("stage2_narrator_d3");
-
                     gd.observer.addSubscription({
                         listener : function(event) {
                             gd.observer.addEvent({
@@ -141,6 +139,7 @@ export default class IndicatorsInit extends cc.Component {
                             subtype: "close",
                         }
                     });
+                    MessageBox.text("stage2_narrator_d3");
                 } else {
                     MessageBox.text("My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.");
                 }
@@ -156,22 +155,22 @@ export default class IndicatorsInit extends cc.Component {
                 Badge.add({
                     "badge_id": "critical_thinker_g",
                 });
-
-                gd.observer.addSubscription({
-                    listener : function(event) {
-                        gd.observer.addEvent({
-                            "subtype": "indicators_finish",
-                        });
-                    },
-                    event:{
-                        type: "bagdes",
-                        subtype: "close",
-                    }
-                });
             },
             event:{
                 "type" : "badges",
                 "subtype" : "add",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : function(event) {
+                gd.observer.addEvent({
+                    "subtype": "indicators_finish",
+                });
+            },
+            event:{
+                type: "bagdes",
+                subtype: "close",
             }
         });
 

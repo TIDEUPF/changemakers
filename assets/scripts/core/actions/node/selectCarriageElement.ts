@@ -53,8 +53,15 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
                 continue;
             }
 
-            if(carriage_data["data"]["parts"][selected_carriage_part_type.name]["active"] === false) {
-                selected_carriage_part_type.active = false;
+            //only in first load
+            if(events[0]["first_load"] === true) {
+                if(carriage_data["data"]["parts"][selected_carriage_part_type.name]["active"] === false) {
+                    selected_carriage_part_type.active = false;
+                } else if(carriage_data["data"]["parts"][selected_carriage_part_type.name]["hidden"] === true) {
+                    selected_carriage_part_type.active = false;
+                } else {
+                    selected_carriage_part_type.active = true;
+                }
             }
 
             var hitboxes = [];/*this.elementStatus["resources"]["node"][selected_carriage_part_type.name] ?

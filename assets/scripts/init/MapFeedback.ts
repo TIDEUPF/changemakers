@@ -69,13 +69,16 @@ export default class MapFeedback extends cc.Component {
             //MessageBox.text("Click on a character to recieve feedback");
         }
 
-        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+        if(player_data["data"]["current_step"] == 5 && 
+        player_data["data"]["steps"]["5"]["stage"] == 1 &&
+        player_data["data"]["steps"]["5"]["feedback"].length >=3) {
             gd.directory.getNode('/Canvas/background/next_step').active = true;
             gd.directory.getNode('/Canvas/background/go_to_workshop').active = true;
         }
 
         gd.observer.addSubscription({
             listener : function(event) {
+                player_data["data"]["steps"]["5"]["stage"] = 2;
                 cc.director.loadScene('map_disruption');
             },
             event:{

@@ -59,9 +59,21 @@ export const data = {
     "stage5_disruption2_narrator_d1": "You have now chosen to design the carriage for sharing! Congratulations! Most carriages are parked for 80% of their time, so sharing is caring. Remember to also think about how to divide the time of use of the carriage. Ask a parent/teacher to show you how to design a sharing scheme for both the royal family and their neighbours/friends...",
     "stage5_disruption3_narrator_d1": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
 
-    "stage6_ending_queen": "Well done! You have done a fantastic job. I am very happy with it.",
-    "stage6_ending_king": "Yes! That carriage is perfect!",
+    "stage6_ending_narrator_d1": "It’s the day we have been waiting for! It is time we present our carriage to the King and the Queen.",
+    "stage6_ending_queen_d1": "Well done! You have done a fantastic job. I am very happy with it.",
+    "stage6_main_character_d1" : "Thank you, my queen! I really enjoyed working with this! And had lots of other ideas while trying to design the best carriage, perhaps some would be useful to you?",
+    "stage6_ending_queen_d2": "Go ahead!",
+    "stage6_main_character_d2" : "Well, perhaps you could make the carriage more...",
 
+    "stage6_ending_king_d1": "Do you have any suggestion for me?",
+
+    "stage6_ending_king_d2": "Yes! That carriage is perfect!",
+
+    "stage6_scene1_dseat": "environmentally friendly and design the carriage for sharing by making it bigger ! Most carriages are parked for 80% of their time, so sharing is caring",
+    "stage6_scene1_shield": "robust, by fitting it for war. Thicker walls won’t be enough, you need to surround your carriage with soldiers and shields/pikes attached to the walls. It will surely impress your possible attackers.",
+    "stage6_scene1_entertainers": "even more beautiful by surrounding your carriage with entertainers (musicians, artists, soldiers), flags and fancy animals elephants/giraffe/camel/ostrich, to go to the congress of kings and queens! I bet everybody will be very impressed.",
+
+    "stage6_scene1_messenger_d1": "My friend you have done an incredible work! This is a masterpiece! You can be proud of yourself. The whole kingdom is thankful. I don't know what's your plans for the future, but don't loose that creativity of yours!",
 
 //carriage defines
     "stage4_min_cost": "Your carriage is too cheap. You are building the royal family's carriage! Not a merchant's cart!",

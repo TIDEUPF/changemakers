@@ -268,26 +268,34 @@ export default class WorkshopInit extends cc.Component {
 
 
         //level 4 badge
-        if(!(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 2)) {
+        if(player_data["data"]["current_step"] == 4 ||
+        (player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 1)) {
             gd.observer.addSubscription({
                 listener : function(event) {
                     var result = check_carriage(carriage_data["data"]);
 
                     if(result["pass"]) {
-                        Badge.add({"badge_id": "problem_solver_g"});
+                        if(player_data["data"]["current_step"] == 4) {
+                            Badge.add({"badge_id": "problem_solver_g"});
 
-                        gd.observer.addSubscription({
-                            listener : function(event) {
-                                gd.observer.addEvent({
-                                    "type": "action",
-                                    "subtype": "workshop_finish",
-                                });
-                            },
-                            event:{
-                                type: "bagdes",
-                                subtype: "close",
-                            }
-                        });
+                            gd.observer.addSubscription({
+                                listener : function(event) {
+                                    gd.observer.addEvent({
+                                        "type": "action",
+                                        "subtype": "workshop_finish",
+                                    });
+                                },
+                                event:{
+                                    type: "bagdes",
+                                    subtype: "close",
+                                }
+                            });
+                        } else {
+                            gd.observer.addEvent({
+                                "type": "action",
+                                "subtype": "start_disruptions",
+                            });
+                        }
 
                     } else {
                         if(result["failed"].length > 0) {
@@ -300,16 +308,35 @@ export default class WorkshopInit extends cc.Component {
                     "subtype" : "next_step",
                 }
             });
+
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["current_step"] = 5
+                    player_data["data"]["steps"]["5"]["stage"] = 1;
+                    cc.director.loadScene('map_feedback');
+                },
+                event:{
+                    "subtype" : "workshop_finish",
+                }
+            });
+
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["current_step"] = 5
+                    player_data["data"]["steps"]["5"]["stage"] = 2;
+                    cc.director.loadScene('map_disruption');
+                },
+                event:{
+                    "subtype" : "start_disruptions",
+                }
+            });
         }
 
-        //step5 scene1
+        //step5 stage1
         if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] === 1) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    //var next_disruption = ["disruption_1"/*, "disruption_2"*/, "disruption_3"];
-                    //gd.scene["next"] = next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length];
-                    //player_data["data"]["current_step"] = 5;
-                    //cc.director.loadScene(next_disruption[player_data["data"]["steps"]["5"]["disruptions"].length]);
+                    player_data["data"]["steps"]["5"]["stage"] = 2;
                     cc.director.loadScene('map_disruption');
                 },
                 event:{
@@ -457,6 +484,7 @@ export default class WorkshopInit extends cc.Component {
         gd.observer.addEvent({
             "type": "carriage",
             "subtype": "update",
+            "first_load": true,
         });
  
     }

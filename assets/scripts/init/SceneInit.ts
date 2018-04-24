@@ -109,7 +109,7 @@ export default class SceneInit extends cc.Component {
         if(gd.scene["current"] == "courtyard") {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    Badge.add({"badge_id": "critical_thinker_g"});
+                    //Badge.add({"badge_id": "critical_thinker_g"});
                     player_data["data"]["steps"]["1"]["stage"] = 4;
                 },
                 event:{
@@ -212,11 +212,10 @@ export default class SceneInit extends cc.Component {
         }*/
         
         //finish ideation and go to workshop
-        /*if(gd.scene["current"] == "stage3_ideation_tharrenos") {
+        if(gd.scene["current"] == "stage3_ideation_tharrenos") {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    player_data["data"]["current_step"] = 4;
-                    cc.director.loadScene('workshop');
+                    Badge.add({"badge_id": "creative_mind_g"});
                 },
                 event:{
                     "type" : "dialog",
@@ -224,8 +223,41 @@ export default class SceneInit extends cc.Component {
                     "data.id": "stage3_ideation_tharrenos_0",
                 },
             });
-        }*/
 
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    player_data["data"]["current_step"] = 4;
+                    cc.director.loadScene('workshop');
+                },
+                event:{
+                    type: "bagdes",
+                    subtype: "close",
+                }
+            });
+        }
+
+        //show the configured carriage to receive feedback
+        if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 1) {
+            //display the carriage
+            new GameElement({
+                "action": "selectCarriageElement",
+                "id": "disruption_carriage",
+                "resources": {
+                    "carriage_data": "user_built_carriage",
+                },
+                "listen" : {
+                    "type" : "carriage",
+                    "subtype" : "update",
+                },
+            });
+
+            gd.observer.addEvent({
+                "type": "carriage",
+                "subtype": "update",
+                "first_load": true,
+            });
+        }
+        
         //activate a new carriage item after a disruption
         if(player_data["data"]["current_step"] == 5 && player_data["data"]["steps"]["5"]["stage"] == 2) {
             gd.observer.addSubscription({
@@ -252,6 +284,7 @@ export default class SceneInit extends cc.Component {
                 }
             });
 
+            //display the carriage
             new GameElement({
                 "action": "selectCarriageElement",
                 "id": "disruption_carriage",
@@ -267,9 +300,37 @@ export default class SceneInit extends cc.Component {
             gd.observer.addEvent({
                 "type": "carriage",
                 "subtype": "update",
+                "first_load": true,
             });
         }
 
+        //activate a new carriage item after a disruption
+        if(player_data["data"]["current_step"] == 6 && player_data["data"]["steps"]["6"]["stage"] == 1) {
+            //display only the original carriage
+            
+            for(var part of player_data["data"]["steps"]["5"]["disruption"]) {
+                carriage_data["data"]["parts"][part]["active"] = false;
+            }
+
+            //display the carriage
+            new GameElement({
+                "action": "selectCarriageElement",
+                "id": "disruption_carriage",
+                "resources": {
+                    "carriage_data": "user_built_carriage",
+                },
+                "listen" : {
+                    "type" : "carriage",
+                    "subtype" : "update",
+                },
+            });
+
+            gd.observer.addEvent({
+                "type": "carriage",
+                "subtype": "update",
+                "first_load": true,
+            });
+        }
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -303,7 +364,7 @@ export default class SceneInit extends cc.Component {
             }
         });
 
-        var animation_start = ["workshop_messenger", "palace", "courtyard", "ending", "cutscene_1", "cutscene_2", "cutscene_4_1", "cutscene_4_2", "ending"];
+        var animation_start = ["workshop_messenger", "palace", "courtyard", "cutscene_1", "cutscene_2", "cutscene_4_1", "cutscene_4_2"];
         //autoplay after animation
         gd.observer.addSubscription({
             listener : function(event) {
@@ -683,6 +744,35 @@ export default class SceneInit extends cc.Component {
 
             "ending": {
                 "d1" : {
+                    "text_id" : "stage6_ending_narrator_d1",
+                    "speaker" : "narrator",
+                },
+                "d2" : {
+                    "text_id" : "stage6_ending_queen_d1",
+                    "speaker" : "queen",
+                },
+                "d4" : {
+                    "text_id" : "stage6_main_character_d1",
+                    "speaker" : "main_character",
+                },
+                "d5" : {
+                    "text_id" : "stage6_ending_queen_d2",
+                    "speaker" : "queen",
+                },
+                "d6" : {
+                    "text_id" : "stage6_main_character_d2",
+                    "speaker" : "main_character",
+                },
+            },
+            "ending_courtyard": {
+                "d1" : {
+                    "text_id" : "stage6_scene1_messenger_d1",
+                    "speaker" : "messenger",
+                },
+            },
+
+            "stage6_scene1": {
+                "d1" : {
                     "text_id" : "stage6_ending_queen",
                     "speaker" : "queen",
                 },
@@ -690,6 +780,10 @@ export default class SceneInit extends cc.Component {
                     "text_id" : "stage6_ending_king",
                     "speaker" : "king",
                 },
+                "d3": {
+                    "text_id" : "stage6_main_character_suggestion",
+                    "speaker" : "main_character",
+                }
             },
 
         }
@@ -872,6 +966,11 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map_disruption",
             },
 
+            "ending": {
+                "next_scene": "cutscene_8",
+                "next_dialog": "ending_courtyard",
+            },
+
         }
 
         var dialog_status: Object = {
@@ -913,9 +1012,6 @@ export default class SceneInit extends cc.Component {
         };
         gd.observer.addSubscription(dialogListener);
 
-        console.log("listener added");
-
-        
         var finishScene: Object = {
             listener : function() {
                 if(!next_scene[gd.scene["current"]]) {
@@ -933,6 +1029,108 @@ export default class SceneInit extends cc.Component {
             }
         };
         gd.observer.addSubscription(finishScene);
+
+
+
+        //step 6 dynamic dialog
+        if(player_data["data"]["current_step"] == 6 && player_data["data"]["steps"]["6"]["stage"] == 1) {
+            let last_text_id = "stage6_main_character_suggestion";
+
+            //
+            carriage_data["data"]["parts"]["dseat"]["hidden"] = false;
+
+            //disable active disruption parts and update the screen
+            for(let part_item of player_data["data"]["steps"]["5"]["disruption"]) {
+                carriage_data["data"]["parts"][part_item]["active"] = false;
+            }
+            gd.observer.addEvent({
+                "type": "carriage",
+                "subtype": "update",
+                "first_load": true,
+            });
+
+            if(player_data["data"]["steps"]["5"]["disruption"].length == 2) {
+                var ending_disruptions_queen = [
+                    player_data["data"]["steps"]["5"]["disruption"][0],
+                ];
+
+                var ending_disruptions_king = [
+                    player_data["data"]["steps"]["5"]["disruption"][1],
+                ];
+            } else {
+                var ending_disruptions_queen = [
+                    player_data["data"]["steps"]["5"]["disruption"][0],
+                    player_data["data"]["steps"]["5"]["disruption"][1],
+                ];
+
+                var ending_disruptions_king = [
+                    player_data["data"]["steps"]["5"]["disruption"][2],
+                ];
+            }
+
+
+            //display only the original carriage
+            for(let part_item of ending_disruptions_queen) {
+                cutscene_dialogs["ending"][part_item] = {
+                    "text_id": "stage6_scene1_"+part_item,
+                    "speaker": "main_character",
+                }
+
+                gd.observer.addSubscription({
+                    listener : function(event) {
+                        carriage_data["data"]["parts"][part_item]["active"] = true;
+                        gd.observer.addEvent({
+                            "type": "carriage",
+                            "subtype": "update",
+                            "first_load": true,
+                        });
+                    },
+                    event:{
+                        "type" : "dialog",
+                        "subtype": "turn_finished",
+                        "data.text_id": "stage6_scene1_"+part_item,
+                    },
+                });
+
+                last_text_id = "stage6_scene1_"+part_item;
+            }
+
+            cutscene_dialogs["ending"]["d7"] = {
+                "text_id": "stage6_ending_king_d1",
+                "speaker": "king",
+            }
+        
+            for(let part_item of ending_disruptions_king) {
+                cutscene_dialogs["ending"][part_item] = {
+                    "text_id": "stage6_scene1_"+part_item,
+                    "speaker": "main_character",
+                }
+
+                gd.observer.addSubscription({
+                    listener : function(event) {
+                        carriage_data["data"]["parts"][part_item]["active"] = true;
+                        gd.observer.addEvent({
+                            "type": "carriage",
+                            "subtype": "update",
+                            "first_load": true,
+                        });
+                    },
+                    event:{
+                        "type" : "dialog",
+                        "subtype": "turn_finished",
+                        "data.text_id": "stage6_scene1_"+part_item,
+                    },
+                });
+
+                last_text_id = "stage6_scene1_"+part_item;
+            }
+
+            cutscene_dialogs["ending"]["d8"] = {
+                "text_id": "stage6_ending_king_d2",
+                "speaker": "king",
+            }
+        }
+
 
         /*
         gd.observer.addSubscription({

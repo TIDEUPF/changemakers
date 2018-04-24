@@ -65,7 +65,7 @@ export default class MapDisruptions extends cc.Component {
             MessageBox.text("stage5_disruptions_narrator_d1");
         }
 
-        //show the first message
+        //show the next message
         if(player_data["data"]["current_step"] == 5 && 
         player_data["data"]["steps"]["5"]["stage"] == 2 &&
         player_data["data"]["steps"]["5"]["disruption"].length > 0) {
@@ -101,13 +101,13 @@ export default class MapDisruptions extends cc.Component {
                                 "subtype": "disruptions_finish",
                             });
                         },
-                        event:{
+                        event: {
                             type: "bagdes",
                             subtype: "close",
                         }
                     });
                 },
-                event:{
+                event: {
                     "type" : "click",
                     "subtype" : "next_step",
                 }
@@ -117,7 +117,8 @@ export default class MapDisruptions extends cc.Component {
         gd.observer.addSubscription({
             listener : function(event) {
                 gd.scene["next"] = 'ending';
-                cc.director.loadScene('cutscene_2');
+                player_data["data"]["current_step"] = 6;
+                cc.director.loadScene('cutscene_7');
             },
             event:{
                 "type" : "step",
@@ -129,7 +130,7 @@ export default class MapDisruptions extends cc.Component {
             "type": "node",
             "action": "switchScene",
             "emitter": null,
-            "id": "map_feedback" + (id_count++).toString(10),
+            "id": "map_disruption" + (id_count++).toString(10),
             "element_id" : "/Canvas/background/npcs",
             "resources": {
                 "node" : {

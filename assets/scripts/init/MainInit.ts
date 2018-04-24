@@ -60,8 +60,10 @@ export default class SceneInit extends cc.Component {
         //gd.scene["next"] = "stage3_ideation_patricia";
         //cc.director.loadScene('ideation_1');
 
-        //gd.scene["next"] = "workshop_messenger";
-        //cc.director.loadScene('cutscene_1');
+        /*
+        gd.scene["next"] = "workshop_messenger";
+        cc.director.loadScene('cutscene_1');
+        */
 
         gd.directory.addStatus({
             "type": "data",
@@ -89,6 +91,9 @@ export default class SceneInit extends cc.Component {
                         "current_disruption": null,
                         "hint": false,
                     },
+                    "6" : {
+                        "stage": 1,
+                    },
                 },
                 "current_step": 1,
                 "badges": [],
@@ -114,10 +119,12 @@ export default class SceneInit extends cc.Component {
                     },
                     "pseat" : {
                         "part": "none",
+                        "hidden": true,
                     },
                     "dseat" : {
                         "part": "none",
                         "active": false,
+                        "hidden": true,
                     },
                     "shield" : {
                         "part": "none",
@@ -140,18 +147,21 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
 
-        //cc.director.loadScene('player_select');
+        cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
-        var player_data = gd.directory.searchId('player');
+        //var player_data = gd.directory.searchId('player');
         
         //var result = check_carriage(carriage["data"]);
+        
         /*
-        player_data["current_step"] = 4;
+        player_data["data"]["current_step"] = 4;
         cc.director.loadScene('workshop');
         */
+        
+        
                 
         //player_data["data"]["current_step"] = 1;
         //player_data["data"]["steps"]["1"]["stage"] = 4;
@@ -164,21 +174,42 @@ export default class SceneInit extends cc.Component {
         
         //cc.director.loadScene('indicators');
 
+/*
+        player_data["data"]["current_step"] = 5;
+        player_data["data"]["steps"]["5"]["stage"] = 1;
+        player_data["data"]["steps"]["5"]["feedback"].push("Captain");
+        player_data["data"]["steps"]["5"]["feedback"].push("Driver");
+        player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
+        cc.director.loadScene('map_feedback');
+*/
 
         /*
         player_data["data"]["current_step"] = 5;
-        player_data["data"]["steps"]["5"]["stage"] = 1;
-        cc.director.loadScene('map_feedback');
-        */
-    
-        
-        player_data["data"]["current_step"] = 5;
-        player_data["data"]["steps"]["5"]["feedback"].push({});
-        player_data["data"]["steps"]["5"]["feedback"].push({});
-        player_data["data"]["steps"]["5"]["feedback"].push({});
+        player_data["data"]["steps"]["5"]["feedback"].push("Captain");
+        player_data["data"]["steps"]["5"]["feedback"].push("Driver");
+        player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
         player_data["data"]["steps"]["5"]["stage"] = 2;
         cc.director.loadScene('map_disruption');
+*/
 
+/*
+        player_data["data"]["current_step"] = 6;
+        player_data["data"]["steps"]["5"]["disruption"].push("dseat");
+        player_data["data"]["steps"]["5"]["disruption"].push("shield");
+        player_data["data"]["steps"]["5"]["disruption"].push("entertainers");
+        carriage["data"]["parts"]["dseat"]["active"] = true;
+        carriage["data"]["parts"]["dseat"]["part"] = "dseat1";
+
+        carriage["data"]["parts"]["shield"]["active"] = true;
+        carriage["data"]["parts"]["shield"]["part"] = "shield1";
+
+        carriage["data"]["parts"]["entertainers"]["active"] = true;
+        carriage["data"]["parts"]["entertainers"]["part"] = "entertainers1";
+
+        player_data["data"]["steps"]["6"]["stage"] = 1;
+        gd.scene["next"] = "ending";
+        cc.director.loadScene('cutscene_7');
+*/
     }
 
     update (dt) {

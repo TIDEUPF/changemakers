@@ -146,8 +146,8 @@ export default class MapInit extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function(event) {
-                player_data["data"]["current_step"] = 4;
-                cc.director.loadScene('workshop');
+                player_data["data"]["current_step"] = 2;
+                cc.director.loadScene('indicators');
             },
             event:{
                 "subtype" : "map_finish",
