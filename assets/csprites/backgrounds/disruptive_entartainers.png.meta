@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+  "uuid": "5865634b-dd04-429b-a522-014a6aa456e8",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "CM_Workplace": {
+    "disruptive_entartainers": {
       "ver": "1.0.3",
-      "uuid": "31f1dfda-0ea5-4d4d-82db-369218cf2922",
-      "rawTextureUuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+      "uuid": "85ca1821-73af-4bc9-8e32-de95c1b45d6d",
+      "rawTextureUuid": "5865634b-dd04-429b-a522-014a6aa456e8",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

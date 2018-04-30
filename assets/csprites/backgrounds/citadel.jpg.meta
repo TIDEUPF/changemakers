@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+  "uuid": "673dc671-eb5d-453c-8d4d-52d2a53a23b6",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "CM_Workplace": {
+    "citadel": {
       "ver": "1.0.3",
-      "uuid": "31f1dfda-0ea5-4d4d-82db-369218cf2922",
-      "rawTextureUuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+      "uuid": "fdf21d7e-672a-4168-ac51-d5aea56f4ac6",
+      "rawTextureUuid": "673dc671-eb5d-453c-8d4d-52d2a53a23b6",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

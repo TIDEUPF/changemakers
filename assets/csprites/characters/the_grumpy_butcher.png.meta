@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+  "uuid": "ba75fcc7-183d-4114-8abd-31942b6d6e7f",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "CM_Workplace": {
+    "the_grumpy_butcher": {
       "ver": "1.0.3",
-      "uuid": "31f1dfda-0ea5-4d4d-82db-369218cf2922",
-      "rawTextureUuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+      "uuid": "a841a2ee-7a6d-4c41-a4a7-84f155d1e528",
+      "rawTextureUuid": "ba75fcc7-183d-4114-8abd-31942b6d6e7f",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 2731,
-      "height": 2048,
-      "rawWidth": 2731,
-      "rawHeight": 2048,
+      "width": 613,
+      "height": 907,
+      "rawWidth": 613,
+      "rawHeight": 907,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

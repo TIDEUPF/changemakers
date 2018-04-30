@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+  "uuid": "c07c53d7-4953-4305-ad1b-a690e0c7999c",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "CM_Workplace": {
+    "citymap": {
       "ver": "1.0.3",
-      "uuid": "31f1dfda-0ea5-4d4d-82db-369218cf2922",
-      "rawTextureUuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+      "uuid": "64e5bc74-6561-4189-80da-d04d5fbb08a1",
+      "rawTextureUuid": "c07c53d7-4953-4305-ad1b-a690e0c7999c",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,9 +16,9 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 2731,
+      "width": 2728,
       "height": 2048,
-      "rawWidth": 2731,
+      "rawWidth": 2728,
       "rawHeight": 2048,
       "borderTop": 0,
       "borderBottom": 0,
