@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "541f7e4f-7018-4537-9346-a40da997cd2b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "the_grumpy_butcher": {
+      "ver": "1.0.3",
+      "uuid": "6def12a4-ecf9-4b54-a315-dec1d5a6f97a",
+      "rawTextureUuid": "541f7e4f-7018-4537-9346-a40da997cd2b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 613,
+      "height": 907,
+      "rawWidth": 613,
+      "rawHeight": 907,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

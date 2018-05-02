@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "0deb82de-2cc4-4ada-9cad-4d21afb6c842",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "the_stable_boy": {
+      "ver": "1.0.3",
+      "uuid": "eb34bf76-36a6-43d3-9c29-b4007f400c4c",
+      "rawTextureUuid": "0deb82de-2cc4-4ada-9cad-4d21afb6c842",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 508,
+      "height": 948,
+      "rawWidth": 508,
+      "rawHeight": 948,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
