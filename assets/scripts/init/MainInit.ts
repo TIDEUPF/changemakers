@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Notebook} from "../core/Notebook";
 import {check_carriage} from "../steps/prototype/carriage";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -148,6 +149,30 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
 
+
+        var slider_update: Object = {
+            "type": "node",
+            "action": "updateValue",
+            "emitter": null,
+            "id": "indicators0",
+            "element_id" : "/Canvas/background/sliders",
+            "resources": {
+                "value" : {
+                    "speed" : 0.0,
+                    "fancyness" : 0.5,
+                    "comfort" : 0.5,
+                    "size" : 0.5,
+                    "strongness" : 1.0,
+                },
+            },
+            "init": {
+            }
+        };
+
+        gd.directory.addStatus(slider_update);
+
+        Notebook.initIndicators();
+        
         cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";

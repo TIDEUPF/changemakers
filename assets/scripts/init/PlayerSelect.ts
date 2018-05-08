@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Notebook} from "../core/Notebook";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -29,6 +30,8 @@ export default class PlayeSelect extends cc.Component {
 
         var id_count=0;
 
+        Notebook.registerEvents();
+        
         gd.observer.addSubscription({
             listener : function() {
                 var player_data = gd.directory.searchId('player');
