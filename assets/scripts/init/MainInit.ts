@@ -18,6 +18,12 @@ enum GameInputEventType {
     Key = 1,
 };
 
+const voices_preload_path = "res/raw-assets/sound/voices/";
+
+const voices_preload = [
+    "S1S1_3.wav",
+];
+
 @ccclass
 export default class SceneInit extends cc.Component {
     observer: Observer;
@@ -171,9 +177,34 @@ export default class SceneInit extends cc.Component {
 
         gd.directory.addStatus(slider_update);
 
-        Notebook.initIndicators();
+        //Notebook.initIndicators();
         
-        cc.director.loadScene('player_select');
+        var voices = {
+            "id": "game_voices",
+            "data": {},
+        };
+
+        var voices_path_preload_array = [];
+
+        for(var voice_filename of voices_preload) {
+            var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
+            voices["data"][voice_filename] = current_voice_path;
+            voices_path_preload_array.push(current_voice_path);
+        }
+
+        cc.loader.load(
+            voices_path_preload_array,
+            function(c,t){
+                console.log(c);console.log(t);
+            }, 
+            function(error, item) {
+                console.log(item); 
+                console.log(error);
+                gd.directory.addStatus(voices);
+                cc.director.loadScene('player_select');
+            }
+        );
+        //cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');

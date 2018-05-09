@@ -33,6 +33,7 @@ export const Notebook = {
 
         for(var indicator of indicators) {
             var path = indicators_path + '/' + indicator;
+            
             Slider.setValue(path, indicators_data["resources"]["value"][indicator]);
         }
     },
