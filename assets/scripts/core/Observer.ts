@@ -41,6 +41,11 @@ export default class Observer {
         var matched_subscriptions = [];
 
         for(let susbcription of this._susbcriptions.find()) {
+            /*if(susbcription["scheduling"]) {
+                var application_time = Utils.time();
+                if()
+            }*/
+
             var matched = this._cl.find(susbcription["event"]);
             matched_subscriptions.push({
                 "subscription": susbcription,

@@ -4,6 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Notebook} from "../core/Notebook";
+import {Utils} from "../core/Utils";
 import {check_carriage} from "../steps/prototype/carriage";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -37,6 +38,8 @@ export default class SceneInit extends cc.Component {
         console.log("game init");
         
         text.i18n.init("en");
+
+        var a = Utils.gameTime();
 
         //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
         //cc.audioEngine.play("res/raw-assets/sound/introduction.ogg", true, 1);
