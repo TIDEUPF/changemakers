@@ -21,7 +21,7 @@ enum GameInputEventType {
 const voices_preload_path = "res/raw-assets/sound/voices/";
 
 const voices_preload = [
-    "S1S1_3.wav",
+    "S1S1_3",
 ];
 
 @ccclass
@@ -192,6 +192,7 @@ export default class SceneInit extends cc.Component {
             voices_path_preload_array.push(current_voice_path);
         }
 
+        
         cc.loader.load(
             voices_path_preload_array,
             function(c,t){
@@ -201,9 +202,21 @@ export default class SceneInit extends cc.Component {
                 console.log(item); 
                 console.log(error);
                 gd.directory.addStatus(voices);
-                cc.director.loadScene('player_select');
+                var audioID = cc.audioEngine.play(voices_path_preload_array[0], false, 0);
+                //cc.audioEngine.stop(audioID);
+                console.log(cc.audioEngine.getDuration(audioID));
+                cc.audioEngine.stop(audioID);
+                /*cc.audioEngine.stop(audioID);
+                var dur = cc.audioEngine.getDuration(audioID);
+                cc.director.loadScene('player_select');*/
             }
         );
+
+        /*var id = cc.audioEngine.play(voices_path_preload_array[0], false, 1);
+        console.log(id);
+        setTimeout(function(){
+        console.log(cc.audioEngine.getDuration(id));},1);*/
+
         //cc.director.loadScene('player_select');
 
         //gd.scene["next"] = "palace";

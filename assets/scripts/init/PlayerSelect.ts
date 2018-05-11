@@ -30,7 +30,7 @@ export default class PlayeSelect extends cc.Component {
 
         var id_count=0;
 
-        Notebook.registerEvents();
+        //Notebook.registerEvents();
         
         gd.observer.addSubscription({
             listener : function() {
@@ -70,6 +70,7 @@ export default class PlayeSelect extends cc.Component {
             }
         });
 
+        
         gd.observer.addSubscription({
             listener : function(event) {
                 var player = gd.directory.searchId("player");
@@ -83,6 +84,7 @@ export default class PlayeSelect extends cc.Component {
                 "subtype": "name_input",
             }
         });
+        
 
         /*var url = cc.url.raw("sprites/characters/main_character_1.png");
         var texture = cc.textureCache.addImage(url);

@@ -405,6 +405,7 @@ export default class SceneInit extends cc.Component {
                 "d3" : {
                     "text_id" : "stage1_scene1_messenger_d2",
                     "speaker" : "Messenger_horse",
+                    "voice"   : "S1S1_3",
                 },
                 "d4" : {
                     "text_id" : "stage1_scene1_player_d2",
