@@ -1,6 +1,6 @@
 export const data = {
     "stage1_scene1_messenger_d1": "Hello my friend! Are you %{name}?",
-    "stage1_scene1_messenger_d2": "I am the King’s messenger,. We have a mission for you. He has heard that you are the best craftsman in the kingdom and you find great solutions to any kind of problem. Is this true?",
+    "S1S1_3": "I am the King’s messenger,. We have a mission for you. He has heard that you are the best craftsman in the kingdom and you find great solutions to any kind of problem. Is this true?",
     "stage1_scene1_messenger_d3": "Don’t be so humble. If that is true, then grab your stuff and come with me to Lalandia Royal City, Empatheia!",
     "stage1_scene1_player_d1": "Yes, I am.",
     "stage1_scene1_player_d2": "Well, I try my best.",

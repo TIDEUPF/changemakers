@@ -1,6 +1,6 @@
 export const data = {
     "stage1_scene1_messenger_d1": "Hola amig@!",
-    "stage1_scene1_messenger_d2": "Soy el mensajero del rey. Tenemos una misión para usted. El rey ha escuchado que usted es el mejor artesano del reino y que encuentra excelentes soluciones para cualquier tipo de problema. ¿Es esto cierto?",
+    "S1S1_3": "Soy el mensajero del rey. Tenemos una misión para usted. El rey ha escuchado que usted es el mejor artesano del reino y que encuentra excelentes soluciones para cualquier tipo de problema. ¿Es esto cierto?",
     "stage1_scene1_messenger_d3": "¡Curioso! Si es verdad, entonces coja sus cosas y acompañeme a la ciudad del Reino de Lalandia, Empatía!",
     "stage1_scene1_player_d1": "Hola.",
     "stage1_scene1_player_d2": "Bien, lo hago lo mejor que puedo.",

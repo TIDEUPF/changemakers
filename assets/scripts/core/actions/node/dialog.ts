@@ -1,5 +1,6 @@
 import ElementAction from "../../ElementAction";
 import ActionResult from "../../ActionResult";
+import {Utils} from "../../../core/Utils";
 import * as gd from "../../../core/GameData";
 import * as text from "../../../text/i18n";
 
@@ -19,7 +20,7 @@ class Dialog extends ElementAction<cc.Node> {
         var dialog_text_string: string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
 
         if(last_char_displayed + 1 > dialog_text_string.length) {
-            //text unit finished
+            //text unit finished                     
 
             result.events = [
                 {
@@ -105,7 +106,27 @@ class Dialog extends ElementAction<cc.Node> {
         var char_width: number = w_size.width*0.55;
         var max_chars: number = Math.floor(dialog_text.width/char_width) * balloon_max_lines;
 
+        //voice support
+        var voices = gd.directory.searchId("game_voices");
+        if(last_char_displayed == 0 && voices["data"][current_dialog]) {
+            var voice_duration = voices["data"][current_dialog]["duration"];
+            var n_splits = Math.ceil(dialog_text_string.length/max_chars);
+            var split_duration = Math.floor(voice_duration/n_splits);
+            var current_game_time = Utils.gameTime();
 
+            //schedule events
+            for(var i=0;i<n_splits;i++) {
+                var event_time = current_game_time + (i+1) * current_game_time;
+
+                gd.observer.addEvent({
+                    type: "keyinput",
+                    scheduling: {
+                        afterGameTime : current_game_time + current_game_time,
+                    },
+                });
+            }
+        }
+        
         dialog_text_string = dialog_text_string.substring(last_char_displayed);
 
         if(dialog_text_string.length > max_chars) {

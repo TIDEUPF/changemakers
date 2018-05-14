@@ -1,6 +1,7 @@
 import * as Loki from "lokijs";
 import Directory from "../core/Directory";
 import * as gd from "../core/GameData";
+import {Utils} from "../core/Utils";
 
 export default class Observer {
     private directory: Directory;
@@ -8,6 +9,7 @@ export default class Observer {
 
     _db: Loki;
     _cl: Collection<any>;
+    _cls: Collection<any>;
 
     addSubscription(subscription: Object) : void {
         this._susbcriptions.insert(subscription);
@@ -30,6 +32,10 @@ export default class Observer {
     }
 
     addEvent(event: Object) : void {
+        if(event["scheduling"]) {
+            this._cls.insert(event);
+        }
+
         this._cl.insert(event);
     }
 
@@ -40,12 +46,19 @@ export default class Observer {
     notifyEvents() : void {
         var matched_subscriptions = [];
 
-        for(let susbcription of this._susbcriptions.find()) {
-            /*if(susbcription["scheduling"]) {
-                var application_time = Utils.time();
-                if()
-            }*/
+        //test for scheduling conditions
+        var application_time = Utils.gameTime();
+        for(let event of this._cls.find()) {
+            if(susbcription["scheduling"]["afterGameTime"]) {
+                if(application_time > susbcription["scheduling"]["afterGameTime"]) {
+                    this._cls.remove(event);
+                    delete event.$id;
+                    this._cl.insert(event);
+                }
+            }
+        }
 
+        for(let susbcription of this._susbcriptions.find()) {
             var matched = this._cl.find(susbcription["event"]);
             matched_subscriptions.push({
                 "subscription": susbcription,

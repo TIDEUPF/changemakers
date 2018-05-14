@@ -191,7 +191,7 @@ export default class SceneInit extends cc.Component {
 
         for(var voice_filename of voices_preload) {
             var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
-            voices["data"][voice_filename] = current_voice_path;
+            voices["data"][voice_filename]["path"] = current_voice_path;
             voices_path_preload_array.push(current_voice_path);
         }
 
@@ -205,10 +205,19 @@ export default class SceneInit extends cc.Component {
                 console.log(item); 
                 console.log(error);
                 gd.directory.addStatus(voices);
-                var audioID = cc.audioEngine.play(voices_path_preload_array[0], false, 0);
+                
                 //cc.audioEngine.stop(audioID);
-                console.log(cc.audioEngine.getDuration(audioID));
-                cc.audioEngine.stop(audioID);
+                
+                for(var voice_filename of voices_preload) {
+                    var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
+                    var audioID = cc.audioEngine.play(current_voice_path, false, 0);
+                    var duration = cc.audioEngine.getDuration(audioID);
+                    
+                    voices["data"][voice_filename]["duration"] = duration;
+                    cc.audioEngine.stop(audioID);
+                    console.log(duration);
+                }
+                
                 /*cc.audioEngine.stop(audioID);
                 var dur = cc.audioEngine.getDuration(audioID);
                 cc.director.loadScene('player_select');*/
