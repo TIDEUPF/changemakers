@@ -106,6 +106,8 @@ export default class Observer {
         this.directory = gd.directory;
         this._db = new Loki('eventsdb');
         this._cl = this._db.addCollection('gameEvents');
+        this._cls = this._db.addCollection('gameEventsScheduled');
+        
         this._susbcriptions = this._db.addCollection('subscriptions');
     }
 }  
