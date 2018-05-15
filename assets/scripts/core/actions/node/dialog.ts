@@ -111,20 +111,21 @@ class Dialog extends ElementAction<cc.Node> {
         if(last_char_displayed == 0 && voices["data"][current_dialog_data["text_id"]]) {
             var voice_duration = voices["data"][current_dialog_data["text_id"]]["duration"];
             var n_splits = Math.ceil(dialog_text_string.length/max_chars);
-            var split_duration = Math.floor(voice_duration/n_splits);
+            var split_duration = voice_duration/n_splits;
             var current_game_time = Utils.gameTime();
 
             //schedule events
             for(var i=0;i<n_splits;i++) {
-                var event_time = current_game_time + (i+1) * Math.floor(voice_duration/n_splits*1000);
+                var event_time = current_game_time + (i+1) * Math.floor(split_duration*1000);
 
                 gd.observer.addEvent({
                     type: "keyinput",
                     scheduling: {
-                        afterGameTime : current_game_time + current_game_time,
+                        afterGameTime : event_time,
                     },
                 });
             }
+            Sound.play(current_dialog_data["text_id"]);
         }
         
         dialog_text_string = dialog_text_string.substring(last_char_displayed);

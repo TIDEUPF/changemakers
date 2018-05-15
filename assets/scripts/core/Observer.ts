@@ -34,6 +34,7 @@ export default class Observer {
     addEvent(event: Object) : void {
         if(event["scheduling"]) {
             this._cls.insert(event);
+            return;
         }
 
         this._cl.insert(event);
@@ -49,8 +50,8 @@ export default class Observer {
         //test for scheduling conditions
         var application_time = Utils.gameTime();
         for(let event of this._cls.find()) {
-            if(susbcription["scheduling"]["afterGameTime"]) {
-                if(application_time > susbcription["scheduling"]["afterGameTime"]) {
+            if(event["scheduling"]["afterGameTime"]) {
+                if(application_time > event["scheduling"]["afterGameTime"]) {
                     this._cls.remove(event);
                     delete event.$id;
                     this._cl.insert(event);
