@@ -1,6 +1,7 @@
 import ElementAction from "../../ElementAction";
 import ActionResult from "../../ActionResult";
 import {Utils} from "../../../core/Utils";
+import {Sound} from "../../../core/Sound";
 import * as gd from "../../../core/GameData";
 import * as text from "../../../text/i18n";
 
@@ -125,8 +126,12 @@ class Dialog extends ElementAction<cc.Node> {
                     },
                 });
             }
-            Sound.play(current_dialog_data["text_id"]);
+            Sound.voice(current_dialog_data["text_id"]);
+            var n_chars_full_dialog = dialog_text_string.length;
+
+            max_chars = Math.ceil(n_chars_full_dialog/(n_splits));
         }
+        
         
         dialog_text_string = dialog_text_string.substring(last_char_displayed);
 

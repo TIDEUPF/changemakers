@@ -69,3 +69,5 @@ quick_gen_project_*_autogen.sh.meta
 node_modules/
 
 assets/sound/global/
+
+assets/sound/voices/i18n/fr/

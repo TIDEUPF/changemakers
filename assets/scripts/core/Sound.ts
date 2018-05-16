@@ -6,7 +6,9 @@ import {Slider} from "../core/Slider";
 export const Sound = {
     voice: function(id) {
         var voices: Object = gd.directory.searchId("game_voices");
-        voices["data"][id]["path"]
-        return Date.now();
+        cc.audioEngine.play(voices["data"][id]["path"], false, 1);
     },
+    scene: function(data) {
+        
+    }
 }

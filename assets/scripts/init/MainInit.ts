@@ -22,7 +22,11 @@ enum GameInputEventType {
 const voices_preload_path = "res/raw-assets/sound/voices/";
 
 const voices_preload = [
+    "S1S1_1",
+    "S1S1_2",
     "S1S1_3",
+    "S1S1_4",
+    "S1S1_5",
 ];
 
 @ccclass

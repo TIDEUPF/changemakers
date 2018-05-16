@@ -1,9 +1,9 @@
 export const data = {
-    "stage1_scene1_messenger_d1": "Hello my friend! Are you %{name}?",
+    "S1S1_1": "Hello my friend! Are you %{name}?",
     "S1S1_3": "I am the King’s messenger,. We have a mission for you. He has heard that you are the best craftsman in the kingdom and you find great solutions to any kind of problem. Is this true?",
-    "stage1_scene1_messenger_d3": "Don’t be so humble. If that is true, then grab your stuff and come with me to Lalandia Royal City, Empatheia!",
-    "stage1_scene1_player_d1": "Yes, I am.",
-    "stage1_scene1_player_d2": "Well, I try my best.",
+    "S1S1_5": "Don’t be so humble. If that is true, then grab your stuff and come with me to Lalandia Royal City, Empatheia!",
+    "S1S1_2": "Yes, I am.",
+    "S1S1_4": "Well, I try my best.",
 
     "stage1_scene2_king_d1": "Ah! I’m happy you accepted my invitation. I am the king of Lalandia. I need a new carriage to travel throughout the kingdom. And I have been told you are the best craftsman/designer in the whole kingdom. So my mission, if you accept it, is to build for me the best carriage in the world.",
     "stage1_scene2_king_d2": "Yes, yes. It needs to be all that. And we need it within 6 months.  We will be going to the Great Kings` Council where all the Kings of the North are meeting. Now, do you accept?",

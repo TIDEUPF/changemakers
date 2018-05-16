@@ -23,6 +23,22 @@ export default class SceneInit extends cc.Component {
 
         var id_count=0;
 
+        var bgm = {
+            "scene1": {
+                "list": [{
+                    "audio_id": "music1",
+                    "events": [
+                        {
+                            "type": "start",
+                        },
+                    ],
+                },
+            ],
+
+                
+            },
+        };
+
         const characters_information:Object = {
             "Captain":"high",
             "Driver":"high",
@@ -394,25 +410,24 @@ export default class SceneInit extends cc.Component {
         var cutscene_dialogs = {
             "workshop_messenger": {
                 "d1" : {
-                    "text_id" : "stage1_scene1_messenger_d1",
+                    "text_id" : "S1S1_1",
                     "speaker" : "Messenger_horse",
                     "data": {"name": player_data["data"]["name"]},
                 },
                 "d2" : {
-                    "text_id" : "stage1_scene1_player_d1",
+                    "text_id" : "S1S1_2",
                     "speaker" : "main_character",
                 },
                 "d3" : {
                     "text_id" : "S1S1_3",
                     "speaker" : "Messenger_horse",
-                    "voice"   : "S1S1_3",
                 },
                 "d4" : {
-                    "text_id" : "stage1_scene1_player_d2",
+                    "text_id" : "S1S1_4",
                     "speaker" : "main_character",
                 },
                 "d5" : {
-                    "text_id" : "stage1_scene1_messenger_d3",
+                    "text_id" : "S1S1_5",
                     "speaker" : "Messenger_horse",
                 },
             },

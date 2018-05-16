@@ -1,9 +1,9 @@
 export const data = {
-    "stage1_scene1_messenger_d1": "Hola amig@!",
+    "S1S1_1": "Hola amig@!",
     "S1S1_3": "Soy el mensajero del rey. Tenemos una misión para usted. El rey ha escuchado que usted es el mejor artesano del reino y que encuentra excelentes soluciones para cualquier tipo de problema. ¿Es esto cierto?",
-    "stage1_scene1_messenger_d3": "¡Curioso! Si es verdad, entonces coja sus cosas y acompañeme a la ciudad del Reino de Lalandia, Empatía!",
-    "stage1_scene1_player_d1": "Hola.",
-    "stage1_scene1_player_d2": "Bien, lo hago lo mejor que puedo.",
+    "S1S1_5": "¡Curioso! Si es verdad, entonces coja sus cosas y acompañeme a la ciudad del Reino de Lalandia, Empatía!",
+    "S1S1_2": "Hola.",
+    "S1S1_4": "Bien, lo hago lo mejor que puedo.",
 
     "stage1_scene2_king_d1": "Ah! Me alegra que aceptase mi invitación. Yo soy el rey de Lalandia. Necesito un nuevo carruaje para viajar por todo el reino. Y me han dicho que eres el mejor diseñador en todo el reino. Entonces mi misión, si la acepta, es construir para mí el mejor carruaje del mundo!",
     "stage1_scene2_king_d2": "Sí, sí! Necesita ser todo eso! Y lo necesitamos dentro de 6 meses. Iremos al Gran Consejo de Reyes, donde todos los Reyes del Norte se encontrarán. Ahora, ¿aceptas?",
