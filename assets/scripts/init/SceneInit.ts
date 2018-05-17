@@ -29,7 +29,7 @@ export default class SceneInit extends cc.Component {
                     "audio_id": "music1",
                     "events": [
                         {
-                            "type": "start",
+                            "type": "scene_start",
                         },
                     ],
                 },
