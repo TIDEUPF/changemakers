@@ -141,7 +141,7 @@ export default class IndicatorsInit extends cc.Component {
                     });
                     MessageBox.text("S2S2");
                 } else {
-                    MessageBox.text("My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.");
+                    MessageBox.text("S2S1");
                 }
             },
             event:{

@@ -3802,7 +3802,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 570.27,
+      "width": 693.73,
       "height": 40
     },
     "_rotationX": 0,
@@ -3837,7 +3837,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer a durable carriage or a pretty fancy vehicle?",
+    "_N$string": "Will the king and the queen prefer a durable carriage or a pretty fancy vehicle?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -3876,7 +3876,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 701.39,
+      "width": 824.84,
       "height": 40
     },
     "_rotationX": 0,
@@ -3911,7 +3911,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer a minimalist  yet practical carriage or a very luxurious one?",
+    "_N$string": "Will the king and the queen prefer a minimalist  yet practical carriage or a very luxurious one?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -3950,7 +3950,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 671.37,
+      "width": 794.82,
       "height": 40
     },
     "_rotationX": 0,
@@ -3985,7 +3985,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer a small fast carriage or a commodious slower carriage?",
+    "_N$string": "Will the king and the queen prefer a small fast carriage or a commodious slower carriage?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -4024,7 +4024,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 618.08,
+      "width": 741.53,
       "height": 40
     },
     "_rotationX": 0,
@@ -4059,7 +4059,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "Will the kings prefer a light basic carriage or a very robust heavy one?",
+    "_N$string": "Will the king and the queen prefer a light basic carriage or a very robust heavy one?",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",

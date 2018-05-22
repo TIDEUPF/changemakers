@@ -41,7 +41,7 @@ export default class SceneInit extends cc.Component {
         var init = this;
         console.log("game init");
         
-        text.i18n.init("en");
+        text.i18n.init("fr");
 
         var a = Utils.gameTime();
 

@@ -32,6 +32,8 @@ export const data = {
     "S1S4_13": "He who would travel happily must travel light.",
     "S1S4_14": "I have no time to discuss. I have meat to catch.",
 
+    "S1S5_1": "Now that you have gathered enough opinions you may return to your workshop to start working on the carriage project or continue meeting with other people.",
+
     "S2S0": "Welcome back to your workshop! Based on what you have heard it is now time to make some choices about what type of carriage you are thinking would best fit the needs of the King and the Queen.",
     "S2S1": "My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.",
     "S2S2": "What a promising carriage! Well done!",

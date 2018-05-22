@@ -109,7 +109,7 @@ export default class MapInit extends cc.Component {
         player_data["data"]["steps"]["1"]["next_step_unlocked"] == false) {
             if(player_data["data"]["steps"]["1"]["information"]["high"].length >= 5) {
                 player_data["data"]["steps"]["1"]["next_step_unlocked"] = true;
-                MessageBox.text("Now that you have gathered enough opinions you may return to your workshop to start working on the carriage project or continue meeting with other people.");
+                MessageBox.text("S1S5_1");
 
                 /*
                 gd.observer.addSubscription({
