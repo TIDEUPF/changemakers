@@ -62,7 +62,7 @@ export default class MapDisruptions extends cc.Component {
         if(player_data["data"]["current_step"] == 5 &&
         player_data["data"]["steps"]["5"]["stage"] == 2 &&
         player_data["data"]["steps"]["5"]["disruption"].length === 0) {
-            MessageBox.text("stage5_disruptions_narrator_d1");
+            MessageBox.text("S5S2_1");
         }
 
         //show the next message
@@ -181,7 +181,7 @@ export default class MapDisruptions extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
 
-                gd.scene["next"] = "stage3_ideation_patricia";
+                gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
             },
             event:{
@@ -236,7 +236,7 @@ export default class MapDisruptions extends cc.Component {
         
         gd.observer.addSubscription({
             listener : function() {
-                gd.scene["next"] = "stage5_feedback_captain";
+                gd.scene["next"] = "S5S1_1";
                 cc.director.loadScene('cutscene_6');
             },
             event:{

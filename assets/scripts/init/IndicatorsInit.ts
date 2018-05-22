@@ -115,7 +115,7 @@ export default class IndicatorsInit extends cc.Component {
         });
         */
 
-        MessageBox.text("stage2_narrator_d1");
+        MessageBox.text("S2S0");
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -139,7 +139,7 @@ export default class IndicatorsInit extends cc.Component {
                             subtype: "close",
                         }
                     });
-                    MessageBox.text("stage2_narrator_d3");
+                    MessageBox.text("S2S2");
                 } else {
                     MessageBox.text("My friend, it seems you have taken no real decisions. A medium carriage will not fit the needs of the King and the Queen. Make real choices.");
                 }
@@ -177,7 +177,7 @@ export default class IndicatorsInit extends cc.Component {
         gd.observer.addSubscription({
             listener : function(event) {
                 player_data["data"]["current_step"] = 3;
-                gd.scene["next"] = "stage3_ideation_patricia";
+                gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
             },
             event:{

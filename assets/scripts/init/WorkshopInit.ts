@@ -449,9 +449,9 @@ export default class WorkshopInit extends cc.Component {
         if(player_data["data"]["current_step"] == 5 && 
         player_data["data"]["steps"]["5"]["stage"] === 2) {
             var disruption = {
-                "disruption_1": "stage5_disruption1_narrator_d1", 
-                "disruption_2": "stage5_disruption2_narrator_d1", 
-                "disruption_3": "stage5_disruption3_narrator_d1",
+                "disruption_1": "S5S2_4", 
+                "disruption_2": "S5S2_3", 
+                "disruption_3": "S5S2_2",
             };
 
             MessageBox.text(disruption[gd.scene["current"]]);

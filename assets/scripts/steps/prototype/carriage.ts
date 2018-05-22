@@ -235,19 +235,19 @@ export const carriage_next_step:Object = {
     "speed": {
         "min": 4,
         "max": null,
-        "min_warning": "stage4_min_speed",
+        "min_warning": "S4S2_3",
         "max_warning": null,
     },
     "aesthetics": {
         "min": 5,
         "max": null,
-        "min_warning": "stage4_min_aesthetics",
+        "min_warning": "S4S2_4",
         "max_warning": null,
     },
     "ergonomy": {
         "min": 4,
         "max": null,
-        "min_warning": "stage4_min_ergonomy",
+        "min_warning": "S4S2_5",
         "max_warning": null,
     },
     "size": {
@@ -259,20 +259,20 @@ export const carriage_next_step:Object = {
     "robustness": {
         "min": 4,
         "max": null,
-        "min_warning": "stage4_min_robustness",
+        "min_warning": "S4S2_6",
         "max_warning": null,
     },
     "cost": {
         "min": 7,
         "max": 16,
-        "min_warning": "stage4_min_cost",
-        "max_warning": "stage4_max_cost",
+        "min_warning": "S4S2_1",
+        "max_warning": "S4S2_7",
     },
     "time_to_build": {
         "min": 8,
         "max": 17,
-        "min_warning": "stage4_min_time_to_build",
-        "max_warning": "stage4_max_time_to_build",
+        "min_warning": "S4S2_2",
+        "max_warning": "S4S2_8",
     },
 }
 

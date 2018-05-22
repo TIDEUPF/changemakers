@@ -72,7 +72,7 @@ export default class SceneInit extends cc.Component {
         gd.scene["next"] = "courtyard";
         cc.director.loadScene('cutscene_4');
 */
-        //gd.scene["next"] = "stage3_ideation_patricia";
+        //gd.scene["next"] = "S3S1_2";
         //cc.director.loadScene('ideation_1');
 
         /*

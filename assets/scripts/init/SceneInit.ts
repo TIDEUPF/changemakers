@@ -114,7 +114,7 @@ export default class SceneInit extends cc.Component {
             event:{
                 "type" : "dialog",
                 "subtype": "turn_finished",
-                "data.text_id": "stage1_scene3_narrator_d1",
+                "data.text_id": "S1S3_1",
             }
         });
 
@@ -172,7 +172,7 @@ export default class SceneInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     if(player_data["data"]["steps"]["1"]["info_dialogs"].length > 2) {
-                        gd.scene["next"] = "stage3_ideation_patricia";
+                        gd.scene["next"] = "S3S1_2";
                         player_data["data"]["current_step"] = 3;
                         cc.director.loadScene('ideation_1');
                     } else {
@@ -228,7 +228,7 @@ export default class SceneInit extends cc.Component {
         }*/
         
         //finish ideation and go to workshop
-        if(gd.scene["current"] == "stage3_ideation_tharrenos") {
+        if(gd.scene["current"] == "S3S1_6") {
             gd.observer.addSubscription({
                 listener : function(event) {
                     Badge.add({"badge_id": "creative_mind_g"});
@@ -236,7 +236,7 @@ export default class SceneInit extends cc.Component {
                 event:{
                     "type" : "dialog",
                     "subtype": "dialog_finished",
-                    "data.id": "stage3_ideation_tharrenos_0",
+                    "data.id": "S3S1_6_0",
                 },
             });
 
@@ -433,60 +433,60 @@ export default class SceneInit extends cc.Component {
             },
             "palace": {
                 "d1" : {
-                    "text_id" : "stage1_scene2_king_d1",
+                    "text_id" : "S1S2_1",
                     "speaker" : "king",
                 },
                 "d2" : {
-                    "text_id" : "stage1_scene2_queen_d1",
+                    "text_id" : "S1S2_2",
                     "speaker" : "queen",
                 },
                 "d3" : {
-                    "text_id" : "stage1_scene2_king_d2",
+                    "text_id" : "S1S2_3",
                     "speaker" : "king",
                 },
                 "d4" : {
-                    "text_id" : "stage1_scene2_player_d1",
+                    "text_id" : "S1S2_4",
                     "speaker" : "main_character",
                 },
                 "d5" : {
-                    "text_id" : "stage1_scene2_king_d3",
+                    "text_id" : "S1S2_5",
                     "speaker" : "king",
                 },            
             },
             "courtyard": {
                 "d1" : {
-                    "text_id" : "stage1_scene2_player_d2",
+                    "text_id" : "S1S2_6",
                     "speaker" : "main_character",
                 },
                 "d2" : {
-                    "text_id" : "stage1_scene3_narrator_d1",
+                    "text_id" : "S1S3_1",
                     "speaker" : "narrator",
                 },/*
                 "d3" : {
-                    "text_id" : "stage1_scene3_kings_captain_d1",
+                    "text_id" : "S1S3_2",
                     "speaker" : "Captain",
                 },
                 "d4" : {
-                    "text_id" : "stage1_scene3_kings_player_d1",
+                    "text_id" : "S1S3_3",
                     "speaker" : "main_character",
                 },*/
             },
 
             "courtyard_2": {
 /*                "d1" : {
-                    "text_id" : "stage1_scene2_player_d2",
+                    "text_id" : "S1S2_6",
                     "speaker" : "main_character",
                 },
                 "d2" : {
-                    "text_id" : "stage1_scene3_narrator_d1",
+                    "text_id" : "S1S3_1",
                     "speaker" : "narrator",
                 },*/
                 "d3" : {
-                    "text_id" : "stage1_scene3_kings_captain_d1",
+                    "text_id" : "S1S3_2",
                     "speaker" : "Captain",
                 },
                 "d4" : {
-                    "text_id" : "stage1_scene3_kings_player_d1",
+                    "text_id" : "S1S3_3",
                     "speaker" : "main_character",
                 },
             },
@@ -500,238 +500,238 @@ export default class SceneInit extends cc.Component {
 
             "stage1_scene4_coachman_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_coachman_male_d1",
+                    "text_id" : "S1S4_1",
                     "speaker" : "Driver",
                 },
             },
 
             "stage1_scene4_tailor_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_tailor_female_d1",
+                    "text_id" : "S1S4_2",
                     "speaker" : "Tailor",
                 },
             },
 
             "stage1_scene4_butler_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_butler_male_d1",
+                    "text_id" : "S1S4_3",
                     "speaker" : "butler",
                 },
             },
 
             "stage1_scene4_stable_boy": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_stable_boy_d1",
+                    "text_id" : "S1S4_4",
                     "speaker" : "the_stable_boy",
                 },
             },
 
             "stage1_scene4_doctor_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_doctor_male_d1",
+                    "text_id" : "S1S4_5",
                     "speaker" : "Doctor",
                 },
             },
 
             "stage1_scene4_chef_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_chef_female_d1",
+                    "text_id" : "S1S4_6",
                     "speaker" : "Chef",
                 },
             },
 
             "stage1_scene4_civil_engineer_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_civil_engineer_female_d1",
+                    "text_id" : "S1S4_7",
                     "speaker" : "civil_engineer",
                 },
             },
 
             "stage1_scene4_merchant_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_merchant_male_d1",
+                    "text_id" : "S1S4_8",
                     "speaker" : "Merchant",
                 },
             },
 
             "stage1_scene4_old_lady_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_old_lady_female_d1",
+                    "text_id" : "S1S4_9",
                     "speaker" : "old_lady",
                 },
             },
 
             "stage1_scene4_librarian_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_librarian_female_d1",
+                    "text_id" : "S1S4_10",
                     "speaker" : "Librarian",
                 },
             },
 
             "stage1_scene4_butcher_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_butcher_male_d1",
+                    "text_id" : "S1S4_11",
                     "speaker" : "the_grumpy_butcher",
                 },
             },
 
             "stage1_scene4_potter_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_potter_female_d1",
+                    "text_id" : "S1S4_12",
                     "speaker" : "potter",
                 },
             },
 
             "stage1_scene4_vagabond_male": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_vagabond_male_d1",
+                    "text_id" : "S1S4_13",
                     "speaker" : "vagabond",
                 },
             },
 
             "stage1_scene4_huntress_female": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_huntress_female_d1",
+                    "text_id" : "S1S4_14",
                     "speaker" : "Huntress",
                 },
             },
 
-            "stage3_ideation_patricia": {
+            "S3S1_2": {
                 "d1" : {
-                    "text_id" : "stage3_ideation_patricia",
+                    "text_id" : "S3S1_2",
                     "speaker" : "narrator",
                 },
             },
 
-            "stage3_ideation_mihaela": {
+            "S3S1_3": {
                 "d1" : {
-                    "text_id" : "stage3_ideation_mihaela",
+                    "text_id" : "S3S1_3",
                     "speaker" : "narrator",
                 },
             },
 
-            "stage3_ideation_pablo": {
+            "S3S1_4": {
                 "d1" : {
-                    "text_id" : "stage3_ideation_pablo",
+                    "text_id" : "S3S1_4",
                     "speaker" : "narrator",
                 },
             },
 
-            "stage3_ideation_ana": {
+            "S3S1_5": {
                 "d1" : {
-                    "text_id" : "stage3_ideation_ana",
+                    "text_id" : "S3S1_5",
                     "speaker" : "narrator",
                 },
             },
 
-            "stage3_ideation_tharrenos": {
+            "S3S1_6": {
                 "d1" : {
-                    "text_id" : "stage3_ideation_tharrenos",
+                    "text_id" : "S3S1_6",
                     "speaker" : "narrator",
                 },
             },
 
-            "stage5_feedback_captain": {
+            "S5S1_1": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_captain",
+                    "text_id" : "S5S1_1",
                     "speaker" : "Captain",
                 },
             },
 
-            "stage5_feedback_coachman": {
+            "S5S1_2": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_coachman",
+                    "text_id" : "S5S1_2",
                     "speaker" : "Driver",
                 },
             },
 
-            "stage5_feedback_oldlady": {
+            "S5S1_3": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_oldlady",
+                    "text_id" : "S5S1_3",
                     "speaker" : "old_lady",
                 },
             },
 
             "stage5_noninformative_Chef": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_1",
+                    "text_id" : "S5S1_4",
                     "speaker" : "Chef",
                 },
             },
 
             "stage5_noninformative_Doctor": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_2",
+                    "text_id" : "S5S1_5",
                     "speaker" : "Doctor",
                 },
             },
 
             "stage5_noninformative_Huntress": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_3",
+                    "text_id" : "S5S1_6",
                     "speaker" : "Huntress",
                 },
             },
 
             "stage5_noninformative_Librarian": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_1",
+                    "text_id" : "S5S1_4",
                     "speaker" : "Librarian",
                 },
             },
 
             "stage5_noninformative_Merchant": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_2",
+                    "text_id" : "S5S1_5",
                     "speaker" : "Merchant",
                 },
             },
 
             "stage5_noninformative_butler": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_3",
+                    "text_id" : "S5S1_6",
                     "speaker" : "butler",
                 },
             },
 
             "stage5_noninformative_civil_engineer": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_1",
+                    "text_id" : "S5S1_4",
                     "speaker" : "civil_engineer",
                 },
             },
 
             "stage5_noninformative_potter": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_2",
+                    "text_id" : "S5S1_5",
                     "speaker" : "potter",
                 },
             },
 
             "stage5_noninformative_the_grumpy_butcher": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_3",
+                    "text_id" : "S5S1_6",
                     "speaker" : "the_grumpy_butcher",
                 },
             },
 
             "stage5_noninformative_the_stable_boy": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_1",
+                    "text_id" : "S5S1_4",
                     "speaker" : "the_stable_boy",
                 },
             },
 
             "stage5_noninformative_vagabond": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_2",
+                    "text_id" : "S5S1_5",
                     "speaker" : "vagabond",
                 },
             },
 
             "stage5_noninformative_Tailor": {
                 "d1" : {
-                    "text_id" : "stage5_feedback_noninformative_3",
+                    "text_id" : "S5S1_6",
                     "speaker" : "Tailor",
                 },
             },
@@ -760,11 +760,11 @@ export default class SceneInit extends cc.Component {
 
             "ending": {
                 "d1" : {
-                    "text_id" : "stage6_ending_narrator_d1",
+                    "text_id" : "S6S1_1",
                     "speaker" : "narrator",
                 },
                 "d2" : {
-                    "text_id" : "stage6_ending_queen_d1",
+                    "text_id" : "S6S1_2",
                     "speaker" : "queen",
                 },
                 "d4" : {
@@ -782,7 +782,7 @@ export default class SceneInit extends cc.Component {
             },
             "ending_courtyard": {
                 "d1" : {
-                    "text_id" : "stage6_scene1_messenger_d1",
+                    "text_id" : "S6S3_1",
                     "speaker" : "messenger",
                 },
             },
@@ -877,47 +877,47 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map",
             },
 
-            "stage3_ideation_patricia": {
+            "S3S1_2": {
 
                     "next_scene": "ideation_2",
-                    "next_dialog": "stage3_ideation_mihaela",
+                    "next_dialog": "S3S1_3",
 
             },
 
-            "stage3_ideation_mihaela": {
+            "S3S1_3": {
 
                     "next_scene": "ideation_3",
-                    "next_dialog": "stage3_ideation_pablo",
+                    "next_dialog": "S3S1_4",
 
             },
 
-            "stage3_ideation_pablo": {
+            "S3S1_4": {
 
                     "next_scene": "ideation_4",
-                    "next_dialog": "stage3_ideation_ana",
+                    "next_dialog": "S3S1_5",
 
             },
 
-            "stage3_ideation_ana": {
+            "S3S1_5": {
 
                     "next_scene": "ideation_5",
-                    "next_dialog": "stage3_ideation_tharrenos",
+                    "next_dialog": "S3S1_6",
 
             },
 
-/*            "stage3_ideation_tharrenos": {
+/*            "S3S1_6": {
                     "next_scene": "map",
             },*/
 
-            "stage5_feedback_captain": {
+            "S5S1_1": {
                 "next_scene": "map_feedback",
             },
 
-            "stage5_feedback_coachman": {
+            "S5S1_2": {
                 "next_scene": "map_feedback",
             },
 
-            "stage5_feedback_oldlady": {
+            "S5S1_3": {
                 "next_scene": "map_feedback",
             },
 
@@ -1142,7 +1142,7 @@ export default class SceneInit extends cc.Component {
             }
 
             cutscene_dialogs["ending"]["d8"] = {
-                "text_id": "stage6_ending_king_d2",
+                "text_id": "S6S1_3",
                 "speaker": "king",
             }
         }

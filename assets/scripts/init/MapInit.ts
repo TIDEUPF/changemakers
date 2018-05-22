@@ -315,7 +315,7 @@ export default class MapInit extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
 
-                gd.scene["next"] = "stage3_ideation_patricia";
+                gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
             },
             event:{
@@ -370,7 +370,7 @@ export default class MapInit extends cc.Component {
         
         gd.observer.addSubscription({
             listener : function() {
-                gd.scene["next"] = "stage5_feedback_captain";
+                gd.scene["next"] = "S5S1_1";
                 cc.director.loadScene('cutscene_6');
             },
             event:{

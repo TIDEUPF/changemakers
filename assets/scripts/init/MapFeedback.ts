@@ -52,7 +52,7 @@ export default class MapFeedback extends cc.Component {
         if(player_data["data"]["current_step"] == 5 && 
         player_data["data"]["steps"]["5"]["feedback"].length === 0 &&
         player_data["data"]["steps"]["5"]["noninformative"].length === 0) {
-            MessageBox.text("stage5_feedback_intro");
+            MessageBox.text("S5S0_1");
         }
 
         //stage5 disable visited dialogues
@@ -128,15 +128,15 @@ export default class MapFeedback extends cc.Component {
                 "switch" : {
                     "Captain" : {
                         "scene" : "cutscene_6",
-                        "dialog" : "stage5_feedback_captain",
+                        "dialog" : "S5S1_1",
                     },
                     "Driver" : {
                         "scene" : "cutscene_6",
-                        "dialog" : "stage5_feedback_coachman",
+                        "dialog" : "S5S1_2",
                     },
                     "old_lady" : {
                         "scene" : "cutscene_6",
-                        "dialog" : "stage5_feedback_oldlady",
+                        "dialog" : "S5S1_3",
                     },
 
 
@@ -340,7 +340,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
 
-                gd.scene["next"] = "stage3_ideation_patricia";
+                gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
             },
             event:{
@@ -395,7 +395,7 @@ export default class MapFeedback extends cc.Component {
         
         gd.observer.addSubscription({
             listener : function() {
-                gd.scene["next"] = "stage5_feedback_captain";
+                gd.scene["next"] = "S5S1_1";
                 cc.director.loadScene('cutscene_6');
             },
             event:{
