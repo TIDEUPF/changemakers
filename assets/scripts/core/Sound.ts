@@ -12,21 +12,23 @@ export const Sound = {
         return cc.audioEngine.play(id, false, 1);
     },
     scene: function(data) {
-        for(var trigger_event of data["events"]) {
-            let event = JSON.parse(JSON.stringify(trigger_event));
-            event["listener"] = function(event) {
-                Sound.play(event["data"]["audio_id"]);
-            };
-            event["data"] = {};
-            for(var data_item in data) {
-                if(data_item === "events")
-                    continue;
+        for(let scene_sound of data["sound_list"]) {
+            for(let trigger_event of scene_sound["events"]) {
+                let event = JSON.parse(JSON.stringify(trigger_event));
+                event["listener"] = function(event) {
+                    Sound.play(scene_sound["audio_id"]);
+                };
+                event["data"] = {};
+                for(var data_item in scene_sound) {
+                    if(data_item === "events")
+                        continue;
 
-                event[data_item] = data[data_item];
+                    event[data_item] = scene_sound[data_item];
+                }
+                
+                event["event"] = trigger_event;
+                gd.observer.addEvent(event);
             }
-            
-            event["event"] = trigger_event;
-            gd.observer.addEvent(event);
         }
     }
 }

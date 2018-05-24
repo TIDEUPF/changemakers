@@ -4,6 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Badge} from "../core/Badge";
+import {Sound} from "../core/Sound";
 //import {characters_information} from "../steps/empathise/npc";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -23,10 +24,9 @@ export default class SceneInit extends cc.Component {
 
         var id_count=0;
 
-        var bgm = {
-            "scene1": {
-                "list": [{
-                    "audio_id": "music1",
+        var bgm_scene_sound = {
+                "sound_list": [{
+                    "audio_id": "introduction",
                     "events": [
                         {
                             "type": "scene_start",
@@ -34,10 +34,13 @@ export default class SceneInit extends cc.Component {
                     ],
                 },
             ],
-
-                
-            },
         };
+
+        Sound.scene(bgm_scene_sound);
+
+        gd.observer.addEvent({
+            type: "scene_start",
+        });
 
         const characters_information:Object = {
             "Captain":"high",

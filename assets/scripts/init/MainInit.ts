@@ -29,6 +29,12 @@ const voices_preload = [
     "S1S1_5",
 ];
 
+const bgm_preload_path = "res/raw-assets/sound/bgm/";
+
+const bgm_preload = [
+    "introduction",
+];
+
 @ccclass
 export default class SceneInit extends cc.Component {
     observer: Observer;
@@ -182,9 +188,11 @@ export default class SceneInit extends cc.Component {
             }
         };
 
+        //Notebook.initIndicators();
+
         gd.directory.addStatus(slider_update);
 
-        //Notebook.initIndicators();
+
         
         var voices = {
             "id": "game_voices",
@@ -211,8 +219,6 @@ export default class SceneInit extends cc.Component {
                 console.log(error);
                 gd.directory.addStatus(voices);
                 
-                //cc.audioEngine.stop(audioID);
-                
                 for(var voice_filename of voices_preload) {
                     var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
                     var audioID = cc.audioEngine.play(current_voice_path, false, 0);
@@ -222,11 +228,48 @@ export default class SceneInit extends cc.Component {
                     cc.audioEngine.stop(audioID);
                     console.log(duration);
                 }
+                //gd.scene["next"] = "workshop_messenger";
+                //cc.director.loadScene('cutscene_1');
+            }
+        );
+
+
+        var bgms = {
+            "id": "game_bgms",
+            "data": {},
+        };
+
+        var bgms_path_preload_array = [];
+
+        for(var bgm_filename of bgm_preload) {
+            var current_bgm_path = bgm_preload_path + 'bgm/' + bgm_filename + '.ogg';
+            bgms["data"][bgm_filename] = {};
+            bgms["data"][bgm_filename]["path"] = current_bgm_path;
+            bgms_path_preload_array.push(current_bgm_path);
+        }
+
+        
+        cc.loader.load(
+            bgms_path_preload_array,
+            function(c,t){
+                console.log(c);console.log(t);
+            }, 
+            function(error, item) {
+                console.log(item); 
+                console.log(error);
+                gd.directory.addStatus(bgms);
+                
+                for(var bgm_filename of bgm_preload) {
+                    var current_bgm_path = bgm_preload_path + 'i18n/fr/' + bgm_filename + '.ogg';
+                    var audioID = cc.audioEngine.play(current_bgm_path, false, 0);
+                    var duration = cc.audioEngine.getDuration(audioID);
+                    
+                    bgms["data"][bgm_filename]["duration"] = duration;
+                    cc.audioEngine.stop(audioID);
+                    console.log(duration);
+                }
                 gd.scene["next"] = "workshop_messenger";
                 cc.director.loadScene('cutscene_1');
-                /*cc.audioEngine.stop(audioID);
-                var dur = cc.audioEngine.getDuration(audioID);
-                cc.director.loadScene('player_select');*/
             }
         );
 
