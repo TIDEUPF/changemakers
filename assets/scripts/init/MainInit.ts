@@ -19,6 +19,125 @@ enum GameInputEventType {
     Key = 1,
 };
 
+const asset_preload_path = "res/raw-assets/";
+
+const asset_preload = [
+    "sprites/ui/transparency.png",
+    "sprites/dialog/messagebox_alpha.png",
+    "sprites/symbols/energy.png",
+    "sprites/characters/vagabond.png",
+    "sprites/characters/the_stable_boy.png",
+    "sprites/characters/the_grumpy_butcher.png",
+    "sprites/characters/soldier.png",
+    "sprites/characters/queen.png",
+    "sprites/characters/potter.png",
+    "sprites/characters/main_character_2.png",
+    "sprites/characters/old_lady.png",
+    "sprites/characters/main_character_1.png",
+    "sprites/characters/king.png",
+    "sprites/characters/kingandqueen_1.png",
+    "sprites/characters/civil_engineer.png",
+    "sprites/characters/butler.png",
+    "sprites/characters/Librarian.png",
+    "sprites/characters/Messenger.png",
+    "sprites/characters/Huntress.png",
+    "sprites/characters/Merchant.png",
+    "sprites/characters/Driver.png",
+    "sprites/characters/Doctor.png",
+    "sprites/characters/Chef.png",
+    "sprites/characters/Captain.png",
+    "sprites/characters/Tailor.png",
+    "sprites/symbols/likeness.png",
+    "sprites/symbols/ruler.png",
+    "sprites/symbols/strongness.png",
+    "sprites/symbols/luxury.png",
+    "sprites/backgrounds/CM_Notebook.png",
+    "sprites/backgrounds/palace.png",
+    "sprites/dialog/callout.png",
+    "sprites/dialog/callout_arrow.png",
+    "sprites/characters/Messenger_horse.png",
+    "csprites/backgrounds/CM_Workplace.jpg",
+    "sprites/backgrounds/courtyard/background.png",
+    "sprites/backgrounds/courtyard/left_flowers.png",
+    "sprites/backgrounds/courtyard/right_flowers.png",
+    "csprites/backgrounds/cmmapalowcost-01.jpg",
+    "csprites/backgrounds/citadel.png",
+    "csprites/backgrounds/ideation_background.jpg",
+    "csprites/backgrounds/countryside.jpg",
+    "sprites/new_carriages/carriage_patricia.png",
+    "sprites/new_carriages/carriage_mihaela.png",
+    "sprites/backgrounds/CM_Disruptive_Entertainers.png",
+    "sprites/new_carriages/carriage_pablo.png",
+    "sprites/backgrounds/CM_Disruptive_Royal Family.png",
+    "sprites/new_carriages/carriage_anna.png",
+    "sprites/new_carriages/carriage_tharrenos.png",
+    "sprites/alt/chasis1.png",
+    "sprites/alt/chasis2.png",
+    "sprites/alt/chasis3.png",
+    "sprites/alt/chasis.png",
+    "sprites/alt/chasis1.png",
+    "sprites/alt/carriage.png",
+    "sprites/alt/carriage1.png",
+    "sprites/alt/carriage2.png",
+    "sprites/alt/carriage3.png",
+    "sprites/alt/trunk.png",
+    "sprites/alt/trunk1.png",
+    "sprites/alt/trunk2.png",
+    "sprites/alt/trunk3.png",
+    "sprites/alt/seat1.png",
+    "sprites/alt/seat2.png",
+    "sprites/alt/seat3.png",
+    "sprites/alt/seat.png",
+    "sprites/alt/seat1.png",
+    "csprites/carriage/shield/shield1.png",
+    "csprites/carriage/shield/shield2.png",
+    "csprites/carriage/shield/shield3.png",
+    "sprites/alt/wheel.png",
+    "sprites/alt/wheel1.png",
+    "sprites/alt/wheel2.png",
+    "sprites/alt/wheel3.png",
+    "csprites/characters/entertainer_04_SDS.png",
+    "csprites/characters/entertainer_02_SDS_mixed.png",
+    "csprites/characters/entertainer_03_SDS_mixed.png",
+    "sprites/alt/pseat.png",
+    "sprites/alt/pseat1.png",
+    "sprites/alt/pseat2.png",
+    "sprites/alt/pseat3.png",
+    "sprites/alt/dseat.png",
+    "sprites/alt/dseat1.png",
+    "sprites/alt/dseat2.png",
+    "sprites/alt/dseat3.png",
+    "sprites/carriage/skel/carriage1.png",
+    "sprites/symbols/price.png",
+    "sprites/symbols/time.png",
+    "sprites/alt/desk_color.png",
+    "sprites/backgrounds/citadel.png",
+    "csprites/alt/background.jpg",
+
+    "sprites/carriage/shield/shield1.png",
+    "sprites/carriage/shield/shield2.png",
+    "sprites/carriage/shield/shield3.png",
+
+    "sprites/characters/entertainer_02_SDS_mixed.png",
+    "sprites/characters/entertainer_03_SDS_mixed.png",
+    "sprites/characters/entertainer_04_SDS.png",
+
+    "sprites/backgrounds/disruptions/disruption_1.png",
+    "sprites/backgrounds/disruptions/disruption_2.png",
+    "sprites/backgrounds/disruptions/disruption_3.png",
+    "sprites/backgrounds/disruptions/map_disruptions.png",
+
+    "sprites/backgrounds/CM_Disruptive_attackers.png",
+    "sprites/backgrounds/disruptive_entartainers.png",
+    "sprites/characters/kingandqueen2.png",
+
+    "sprites/characters/main_character_1.png",
+    "sprites/characters/main_character_2.png",
+
+    "sprites/full_carriages/carriage_sharing.png",
+    
+];
+
 const voices_preload_path = "res/raw-assets/sound/voices/";
 
 const voices_preload = [
@@ -33,6 +152,19 @@ const bgm_preload_path = "res/raw-assets/sound/bgm/";
 
 const bgm_preload = [
     "introduction",
+    "1.2_Horse_carriage",
+    "1.3_White_noise_(town_sounds)",
+    "1.1_Workshop_wood_carving",
+    "4.1 Medieval market",
+    "4.2 Soft horse neigh",
+    "4.3 Horse Walking",
+    "4.4 Gravel walking",
+];
+
+const fx_preload_path = "res/raw-assets/sound/fx/";
+
+const fx_preload = [
+    "B.1 New badge",
 ];
 
 @ccclass
@@ -49,8 +181,20 @@ export default class SceneInit extends cc.Component {
         
         text.i18n.init("fr");
 
-        var a = Utils.gameTime();
+        var s1 = false,
+        s2 = false,
+        s3 = false,
+        s4 = false;
 
+        var load_complete = setInterval(function(){
+            if(s1 && s2 && s3 && s4 && load_complete !== null) {
+                clearInterval(load_complete);
+                load_complete = null;
+                
+                gd.scene["next"] = "workshop_messenger";
+                cc.director.loadScene('cutscene_1');
+            }
+        }, 200);
         //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
         //cc.audioEngine.play("res/raw-assets/sound/introduction.ogg", true, 1);
         
@@ -227,7 +371,9 @@ export default class SceneInit extends cc.Component {
                     voices["data"][voice_filename]["duration"] = duration;
                     cc.audioEngine.stop(audioID);
                     console.log(duration);
+                    
                 }
+                s1 = true;
                 //gd.scene["next"] = "workshop_messenger";
                 //cc.director.loadScene('cutscene_1');
             }
@@ -242,7 +388,7 @@ export default class SceneInit extends cc.Component {
         var bgms_path_preload_array = [];
 
         for(var bgm_filename of bgm_preload) {
-            var current_bgm_path = bgm_preload_path + 'bgm/' + bgm_filename + '.ogg';
+            var current_bgm_path = bgm_preload_path + bgm_filename + '.ogg';
             bgms["data"][bgm_filename] = {};
             bgms["data"][bgm_filename]["path"] = current_bgm_path;
             bgms_path_preload_array.push(current_bgm_path);
@@ -260,16 +406,84 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(bgms);
                 
                 for(var bgm_filename of bgm_preload) {
-                    var current_bgm_path = bgm_preload_path + 'i18n/fr/' + bgm_filename + '.ogg';
+                    var current_bgm_path = bgm_preload_path + bgm_filename + '.ogg';
                     var audioID = cc.audioEngine.play(current_bgm_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     
                     bgms["data"][bgm_filename]["duration"] = duration;
                     cc.audioEngine.stop(audioID);
                     console.log(duration);
+                    
                 }
-                gd.scene["next"] = "workshop_messenger";
-                cc.director.loadScene('cutscene_1');
+                s2 = true;
+            }
+        );
+
+        var fxs = {
+            "id": "game_fx",
+            "data": {},
+        };
+
+        var fxs_path_preload_array = [];
+
+        for(var fx_filename of fx_preload) {
+            var current_fx_path = fx_preload_path + fx_filename + '.ogg';
+            fxs["data"][fx_filename] = {};
+            fxs["data"][fx_filename]["path"] = current_fx_path;
+            fxs_path_preload_array.push(current_fx_path);
+        }
+
+        
+        cc.loader.load(
+            fxs_path_preload_array,
+            function(c,t){
+                console.log(c);console.log(t);
+            }, 
+            function(error, item) {
+                console.log(item); 
+                console.log(error);
+                gd.directory.addStatus(fxs);
+                
+                for(var fx_filename of fx_preload) {
+                    var current_fx_path = fx_preload_path + fx_filename + '.ogg';
+                    var audioID = cc.audioEngine.play(current_fx_path, false, 0);
+                    var duration = cc.audioEngine.getDuration(audioID);
+                    
+                    fxs["data"][fx_filename]["duration"] = duration;
+                    cc.audioEngine.stop(audioID);
+                    console.log(duration);
+                    
+                }
+                s3 = true;
+
+            }
+        );
+
+
+        var assets = {
+            "id": "game_asset",
+            "data": {},
+        };
+
+        var assets_path_preload_array = [];
+
+        for(var asset_filename of asset_preload) {
+            var current_asset_path = asset_preload_path + asset_filename;
+            assets["data"][asset_filename] = {};
+            assets["data"][asset_filename]["path"] = current_asset_path;
+            assets_path_preload_array.push(current_asset_path);
+        }
+
+        cc.loader.load(
+            assets_path_preload_array,
+            function(c,t){
+                console.log(c);console.log(t);
+            }, 
+            function(error, item) {
+                console.log(item); 
+                console.log(error);
+                gd.directory.addStatus(assets);
+                s4 = true;
             }
         );
 

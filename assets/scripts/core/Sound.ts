@@ -8,26 +8,50 @@ export const Sound = {
         var voices: Object = gd.directory.searchId("game_voices");
         cc.audioEngine.play(voices["data"][id]["path"], false, 1);
     },
-    play: function(id) {
-        return cc.audioEngine.play(id, false, 1);
+
+    fx: function(id) {
+        var fx: Object = gd.directory.searchId("game_fx");
+        cc.audioEngine.play(fx["data"][id]["path"], false, 1);
     },
-    scene: function(data) {
+    
+    bgm: function(id) {
+        var bgms: Object = gd.directory.searchId("game_bgms");
+        return cc.audioEngine.play(bgms["data"][id]["path"], true, 1);
+    },
+
+    sceneFX: function(data) {
+        Sound.scene(data, 'fx');
+    },
+
+    sceneBGM: function(data) {
+        Sound.scene(data, 'bgm');
+    },
+
+    stopAll: function() {
+        cc.audioEngine.stopAll();
+    },
+
+    scene: function(data, type) {
         for(let scene_sound of data["sound_list"]) {
             for(let trigger_event of scene_sound["events"]) {
                 let event = JSON.parse(JSON.stringify(trigger_event));
                 event["listener"] = function(event) {
-                    Sound.play(scene_sound["audio_id"]);
+                    if(type === "bgm") {
+                        Sound.bgm(scene_sound["audio_id"]);
+                    } else {
+                        Sound.fx(scene_sound["audio_id"]);
+                    }
                 };
                 event["data"] = {};
                 for(var data_item in scene_sound) {
                     if(data_item === "events")
                         continue;
 
-                    event[data_item] = scene_sound[data_item];
+                    event["data"][data_item] = scene_sound[data_item];
                 }
                 
                 event["event"] = trigger_event;
-                gd.observer.addEvent(event);
+                gd.observer.addSubscription(event);
             }
         }
     }
