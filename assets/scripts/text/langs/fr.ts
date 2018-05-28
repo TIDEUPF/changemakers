@@ -1,4 +1,4 @@
-export const data = {
+﻿export const data = {
     "S1S1_1": "Bonjour mon ami !",
     "S1S1_2": "Bonjour.",
     "S1S1_3": "Je suis le messager du roi. Nous avons une mission à vous confier. Le roi a entendu dire que vous étiez le meilleur artisan du royaume et que vous trouviez des solutions à toutes sortes de problèmes. Est-ce vrai ?",

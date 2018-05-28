@@ -486,8 +486,11 @@ export default class SceneInit extends cc.Component {
                     "current_dialog" : null,
                     "last_char_displayed" : 0,
                     "listen" : {
-                        "type" : "keyinput",
-                        /*"data.key" : "d",*/
+                        "type" : {
+                            "$containsAny": [
+                                "keyinput",
+                                "voice",
+                            ]},
                     },
                 });
             },
@@ -1139,8 +1142,11 @@ export default class SceneInit extends cc.Component {
         var dialogListener: Object = {
             listener : dialogelement.getId(),
             event : {
-                    type : "keyinput",
-                    /*"data.key": "d",*/
+                    type : {
+                        "$containsAny": [
+                            "keyinput",
+                            "voice",
+                        ]},
             }
         };
         gd.observer.addSubscription(dialogListener);
