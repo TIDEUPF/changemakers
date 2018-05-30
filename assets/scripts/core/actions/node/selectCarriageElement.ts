@@ -22,6 +22,7 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
         var result: ActionResult = {};
         var carriage_data = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]);
+        var carriage_path = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]) ? gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]) : '/Canvas/background/carriage/';
 
         if(events[0]["type"] == "click") {
             /*var element: cc.Node = gd.directory.getNode(events[0]["element_path"]);
@@ -47,7 +48,7 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
 
         //just update all elements
         for(var part in carriage_data["data"]["parts"]) {
-            var selected_carriage_part_type: cc.Node = gd.directory.getNode('/Canvas/background/carriage/' + part);
+            var selected_carriage_part_type: cc.Node = gd.directory.getNode(carriage_path + part);
 
             if(!selected_carriage_part_type) {
                 continue;

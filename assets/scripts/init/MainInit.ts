@@ -191,10 +191,13 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                gd.scene["next"] = "workshop_messenger";
-                cc.director.loadScene('cutscene_1');
+                Notebook.initVisitedCharacters();
+                //gd.scene["next"] = "workshop_messenger";
+                //cc.director.loadScene('cutscene_1');
             }
         }, 200);
+
+
         //var clip: cc.AudioClip = cc.loader.load(cc.url.raw('assets/sound/fx/testaudio.mp3'));
         //cc.audioEngine.play("res/raw-assets/sound/introduction.ogg", true, 1);
         
@@ -497,7 +500,7 @@ export default class SceneInit extends cc.Component {
         //gd.scene["next"] = "palace";
         //cc.director.loadScene('cutscene_2');
 
-        //var player_data = gd.directory.searchId('player');
+        var player_data = gd.directory.searchId('player');
         
         //var result = check_carriage(carriage["data"]);
         
@@ -510,7 +513,7 @@ export default class SceneInit extends cc.Component {
                 
         //player_data["data"]["current_step"] = 1;
         //player_data["data"]["steps"]["1"]["stage"] = 4;
-        //player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
+        player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
         //player_data["data"]["steps"]["1"]["information"]["high"] = ["the_stable_boy", "Captain", "butler", "Driver", "Tailor"];
         //player_data["data"]["steps"]["1"]["information"]["futile"] = ["the_grumpy_butcher"];
         //player_data["data"]["steps"]["1"]["information"]["informative"] = ["civil_engineer"];
