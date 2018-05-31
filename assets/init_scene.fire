@@ -17308,7 +17308,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicators",
+    "_name": "indicators_page",
     "_objFlags": 0,
     "_parent": {
       "__id__": 43
@@ -17366,7 +17366,7 @@
     "_scaleY": 0.4,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -199,
+      "x": 0,
       "y": -72
     },
     "_skewX": 0,
@@ -17418,7 +17418,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 42,
+      "x": -463,
       "y": 42
     },
     "_skewX": 0,
@@ -17492,7 +17492,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 42,
+      "x": -463,
       "y": -86
     },
     "_skewX": 0,
@@ -17566,7 +17566,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -505,
       "y": 178
     },
     "_skewX": 0,
@@ -17640,7 +17640,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -505,
       "y": 299
     },
     "_skewX": 0,
@@ -17714,7 +17714,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -505,
       "y": 439
     },
     "_skewX": 0,
@@ -17845,7 +17845,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -505,
       "y": 0
     },
     "_skewX": 0,
@@ -19433,7 +19433,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -505,
       "y": 55
     },
     "_skewX": 0,

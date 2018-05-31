@@ -202,7 +202,8 @@ export default class SceneInit extends cc.Component {
                 */
                 //gd.observer.notifyEvents();
 
-                Notebook.initBadges();
+                Notebook.registerEvents();
+                Notebook.show();
 
 
                 /*
@@ -340,10 +341,10 @@ export default class SceneInit extends cc.Component {
             "resources": {
                 "value" : {
                     "speed" : 0.0,
-                    "fancyness" : 0.5,
-                    "comfort" : 0.5,
-                    "size" : 0.5,
-                    "strongness" : 1.0,
+                    "fancyness" : 0.0,
+                    "comfort" : 0.0,
+                    "size" : 0.0,
+                    "strongness" : 0.0,
                 },
             },
             "init": {
@@ -574,6 +575,16 @@ export default class SceneInit extends cc.Component {
         cc.director.loadScene('cutscene_7');
 */
 
+player_data["data"]["current_step"] = 5;
+
+slider_update["resources"]["value"] = {
+    "speed" : 1.0,
+    "fancyness" : 0.0,
+    "comfort" : 0.5,
+    "size" : 0.0,
+    "strongness" : 0.0,
+};
+
 player_data["data"]["badges"] = [
     {"badge_id": "creative_mind_g", "step": 1},
     {"badge_id": "never_give_up_g", "step": 2},
@@ -619,5 +630,7 @@ carriage["data"]["parts"] = {
 
     update (dt) {
         //cc.director.loadScene('carriage');
+        gd.frame["dt"] = dt;
+        gd.observer.notifyEvents();
     }
 }

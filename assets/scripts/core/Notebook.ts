@@ -1,9 +1,9 @@
 import * as gd from "./GameData";
 import * as text from "../text/i18n";
-import {Scene} from "../core/Scene";
-import {badge_labels} from "../core/Badge";
-import {Slider} from "../core/Slider";
-import GameElement from "../core/GameElement";
+import {Scene} from "./Scene";
+import {badge_labels} from "./Badge";
+import {Slider} from "./Slider";
+import GameElement from "./GameElement";
 
 const indicators = [
     'speed',
@@ -18,7 +18,7 @@ const notebook_steps = {
         "dialogs",
     ],
     "2" : [
-        "indicators",
+        "indicators_page",
     ],
     "3" : [
         "examples_1",
@@ -26,6 +26,8 @@ const notebook_steps = {
     ],
     "4" : [
         "carriage_page",
+    ],
+    "5" : [
     ],
 }
 
@@ -62,53 +64,71 @@ export const Notebook = {
                 "data.custom": "notebook_next",
             }
         });
+
+        gd.observer.addSubscription({
+            listener : this.back_page,
+            event:{
+                "type" : "click",
+                "data.custom": "notebook_back",
+            }
+        });
     },
     next_page: function() {
         var player_data = gd.directory.searchId("player");
 
-        switch(player_data["data"]["current_step"]) {
-            case "6":
-            case "5":
-            Notebook.initCarriage();
-            case "4":
-            Notebook.initIndicators();
-            case "3":
-            case "2":
-            Notebook.initVisitedCharacters();
-            case "1":
-            default:
-            Notebook.initBadges();
-        }
-
-        notebook_current_page_list = [];
-        notebook_current_page_list.push("badges");
-
-        for(var i=parseInt(player_data["data"]["current_step"], 10); i>0; i--) {
-            notebook_current_page_list = notebook_current_page_list.concat(notebook_steps[i.toString()]);
-        }
-
         notebook_max_page = notebook_current_page_list.length;
-        notebook_current_page = 2;
-        
+        var notebook_next_current_page = Math.min(notebook_max_page, notebook_current_page + 2);
+   
         for(var i=0; i<notebook_max_page; i++) {
             var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
             page.active = false;
         }
 
-        for(var i=0; i<notebook_current_page; i++) {
+        for(var i=notebook_current_page; i<notebook_next_current_page; i++) {
             var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
+            page.x = (i-notebook_current_page)*424;
             page.active = true;
-            page.x = i*424;
         }
+
+        notebook_current_page = notebook_next_current_page;
 
         var next_button = gd.directory.getNode('/notebook/background/next_button');
         var back_button = gd.directory.getNode('/notebook/background/back_button');
 
         next_button.active = false;
+        back_button.active = true;
+
+        if(notebook_current_page < notebook_max_page) {
+            next_button.active = true;
+        }
+    },
+    back_page: function() {
+        var player_data = gd.directory.searchId("player");
+
+        notebook_max_page = notebook_current_page_list.length;
+        var notebook_next_current_page = Math.max(0, notebook_current_page - 2);
+   
+        for(var i=0; i<notebook_max_page; i++) {
+            var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
+            page.active = false;
+        }
+
+        for(var i=notebook_next_current_page-1; i>notebook_next_current_page-3; i--) {
+            var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
+            page.x = (1-(notebook_next_current_page-i-1))*424;
+            page.active = true;
+        }
+
+        notebook_current_page = notebook_next_current_page;
+
+        var next_button = gd.directory.getNode('/notebook/background/next_button');
+        var back_button = gd.directory.getNode('/notebook/background/back_button');
+
+        next_button.active = true;
         back_button.active = false;
 
-        if(notebook_current_page >= notebook_max_page) {
-            next_button.active = true;
+        if(notebook_current_page > 2) {
+            back_button.active = true;
         }
     },
 
@@ -116,15 +136,15 @@ export const Notebook = {
         var player_data = gd.directory.searchId("player");
 
         switch(player_data["data"]["current_step"]) {
-            case "6":
-            case "5":
+            case 6:
+            case 5:
             Notebook.initCarriage();
-            case "4":
+            case 4:
             Notebook.initIndicators();
-            case "3":
-            case "2":
+            case 3:
+            case 2:
             Notebook.initVisitedCharacters();
-            case "1":
+            case 1:
             default:
             Notebook.initBadges();
         }
@@ -156,7 +176,7 @@ export const Notebook = {
         next_button.active = false;
         back_button.active = false;
 
-        if(notebook_current_page >= notebook_max_page) {
+        if(notebook_current_page < notebook_max_page) {
             next_button.active = true;
         }
     },
@@ -178,7 +198,7 @@ export const Notebook = {
         }
     },
     initIndicators: function() {
-        const indicators_path = "/notebook/background/indicators_entry/indicators";
+        const indicators_path = "/notebook/background/indicators_page/indicators";
 
         var indicators_data = gd.directory.searchId(indicatorsid);
 
