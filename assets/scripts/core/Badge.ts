@@ -2,7 +2,7 @@ import * as gd from "./GameData";
 import * as text from "../text/i18n";
 import {Scene} from "../core/Scene";
 
-const badge_labels:Object = {
+export const badge_labels: Object = {
     "creative_mind_b": "creative_mind",
     "creative_mind_g": "creative_mind",
     "creative_mind_s": "creative_mind",

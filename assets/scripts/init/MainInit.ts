@@ -191,9 +191,24 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                Notebook.initVisitedCharacters();
-                //gd.scene["next"] = "workshop_messenger";
-                //cc.director.loadScene('cutscene_1');
+                //Notebook.initVisitedCharacters();
+                /*
+                gd.observer.clearSubscriptions();
+                gd.directory.clearElements();
+                gd.directory.clearNodes();
+                Notebook.initCarriage();
+                gd.frame["dt"] = 0;
+                gd.observer.notifyEvents();
+                */
+                //gd.observer.notifyEvents();
+
+                Notebook.initBadges();
+
+
+                /*
+                gd.scene["next"] = "workshop_messenger";
+                cc.director.loadScene('cutscene_1');
+                */
             }
         }, 200);
 
@@ -558,6 +573,48 @@ export default class SceneInit extends cc.Component {
         gd.scene["next"] = "ending";
         cc.director.loadScene('cutscene_7');
 */
+
+player_data["data"]["badges"] = [
+    {"badge_id": "creative_mind_g", "step": 1},
+    {"badge_id": "never_give_up_g", "step": 2},
+];
+
+carriage["data"]["parts"] = {
+                    "wheels" : {
+                        "part": "none",
+                    },
+                    "chassis" : {
+                        "part": "none",
+                    },
+                    "pattern" : {
+                        "part": "none",
+                    },
+                    "seat" : {
+                        "part": "seat1",
+                    },
+                    "pseat" : {
+                        "part": "none",
+                        "hidden": true,
+                    },
+                    "dseat" : {
+                        "part": "none",
+                        "active": false,
+                        "hidden": true,
+                    },
+                    "shield" : {
+                        "part": "none",
+                        "active": false,
+                    },
+                    "entertainers" : {
+                        "part": "none",
+                        "active": false,
+                    },
+                    "boot" : {
+                        "part": "none",
+                    },
+                }
+
+
     }
 
     update (dt) {

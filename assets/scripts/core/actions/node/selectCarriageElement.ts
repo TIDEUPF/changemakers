@@ -22,7 +22,7 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {
         var result: ActionResult = {};
         var carriage_data = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]);
-        var carriage_path = gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]) ? gd.directory.searchId(this.elementStatus["resources"]["carriage_data"]) : '/Canvas/background/carriage/';
+        var carriage_path = this.elementStatus["resources"]["carriage_path"] ? this.elementStatus["resources"]["carriage_path"] : '/Canvas/background/carriage/';
 
         if(events[0]["type"] == "click") {
             /*var element: cc.Node = gd.directory.getNode(events[0]["element_path"]);
@@ -72,7 +72,7 @@ class SelectCarriageElement extends ElementAction<cc.Node> {
             
             if(carriage_parts[selected_carriage_part_type.name]) {
                 for(var item of carriage_parts[selected_carriage_part_type.name]) {
-                    hitboxes.push(gd.directory.getNode('/Canvas/background/carriage/' + part + '/' + item));
+                    hitboxes.push(gd.directory.getNode(carriage_path + part + '/' + item));
                 }
             } else {
                 hitboxes.push(selected_carriage_part_type);
