@@ -10,7 +10,7 @@
   "inlineSpriteFrames": false,
   "inlineSpriteFrames_native": true,
   "md5Cache": true,
-  "mergeStartScene": false,
+  "mergeStartScene": true,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
   "orientation": {
@@ -23,6 +23,6 @@
   "privateKey": "",
   "renderMode": "0",
   "startScene": "3a576c82-0b82-45f6-8a40-54c33fb5d673",
-  "title": "ChangeMakers",
+  "title": "Empatheia",
   "webOrientation": "landscape"
 }

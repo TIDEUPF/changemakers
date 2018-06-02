@@ -140,9 +140,9 @@ export default class SceneInit extends cc.Component {
                 "sound_list": [{
                     "audio_id": "B.1 New badge",
                     "events": [
-                        {
+                        /*{
                             "type": "scene_start",
-                        },
+                        },*/
                     ],
                 },
             ],
@@ -482,6 +482,7 @@ export default class SceneInit extends cc.Component {
                             "dialog" : "/Canvas/background/dialog",
                         },
                         "dialog_list" : cutscene_dialogs[gd.scene["current"]],
+                        "scene" : gd.scene["current"],
                     },
                     "current_dialog" : null,
                     "last_char_displayed" : 0,
@@ -613,7 +614,7 @@ export default class SceneInit extends cc.Component {
 
             "stage1_scene4_captain": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_captain_d1",
+                    "text_id" : "S1S3_4",
                     "speaker" : "Captain",
                 },
             },
@@ -1122,6 +1123,7 @@ export default class SceneInit extends cc.Component {
                     "dialog" : "/Canvas/background/dialog",
                 },
                 "dialog_list" : cutscene_dialogs[gd.scene["current"]],
+                "scene" : gd.scene["current"],
             },
             "current_dialog" : null,
             "last_char_displayed" : 0,
@@ -1152,8 +1154,9 @@ export default class SceneInit extends cc.Component {
         gd.observer.addSubscription(dialogListener);
 
         var finishScene: Object = {
-            listener : function() {
-                if(!next_scene[gd.scene["current"]]) {
+            listener : function(event) {
+                var finished_scene = event["data"]["scene"];
+                if(!next_scene[finished_scene]) {
                     return;
                 }
 

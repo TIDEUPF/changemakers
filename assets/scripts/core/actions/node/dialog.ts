@@ -48,7 +48,7 @@ class Dialog extends ElementAction<cc.Node> {
                 //finish
                 var dialogListener = {
                     "listener" : this.elementStatus["id"],
-                    "event.type" : "keyinput",
+                    /*"event.type" : "keyinput",*/
                 };
 
                 gd.observer.removeSubscription(dialogListener);
@@ -56,13 +56,14 @@ class Dialog extends ElementAction<cc.Node> {
                 var dialog: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
                 dialog.active = false;
 
-                gd.directory.getNode('/Canvas/dialog').active = false;
+                gd.directory.getNode('/Canvas/background/dialog').active = false;
 
                 result.events.push({
                         "type": "dialog",
                         "subtype": "dialog_finished",
                         "data": {
                             "id": this.elementStatus["id"],
+                            "scene": this.elementStatus["resources"]["scene"],
                         },
                     },
                 );
@@ -82,15 +83,21 @@ class Dialog extends ElementAction<cc.Node> {
 
         if(current_dialog_data["speaker"] == "narrator") {
             var speaker_dialog = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"]);
+            
+            //TODO: search for every parent to properly position the callout
+            var background = gd.directory.getNode('/Canvas/background');
+
             speaker_dialog.active = false;
-            dialog = gd.directory.getNode('/Canvas/dialog');
-            dialog_text = gd.directory.getNode('/Canvas/dialog' + "/dialog_text");
+            dialog = gd.directory.getNode('/Canvas/background/dialog');
+            dialog_text = gd.directory.getNode('/Canvas/background/dialog' + "/dialog_text");
             dialog.active = true;
+            var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
+            callout_arrow.active = false;
             var canvas: cc.Node = gd.directory.getNode('/Canvas');
-            dialog.x = 0;
-            dialog.y = (canvas.height/2)*1.5;
+            dialog.x = -background.x + 0;
+            dialog.y = -background.y + canvas.height - dialog.height/2;
         } else {
-            var narrator_dialog = gd.directory.getNode('/Canvas/dialog');
+            var narrator_dialog = gd.directory.getNode('/Canvas/background/dialog');
             narrator_dialog.active = false;
             var character: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["speakers"] + current_dialog_data["speaker"]);
             var callout_arrow: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/callout_arrow');
@@ -115,13 +122,26 @@ class Dialog extends ElementAction<cc.Node> {
 
         //voice support
         var voices: Object = gd.directory.searchId("game_voices");
-        if(last_char_displayed == 0 && voices["data"][current_dialog_data["text_id"]]) {
-            var voice_duration = voices["data"][current_dialog_data["text_id"]]["duration"];
+        if(/*last_char_displayed == 0 && */voices["data"][current_dialog_data["text_id"]]) {
+            var voice_duration: number = voices["data"][current_dialog_data["text_id"]]["duration"];
             var n_splits = Math.ceil(dialog_text_string.length/max_chars);
             var split_duration = voice_duration/n_splits;
             var current_game_time = Utils.gameTime();
 
             //schedule events
+            var event_time = current_game_time + /*(i+1) * */Math.floor(split_duration*1000);
+
+            gd.observer.addEvent({
+                type: "voice",
+                subtype: "voice_finished",
+                data: {
+                    voice_id: current_dialog_data["text_id"],
+                },
+                scheduling: {
+                    afterGameTime : event_time,
+                },
+            });
+            /*
             for(var i=0;i<n_splits;i++) {
                 var event_time = current_game_time + (i+1) * Math.floor(split_duration*1000);
 
@@ -135,12 +155,57 @@ class Dialog extends ElementAction<cc.Node> {
                         afterGameTime : event_time,
                     },
                 });
-            }
-            Sound.voice(current_dialog_data["text_id"]);
+            }*/
+
+            if(last_char_displayed === 0)
+                Sound.voice(current_dialog_data["text_id"]);
+
             var n_chars_full_dialog = dialog_text_string.length;
 
             max_chars = Math.ceil(n_chars_full_dialog/(n_splits));
             this.elementStatus["voice_active"] = true;
+        } else {
+            var voice_duration: number = dialog_text_string.length * 0.1;
+            var n_splits = Math.ceil(dialog_text_string.length/max_chars);
+            var split_duration = voice_duration/n_splits;
+            var current_game_time = Utils.gameTime();
+
+            //schedule events
+            var event_time = current_game_time + /*(i+1) * */Math.floor(split_duration*1000);
+
+            gd.observer.addEvent({
+                type: "voice",
+                subtype: "voice_finished",
+                data: {
+                    voice_id: current_dialog_data["text_id"],
+                },
+                scheduling: {
+                    afterGameTime : event_time,
+                },
+            });
+            /*
+            for(var i=0;i<n_splits;i++) {
+                var event_time = current_game_time + (i+1) * Math.floor(split_duration*1000);
+
+                gd.observer.addEvent({
+                    type: "voice",
+                    subtype: "voice_finished",
+                    data: {
+                        voice_id: current_dialog_data["text_id"],
+                    },
+                    scheduling: {
+                        afterGameTime : event_time,
+                    },
+                });
+            }*/
+
+            //if(last_char_displayed === 0)
+                //Sound.voice(current_dialog_data["text_id"]);
+
+            var n_chars_full_dialog = dialog_text_string.length;
+
+            max_chars = Math.ceil(n_chars_full_dialog/(n_splits));
+            this.elementStatus["voice_active"] = true;           
         }
         
         

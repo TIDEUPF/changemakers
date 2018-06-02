@@ -2,6 +2,8 @@ import * as gd from "./GameData";
 import * as text from "../text/i18n";
 import {Scene} from "../core/Scene";
 
+var message_count = 0;
+
 export class MessageBox {
     static text(content) {
 
@@ -16,9 +18,10 @@ export class MessageBox {
         var label_component: cc.Label = label.getComponent('cc.Label');
         label_component.string = tcontent;
 
-        //TODO: avoid multiple click events assignment
-        Scene.click('/messagebox_transparency');
+        if(message_count === 0)
+            Scene.click('/messagebox_transparency');
 
+        var message_id = message_count++;
         gd.observer.addSubscription({
             listener : function(event) {
                 MessageBox.close();
@@ -26,6 +29,9 @@ export class MessageBox {
                 gd.observer.addEvent({
                     type: "messagebox",
                     subtype: "close",
+                    data: {
+                        "message_id": message_id,
+                    },
                 });
 
             },
@@ -35,6 +41,7 @@ export class MessageBox {
             }
         });
 
+        return message_id;
     }
 
     static close() {

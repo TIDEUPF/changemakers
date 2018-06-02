@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Scene} from "../core/Scene";
 import * as text from "../text/i18n";
@@ -22,6 +23,7 @@ export default class MapFeedback extends cc.Component {
         gd.directory.clearNodes();
 
         //console.log(gamenn.moveUp);
+        Notebook.registerEvents();
         var id_count=0;
 
         var elements_path = "/Canvas/background/npcs/";

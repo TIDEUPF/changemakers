@@ -8,4 +8,4 @@ export const Slider = {
         var slider: cc.Slider = node.getComponent("cc.Slider");
         slider.progress = value;
     },
-};
+}; 

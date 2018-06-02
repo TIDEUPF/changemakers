@@ -16,7 +16,7 @@ export const data = {
     "S1S3_2": "You seem quite lost my boy/girl.",
     "S1S3_3": "Well, I am a bit. The king and queen just gave me the mission of building a new carriage for them. But I need more information so that I can design it properly. What do they need it for ? What shall it do ? On what types of road do they usually travel ? How big should it be ? What should be the functions of it ? They remained very blurry with their order.",
 
-    "stage1_scene4_captain_d1": "My friend, you have to build a strong and truly resistant carriage! It should be safe for the royal family to travel in it. And no need for fancyness, there is beauty in roughness.",
+    "S1S3_4": "My friend, you have to build a strong and truly resistant carriage! It should be safe for the royal family to travel in it. And no need for fancyness, there is beauty in roughness.",
     "S1S4_1": "Long journeys can be exhausting. The carriage needs to be comfortable. And I'm not saying that only for me but also for the royal couple!",
     "S1S4_2": "The carriage should be the richest one ever made in the kingdom in order to show the power of the king and wealth of its land, it should be a piece of art and luxury.",
     "S1S4_3": "The royal family has a lot of stuff to carry around, clothes, gifts, etc. So I need space to put all that in the carriage",

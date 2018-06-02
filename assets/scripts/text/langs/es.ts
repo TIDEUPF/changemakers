@@ -16,7 +16,7 @@ export const data = {
     "S1S3_2": "¿Ocurre algo?",
     "S1S3_3": "Bueno... El rey y la reina me dieron la misión de construir un nuevo carruaje para ellos. Pero necesito más información para poder diseñarlo correctamente. ¿Para qué lo necesitan? ¿Qué debe hacer? ¿En qué tipo de carretera suelen viajar? ¿Qué tan grande debería ser? ¿Cuáles deberían ser sus funciones? Fueron muy difusos con su petición.",
 
-    "stage1_scene4_captain_d1": "¡Aha, tienes que construir un carruaje fuerte y verdaderamente resistente! Debería ser seguro para la familia real viajar en él. Y no hay necesidad de lujo, hay belleza en la dureza. Pero tal vez deberías ir por ahí y reunir más puntos de vista.",
+    "S1S3_4": "¡Aha, tienes que construir un carruaje fuerte y verdaderamente resistente! Debería ser seguro para la familia real viajar en él. Y no hay necesidad de lujo, hay belleza en la dureza. Pero tal vez deberías ir por ahí y reunir más puntos de vista.",
     "S1S4_1": "Los largos viajes pueden ser agotadores. El carruaje debe ser cómodo. ¡Y no digo eso solo para mí, sino también para la pareja real!",
     "S1S4_2": "El carruaje debería ser el más rico que se haya hecho en el reino para mostrar el poder del rey y la riqueza de su tierra, debe ser una obra de arte y un lujo.",
     "S1S4_3": "La familia real tiene muchas cosas para llevar, ropa, regalos, etc. Así que necesito espacio para poner todo eso en el carruaje.",

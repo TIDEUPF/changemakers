@@ -6,19 +6,23 @@ import {Slider} from "./Slider";
 import GameElement from "./GameElement";
 
 const indicators = [
-    'speed',
-    'fancyness',
-    'comfort',
-    'size',
-    'strongness',
-];
+    [
+        'speed',
+        'fancyness',
+    ],
+    [
+        'comfort',
+        'size',
+        'strongness',
+    ],
+]; 
 
 const notebook_steps = {
     "1" : [
-        "dialogs",
     ],
     "2" : [
-        "indicators_page",
+        "indicators_page_0",
+        "indicators_page_1",
     ],
     "3" : [
         "examples_1",
@@ -34,9 +38,11 @@ const notebook_steps = {
 var notebook_max_page = 0;
 var notebook_current_page = 0;
 var notebook_current_page_list = [];
+var notebook_visited_init = false;
+
 
 const characters_dialogs = {
-    "Captain": "stage1_scene4_captain_d1",
+    "Captain": "S1S3_4",
     "Driver": "S1S4_1",
     "Tailor": "S1S4_2",
     "butler": "S1S4_3",
@@ -70,6 +76,22 @@ export const Notebook = {
             event:{
                 "type" : "click",
                 "data.custom": "notebook_back",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : this.show,
+            event:{
+                "type" : "click",
+                "data.custom": "notebook_show",
+            }
+        });
+
+        gd.observer.addSubscription({
+            listener : this.close,
+            event:{
+                "type" : "click",
+                "data.custom": "notebook_close",
             }
         });
     },
@@ -106,7 +128,7 @@ export const Notebook = {
         var player_data = gd.directory.searchId("player");
 
         notebook_max_page = notebook_current_page_list.length;
-        var notebook_next_current_page = Math.max(0, notebook_current_page - 2);
+        var notebook_next_current_page = Math.max(0, notebook_current_page - (2-notebook_current_page%2));
    
         for(var i=0; i<notebook_max_page; i++) {
             var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
@@ -131,9 +153,13 @@ export const Notebook = {
             back_button.active = true;
         }
     },
-
+    close: function() {
+        gd.directory.getNode('/notebook').active = false;
+    },
     show: function() {
         var player_data = gd.directory.searchId("player");
+
+        gd.directory.getNode('/notebook').active = true;
 
         switch(player_data["data"]["current_step"]) {
             case 6:
@@ -143,21 +169,28 @@ export const Notebook = {
             Notebook.initIndicators();
             case 3:
             case 2:
-            Notebook.initVisitedCharacters();
             case 1:
+            Notebook.initVisitedCharacters();
             default:
             Notebook.initBadges();
         }
 
         notebook_current_page_list = [];
-        notebook_current_page_list.push("badges");
 
-        for(var i=parseInt(player_data["data"]["current_step"], 10); i>0; i--) {
+        if(player_data["data"]["badges"].length)
+            notebook_current_page_list.push("badges");
+
+        for(var i=parseInt(player_data["data"]["current_step"], 10)-1; i>0; i--) {
             notebook_current_page_list = notebook_current_page_list.concat(notebook_steps[i.toString()]);
         }
 
+        if(player_data["data"]["steps"]["1"]["info_dialogs"].length)
+        notebook_current_page_list.push("dialogs");
+
+        notebook_current_page_list.push("mission");
+
         notebook_max_page = notebook_current_page_list.length;
-        notebook_current_page = 2;
+        notebook_current_page = Math.min(2, notebook_max_page);
         
         for(var i=0; i<notebook_max_page; i++) {
             var page = gd.directory.getNode('/notebook/background/' + notebook_current_page_list[i]);
@@ -198,19 +231,25 @@ export const Notebook = {
         }
     },
     initIndicators: function() {
-        const indicators_path = "/notebook/background/indicators_page/indicators";
-
         var indicators_data = gd.directory.searchId(indicatorsid);
 
-        for(var indicator of indicators) {
-            var path = indicators_path + '/' + indicator;
-            
-            Slider.setValue(path, indicators_data["resources"]["value"][indicator]);
+        for(var i in indicators) {
+            var indicators_path = "/notebook/background/indicators_page_" + i + "/indicators";
+
+            for(var indicator of indicators[i]) {
+                var path = indicators_path + '/' + indicator;
+                
+                Slider.setValue(path, indicators_data["resources"]["value"][indicator]);
+            }
         }
     },
     initVisitedCharacters: function() {
         const characters_path = "/notebook/background/dialogs";
         var player_data = gd.directory.searchId("player");
+        var dialog_text = gd.directory.getNode(characters_path + '/dialog_text');
+        var label: cc.Label = dialog_text.getComponent('cc.Label')
+
+        label.string = "";
 
         var row1_characters,
         row2_characters,
@@ -218,6 +257,14 @@ export const Notebook = {
 
         var n_visited = player_data["data"]["steps"]["1"]["info_dialogs"].length;
         var n_split = Math.ceil(n_visited/2);
+
+        for(let character of gd.directory.getNode(characters_path + "/row1").children) {
+            character.active = false;
+        }
+
+        for(let character of gd.directory.getNode(characters_path + "/row2").children) {
+            character.active = false;
+        }
 
         row1_characters = player_data["data"]["steps"]["1"]["info_dialogs"].slice(0, n_split);
         row2_characters = player_data["data"]["steps"]["1"]["info_dialogs"].slice(n_split);
@@ -234,12 +281,20 @@ export const Notebook = {
             character_array.push(character);
         }
 
-        var dialog_text = gd.directory.getNode(characters_path + '/dialog_text');
-        for(let character of character_array) {
-            character.on('touchstart', function(event) {
-                var label: cc.Label = dialog_text.getComponent('cc.Label')
-                label.string = text.i18n.t(characters_dialogs[character.name]);
-            });
+        if(notebook_visited_init === false) {
+            notebook_visited_init = true;
+
+            for(let character of gd.directory.getNode(characters_path + "/row1").children) {
+                character.on('touchstart', function(event) {
+                    label.string = text.i18n.t(characters_dialogs[character.name]);
+                });
+            }
+
+            for(let character of gd.directory.getNode(characters_path + "/row2").children) {
+                character.on('touchstart', function(event) {
+                    label.string = text.i18n.t(characters_dialogs[character.name]);
+                });
+            }
         }
     },
     initCarriage: function() {

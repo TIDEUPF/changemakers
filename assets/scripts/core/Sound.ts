@@ -16,7 +16,7 @@ export const Sound = {
     
     bgm: function(id) {
         var bgms: Object = gd.directory.searchId("game_bgms");
-        return cc.audioEngine.play(bgms["data"][id]["path"], true, 1);
+        return cc.audioEngine.play(bgms["data"][id]["path"], true, 0.4);
     },
 
     sceneFX: function(data) {

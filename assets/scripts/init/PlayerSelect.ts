@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Sound} from "../core/Sound";
 import {Notebook} from "../core/Notebook";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -29,6 +30,34 @@ export default class PlayeSelect extends cc.Component {
         gd.frame["dt"] = 0;
 
         var id_count=0;
+
+
+        var bgm_scene_sound = {
+            "sound_list": [
+                {
+                    "audio_id": "introduction",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "player_select",
+                                ]},
+                        },
+                    ],
+                },
+
+
+            ],
+        };
+
+        Sound.sceneBGM(bgm_scene_sound);
+
+        gd.observer.addEvent({
+            "type": "scene_start",
+            "scene": "player_select",
+        });
+
 
         //Notebook.registerEvents();
         

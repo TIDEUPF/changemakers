@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Scene} from "../core/Scene";
 import {Badge} from "../core/Badge";
@@ -25,6 +26,8 @@ export default class MapInit extends cc.Component {
         //console.log(gamenn.moveUp);
         var id_count=0;
 
+        Notebook.registerEvents();
+        
         var elements_path = "/Canvas/background/npcs/";
         /*
         var player: Object = {

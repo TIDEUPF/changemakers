@@ -19,7 +19,7 @@ export const characters_information:Object = {
 /*
             "stage1_scene4_captain": {
                 "d1" : {
-                    "text_id" : "stage1_scene4_captain_d1",
+                    "text_id" : "S1S3_4",
                     "speaker" : "Captain",
                 },
             },

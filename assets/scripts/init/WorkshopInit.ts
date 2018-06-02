@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {check_carriage, parts_information} from "../steps/prototype/carriage";
 import {Badge} from "../core/Badge";
@@ -26,6 +27,8 @@ export default class WorkshopInit extends cc.Component {
         gd.directory.clearElements();
         gd.directory.clearNodes();
  
+        Notebook.registerEvents();
+
         //cc.audioEngine.play("res/raw-assets/sound/fx/testaudio.mp3", true, 1);
  
         // init logic

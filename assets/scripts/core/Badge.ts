@@ -20,6 +20,8 @@ export const badge_labels: Object = {
     "problem_solver_s": "problem_solver",
 }
 
+var badge_count = 0;
+
 export class Badge {
     static add(params) {
 
@@ -42,10 +44,13 @@ export class Badge {
 
         player_data["data"]["badges"].push({
             "badge_id": params["badge_id"],
-            "step": player_data["current_step"],
+            "step": player_data["data"]["current_step"],
         });
 
-        Scene.click('/badges_transparency');
+        if(badge_count === 0)
+            Scene.click('/badges_transparency');
+
+        var badge_id = badge_count++;
 
         gd.observer.addSubscription({
             listener : function(event) {
@@ -54,6 +59,9 @@ export class Badge {
                 gd.observer.addEvent({
                     type: "bagdes",
                     subtype: "close",
+                    "data": {
+                        "badge_id": badge_id,
+                    },
                 });
 
             },
@@ -63,6 +71,7 @@ export class Badge {
             }
         });
 
+        return badge_id;
     }
 
     static close() {

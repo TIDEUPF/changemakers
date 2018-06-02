@@ -1,5 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
+import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Badge} from "../core/Badge";
 import Observer from "../core/Observer";
@@ -32,6 +33,8 @@ export default class IndicatorsInit extends cc.Component {
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
         gd.directory.clearNodes();
+
+        Notebook.registerEvents();
 
         var player_data = gd.directory.searchId("player");
 
@@ -127,6 +130,7 @@ export default class IndicatorsInit extends cc.Component {
                 }
 
                 if(modified_sliders >= 4) {
+                    var pre_badge_id = MessageBox.text("S2S2");
                     gd.observer.addSubscription({
                         listener : function(event) {
                             gd.observer.addEvent({
@@ -137,9 +141,10 @@ export default class IndicatorsInit extends cc.Component {
                         event:{
                             type: "messagebox",
                             subtype: "close",
+                            "data.message_id": pre_badge_id,
                         }
                     });
-                    MessageBox.text("S2S2");
+                    
                 } else {
                     MessageBox.text("S2S1");
                 }

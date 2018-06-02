@@ -146,6 +146,72 @@ const voices_preload = [
     "S1S1_3",
     "S1S1_4",
     "S1S1_5",
+    "S1S2_1",
+    "S1S2_2",
+    "S1S2_3",
+    "S1S2_4",
+    "S1S2_5",
+    "S1S2_6",
+    "S1S3_1",
+    "S1S3_2",
+    "S1S3_3",
+    "S1S3_4",
+    "S1S4_1",
+    "S1S4_10",
+    "S1S4_11",
+    "S1S4_12",
+    "S1S4_13",
+    "S1S4_14",
+    "S1S4_2",
+    "S1S4_3",
+    "S1S4_4",
+    "S1S4_5",
+    "S1S4_6",
+    "S1S4_7",
+    "S1S4_8",
+    "S1S4_9",
+    "S1S5_1",
+    "S2S0",
+    "S2S1",
+    "S2S2",
+    "S3S1_1",
+    "S3S1_2",
+    "S3S1_3",
+    "S3S1_4",
+    "S3S1_5",
+    "S3S1_6",
+    "S3S3_1",
+    "S4S1_1",
+    "S4S2_1",
+    "S4S2_2",
+    "S4S2_3",
+    "S4S2_4",
+    "S4S2_5",
+    "S4S2_6",
+    "S4S2_7",
+    "S4S2_8",
+    "S4S3_1",
+    "S4S3_2",
+    "S5S0_1",
+    "S5S1_1",
+    "S5S1_2",
+    "S5S1_3",
+    "S5S1_4",
+    "S5S1_5",
+    "S5S1_6",
+    "S5S1_7",
+    "S5S2_1",
+    "S5S2_2",
+    "S5S2_3",
+    "S5S2_4",
+    "S6S1_1",
+    "S6S1_2",
+    "S6S1_3",
+    "S6S2_1",
+    "S6S2_2",
+    "S6S2_3",
+    "S6S2_4",
+    "S6S3_1",    
 ];
 
 const bgm_preload_path = "res/raw-assets/sound/bgm/";
@@ -179,7 +245,7 @@ export default class SceneInit extends cc.Component {
         var init = this;
         console.log("game init");
         
-        text.i18n.init("fr");
+        text.i18n.init("en");
 
         var s1 = false,
         s2 = false,
@@ -191,6 +257,7 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
+                cc.director.loadScene('player_select');
                 //Notebook.initVisitedCharacters();
                 /*
                 gd.observer.clearSubscriptions();
@@ -202,14 +269,42 @@ export default class SceneInit extends cc.Component {
                 */
                 //gd.observer.notifyEvents();
 
+                /*
                 Notebook.registerEvents();
                 Notebook.show();
+                */
 
 
                 /*
                 gd.scene["next"] = "workshop_messenger";
                 cc.director.loadScene('cutscene_1');
                 */
+                
+
+                /*
+               player_data["data"]["current_step"] = 1;
+               player_data["data"]["steps"]["1"]["stage"] = 4;
+                cc.director.loadScene('map');
+                */
+
+                /*
+                gd.scene["next"] = "palace";
+                cc.director.loadScene('cutscene_2');
+                */
+                
+               /*
+               gd.scene["next"] = "courtyard";
+               cc.director.loadScene('cutscene_4');
+               */
+
+               /*
+                gd.scene["next"] = "S3S1_2";
+                cc.director.loadScene('ideation_1');
+                */
+                
+               //cc.director.loadScene('indicators');
+
+               //cc.director.loadScene('workshop');
             }
         }, 200);
 
@@ -365,7 +460,7 @@ export default class SceneInit extends cc.Component {
         var voices_path_preload_array = [];
 
         for(var voice_filename of voices_preload) {
-            var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
+            var current_voice_path = voices_preload_path + 'i18n/en/' + voice_filename + '.ogg';
             voices["data"][voice_filename] = {};
             voices["data"][voice_filename]["path"] = current_voice_path;
             voices_path_preload_array.push(current_voice_path);
@@ -383,7 +478,7 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(voices);
                 
                 for(var voice_filename of voices_preload) {
-                    var current_voice_path = voices_preload_path + 'i18n/fr/' + voice_filename + '.wav';
+                    var current_voice_path = voices_preload_path + 'i18n/en/' + voice_filename + '.ogg';
                     var audioID = cc.audioEngine.play(current_voice_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     
@@ -529,7 +624,7 @@ export default class SceneInit extends cc.Component {
                 
         //player_data["data"]["current_step"] = 1;
         //player_data["data"]["steps"]["1"]["stage"] = 4;
-        player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
+        //player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
         //player_data["data"]["steps"]["1"]["information"]["high"] = ["the_stable_boy", "Captain", "butler", "Driver", "Tailor"];
         //player_data["data"]["steps"]["1"]["information"]["futile"] = ["the_grumpy_butcher"];
         //player_data["data"]["steps"]["1"]["information"]["informative"] = ["civil_engineer"];
@@ -574,8 +669,8 @@ export default class SceneInit extends cc.Component {
         gd.scene["next"] = "ending";
         cc.director.loadScene('cutscene_7');
 */
-
-player_data["data"]["current_step"] = 5;
+/*
+player_data["data"]["current_step"] = 4;
 
 slider_update["resources"]["value"] = {
     "speed" : 1.0,
@@ -625,7 +720,8 @@ carriage["data"]["parts"] = {
                     },
                 }
 
-
+                player_data["data"]["steps"]["1"]["info_dialogs"] = ["the_stable_boy", "the_grumpy_butcher", "Captain", "butler", "Driver", "civil_engineer", "Tailor"];
+*/
     }
 
     update (dt) {
