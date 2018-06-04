@@ -55,9 +55,13 @@ export const data = {
     "S5S1_6": "Hum ?",
     "S5S1_7": "Based on the feedback you just received, do you wish to review your design or ignore their feedback and keep your design as it is?",
 
+    "S5S2_2A" : "You just arrived in the city with the carriage and no one saw your arrival... That is not a good sign. The Royal Carriage should be noticed by erveryone! Crowds should be gathering around it! You should consider making it more remarkable...",
+    "S5S2_3A" : "You just arrived in your old friend's town the Lord Christophe. What a coincidence! Both of you are planning to travel to Portalona the next day. You should consider sharing it...",
+    "S5S2_4A" : "You just passed the bridge of Oslina... Ambush! A band of robbers! But hurrah! You managed to escape! You should consider protecting the carriage...",
+    "S5S2B" : "New options have just appeared in your workshop, go back to it to discover them.",
+    "S5S2C" : "Now that you have augmented your carriage, take it out for a new test.",
+
     "S5S2_1": "You are now ready for the real world test. Are you ready to see if your carriage is good enough now? You’re taking the carriage out and encounter and stop at a crossroad. There are 3 paths you may choose from. Pick one of the 3 paths.",
-    "stage5_disruptions_narrator_d2": "New options have just appeared in your workshop, go back to it to discover them.",
-    "stage5_disruptions_narrator_d3": "Now that you have augmented your carriage, take it out for a new test.",
 
     "S5S2_4": "You have now chosen to surround your carriage with soldiers and weapons to go through the war time! What is good is that you don’t have to change anything about the design of your carriage. This allows you to respond temporarily to this exceptional need with little effort. Well done!",
     "S5S2_3": "You have now chosen to design the carriage for sharing! Congratulations! Most carriages are parked for 80% of their time, so sharing is caring. Remember to also think about how to divide the time of use of the carriage. Ask a parent/teacher to show you how to design a sharing scheme for both the royal family and their neighbours/friends...",

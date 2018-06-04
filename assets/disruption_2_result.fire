@@ -4892,7 +4892,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 72.1
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -6333,7 +6333,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "kingandqueen2",
+    "_name": "lord_chistophe",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -6347,7 +6347,7 @@
       }
     ],
     "_prefab": null,
-    "_id": "70LNTENJZK64usYdCPqU/Q",
+    "_id": "1e/DS3KZ1IWK28UMJx6ytT",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -6364,17 +6364,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1191,
-      "height": 1105
+      "width": 257,
+      "height": 451
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.75,
-    "_scaleY": 0.75,
+    "_scaleX": 1.6,
+    "_scaleY": 1.6,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -616
+      "x": 80,
+      "y": -584.6
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -6392,7 +6392,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "4b322d5d-e1a2-4939-b82d-125e5fb98edf"
+      "__uuid__": "942de307-9fbb-4839-b704-841aec43aa37"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -6418,7 +6418,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "8a895fb4-0508-40b3-89b6-9c1ca0b7d3fa"
+      "__uuid__": "4d156f8f-a1aa-40c5-942a-1816639e6a2f"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -6442,7 +6442,7 @@
     "node": {
       "__id__": 3
     },
-    "_enabled": true,
+    "_enabled": false,
     "_defaultClip": null,
     "_clips": [
       null,

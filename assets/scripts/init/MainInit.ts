@@ -47,19 +47,25 @@ const asset_preload = [
     "sprites/characters/Chef.png",
     "sprites/characters/Captain.png",
     "sprites/characters/Tailor.png",
+    "sprites/characters/extra_people_09.png",
+    "sprites/characters/extra_people_11.png",
+    "sprites/characters/extra_people_back_01.png",
+    "sprites/characters/extra_people_back_07.png",
+    "sprites/characters/lord_christophe.png",
     "sprites/symbols/likeness.png",
     "sprites/symbols/ruler.png",
     "sprites/symbols/strongness.png",
     "sprites/symbols/luxury.png",
-    "sprites/backgrounds/CM_Notebook.png",
+    "sprites/notebook/notebook_bg.jpg",
+    "sprites/notebook/notebook_mini.png",
     "sprites/backgrounds/palace.png",
     "sprites/dialog/callout.png",
     "sprites/dialog/callout_arrow.png",
     "sprites/characters/Messenger_horse.png",
     "csprites/backgrounds/CM_Workplace.jpg",
-    "sprites/backgrounds/courtyard/background.png",
-    "sprites/backgrounds/courtyard/left_flowers.png",
-    "sprites/backgrounds/courtyard/right_flowers.png",
+    "csprites/backgrounds/courtyard/background.jpg",
+    "csprites/backgrounds/courtyard/left_flowers.png",
+    "csprites/backgrounds/courtyard/right_flowers.png",
     "csprites/backgrounds/cmmapalowcost-01.jpg",
     "csprites/backgrounds/citadel.png",
     "csprites/backgrounds/ideation_background.jpg",
@@ -211,7 +217,7 @@ const voices_preload = [
     "S6S2_2",
     "S6S2_3",
     "S6S2_4",
-    "S6S3_1",    
+    /*"S6S3_1",    */
 ];
 
 const bgm_preload_path = "res/raw-assets/sound/bgm/";
@@ -258,6 +264,22 @@ export default class SceneInit extends cc.Component {
                 load_complete = null;
                 
                 cc.director.loadScene('player_select');
+
+                /*
+                player_data["data"]["current_step"] = 5;
+                player_data["data"]["steps"]["5"]["feedback"].push("Captain");
+                player_data["data"]["steps"]["5"]["feedback"].push("Driver");
+                player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
+                player_data["data"]["steps"]["5"]["stage"] = 2;
+                cc.director.loadScene('map_disruption');
+                */
+
+                /*
+               player_data["data"]["current_step"] = 5;
+               player_data["data"]["steps"]["5"]["stage"] = 1;
+               cc.director.loadScene('map_feedback');
+               */
+
                 //Notebook.initVisitedCharacters();
                 /*
                 gd.observer.clearSubscriptions();
@@ -286,6 +308,7 @@ export default class SceneInit extends cc.Component {
                player_data["data"]["steps"]["1"]["stage"] = 4;
                 cc.director.loadScene('map');
                 */
+                
 
                 /*
                 gd.scene["next"] = "palace";
@@ -669,6 +692,7 @@ export default class SceneInit extends cc.Component {
         gd.scene["next"] = "ending";
         cc.director.loadScene('cutscene_7');
 */
+
 /*
 player_data["data"]["current_step"] = 4;
 

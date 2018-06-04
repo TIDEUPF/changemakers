@@ -72,7 +72,7 @@ export default class MapDisruptions extends cc.Component {
         if(player_data["data"]["current_step"] == 5 && 
         player_data["data"]["steps"]["5"]["stage"] == 2 &&
         player_data["data"]["steps"]["5"]["disruption"].length > 0) {
-            MessageBox.text("stage5_disruptions_narrator_d3");
+            MessageBox.text("S5S2C");
         }
 
         //next step with 2 disruptions

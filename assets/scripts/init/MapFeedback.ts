@@ -110,7 +110,7 @@ export default class MapFeedback extends cc.Component {
                     "Captain" : elements_path + "Captain",
                     "Driver" : elements_path + "Driver",
                     "old_lady" : elements_path + "old_lady",
-                    "Chef" : elements_path + "Chef",
+                    /*"Chef" : elements_path + "Chef",
                     "Doctor" : elements_path + "Doctor",
                     "Huntress" : elements_path + "Huntress",
                     "Librarian" : elements_path + "Librarian",
@@ -126,6 +126,7 @@ export default class MapFeedback extends cc.Component {
                     "the_stable_boy" : elements_path + "the_stable_boy",
                     "vagabond" : elements_path + "vagabond",
                     "Tailor" : elements_path + "Tailor",
+                    */
                 },
                 "switch" : {
                     "Captain" : {
@@ -141,7 +142,7 @@ export default class MapFeedback extends cc.Component {
                         "dialog" : "S5S1_3",
                     },
 
-
+/*
                     "Chef" : {
                         "scene" : "cutscene_6",
                         "dialog" : "stage5_noninformative_Chef",
@@ -201,7 +202,7 @@ export default class MapFeedback extends cc.Component {
                         "scene" : "cutscene_6",
                         "dialog" : "stage5_noninformative_Tailor",
                     },
-
+*/
 
                 },
             },
@@ -210,9 +211,10 @@ export default class MapFeedback extends cc.Component {
             },
             "init": {
                 "clickEvent": {
-//                    "Captain" : {},
-//                    "Driver" : {},
-//                    "old_lady" : {},
+                    "Captain" : {},
+                    "Driver" : {},
+                    "old_lady" : {},
+                    /*
                     "Chef" : {},
                     "Doctor" : {},
                     "Huntress" : {},
@@ -229,6 +231,7 @@ export default class MapFeedback extends cc.Component {
                     "the_stable_boy" : {},
                     "vagabond" : {},
                     "Tailor" : {},
+                    */
 
                 }
             }

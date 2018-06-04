@@ -859,22 +859,34 @@ export default class SceneInit extends cc.Component {
 
 
             "disruption_1": {
+                "d0" : {
+                    "text_id" : "S5S2_4A",
+                    "speaker" : "narrator",
+                },
                 "d1" : {
-                    "text_id" : "stage5_disruptions_narrator_d2",
+                    "text_id" : "S5S2B",
                     "speaker" : "narrator",
                 },
             },
 
             "disruption_2": {
+                "d0" : {
+                    "text_id" : "S5S2_3A",
+                    "speaker" : "narrator",
+                },
                 "d1" : {
-                    "text_id" : "stage5_disruptions_narrator_d2",
+                    "text_id" : "S5S2B",
                     "speaker" : "narrator",
                 },
             },
 
             "disruption_3": {
+                "d0" : {
+                    "text_id" : "S5S2_2A",
+                    "speaker" : "narrator",
+                },
                 "d1" : {
-                    "text_id" : "stage5_disruptions_narrator_d2",
+                    "text_id" : "S5S2B",
                     "speaker" : "narrator",
                 },
             },
