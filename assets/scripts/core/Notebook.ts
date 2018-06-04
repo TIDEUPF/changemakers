@@ -4,7 +4,7 @@ import {Scene} from "./Scene";
 import {badge_labels} from "./Badge";
 import {Slider} from "./Slider";
 import GameElement from "./GameElement";
-
+ 
 const indicators = [
     [
         'speed',
@@ -16,7 +16,7 @@ const indicators = [
         'strongness',
     ],
 ]; 
-
+ 
 const notebook_steps = {
     "1" : [
     ],

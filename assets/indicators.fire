@@ -2242,7 +2242,7 @@
       "__uuid__": "917373e0-a41f-42de-9207-9206bf99efcc"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2394,7 +2394,7 @@
       "__uuid__": "917373e0-a41f-42de-9207-9206bf99efcc"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2546,7 +2546,7 @@
       "__uuid__": "a03bd0f3-cfc6-4dd0-9986-bd5e62c3f22c"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2698,7 +2698,7 @@
       "__uuid__": "a03bd0f3-cfc6-4dd0-9986-bd5e62c3f22c"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2850,7 +2850,7 @@
       "__uuid__": "10516069-f6b0-4afe-ac29-c522b52ad3c8"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -3150,7 +3150,7 @@
       "__uuid__": "b484a9ee-bda3-47da-9410-c411993f5ac3"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -3302,7 +3302,7 @@
       "__uuid__": "b484a9ee-bda3-47da-9410-c411993f5ac3"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -3454,7 +3454,7 @@
       "__uuid__": "3df38ac8-d708-4b43-9e7c-5fbbc8b77fe2"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -3606,7 +3606,7 @@
       "__uuid__": "3df38ac8-d708-4b43-9e7c-5fbbc8b77fe2"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -3684,7 +3684,7 @@
       "__uuid__": "10516069-f6b0-4afe-ac29-c522b52ad3c8"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",

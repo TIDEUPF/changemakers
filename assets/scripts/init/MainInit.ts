@@ -263,7 +263,7 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                cc.director.loadScene('player_select');
+                //cc.director.loadScene('player_select');
 
                 /*
                 player_data["data"]["current_step"] = 5;
@@ -327,7 +327,8 @@ export default class SceneInit extends cc.Component {
                 
                //cc.director.loadScene('indicators');
 
-               //cc.director.loadScene('workshop');
+               player_data["data"]["current_step"] = 4;
+               cc.director.loadScene('workshop');
             }
         }, 200);
 
