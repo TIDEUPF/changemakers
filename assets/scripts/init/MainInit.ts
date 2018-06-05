@@ -263,7 +263,7 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                //cc.director.loadScene('player_select');
+                cc.director.loadScene('player_select');
 
                 /*
                 player_data["data"]["current_step"] = 5;
@@ -324,11 +324,16 @@ export default class SceneInit extends cc.Component {
                 gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
                 */
-                
-               //cc.director.loadScene('indicators');
+               
+                /*
+               player_data["data"]["current_step"] = 2;
+               cc.director.loadScene('indicators');
+               */
 
+               /*
                player_data["data"]["current_step"] = 4;
                cc.director.loadScene('workshop');
+               */
             }
         }, 200);
 
@@ -459,11 +464,11 @@ export default class SceneInit extends cc.Component {
             "element_id" : "/Canvas/background/sliders",
             "resources": {
                 "value" : {
-                    "speed" : 0.0,
-                    "fancyness" : 0.0,
-                    "comfort" : 0.0,
-                    "size" : 0.0,
-                    "strongness" : 0.0,
+                    "speed" : 0.5,
+                    "fancyness" : 0.5,
+                    "comfort" : 0.5,
+                    "size" : 0.5,
+                    "strongness" : 0.5,
                 },
             },
             "init": {

@@ -293,7 +293,7 @@
       "__uuid__": "8a3c582c-aa59-4369-a15c-8617caa04e46"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -371,7 +371,7 @@
       "__uuid__": "3a4c96fd-eedd-4e10-aaa5-1d773d0e0452"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -449,7 +449,7 @@
       "__uuid__": "196a0071-7523-460d-ba7d-bb5938fd3078"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
