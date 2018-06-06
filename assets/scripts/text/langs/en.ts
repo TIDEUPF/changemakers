@@ -1,6 +1,6 @@
 export const data = {
     "S1S1_1": "Hello my friend! Are you %{name}?",
-    "S1S1_3": "I am the King’s messenger,. We have a mission for you. He has heard that you are the best craftsman in the kingdom and you find great solutions to any kind of problem. Is this true?",
+    "S1S1_3": "I am the King’s messenger. We have a mission for you. He has heard that you are the best craftsman in the kingdom and you find great solutions to any kind of problem. Is this true?",
     "S1S1_5": "Don’t be so humble. If that is true, then grab your stuff and come with me to Lalandia Royal City, Empatheia!",
     "S1S1_2": "Yes, I am.",
     "S1S1_4": "Well, I try my best.",

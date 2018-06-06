@@ -304,10 +304,11 @@ export default class SceneInit extends cc.Component {
                 
 
                 /*
-               player_data["data"]["current_step"] = 1;
-               player_data["data"]["steps"]["1"]["stage"] = 4;
+                player_data["data"]["current_step"] = 1;
+                player_data["data"]["steps"]["1"]["stage"] = 4;
                 cc.director.loadScene('map');
                 */
+                
                 
 
                 /*
@@ -324,12 +325,10 @@ export default class SceneInit extends cc.Component {
                 gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
                 */
-               
-                /*
+  /*             
                player_data["data"]["current_step"] = 2;
                cc.director.loadScene('indicators');
-               */
-
+*/
                /*
                player_data["data"]["current_step"] = 4;
                cc.director.loadScene('workshop');
