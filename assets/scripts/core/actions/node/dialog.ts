@@ -25,6 +25,29 @@ class Dialog extends ElementAction<cc.Node> {
         var current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
         var dialog_text_string: string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
 
+        var dialog_key_list = Object.keys(this.elementStatus["resources"]["dialog_list"]);
+        var current_index = dialog_key_list.indexOf(current_dialog);
+
+        if(this.elementStatus["dialog_navigation"]) {
+            if(events[0]["subtype"] !== "dialog_navigation")
+                return;
+
+            var index=0;
+            switch(events[0]["subtype"]) {
+                case "dialog_next":
+                    index=1;
+                case "dialog_previous":
+                    index=1;
+                default:
+            }
+            
+                current_dialog = dialog_key_list[current_index+1];
+                this.elementStatus["current_dialog"] = current_dialog;
+                current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
+                dialog_text_string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
+        
+        }
+        
         if(last_char_displayed + 1 > dialog_text_string.length) {
             //text unit finished                     
 
@@ -41,8 +64,8 @@ class Dialog extends ElementAction<cc.Node> {
             ];
 
             last_char_displayed = 0;
-            var dialog_key_list = Object.keys(this.elementStatus["resources"]["dialog_list"]);
-            var current_index = dialog_key_list.indexOf(current_dialog);
+            //var dialog_key_list = Object.keys(this.elementStatus["resources"]["dialog_list"]);
+            //var current_index = dialog_key_list.indexOf(current_dialog);
 
             if(current_index + 2 > dialog_key_list.length) {
                 //finish
@@ -69,12 +92,34 @@ class Dialog extends ElementAction<cc.Node> {
                 );
 
                 return result;
-            }
+            } else {
+                //deactivate the voice
+                this.elementStatus["voice_active"] = false;
 
-            current_dialog = dialog_key_list[current_index+1];
-            this.elementStatus["current_dialog"] = current_dialog;
-            current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
-            dialog_text_string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
+                this.elementStatus["dialog_navigation"] = true;
+                //
+                if(gd.scene["dialog_auto_jump"] === true) {
+                    result.events.push({
+                        "type": "dialog",
+                        "subtype": "dialog_navigation",
+                        "data": {
+                            "dialog_action": "dialog_next",
+                            "id": this.elementStatus["id"],
+                            "scene": this.elementStatus["resources"]["scene"],
+                        },
+                    });
+                } else {
+                    
+                }
+
+                return;
+                /*
+                current_dialog = dialog_key_list[current_index+1];
+                this.elementStatus["current_dialog"] = current_dialog;
+                current_dialog_data = this.elementStatus["resources"]["dialog_list"][current_dialog];
+                dialog_text_string = text.i18n.t(current_dialog_data["text_id"], current_dialog_data["data"]);
+                */
+            }
         }
 
 
