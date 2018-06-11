@@ -1900,7 +1900,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "B4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 47
@@ -2258,7 +2258,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_luxury_high",
+    "_name": "S2L4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -2412,7 +2412,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_speed_high",
+    "_name": "S2L2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -2566,7 +2566,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_comfort_low",
+    "_name": "S2L5",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -2720,7 +2720,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_comfort_high",
+    "_name": "S2L6",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -2874,7 +2874,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_size_low",
+    "_name": "S2L7",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -2950,7 +2950,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_speed_slow",
+    "_name": "S2L1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -3026,7 +3026,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_speed_high",
+    "_name": "S2L8",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -3180,7 +3180,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_strongness_low",
+    "_name": "S2L9",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -3334,7 +3334,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_strongness_high",
+    "_name": "S2L15",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -3488,7 +3488,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "indicator_luxury_low",
+    "_name": "S2L3",
     "_objFlags": 0,
     "_parent": {
       "__id__": 53
@@ -3720,7 +3720,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "S2L10",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -3796,7 +3796,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "S2L11",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -3872,7 +3872,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "S2L12",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -3948,7 +3948,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "S2L13",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -4024,7 +4024,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "S2L14",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3

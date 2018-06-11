@@ -576,7 +576,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "B4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 12

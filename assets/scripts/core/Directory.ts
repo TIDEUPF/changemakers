@@ -13,7 +13,13 @@ export default class Directory {
     addStatus(status: Object): Object {
         var stored_status = this._cl.find({"id": status["id"]});
         if(stored_status.length > 0) {
-            return stored_status[0];
+            if(status["update"] === "replace") {
+                for(var item of stored_status) {
+                    this._cl.remove(item);
+                }
+            } else {
+                return stored_status[0];
+            }
         }
 
         this._cl.insert(status);

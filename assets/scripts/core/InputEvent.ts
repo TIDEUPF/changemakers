@@ -18,7 +18,7 @@ export default class InputEvent extends cc.Component {
                 "uuid": event.target.uuid,
                 "location": event.touch.getLocation(),
                 "name": event.target.getName(),
-                "node": event.target,
+                //"node": event.target,
                 "custom": data,
             },
         });

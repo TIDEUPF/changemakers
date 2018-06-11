@@ -7,6 +7,7 @@ import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {check_carriage, parts_information} from "../steps/prototype/carriage";
 import {Badge} from "../core/Badge";
+import {Sound} from "../core/Sound";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -26,6 +27,7 @@ export default class WorkshopInit extends cc.Component {
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
         gd.directory.clearNodes();
+        Sound.stopAll();
  
         Notebook.registerEvents();
 
@@ -39,6 +41,123 @@ export default class WorkshopInit extends cc.Component {
  
         var player_data = gd.directory.searchId('player');
         var carriage_data = gd.directory.searchId('user_built_carriage');
+
+        var bgm_scene_sound = {
+            "sound_list": [
+                {
+                    "audio_id": "introduction",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "palace",
+                                    "indicators",
+                                    "disruption_3",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "1.2_Horse_carriage",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "workshop_messenger",
+                                    "workshop",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "1.3_White_noise_(town_sounds)",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "workshop_messenger",
+                                    "workshop",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "1.1_Workshop_wood_carving",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "workshop_messenger",
+                                    "workshop",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "4.1 Medieval market",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "cutscene_5",
+                                    "courtyard",
+                                ]},
+                        },
+                    ],
+                },
+                {
+                    "audio_id": "4.4 Gravel walking",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "cutscene_5",
+                                    "courtyard",
+                                    "ideation_1",
+                                    "ideation_2",
+                                    "ideation_3",
+                                    "ideation_4",
+                                    "ideation_5",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "4.3 Horse Walking",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "scene": {
+                                "$containsAny": [
+                                    "cutscene_5",
+                                    "courtyard",
+                                ]},
+                        },
+                    ],
+                },
+
+
+            ],
+        };
+
+        Sound.sceneBGM(bgm_scene_sound);
+
+        gd.observer.addEvent({
+            "type": "scene_start",
+            "scene": "workshop",
+        });
+
 
         var element_click = {
             "type": "node",

@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Utils} from "../core/Utils";
 import {Badge} from "../core/Badge";
 import {Sound} from "../core/Sound";
 //import {characters_information} from "../steps/empathise/npc";
@@ -24,6 +25,8 @@ export default class SceneInit extends cc.Component {
         gd.frame["dt"] = 0;
 
         var id_count=0;
+
+        Utils.setFont();
 
         var bgm_scene_sound = {
                 "sound_list": [
@@ -478,8 +481,8 @@ export default class SceneInit extends cc.Component {
                     "language" : "en",
                     "resources": {
                         "node" : {
-                            "speakers" : "/Canvas/background/",
-                            "dialog" : "/Canvas/background/dialog",
+                            "speakers" : "/Canvas/background",
+                            "dialog" : "/dialog_widget/dialog",
                         },
                         "dialog_list" : cutscene_dialogs[gd.scene["current"]],
                         "scene" : gd.scene["current"],
@@ -491,6 +494,7 @@ export default class SceneInit extends cc.Component {
                             "$containsAny": [
                                 "keyinput",
                                 "voice",
+                                "dialog",
                             ]},
                     },
                 });
@@ -901,15 +905,15 @@ export default class SceneInit extends cc.Component {
                     "speaker" : "queen",
                 },
                 "d4" : {
-                    "text_id" : "stage6_main_character_d1",
+                    "text_id" : "S6A1",
                     "speaker" : "main_character",
                 },
                 "d5" : {
-                    "text_id" : "stage6_ending_queen_d2",
+                    "text_id" : "S6A2",
                     "speaker" : "queen",
                 },
                 "d6" : {
-                    "text_id" : "stage6_main_character_d2",
+                    "text_id" : "S6A3",
                     "speaker" : "main_character",
                 },
             },
@@ -1126,13 +1130,14 @@ export default class SceneInit extends cc.Component {
             "type": "node",
             "action": "dialog",
             "emitter": "alarm",
+            "update": "replace",
             "id": gd.scene["current"] + "_" + (id_count++).toString(10),
             "element_id" : "/Canvas/background/" + gd.scene["current"],
             "language" : "en",
             "resources": {
                 "node" : {
-                    "speakers" : "/Canvas/background/",
-                    "dialog" : "/Canvas/background/dialog",
+                    "speakers" : "/Canvas/background",
+                    "dialog" : "/dialog_widget/dialog",
                 },
                 "dialog_list" : cutscene_dialogs[gd.scene["current"]],
                 "scene" : gd.scene["current"],
@@ -1160,6 +1165,7 @@ export default class SceneInit extends cc.Component {
                         "$containsAny": [
                             "keyinput",
                             "voice",
+                            "dialog",
                         ]},
             }
         };
@@ -1224,9 +1230,15 @@ export default class SceneInit extends cc.Component {
 
 
             //display only the original carriage
+            var stage6_parts_dialogues = {
+                "stage6_scene1_dseat": "S6A5",
+                "stage6_scene1_shield": "S6A7",
+                "stage6_scene1_entertainers": "S6A4",            
+            };
+
             for(let part_item of ending_disruptions_queen) {
                 cutscene_dialogs["ending"][part_item] = {
-                    "text_id": "stage6_scene1_"+part_item,
+                    "text_id": stage6_parts_dialogues["stage6_scene1_"+part_item],
                     "speaker": "main_character",
                 }
 
@@ -1242,21 +1254,21 @@ export default class SceneInit extends cc.Component {
                     event:{
                         "type" : "dialog",
                         "subtype": "turn_finished",
-                        "data.text_id": "stage6_scene1_"+part_item,
+                        "data.text_id": stage6_parts_dialogues["stage6_scene1_"+part_item],
                     },
                 });
 
-                last_text_id = "stage6_scene1_"+part_item;
+                last_text_id = stage6_parts_dialogues["stage6_scene1_"+part_item];
             }
 
             cutscene_dialogs["ending"]["d7"] = {
-                "text_id": "stage6_ending_king_d1",
+                "text_id": "S6A6",
                 "speaker": "king",
             }
         
             for(let part_item of ending_disruptions_king) {
                 cutscene_dialogs["ending"][part_item] = {
-                    "text_id": "stage6_scene1_"+part_item,
+                    "text_id": stage6_parts_dialogues["stage6_scene1_"+part_item],
                     "speaker": "main_character",
                 }
 
@@ -1272,11 +1284,11 @@ export default class SceneInit extends cc.Component {
                     event:{
                         "type" : "dialog",
                         "subtype": "turn_finished",
-                        "data.text_id": "stage6_scene1_"+part_item,
+                        "data.text_id": stage6_parts_dialogues["stage6_scene1_"+part_item],
                     },
                 });
 
-                last_text_id = "stage6_scene1_"+part_item;
+                last_text_id = stage6_parts_dialogues["stage6_scene1_"+part_item];
             }
 
             cutscene_dialogs["ending"]["d8"] = {

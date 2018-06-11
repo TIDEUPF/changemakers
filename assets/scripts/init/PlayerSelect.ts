@@ -60,7 +60,7 @@ export default class PlayeSelect extends cc.Component {
 
 
         //Notebook.registerEvents();
-        
+        /*
         gd.observer.addSubscription({
             listener : function() {
                 var player_data = gd.directory.searchId('player');
@@ -72,7 +72,9 @@ export default class PlayeSelect extends cc.Component {
                 "data.key": "w",
             }
         });
+        */
 
+        /*
         gd.observer.addSubscription({
             listener : function() {
                 var player_data = gd.directory.searchId('player');
@@ -85,13 +87,16 @@ export default class PlayeSelect extends cc.Component {
                 "data.key": "m",
             }
         });
+        */
 
         gd.observer.addSubscription({
             listener : function(event) {
                 var player_data = gd.directory.searchId('player');
                 player_data["data"]["gender"] = event.data.name;
-                event.data.node.parent.active = false;
-                event.data.node.parent.parent.getChildByName('name_input').active = true;
+                //event.data.node.parent.active = false;
+                gd.directory.getNode("/Canvas/background/player_select").active = false;
+                //event.data.node.parent.parent.getChildByName('name_input').active = true;
+                gd.directory.getNode("/Canvas/background/name_input").active = true;
             },
             event:{
                 type : "click",
@@ -103,7 +108,8 @@ export default class PlayeSelect extends cc.Component {
         gd.observer.addSubscription({
             listener : function(event) {
                 var player = gd.directory.searchId("player");
-                player["data"]["name"] = event.data.node.parent.getComponent('cc.EditBox').string;
+                //player["data"]["name"] = event.data.node.parent.getComponent('cc.EditBox').string;
+                player["data"]["name"] = gd.directory.getNode("/Canvas/background/name_input").getComponent('cc.EditBox').string;
                 
                 gd.scene["next"] = "workshop_messenger";
                 cc.director.loadScene('cutscene_1');

@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Badge} from "../core/Badge";
+import {Utils} from "../core/Utils";
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
@@ -39,6 +40,8 @@ export default class IndicatorsInit extends cc.Component {
         var player_data = gd.directory.searchId("player");
 
         var id_count=0;
+
+        Utils.setFont();
 
         var elements_path = "/Canvas/background/sliders/";
         

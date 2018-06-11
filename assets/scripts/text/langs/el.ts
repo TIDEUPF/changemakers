@@ -77,10 +77,10 @@ export const data = {
     "S6S2_4": "Μου αρέσει αλλά θα μπορούσες να την καλύψεις με πούπουλα;",
     "S6S3_1": "Φίλε μου, έχεις κάνει μια απίστευτη δουλειά! Αυτό είναι αριστούργημα! Μπορείς να είσαι περήφανος για τον εαυτό σου. Όλο το βασίλειο είναι ευγνώμων. Δεν ξέρω ποια είναι τα σχέδιά σου για το μέλλον, αλλά μην χάσεις την δημιουργικότητά σου!",
     
-    "creative_mind": "Creative mind",
-    "critical_thinker": "Critical thinker",
-    "listener": "Listener",
-    "never_give_up": "\"Never give-up\"-er",
-    "problem_solver": "Problem solver",
+    "B1": "Creative mind",
+    "B2": "Critical thinker",
+    "B3": "B3",
+    "B4": "\"Never give-up\"-er",
+    "B5": "Problem solver",
 
 }

@@ -3,21 +3,21 @@ import * as text from "../text/i18n";
 import {Scene} from "../core/Scene";
 
 export const badge_labels: Object = {
-    "creative_mind_b": "creative_mind",
-    "creative_mind_g": "creative_mind",
-    "creative_mind_s": "creative_mind",
-    "critical_thinker_b": "critical_thinker",
-    "critical_thinker_g": "critical_thinker",
-    "critical_thinker_s": "critical_thinker",
-    "listener_b": "listener",
-    "listener_g": "listener",
-    "listener_s": "listener",
-    "never_give_up_b": "never_give_up",
-    "never_give_up_g": "never_give_up",
-    "never_give_up_s": "never_give_up",
-    "problem_solver_b": "problem_solver",
-    "problem_solver_g": "problem_solver",
-    "problem_solver_s": "problem_solver",
+    "creative_mind_b": "B1",
+    "creative_mind_g": "B1",
+    "creative_mind_s": "B1",
+    "critical_thinker_b": "B2",
+    "critical_thinker_g": "B2",
+    "critical_thinker_s": "B2",
+    "listener_b": "B3",
+    "listener_g": "B3",
+    "listener_s": "B3",
+    "never_give_up_b": "B4",
+    "never_give_up_g": "B4",
+    "never_give_up_s": "B4",
+    "problem_solver_b": "B5",
+    "problem_solver_g": "B5",
+    "problem_solver_s": "B5",
 }
 
 var badge_count = 0;
@@ -42,10 +42,12 @@ export class Badge {
 
         badge_label_component.string = text.i18n.t(badge_labels[params["badge_id"]]);
 
-        player_data["data"]["badges"].push({
-            "badge_id": params["badge_id"],
-            "step": player_data["data"]["current_step"],
-        });
+        if(!(player_data["data"]["badges"].length > 4)) {
+            player_data["data"]["badges"].push({
+                "badge_id": params["badge_id"],
+                "step": player_data["data"]["current_step"],
+            });
+        }
 
         if(badge_count === 0)
             Scene.click('/badges_transparency');

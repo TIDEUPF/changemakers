@@ -5,6 +5,7 @@ import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Notebook} from "../core/Notebook";
 import {Utils} from "../core/Utils";
+import {ActivityLog} from "../core/ActivityLog";
 import {check_carriage} from "../steps/prototype/carriage";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
@@ -253,10 +254,17 @@ export default class SceneInit extends cc.Component {
         
         text.i18n.init("en");
 
+        Utils.setFont("/notebook");
+        Utils.setFont("/dialog_widget");
+
         var s1 = false,
         s2 = false,
         s3 = false,
         s4 = false;
+
+        ActivityLog.init();
+
+        setInterval(ActivityLog.send, 20*1000);
 
         var load_complete = setInterval(function(){
             if(s1 && s2 && s3 && s4 && load_complete !== null) {
@@ -264,6 +272,11 @@ export default class SceneInit extends cc.Component {
                 load_complete = null;
                 
                 cc.director.loadScene('player_select');
+
+                /*
+                gd.scene["next"] = "courtyard";
+                cc.director.loadScene('cutscene_4');
+                */
 
                 /*
                 player_data["data"]["current_step"] = 5;
@@ -296,7 +309,6 @@ export default class SceneInit extends cc.Component {
                 Notebook.show();
                 */
 
-
                 /*
                 gd.scene["next"] = "workshop_messenger";
                 cc.director.loadScene('cutscene_1');
@@ -325,14 +337,44 @@ export default class SceneInit extends cc.Component {
                 gd.scene["next"] = "S3S1_2";
                 cc.director.loadScene('ideation_1');
                 */
-  /*             
+                
+                
+               /*
                player_data["data"]["current_step"] = 2;
                cc.director.loadScene('indicators');
-*/
-               /*
+               */
+
+/*
                player_data["data"]["current_step"] = 4;
                cc.director.loadScene('workshop');
                */
+
+               /*
+                player_data["data"]["current_step"] = 5;
+                player_data["data"]["steps"]["5"]["stage"] = 1;
+                cc.director.loadScene('map_feedback');
+                */
+
+               /*
+               player_data["data"]["current_step"] = 6;
+               player_data["data"]["steps"]["5"]["disruption"].push("dseat");
+               player_data["data"]["steps"]["5"]["disruption"].push("shield");
+               player_data["data"]["steps"]["5"]["disruption"].push("entertainers");
+               carriage["data"]["parts"]["dseat"]["active"] = true;
+               carriage["data"]["parts"]["dseat"]["part"] = "dseat1";
+       
+               carriage["data"]["parts"]["shield"]["active"] = true;
+               carriage["data"]["parts"]["shield"]["part"] = "shield1";
+       
+               carriage["data"]["parts"]["entertainers"]["active"] = true;
+               carriage["data"]["parts"]["entertainers"]["part"] = "entertainers1";
+       
+               player_data["data"]["steps"]["6"]["stage"] = 1;
+               gd.scene["next"] = "ending";
+               cc.director.loadScene('cutscene_7');
+               */
+               
+               
             }
         }, 200);
 
@@ -356,6 +398,21 @@ export default class SceneInit extends cc.Component {
 
                 gd.observer.addEvent(gameEvent);
             }.bind(this)
+        });
+
+        cc.eventManager.addListener(keyEventListener, 1000);
+
+        var keyEventListener = cc.EventListener.create({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed: function(keyCode, event) {
+                var key = String.fromCharCode(keyCode).toLowerCase();
+
+                if(key == "w") {
+                    Utils.hideDialogWidget();
+                    player_data["data"]["current_step"] = 4;
+                    cc.director.loadScene('workshop');
+                }
+            }
         });
 
         cc.eventManager.addListener(keyEventListener, 1000);
@@ -453,6 +510,8 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('badges'));
         cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
+        cc.game.addPersistRootNode(cc.find('dialog_widget'));
+        //cc.game.addPersistRootNode(cc.find('dialog'));
 
 
         var slider_update: Object = {

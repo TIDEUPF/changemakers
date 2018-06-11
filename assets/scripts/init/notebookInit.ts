@@ -19,7 +19,7 @@ enum GameInputEventType {
 @ccclass
 export default class NotebookInit extends cc.Component {
     onLoad() {
-        
+        /*
         gd.directory.addStatus({
             "id": "notebookDataCollection",
             "data": {
@@ -67,7 +67,7 @@ export default class NotebookInit extends cc.Component {
                 "data.key": "k",
             }
         });
-
+*/
         /*
         var notebook_browser: Object = {
             "type": "node",

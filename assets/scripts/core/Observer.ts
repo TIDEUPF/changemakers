@@ -2,6 +2,7 @@ import * as Loki from "lokijs";
 import Directory from "../core/Directory";
 import * as gd from "../core/GameData";
 import {Utils} from "../core/Utils";
+import {ActivityLog} from "../core/ActivityLog";
 
 export default class Observer {
     private directory: Directory;
@@ -45,6 +46,18 @@ export default class Observer {
     }
 
     notifyEvents() : void {
+        ActivityLog.addFrame();
+        var log_items = this._cl.find();
+
+        /*
+        if(log_items.length)
+            ActivityLog.addFrameLog(true);
+            */
+
+        for(let event of log_items) {
+            ActivityLog.addEvent(event);
+        }
+
         var matched_subscriptions = [];
 
         //test for scheduling conditions
@@ -98,9 +111,14 @@ export default class Observer {
 
             for(let key in result) {
                 var element = this.directory.getElement(key);
-                element.processAction(result[key]);
+
+                //FIXME: some actions are not ready to process more than one event at a time
+                for(var event_matched of result[key])
+                    element.processAction([event_matched]);
             }
         }
+        /*if(log_items.length)
+            ActivityLog.addFrameLog(false);*/
     }
 
     constructor() {
