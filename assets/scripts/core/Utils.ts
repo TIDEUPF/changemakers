@@ -64,6 +64,27 @@ export const Utils = {
         dialog_widget.active = false;
         navigation.active = false;
     },
+    translate: function(node: string | cc.Node) {
+        if(typeof node === "string")
+            node = gd.directory.getNode(node);
+
+        if(node === null)
+            return;
+        
+        //labels
+        var components = node.getComponentsInChildren("cc.Label");
+
+        for(var item of components) {
+            item.string = text.i18n.t(item.node.name);
+        }
+
+        //EditBox
+        var components = node.getComponentsInChildren("cc.EditBox");
+
+        for(var item of components) {
+            item.placeholder = text.i18n.t(item.placeholder);
+        }
+    },
 
 
 }

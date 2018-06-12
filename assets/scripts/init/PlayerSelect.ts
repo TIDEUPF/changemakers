@@ -5,6 +5,7 @@ import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Sound} from "../core/Sound";
 import {Notebook} from "../core/Notebook";
+import {Scene} from "../core/Scene";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -58,7 +59,7 @@ export default class PlayeSelect extends cc.Component {
             "scene": "player_select",
         });
 
-
+        Scene.init();
         //Notebook.registerEvents();
         /*
         gd.observer.addSubscription({

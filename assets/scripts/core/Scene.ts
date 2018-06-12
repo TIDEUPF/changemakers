@@ -1,4 +1,5 @@
 import * as gd from "./GameData";
+import {Utils} from "./Utils";
 
 export const Scene:{ [s: string]: Function } = {
     "click": function(item) {
@@ -11,5 +12,10 @@ export const Scene:{ [s: string]: Function } = {
                 element_path: item,
             });
         });
+    },
+
+    "init": function() {
+        //translate
+        Utils.translate("/Canvas");
     }
 };

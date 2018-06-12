@@ -266,6 +266,8 @@ export default class SceneInit extends cc.Component {
 
         setInterval(ActivityLog.send, 20*1000);
 
+        Utils.translate("/notebook");
+        
         var load_complete = setInterval(function(){
             if(s1 && s2 && s3 && s4 && load_complete !== null) {
                 clearInterval(load_complete);
@@ -359,7 +361,7 @@ export default class SceneInit extends cc.Component {
                player_data["data"]["current_step"] = 6;
                player_data["data"]["steps"]["5"]["disruption"].push("dseat");
                player_data["data"]["steps"]["5"]["disruption"].push("shield");
-               player_data["data"]["steps"]["5"]["disruption"].push("entertainers");
+               //player_data["data"]["steps"]["5"]["disruption"].push("entertainers");
                carriage["data"]["parts"]["dseat"]["active"] = true;
                carriage["data"]["parts"]["dseat"]["part"] = "dseat1";
        
@@ -369,10 +371,16 @@ export default class SceneInit extends cc.Component {
                carriage["data"]["parts"]["entertainers"]["active"] = true;
                carriage["data"]["parts"]["entertainers"]["part"] = "entertainers1";
        
+               //carriage["data"] = {"parts":{"wheels":{"part":"wheel3"},"chassis":{"part":"chassis3"},"pattern":{"part":"pattern1"},"seat":{"part":"seat3"},"pseat":{"part":"pseat3","hidden":true},"dseat":{"part":"dseat3","active":false,"hidden":false},"shield":{"part":"shield3","active":false},"entertainers":{"part":"none","active":false},"boot":{"part":"boot1"}}};
                player_data["data"]["steps"]["6"]["stage"] = 1;
                gd.scene["next"] = "ending";
-               cc.director.loadScene('cutscene_7');
                */
+
+
+
+
+               cc.director.loadScene('cutscene_7');
+               
                
                
             }
