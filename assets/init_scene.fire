@@ -3378,7 +3378,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L3",
     "_objFlags": 0,
     "_parent": {
       "__id__": 44
@@ -5923,7 +5923,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "previous.page",
     "_objFlags": 0,
     "_parent": {
       "__id__": 148
@@ -6153,7 +6153,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "next.page",
     "_objFlags": 0,
     "_parent": {
       "__id__": 154
@@ -6383,7 +6383,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Label",
+    "_name": "B6",
     "_objFlags": 0,
     "_parent": {
       "__id__": 160
@@ -6768,7 +6768,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L4",
     "_objFlags": 0,
     "_parent": {
       "__id__": 166
@@ -7203,7 +7203,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L8",
     "_objFlags": 0,
     "_parent": {
       "__id__": 180
@@ -17313,7 +17313,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 353
@@ -21703,7 +21703,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L6",
     "_objFlags": 0,
     "_parent": {
       "__id__": 430
@@ -21915,7 +21915,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "title",
+    "_name": "N1L9",
     "_objFlags": 0,
     "_parent": {
       "__id__": 534
@@ -21991,7 +21991,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "mission_label",
+    "_name": "N1L1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 534

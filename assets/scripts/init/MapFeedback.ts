@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Utils} from "../core/Utils";
 import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Scene} from "../core/Scene";
@@ -27,6 +28,8 @@ export default class MapFeedback extends cc.Component {
         var id_count=0;
 
         var elements_path = "/Canvas/background/npcs/";
+
+        Scene.init();
         /*
         var player: Object = {
             "boy": elements_path + "main_character_1",

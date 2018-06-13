@@ -75,7 +75,7 @@ export const ActivityLog = {
             return;
 
         ActivityLog.addFrameLog(false);
-        var index_end = Math.min(log_index+20, log.length);
+        var index_end = Math.min(log_index+150, log.length);
         var to_send = log.slice(log_index, index_end);
         log_index = index_end;
 
@@ -83,21 +83,23 @@ export const ActivityLog = {
             return;
 
         console.log(to_send);
+
+        var log_url = window["log_url"] || "http://192.168.1.200/cmk_log/log.php";
+
         if(window["$"]) {
             if(!sender_ready)
                 return;
             sender_ready = false;
-            window["$"].ajax({
-                url: "https://ilde2.upf.edu/cmk_log/log.php",
-                //url: "http://192.168.1.200/cmk_log/log.php",
-                data: {data:JSON.stringify(log)},
+            window["$"].ajax({     
+                url: log_url,
+                data: {data:JSON.stringify(to_send)},
                 method: "POST",
                 complete: function () {
                     sender_ready = true;
                 },
                 timeout: 30*1000,
             });
-        }
+        }//url: "https://ilde2.upf.edu/cmk_log/log.php",
     },
     register: function() {
         return Date.now();

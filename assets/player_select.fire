@@ -634,7 +634,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "B5",
+    "_name": "start",
     "_objFlags": 0,
     "_parent": {
       "__id__": 14
@@ -704,7 +704,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 1
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.Sprite",
@@ -833,7 +833,7 @@
       "b": 0,
       "a": 255
     },
-    "_N$placeholder": "Enter your name...",
+    "_N$placeholder": "B9",
     "_N$placeholderFontSize": 20,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",

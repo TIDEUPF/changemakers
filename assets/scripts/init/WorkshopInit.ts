@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
+import {Scene} from "../core/Scene";
 import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {check_carriage, parts_information} from "../steps/prototype/carriage";
@@ -158,7 +159,15 @@ export default class WorkshopInit extends cc.Component {
             "scene": "workshop",
         });
 
+        Scene.init();
 
+        //CAPS on drawers
+        var drawers = gd.directory.getNode("/Canvas/background/category_buttons");
+        var drawers_label = drawers.getComponentsInChildren("cc.Label");
+        for(var item of drawers_label) {
+            item.string = item.string.toUpperCase();
+        }
+        
         var element_click = {
             "type": "node",
             "action": null,

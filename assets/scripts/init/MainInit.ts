@@ -248,13 +248,17 @@ export default class SceneInit extends cc.Component {
     cl: Collection<any>;
 
     onLoad() {
+        //current language
+        var lang = window["lang"] || "en";
+
         // init logic
         var init = this;
         console.log("game init");
         
-        text.i18n.init("en");
+        text.i18n.init(lang);
 
         Utils.setFont("/notebook");
+        Utils.translate("/notebook");
         Utils.setFont("/dialog_widget");
 
         var s1 = false,
@@ -323,6 +327,12 @@ export default class SceneInit extends cc.Component {
                 cc.director.loadScene('map');
                 */
                 
+/*
+                player_data["data"]["current_step"] = 5;
+                player_data["data"]["steps"]["5"]["stage"] = 2;
+                cc.director.loadScene('map_disruption');
+                */
+
                 
 
                 /*
@@ -379,7 +389,7 @@ export default class SceneInit extends cc.Component {
 
 
 
-               cc.director.loadScene('cutscene_7');
+               //cc.director.loadScene('cutscene_7');
                
                
                
@@ -519,7 +529,6 @@ export default class SceneInit extends cc.Component {
         cc.game.addPersistRootNode(cc.find('messagebox_transparency'));
         cc.game.addPersistRootNode(cc.find('messagebox'));
         cc.game.addPersistRootNode(cc.find('dialog_widget'));
-        //cc.game.addPersistRootNode(cc.find('dialog'));
 
 
         var slider_update: Object = {
@@ -555,7 +564,7 @@ export default class SceneInit extends cc.Component {
         var voices_path_preload_array = [];
 
         for(var voice_filename of voices_preload) {
-            var current_voice_path = voices_preload_path + 'i18n/en/' + voice_filename + '.ogg';
+            var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.ogg';
             voices["data"][voice_filename] = {};
             voices["data"][voice_filename]["path"] = current_voice_path;
             voices_path_preload_array.push(current_voice_path);
@@ -564,7 +573,7 @@ export default class SceneInit extends cc.Component {
         
         cc.loader.load(
             voices_path_preload_array,
-            function(c,t){
+            function(c,t) {
                 console.log(c);console.log(t);
             }, 
             function(error, item) {
@@ -573,7 +582,7 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(voices);
                 
                 for(var voice_filename of voices_preload) {
-                    var current_voice_path = voices_preload_path + 'i18n/en/' + voice_filename + '.ogg';
+                    var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.ogg';
                     var audioID = cc.audioEngine.play(current_voice_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     
@@ -583,8 +592,6 @@ export default class SceneInit extends cc.Component {
                     
                 }
                 s1 = true;
-                //gd.scene["next"] = "workshop_messenger";
-                //cc.director.loadScene('cutscene_1');
             }
         );
 
@@ -606,7 +613,7 @@ export default class SceneInit extends cc.Component {
         
         cc.loader.load(
             bgms_path_preload_array,
-            function(c,t){
+            function(c,t) {
                 console.log(c);console.log(t);
             }, 
             function(error, item) {

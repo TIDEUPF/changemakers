@@ -85,6 +85,4 @@ export const Utils = {
             item.placeholder = text.i18n.t(item.placeholder);
         }
     },
-
-
 }

@@ -2196,7 +2196,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "B4",
+    "_name": "next.step",
     "_objFlags": 0,
     "_parent": {
       "__id__": 52
