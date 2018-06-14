@@ -17,5 +17,16 @@ export const Scene:{ [s: string]: Function } = {
     "init": function() {
         //translate
         Utils.translate("/Canvas");
+    },
+
+    "load": function(scene) {
+        cc.director.loadScene(scene);
+    },
+
+    "save": function() {
+        var player_data = gd.directory.searchId('player');
+        gd.directory.searchId('indicators0');
+        gd.directory.searchId('user_built_carriage');
+        gd.scene;
     }
 };
