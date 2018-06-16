@@ -82,7 +82,7 @@ export default class MapDisruptions extends cc.Component {
         if(player_data["data"]["current_step"] == 5 && 
         player_data["data"]["steps"]["5"]["stage"] == 2 &&
         player_data["data"]["steps"]["5"]["disruption"].length >= 2) {
-            MessageBox.text("Now you can proceed to the next step");
+            MessageBox.text("M1");
             gd.directory.getNode('/Canvas/background/next_step').active = true;
         }
 

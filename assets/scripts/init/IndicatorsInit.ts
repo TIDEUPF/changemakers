@@ -1,5 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
+import {Scene} from "../core/Scene";
 import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Badge} from "../core/Badge";
@@ -42,6 +43,7 @@ export default class IndicatorsInit extends cc.Component {
         var id_count=0;
 
         Utils.setFont();
+        Scene.init();
 
         var elements_path = "/Canvas/background/sliders/";
         

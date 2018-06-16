@@ -249,7 +249,7 @@ export default class SceneInit extends cc.Component {
 
     onLoad() {
         //current language
-        var lang = window["lang"] || "en";
+        var lang = window["lang"] || "es";
 
         // init logic
         var init = this;
@@ -355,6 +355,7 @@ export default class SceneInit extends cc.Component {
                player_data["data"]["current_step"] = 2;
                cc.director.loadScene('indicators');
                */
+               
 
 /*
                player_data["data"]["current_step"] = 4;

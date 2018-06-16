@@ -64,7 +64,7 @@ export default class MapInit extends cc.Component {
                 character_node.active = false;
             }
 
-            MessageBox.text("Click on a character");
+            MessageBox.text("M3");
         }
 
         //stage4 dialogue counter increase

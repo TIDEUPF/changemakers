@@ -1618,7 +1618,7 @@
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 1
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.Sprite",
@@ -5993,7 +5993,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 1
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.Sprite",
@@ -6223,7 +6223,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 1
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.Sprite",
@@ -6453,7 +6453,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 1
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.Sprite",
