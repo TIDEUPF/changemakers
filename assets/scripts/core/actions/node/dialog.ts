@@ -231,7 +231,8 @@ class Dialog extends ElementAction<cc.Node> {
         var dialog_text_component: cc.Label = dialog_text.getComponent('cc.Label');
         var w_size: cc.Node = gd.directory.getNode(this.elementStatus["resources"]["node"]["dialog"] + '/w_size');
         var char_width: number = w_size.width*0.55;
-        var max_chars: number = Math.floor(dialog_text.width/char_width) * balloon_max_lines;
+        var dialog_max_chars_margin = 0.85;
+        var max_chars: number = Math.floor(dialog_text.width/char_width * dialog_max_chars_margin) * balloon_max_lines;
 
         //voice support
         var voices: Object = gd.directory.searchId("game_voices");
@@ -244,7 +245,7 @@ class Dialog extends ElementAction<cc.Node> {
             //schedule events
             var event_time = current_game_time + /*(i+1) * */Math.floor(split_duration*1000);
 
-            gd.observer.addEvent({
+            /*gd.observer.addEvent({
                 type: "voice",
                 subtype: "voice_finished",
                 data: {
@@ -253,7 +254,7 @@ class Dialog extends ElementAction<cc.Node> {
                 scheduling: {
                     afterGameTime : event_time,
                 },
-            });
+            });*/
             /*
             for(var i=0;i<n_splits;i++) {
                 var event_time = current_game_time + (i+1) * Math.floor(split_duration*1000);
@@ -275,7 +276,13 @@ class Dialog extends ElementAction<cc.Node> {
 
             var n_chars_full_dialog = dialog_text_string.length;
 
-            max_chars = Math.ceil(n_chars_full_dialog/(n_splits));
+            var max_chars_split = Math.ceil(n_chars_full_dialog/(n_splits));
+            if((n_chars_full_dialog - last_char_displayed) > max_chars * (1/dialog_max_chars_margin))
+                max_chars = max_chars_split;
+            else
+                max_chars = Math.ceil(max_chars * (1/dialog_max_chars_margin));
+
+            //max_chars = Math.ceil(n_chars_full_dialog/(n_splits));
             this.elementStatus["voice_active"] = true;
         } else {
             var voice_duration: number = dialog_text_string.length * 0.1;
@@ -286,6 +293,7 @@ class Dialog extends ElementAction<cc.Node> {
             //schedule events
             var event_time = current_game_time + /*(i+1) * */Math.floor(split_duration*1000);
 
+            /*
             gd.observer.addEvent({
                 type: "voice",
                 subtype: "voice_finished",
@@ -295,7 +303,7 @@ class Dialog extends ElementAction<cc.Node> {
                 scheduling: {
                     afterGameTime : event_time,
                 },
-            });
+            });*/
             /*
             for(var i=0;i<n_splits;i++) {
                 var event_time = current_game_time + (i+1) * Math.floor(split_duration*1000);
@@ -322,7 +330,7 @@ class Dialog extends ElementAction<cc.Node> {
         }
         
         
-        dialog_text_string = dialog_text_string.substring(last_char_displayed);
+        var dialog_text_string = dialog_text_string.substring(last_char_displayed);
 
         if(dialog_text_string.length > max_chars) {
             dialog_text_string = dialog_text_string.substring(0, max_chars);
@@ -330,6 +338,17 @@ class Dialog extends ElementAction<cc.Node> {
             dialog_text_string_words.pop();
             dialog_text_string = dialog_text_string_words.join(' ');
         }
+
+        gd.observer.addEvent({
+            type: "voice",
+            subtype: "voice_finished",
+            data: {
+                voice_id: current_dialog_data["text_id"],
+            },
+            scheduling: {
+                afterGameTime : (voice_duration/n_chars_full_dialog * dialog_text_string.length)*1000 + current_game_time,
+            },
+        });
 
         this.elementStatus["last_char_displayed"] = dialog_text_string.length + last_char_displayed;
 

@@ -1,6 +1,7 @@
 {
   "appKey": "",
   "appSecret": "",
+  "encryptJs": true,
   "excludeScenes": [
     "6ff005ba-cfaf-41b4-90ed-35c449a70acf",
     "a4375748-7fac-4455-9ee2-a80fd60c6057",
@@ -10,15 +11,14 @@
     "f587dfec-0434-485f-8858-e2e7789ec979",
     "4ec7d76c-d30b-4ee2-839d-add7c6ce245e"
   ],
+  "fb-instant-games": {},
   "includeAnySDK": false,
   "includeSDKBox": false,
-  "includeSdk": [
-    "anysdk"
-  ],
   "inlineSpriteFrames": false,
   "inlineSpriteFrames_native": true,
+  "jailbreakPlatform": false,
   "md5Cache": true,
-  "mergeStartScene": true,
+  "mergeStartScene": false,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
   "orientation": {
@@ -29,8 +29,21 @@
   },
   "packageName": "org.cocos2d.cmk-game",
   "privateKey": "",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait"
+  },
   "renderMode": "1",
   "startScene": "3a576c82-0b82-45f6-8a40-54c33fb5d673",
   "title": "Empatheia",
-  "webOrientation": "landscape"
+  "webOrientation": "landscape",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "isSubdomain": false,
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "e2535786-d194-45",
+  "zipCompressJs": true
 }

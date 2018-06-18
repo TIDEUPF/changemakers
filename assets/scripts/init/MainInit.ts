@@ -249,7 +249,7 @@ export default class SceneInit extends cc.Component {
 
     onLoad() {
         //current language
-        var lang = window["lang"] || "es";
+        var lang = window["lang"] || "fr";
 
         // init logic
         var init = this;
@@ -320,6 +320,7 @@ export default class SceneInit extends cc.Component {
                 cc.director.loadScene('cutscene_1');
                 */
                 
+                
 
                 /*
                 player_data["data"]["current_step"] = 1;
@@ -327,11 +328,12 @@ export default class SceneInit extends cc.Component {
                 cc.director.loadScene('map');
                 */
                 
-/*
+                /*
                 player_data["data"]["current_step"] = 5;
                 player_data["data"]["steps"]["5"]["stage"] = 2;
                 cc.director.loadScene('map_disruption');
                 */
+                
 
                 
 
@@ -344,6 +346,7 @@ export default class SceneInit extends cc.Component {
                gd.scene["next"] = "courtyard";
                cc.director.loadScene('cutscene_4');
                */
+               
 
                /*
                 gd.scene["next"] = "S3S1_2";
@@ -363,10 +366,12 @@ export default class SceneInit extends cc.Component {
                */
 
                /*
-                player_data["data"]["current_step"] = 5;
-                player_data["data"]["steps"]["5"]["stage"] = 1;
-                cc.director.loadScene('map_feedback');
-                */
+               player_data["data"]["current_step"] = 5;
+               player_data["data"]["steps"]["5"]["stage"] = 1;
+               cc.director.loadScene('map_feedback');
+               */
+                
+                
 
                /*
                player_data["data"]["current_step"] = 6;
