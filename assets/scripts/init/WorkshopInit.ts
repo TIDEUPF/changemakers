@@ -399,7 +399,7 @@ export default class WorkshopInit extends cc.Component {
         /*
                 gd.observer.addSubscription({
                     listener : function() {
-                        cc.director.loadScene('map');
+                        Scene.load('map');
                     },
                     event:{
                         type : "keyinput",
@@ -509,7 +509,7 @@ export default class WorkshopInit extends cc.Component {
                 listener : function(event) {
                     player_data["data"]["current_step"] = 5
                     player_data["data"]["steps"]["5"]["stage"] = 1;
-                    cc.director.loadScene('map_feedback');
+                    Scene.load('map_feedback');
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -520,7 +520,7 @@ export default class WorkshopInit extends cc.Component {
                 listener : function(event) {
                     player_data["data"]["current_step"] = 5
                     player_data["data"]["steps"]["5"]["stage"] = 2;
-                    cc.director.loadScene('map_disruption');
+                    Scene.load('map_disruption');
                 },
                 event:{
                     "subtype" : "start_disruptions",
@@ -533,7 +533,7 @@ export default class WorkshopInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     player_data["data"]["steps"]["5"]["stage"] = 2;
-                    cc.director.loadScene('map_disruption');
+                    Scene.load('map_disruption');
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -600,7 +600,7 @@ export default class WorkshopInit extends cc.Component {
                     };
         
                     gd.scene["next"] = disruption[gd.scene["current"]];
-                    cc.director.loadScene(disruption[gd.scene["current"]]);
+                    Scene.load(disruption[gd.scene["current"]]);
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -642,7 +642,7 @@ export default class WorkshopInit extends cc.Component {
         player_data["data"]["steps"]["5"]["disruption"].length < 2) {
             gd.observer.addSubscription({
                 listener : function(event) {
-                    cc.director.loadScene('map_disruption');
+                    Scene.load('map_disruption');
                 },
                 event:{
                     "subtype" : "workshop_finish",
@@ -657,7 +657,7 @@ export default class WorkshopInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     gd.scene["next"] = 'ending';
-                    cc.director.loadScene('cutscene_2');
+                    Scene.load('cutscene_2');
                 },
                 event:{
                     "subtype" : "workshop_finish",

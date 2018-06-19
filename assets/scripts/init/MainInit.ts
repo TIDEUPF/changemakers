@@ -277,11 +277,11 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                cc.director.loadScene('player_select');
+                Scene.load('player_select');
 
                 /*
                 gd.scene["next"] = "courtyard";
-                cc.director.loadScene('cutscene_4');
+                Scene.load('cutscene_4');
                 */
 
                 /*
@@ -290,13 +290,13 @@ export default class SceneInit extends cc.Component {
                 player_data["data"]["steps"]["5"]["feedback"].push("Driver");
                 player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
                 player_data["data"]["steps"]["5"]["stage"] = 2;
-                cc.director.loadScene('map_disruption');
+                Scene.load('map_disruption');
                 */
 
                 /*
                player_data["data"]["current_step"] = 5;
                player_data["data"]["steps"]["5"]["stage"] = 1;
-               cc.director.loadScene('map_feedback');
+               Scene.load('map_feedback');
                */
 
                 //Notebook.initVisitedCharacters();
@@ -317,7 +317,7 @@ export default class SceneInit extends cc.Component {
 
                 /*
                 gd.scene["next"] = "workshop_messenger";
-                cc.director.loadScene('cutscene_1');
+                Scene.load('cutscene_1');
                 */
                 
                 
@@ -325,13 +325,13 @@ export default class SceneInit extends cc.Component {
                 /*
                 player_data["data"]["current_step"] = 1;
                 player_data["data"]["steps"]["1"]["stage"] = 4;
-                cc.director.loadScene('map');
+                Scene.load('map');
                 */
                 
                 /*
                 player_data["data"]["current_step"] = 5;
                 player_data["data"]["steps"]["5"]["stage"] = 2;
-                cc.director.loadScene('map_disruption');
+                Scene.load('map_disruption');
                 */
                 
 
@@ -339,36 +339,36 @@ export default class SceneInit extends cc.Component {
 
                 /*
                 gd.scene["next"] = "palace";
-                cc.director.loadScene('cutscene_2');
+                Scene.load('cutscene_2');
                 */
                 
                /*
                gd.scene["next"] = "courtyard";
-               cc.director.loadScene('cutscene_4');
+               Scene.load('cutscene_4');
                */
                
 
                /*
                 gd.scene["next"] = "S3S1_2";
-                cc.director.loadScene('ideation_1');
+                Scene.load('ideation_1');
                 */
                 
                 
                /*
                player_data["data"]["current_step"] = 2;
-               cc.director.loadScene('indicators');
+               Scene.load('indicators');
                */
                
 
 /*
                player_data["data"]["current_step"] = 4;
-               cc.director.loadScene('workshop');
+               Scene.load('workshop');
                */
 
                /*
                player_data["data"]["current_step"] = 5;
                player_data["data"]["steps"]["5"]["stage"] = 1;
-               cc.director.loadScene('map_feedback');
+               Scene.load('map_feedback');
                */
                 
                 
@@ -395,7 +395,7 @@ export default class SceneInit extends cc.Component {
 
 
 
-               //cc.director.loadScene('cutscene_7');
+               //Scene.load('cutscene_7');
                
                
                
@@ -434,7 +434,7 @@ export default class SceneInit extends cc.Component {
                 if(key == "w") {
                     Utils.hideDialogWidget();
                     player_data["data"]["current_step"] = 4;
-                    cc.director.loadScene('workshop');
+                    Scene.load('workshop');
                 }
             }
         });
@@ -443,14 +443,14 @@ export default class SceneInit extends cc.Component {
 
         /*
         gd.scene["next"] = "courtyard";
-        cc.director.loadScene('cutscene_4');
+        Scene.load('cutscene_4');
 */
         //gd.scene["next"] = "S3S1_2";
-        //cc.director.loadScene('ideation_1');
+        //Scene.load('ideation_1');
 
         /*
         gd.scene["next"] = "workshop_messenger";
-        cc.director.loadScene('cutscene_1');
+        Scene.load('cutscene_1');
         */
 
         gd.directory.addStatus({
@@ -714,10 +714,10 @@ export default class SceneInit extends cc.Component {
         setTimeout(function(){
         console.log(cc.audioEngine.getDuration(id));},1);*/
 
-        //cc.director.loadScene('player_select');
+        //Scene.load('player_select');
 
         //gd.scene["next"] = "palace";
-        //cc.director.loadScene('cutscene_2');
+        //Scene.load('cutscene_2');
 
         var player_data = gd.directory.searchId('player');
         
@@ -725,7 +725,7 @@ export default class SceneInit extends cc.Component {
         
         /*
         player_data["data"]["current_step"] = 4;
-        cc.director.loadScene('workshop');
+        Scene.load('workshop');
         */
         
         
@@ -737,9 +737,9 @@ export default class SceneInit extends cc.Component {
         //player_data["data"]["steps"]["1"]["information"]["futile"] = ["the_grumpy_butcher"];
         //player_data["data"]["steps"]["1"]["information"]["informative"] = ["civil_engineer"];
 
-        //cc.director.loadScene('map');
+        //Scene.load('map');
         
-        //cc.director.loadScene('indicators');
+        //Scene.load('indicators');
 
 /*
         player_data["data"]["current_step"] = 5;
@@ -747,7 +747,7 @@ export default class SceneInit extends cc.Component {
         player_data["data"]["steps"]["5"]["feedback"].push("Captain");
         player_data["data"]["steps"]["5"]["feedback"].push("Driver");
         player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
-        cc.director.loadScene('map_feedback');
+        Scene.load('map_feedback');
 */
 
 /*
@@ -756,7 +756,7 @@ export default class SceneInit extends cc.Component {
         player_data["data"]["steps"]["5"]["feedback"].push("Driver");
         player_data["data"]["steps"]["5"]["feedback"].push("old_lady");
         player_data["data"]["steps"]["5"]["stage"] = 2;
-        cc.director.loadScene('map_disruption');
+        Scene.load('map_disruption');
 */
 
 /*
@@ -775,7 +775,7 @@ export default class SceneInit extends cc.Component {
 
         player_data["data"]["steps"]["6"]["stage"] = 1;
         gd.scene["next"] = "ending";
-        cc.director.loadScene('cutscene_7');
+        Scene.load('cutscene_7');
 */
 
 /*
@@ -834,7 +834,7 @@ carriage["data"]["parts"] = {
     }
 
     update (dt) {
-        //cc.director.loadScene('carriage');
+        //Scene.load('carriage');
         gd.frame["dt"] = dt;
         gd.observer.notifyEvents();
     }

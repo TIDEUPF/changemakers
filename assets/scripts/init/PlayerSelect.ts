@@ -66,7 +66,7 @@ export default class PlayeSelect extends cc.Component {
             listener : function() {
                 var player_data = gd.directory.searchId('player');
                 player_data["current_step"] = 4;
-                cc.director.loadScene('workshop');
+                Scene.load('workshop');
             },
             event:{
                 type : "keyinput",
@@ -81,7 +81,7 @@ export default class PlayeSelect extends cc.Component {
                 var player_data = gd.directory.searchId('player');
                 player_data["data"]["current_step"] = 1;
                 player_data["data"]["steps"]["1"]["stage"] = 4;
-                cc.director.loadScene('map');
+                Scene.load('map');
             },
             event:{
                 type : "keyinput",
@@ -113,7 +113,7 @@ export default class PlayeSelect extends cc.Component {
                 player["data"]["name"] = gd.directory.getNode("/Canvas/background/name_input").getComponent('cc.EditBox').string;
                 
                 gd.scene["next"] = "workshop_messenger";
-                cc.director.loadScene('cutscene_1');
+                Scene.load('cutscene_1');
             },
             event:{
                 type : "click",

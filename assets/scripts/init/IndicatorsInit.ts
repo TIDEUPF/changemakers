@@ -114,7 +114,7 @@ export default class IndicatorsInit extends cc.Component {
         /*
         gd.observer.addSubscription({
             listener : function() {
-                cc.director.loadScene('map');
+                Scene.load('map');
             },
             event:{
                 type : "keyinput",
@@ -188,7 +188,7 @@ export default class IndicatorsInit extends cc.Component {
             listener : function(event) {
                 player_data["data"]["current_step"] = 3;
                 gd.scene["next"] = "S3S1_2";
-                cc.director.loadScene('ideation_1');
+                Scene.load('ideation_1');
             },
             event:{
                 "subtype" : "indicators_finish",

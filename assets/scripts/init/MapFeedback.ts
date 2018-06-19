@@ -84,7 +84,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function(event) {
                 player_data["data"]["steps"]["5"]["stage"] = 2;
-                cc.director.loadScene('map_disruption');
+                Scene.load('map_disruption');
             },
             event:{
                 "type" : "click",
@@ -94,7 +94,7 @@ export default class MapFeedback extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function(event) {
-                cc.director.loadScene('workshop');
+                Scene.load('workshop');
             },
             event:{
                 "type" : "click",
@@ -349,7 +349,7 @@ export default class MapFeedback extends cc.Component {
             listener : function() {
 
                 gd.scene["next"] = "S3S1_2";
-                cc.director.loadScene('ideation_1');
+                Scene.load('ideation_1');
             },
             event:{
                 type : "keyinput",
@@ -359,7 +359,7 @@ export default class MapFeedback extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function() {
-                cc.director.loadScene('workshop');
+                Scene.load('workshop');
             },
             event:{
                 type : "keyinput",
@@ -370,7 +370,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
                 gd.scene["next"] = 'disruption_1';
-                cc.director.loadScene('disruption_1');
+                Scene.load('disruption_1');
             },
             event:{
                 type : "keyinput",
@@ -381,7 +381,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
                 gd.scene["next"] = 'disruption_2';
-                cc.director.loadScene('disruption_2');
+                Scene.load('disruption_2');
             },
             event:{
                 type : "keyinput",
@@ -392,7 +392,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
                 gd.scene["next"] = 'disruption_3';
-                cc.director.loadScene('disruption_3');
+                Scene.load('disruption_3');
             },
             event:{
                 type : "keyinput",
@@ -404,7 +404,7 @@ export default class MapFeedback extends cc.Component {
         gd.observer.addSubscription({
             listener : function() {
                 gd.scene["next"] = "S5S1_1";
-                cc.director.loadScene('cutscene_6');
+                Scene.load('cutscene_6');
             },
             event:{
                 type : "keyinput",
@@ -414,7 +414,7 @@ export default class MapFeedback extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function() {
-                cc.director.loadScene('indicators');
+                Scene.load('indicators');
             },
             event:{
                 type : "keyinput",

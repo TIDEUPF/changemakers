@@ -9,7 +9,7 @@ class SwitchScene extends ElementAction<cc.Node> {
         if(this.elementStatus["resources"]["switch"][events[0]["origin"]]["dialog"]) {
             gd.scene["next"] = this.elementStatus["resources"]["switch"][events[0]["origin"]]["dialog"];
         }
-        cc.director.loadScene(this.elementStatus["resources"]["switch"][events[0]["origin"]]["scene"]);
+        Scene.load(this.elementStatus["resources"]["switch"][events[0]["origin"]]["scene"]);
         return;
     }
 }

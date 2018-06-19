@@ -20,13 +20,17 @@ export const Scene:{ [s: string]: Function } = {
     },
 
     "load": function(scene) {
+        Scene.save();
         cc.director.loadScene(scene);
     },
 
     "save": function() {
         var player_data = gd.directory.searchId('player');
-        gd.directory.searchId('indicators0');
-        gd.directory.searchId('user_built_carriage');
-        gd.scene;
+        var indicators = gd.directory.searchId('indicators0');
+        var carriage = gd.directory.searchId('user_built_carriage');
+        var game_scene = gd.game_scene;
+        var scene = gd.scene;
+
+        localStorage.setItem("game_save_0");
     }
 };

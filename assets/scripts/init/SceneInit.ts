@@ -294,9 +294,9 @@ export default class SceneInit extends cc.Component {
                     if(player_data["data"]["steps"]["1"]["info_dialogs"].length > 2) {
                         gd.scene["next"] = "S3S1_2";
                         player_data["data"]["current_step"] = 3;
-                        cc.director.loadScene('ideation_1');
+                        Scene.load('ideation_1');
                     } else {
-                        cc.director.loadScene('map');
+                        Scene.load('map');
                     }
                 },
                 event:{
@@ -335,9 +335,9 @@ export default class SceneInit extends cc.Component {
                     if(player_data["data"]["steps"]["5"]["feedback"].length > 2) {
                         player_data["data"]["steps"]["5"]["stage"] = 1;
                         //next_scene[gd.scene["current"]]["next_scene"] = 'workshop';
-                        //cc.director.loadScene('map_disruptions');
+                        //Scene.load('map_disruptions');
                     } else {
-                        //cc.director.loadScene('map_feedback');
+                        //Scene.load('map_feedback');
                     }
                 },
                 event:{
@@ -363,7 +363,7 @@ export default class SceneInit extends cc.Component {
             gd.observer.addSubscription({
                 listener : function(event) {
                     player_data["data"]["current_step"] = 4;
-                    cc.director.loadScene('workshop');
+                    Scene.load('workshop');
                 },
                 event:{
                     type: "bagdes",
@@ -406,7 +406,7 @@ export default class SceneInit extends cc.Component {
 
                     player_data["data"]["steps"]["5"]["disruption"].push(disruption[gd.scene["current"]]);
                     carriage_data["data"]["parts"][disruption[gd.scene["current"]]]["active"] = true;
-                    cc.director.loadScene('workshop');
+                    Scene.load('workshop');
                 },
                 event:{
                     "type" : "dialog",
@@ -1181,7 +1181,7 @@ export default class SceneInit extends cc.Component {
                 if(next_scene[gd.scene["current"]]["next_dialog"]) {
                     gd.scene["next"] = next_scene[gd.scene["current"]]["next_dialog"];
                 }
-                cc.director.loadScene(next_scene[gd.scene["current"]]["next_scene"]);
+                Scene.load(next_scene[gd.scene["current"]]["next_scene"]);
             },
             event:{
                 "type": "dialog",
@@ -1301,7 +1301,7 @@ export default class SceneInit extends cc.Component {
         /*
         gd.observer.addSubscription({
             listener : function() {
-                cc.director.loadScene('workshop');
+                Scene.load('workshop');
             },
             event:{
                 type : "keyinput",

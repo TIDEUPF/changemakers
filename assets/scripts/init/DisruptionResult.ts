@@ -57,7 +57,7 @@ export default class WorkshopInit extends cc.Component {
 
         gd.observer.addSubscription({
             listener : function(event) {
-                cc.director.loadScene("map_disruption");
+                Scene.load("map_disruption");
             },
             event:{
                 "type" : "click",
