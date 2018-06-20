@@ -10,10 +10,12 @@ export default class Directory {
     _db: Loki;
     _cl: Collection<any>;
 
-    addStatus(status: Object): Object {
+    addStatus(status: Object, params?: Object): Object {
         var stored_status = this._cl.find({"id": status["id"]});
+        var params: Object = params || {};
+
         if(stored_status.length > 0) {
-            if(status["update"] === "replace") {
+            if(status["update"] === "replace" || params["replace"]) {
                 for(var item of stored_status) {
                     this._cl.remove(item);
                 }

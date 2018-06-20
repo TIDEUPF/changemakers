@@ -1,5 +1,6 @@
 import * as gd from "./GameData";
 import {Utils} from "./Utils";
+import {SaveManager} from "./SaveManager";
 
 export const Scene:{ [s: string]: Function } = {
     "click": function(item) {
@@ -20,17 +21,7 @@ export const Scene:{ [s: string]: Function } = {
     },
 
     "load": function(scene) {
-        Scene.save();
+        SaveManager.create_save();
         cc.director.loadScene(scene);
     },
-
-    "save": function() {
-        var player_data = gd.directory.searchId('player');
-        var indicators = gd.directory.searchId('indicators0');
-        var carriage = gd.directory.searchId('user_built_carriage');
-        var game_scene = gd.game_scene;
-        var scene = gd.scene;
-
-        localStorage.setItem("game_save_0");
-    }
 };
