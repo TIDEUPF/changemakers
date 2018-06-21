@@ -6,6 +6,7 @@ import GameElement from "../core/GameElement";
 import {Sound} from "../core/Sound";
 import {Notebook} from "../core/Notebook";
 import {Scene} from "../core/Scene";
+import {SaveManager} from "../core/SaveManager";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";
 import * as Loki from "lokijs";
@@ -55,45 +56,37 @@ export default class StartScreen extends cc.Component {
         });
 
         Scene.init();
-        //Notebook.registerEvents();
-        /*
-        gd.observer.addSubscription({
-            listener : function() {
-                var player_data = gd.directory.searchId('player');
-                player_data["current_step"] = 4;
-                Scene.load('workshop');
-            },
-            event:{
-                type : "keyinput",
-                "data.key": "w",
-            }
-        });
-        */
 
-        /*
-        gd.observer.addSubscription({
-            listener : function() {
-                var player_data = gd.directory.searchId('player');
-                player_data["data"]["current_step"] = 1;
-                player_data["data"]["steps"]["1"]["stage"] = 4;
-                Scene.load('map');
-            },
-            event:{
-                type : "keyinput",
-                "data.key": "m",
-            }
-        });
-        */
 
         gd.observer.addSubscription({
             listener : function(event) {
-                Scene.load("player_select");
+                cc.director.loadScene("player_select");
             },
             event:{
                 type : "click",
                 "data.custom": "start_new_game",
             }
         });
+
+        if(SaveManager.save_exists()) {
+            gd.directory.getNode("/Canvas/background/B11").active = true;
+            var username = SaveManager.get_save_username();
+
+            if(username) {
+                gd.directory.getNode("/Canvas/background/B11").getComponent("cc.Label").string += ' - ' + username;
+            }
+
+            "Canvas/background/load_previous_game/B11";
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    SaveManager.load_save();
+                },
+                event:{
+                    type : "click",
+                    "data.custom": "load_previous_game",
+                }
+            });
+        }
 
     }
 

@@ -6,6 +6,7 @@ import GameElement from "../core/GameElement";
 import {Utils} from "../core/Utils";
 import {Badge} from "../core/Badge";
 import {Sound} from "../core/Sound";
+import {Scene} from "../core/Scene";
 //import {characters_information} from "../steps/empathise/npc";
 import * as text from "../text/i18n";
 import * as gd from "../core/GameData";

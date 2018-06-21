@@ -19,6 +19,7 @@ export default class Directory {
                 for(var item of stored_status) {
                     this._cl.remove(item);
                 }
+                delete status["$loki"];
             } else {
                 return stored_status[0];
             }

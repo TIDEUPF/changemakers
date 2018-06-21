@@ -5,6 +5,7 @@ import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Notebook} from "../core/Notebook";
 import {Utils} from "../core/Utils";
+import {Scene} from "../core/Scene";
 import {ActivityLog} from "../core/ActivityLog";
 import {check_carriage} from "../steps/prototype/carriage";
 import * as text from "../text/i18n";
@@ -277,7 +278,9 @@ export default class SceneInit extends cc.Component {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                Scene.load('player_select');
+                //Scene.load('player_select');
+
+                cc.director.loadScene('start_screen');
 
                 /*
                 gd.scene["next"] = "courtyard";

@@ -1,6 +1,7 @@
 import ElementAction from "../../ElementAction";
 import ActionResult from "../../ActionResult";
 import * as gd from "../../../core/GameData";
+import {Scene} from "../../../core/Scene";
 
 class SwitchScene extends ElementAction<cc.Node> {
     processAction(events?: Array<Object>): ActionResult {

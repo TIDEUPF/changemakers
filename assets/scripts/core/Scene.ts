@@ -21,6 +21,7 @@ export const Scene:{ [s: string]: Function } = {
     },
 
     "load": function(scene) {
+        gd.scene["game_scene"] = scene;
         SaveManager.create_save();
         cc.director.loadScene(scene);
     },
