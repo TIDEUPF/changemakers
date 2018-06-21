@@ -1107,7 +1107,7 @@ export default class SceneInit extends cc.Component {
                 "next_scene": "map_feedback",
             },
 
-
+            /*
             "disruption_1": {
                 "next_scene": "map_disruption",
             },
@@ -1119,6 +1119,7 @@ export default class SceneInit extends cc.Component {
             "disruption_3": {
                 "next_scene": "map_disruption",
             },
+            */
 
             "ending": {
                 "next_scene": "cutscene_8",

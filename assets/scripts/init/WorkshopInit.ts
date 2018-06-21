@@ -198,7 +198,9 @@ export default class WorkshopInit extends cc.Component {
                     "boot" : {
                         "hitboxes": ["rear", "top"],
                     },
-                    "shield" : {},
+                    "shield" : {
+                        "hitboxes": ["wall_shield", "soldier"],
+                    },
                     "entertainers" : {},
                     "dseat" : {},
                     "pseat" : {},
@@ -572,7 +574,7 @@ export default class WorkshopInit extends cc.Component {
                 }
             });
 
-            gd.directory.getNode('/Canvas/empty_desktop').active = true;
+            gd.directory.getNode('/Canvas/background/empty_desktop').active = true;
             gd.directory.getNode('/Canvas/background/category_buttons').active = false;
         }
 

@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+  "uuid": "2a6790b0-c3be-482f-8cb4-b0a4ed7c341a",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "CM_Workplace": {
+    "soldier_23": {
       "ver": "1.0.3",
-      "uuid": "31f1dfda-0ea5-4d4d-82db-369218cf2922",
-      "rawTextureUuid": "63c78bf8-6411-4541-9dc8-44647fcd95f8",
+      "uuid": "1bf0c655-6a83-4325-8042-ea1552177364",
+      "rawTextureUuid": "2a6790b0-c3be-482f-8cb4-b0a4ed7c341a",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 2731,
-      "height": 2048,
-      "rawWidth": 2731,
-      "rawHeight": 2048,
+      "width": 679,
+      "height": 501,
+      "rawWidth": 679,
+      "rawHeight": 501,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

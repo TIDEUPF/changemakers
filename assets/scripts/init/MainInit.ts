@@ -334,7 +334,7 @@ export default class SceneInit extends cc.Component {
                 /*
                 player_data["data"]["current_step"] = 5;
                 player_data["data"]["steps"]["5"]["stage"] = 2;
-                Scene.load('map_disruption');
+                cc.director.loadScene('map_disruption');
                 */
                 
 

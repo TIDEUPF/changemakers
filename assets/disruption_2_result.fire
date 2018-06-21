@@ -507,7 +507,8 @@
     "_N$font": null,
     "_N$maxWidth": 0,
     "_N$lineHeight": 140,
-    "_N$imageAtlas": null
+    "_N$imageAtlas": null,
+    "_N$handleTouchEvent": true
   },
   {
     "__type__": "cc.Sprite",
@@ -605,7 +606,7 @@
     "_scaleY": 3.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -187,
+      "x": -619,
       "y": -369
     },
     "_skewX": 0,
@@ -4891,8 +4892,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 72.1
+      "x": 1254,
+      "y": 72
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -6373,8 +6374,8 @@
     "_scaleY": 1.6,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 80,
-      "y": -584.6
+      "x": 1107,
+      "y": -585
     },
     "_skewX": 0,
     "_skewY": 0,

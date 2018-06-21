@@ -720,7 +720,7 @@
     },
     "component": "InputEvent",
     "handler": "onButtonClick",
-    "customEventData": "start_new_game"
+    "customEventData": "load_previous_game"
   },
   {
     "__type__": "cc.Label",

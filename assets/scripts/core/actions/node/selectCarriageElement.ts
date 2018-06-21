@@ -14,7 +14,10 @@ const carriage_parts = {
         "rear",
         "top",
     ],
-    "shield" : null,
+    "shield" : [
+        "wall_shield", 
+        "soldier"
+    ],
     "entertainers" : null,
 }
 
