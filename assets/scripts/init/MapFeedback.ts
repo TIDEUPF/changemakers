@@ -29,6 +29,11 @@ export default class MapFeedback extends cc.Component {
 
         var elements_path = "/Canvas/background/npcs/";
 
+        gd.observer.addEvent({
+            "type": "scene_start",
+            "scene": "map_feedback",
+        });
+
         Scene.init();
         /*
         var player: Object = {

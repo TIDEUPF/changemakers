@@ -21,14 +21,13 @@ export default class SceneInit extends cc.Component {
         gd.observer.clearSubscriptions();
         gd.directory.clearElements();
         gd.directory.clearNodes();
-        Sound.stopAll();
 
         gd.frame["dt"] = 0;
 
         var id_count=0;
 
         Utils.setFont();
-
+/*
         var bgm_scene_sound = {
                 "sound_list": [
                     {
@@ -144,15 +143,16 @@ export default class SceneInit extends cc.Component {
                 "sound_list": [{
                     "audio_id": "B.1 New badge",
                     "events": [
-                        /*{
-                            "type": "scene_start",
-                        },*/
+
                     ],
                 },
             ],
         };
 
         Sound.sceneFX(fx_scene_sound);
+*/
+
+        Scene.init();
 
         gd.observer.addEvent({
             "type": "scene_start",
@@ -533,6 +533,20 @@ export default class SceneInit extends cc.Component {
             });
         }
 
+        //credits
+        if(gd.scene["current"] == "ending_courtyard") {
+            gd.observer.addSubscription({
+                listener : function(event) {
+                    gd.directory.getNode("/Canvas/background/ending").active=true;;
+                },
+                event:{
+                    "type" : "dialog",
+                    "subtype": "dialog_finished",
+                    "data.id": "ending_courtyard_0",
+                },
+            });
+        }
+        
         var cutscene_dialogs = {
             "workshop_messenger": {
                 "d1" : {
@@ -1295,6 +1309,12 @@ export default class SceneInit extends cc.Component {
 
             cutscene_dialogs["ending"]["d8"] = {
                 "text_id": "S6S1_3",
+                "speaker": "king",
+            }
+
+            var extra_petition = Math.ceil(Math.random()*4);
+            cutscene_dialogs["ending"]["d9"] = {
+                "text_id": "S6S2_" + extra_petition,
                 "speaker": "king",
             }
         }

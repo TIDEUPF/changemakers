@@ -4,6 +4,7 @@ import Observer from "../core/Observer";
 import Directory from "../core/Directory";
 import GameElement from "../core/GameElement";
 import {Utils} from "../core/Utils";
+import {Sound} from "../core/Sound";
 import {Notebook} from "../core/Notebook";
 import {MessageBox} from "../core/MessageBox";
 import {Scene} from "../core/Scene";
@@ -30,6 +31,11 @@ export default class MapInit extends cc.Component {
         Notebook.registerEvents();
         
         var elements_path = "/Canvas/background/npcs/";
+
+        gd.observer.addEvent({
+            "type": "scene_start",
+            "scene": "map",
+        });
 
         Scene.init();
         

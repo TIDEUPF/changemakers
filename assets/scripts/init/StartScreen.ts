@@ -28,31 +28,9 @@ export default class StartScreen extends cc.Component {
 
         var id_count=0;
 
-
-        var bgm_scene_sound = {
-            "sound_list": [
-                {
-                    "audio_id": "introduction",
-                    "events": [
-                        {
-                            "type": "scene_start",
-                            "scene": {
-                                "$containsAny": [
-                                    "player_select",
-                                ]},
-                        },
-                    ],
-                },
-
-
-            ],
-        };
-
-        Sound.sceneBGM(bgm_scene_sound);
-
         gd.observer.addEvent({
             "type": "scene_start",
-            "scene": "player_select",
+            "scene": "start_screen",
         });
 
         Scene.init();
@@ -72,11 +50,10 @@ export default class StartScreen extends cc.Component {
             gd.directory.getNode("/Canvas/background/B11").active = true;
             var username = SaveManager.get_save_username();
 
-            if(username) {
+            if(username && username !== "undefined") {
                 gd.directory.getNode("/Canvas/background/B11").getComponent("cc.Label").string += ' - ' + username;
             }
 
-            "Canvas/background/load_previous_game/B11";
             gd.observer.addSubscription({
                 listener : function(event) {
                     SaveManager.load_save();

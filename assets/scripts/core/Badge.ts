@@ -47,6 +47,15 @@ export class Badge {
                 "badge_id": params["badge_id"],
                 "step": player_data["data"]["current_step"],
             });
+
+            gd.observer.addEvent({
+                type: "bagdes",
+                subtype: "added",
+                "data": {
+                    "badge_id": badge_id,
+                },
+            });
+
         }
 
         if(badge_count === 0)

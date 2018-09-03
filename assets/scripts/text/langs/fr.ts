@@ -130,5 +130,6 @@
     "S6A4": "encore plus beau si vous l'entouriez de saltimbanques, musiciens et artistes, de drapeaux et d'animaux exotiques, d'\u00e9l\u00e9phants, de giraffes, de dromadaires, d'autruches. Imaginez l'impression que vous feriez au Conseil des rois et reines!",
     "S6A5": "plus durable si vous l'am\u00e9nagez pour le partage. La plupart des carrosses sont gar\u00e9s 80% du temps! Partagez votre carrosse! ",
     "S6A6": "Et des suggestions pour moi!",
-    "S6A7": "Oui mon roi. Vous pourriez prot\u00e9ger votre carrosse en l'\u00e9quippant pour la guerre. Des parois plus \u00e9paisses ne suffiront pas, entourez votre carrosse de soldats, de boucliers et de piques. Ceux qui veulent vous attaquer y r\u00e9fl\u00e9chiront \u00e0 deux fois!"
+    "S6A7": "Oui mon roi. Vous pourriez prot\u00e9ger votre carrosse en l'\u00e9quippant pour la guerre. Des parois plus \u00e9paisses ne suffiront pas, entourez votre carrosse de soldats, de boucliers et de piques. Ceux qui veulent vous attaquer y r\u00e9fl\u00e9chiront \u00e0 deux fois!",
+    "stage4_min_size": "Trop petit.",
 }

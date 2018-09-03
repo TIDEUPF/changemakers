@@ -146,7 +146,7 @@ const asset_preload = [
     
 ];
 
-const voices_preload_path = "res/raw-assets/sound/voices/";
+const voices_preload_path = "res/raw-assets/sound_mp3/voices/";
 
 const voices_preload = [
     "S1S1_1",
@@ -219,10 +219,10 @@ const voices_preload = [
     "S6S2_2",
     "S6S2_3",
     "S6S2_4",
-    /*"S6S3_1",    */
+    "S6S3_1",
 ];
 
-const bgm_preload_path = "res/raw-assets/sound/bgm/";
+const bgm_preload_path = "res/raw-assets/sound_mp3/bgm/";
 
 const bgm_preload = [
     "introduction",
@@ -235,7 +235,7 @@ const bgm_preload = [
     "4.4 Gravel walking",
 ];
 
-const fx_preload_path = "res/raw-assets/sound/fx/";
+const fx_preload_path = "res/raw-assets/sound_mp3/fx/";
 
 const fx_preload = [
     "B.1 New badge",
@@ -250,7 +250,7 @@ export default class SceneInit extends cc.Component {
 
     onLoad() {
         //current language
-        var lang = window["lang"] || "fr";
+        var lang = window["lang"] || "el";
 
         // init logic
         var init = this;
@@ -273,13 +273,11 @@ export default class SceneInit extends cc.Component {
 
         Utils.translate("/notebook");
         
-        var load_complete = setInterval(function(){
+        var load_complete = setInterval(function() {
             if(s1 && s2 && s3 && s4 && load_complete !== null) {
                 clearInterval(load_complete);
                 load_complete = null;
                 
-                //Scene.load('player_select');
-
                 cc.director.loadScene('start_screen');
 
                 /*
@@ -331,6 +329,7 @@ export default class SceneInit extends cc.Component {
                 Scene.load('map');
                 */
                 
+                
                 /*
                 player_data["data"]["current_step"] = 5;
                 player_data["data"]["steps"]["5"]["stage"] = 2;
@@ -373,8 +372,13 @@ export default class SceneInit extends cc.Component {
                player_data["data"]["steps"]["5"]["stage"] = 1;
                Scene.load('map_feedback');
                */
-                
-                
+               
+
+               /*
+               player_data["data"]["current_step"] = 6;
+               gd.scene["next"] = "ending_courtyard";
+               Scene.load('cutscene_8');
+               */
 
                /*
                player_data["data"]["current_step"] = 6;
@@ -393,12 +397,8 @@ export default class SceneInit extends cc.Component {
                //carriage["data"] = {"parts":{"wheels":{"part":"wheel3"},"chassis":{"part":"chassis3"},"pattern":{"part":"pattern1"},"seat":{"part":"seat3"},"pseat":{"part":"pseat3","hidden":true},"dseat":{"part":"dseat3","active":false,"hidden":false},"shield":{"part":"shield3","active":false},"entertainers":{"part":"none","active":false},"boot":{"part":"boot1"}}};
                player_data["data"]["steps"]["6"]["stage"] = 1;
                gd.scene["next"] = "ending";
+               Scene.load('cutscene_7');
                */
-
-
-
-
-               //Scene.load('cutscene_7');
                
                
                
@@ -432,6 +432,9 @@ export default class SceneInit extends cc.Component {
         var keyEventListener = cc.EventListener.create({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed: function(keyCode, event) {
+                if(player_data["data"]["current_step"] > 3)
+                    return;
+
                 var key = String.fromCharCode(keyCode).toLowerCase();
 
                 if(key == "w") {
@@ -573,7 +576,7 @@ export default class SceneInit extends cc.Component {
         var voices_path_preload_array = [];
 
         for(var voice_filename of voices_preload) {
-            var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.ogg';
+            var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.mp3';
             voices["data"][voice_filename] = {};
             voices["data"][voice_filename]["path"] = current_voice_path;
             voices_path_preload_array.push(current_voice_path);
@@ -591,7 +594,7 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(voices);
                 
                 for(var voice_filename of voices_preload) {
-                    var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.ogg';
+                    var current_voice_path = voices_preload_path + 'i18n/' + lang + '/' + voice_filename + '.mp3';
                     var audioID = cc.audioEngine.play(current_voice_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     
@@ -613,7 +616,7 @@ export default class SceneInit extends cc.Component {
         var bgms_path_preload_array = [];
 
         for(var bgm_filename of bgm_preload) {
-            var current_bgm_path = bgm_preload_path + bgm_filename + '.ogg';
+            var current_bgm_path = bgm_preload_path + bgm_filename + '.mp3';
             bgms["data"][bgm_filename] = {};
             bgms["data"][bgm_filename]["path"] = current_bgm_path;
             bgms_path_preload_array.push(current_bgm_path);
@@ -631,7 +634,7 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(bgms);
                 
                 for(var bgm_filename of bgm_preload) {
-                    var current_bgm_path = bgm_preload_path + bgm_filename + '.ogg';
+                    var current_bgm_path = bgm_preload_path + bgm_filename + '.mp3';
                     var audioID = cc.audioEngine.play(current_bgm_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     
@@ -652,7 +655,7 @@ export default class SceneInit extends cc.Component {
         var fxs_path_preload_array = [];
 
         for(var fx_filename of fx_preload) {
-            var current_fx_path = fx_preload_path + fx_filename + '.ogg';
+            var current_fx_path = fx_preload_path + fx_filename + '.mp3';
             fxs["data"][fx_filename] = {};
             fxs["data"][fx_filename]["path"] = current_fx_path;
             fxs_path_preload_array.push(current_fx_path);
@@ -670,7 +673,7 @@ export default class SceneInit extends cc.Component {
                 gd.directory.addStatus(fxs);
                 
                 for(var fx_filename of fx_preload) {
-                    var current_fx_path = fx_preload_path + fx_filename + '.ogg';
+                    var current_fx_path = fx_preload_path + fx_filename + '.mp3';
                     var audioID = cc.audioEngine.play(current_fx_path, false, 0);
                     var duration = cc.audioEngine.getDuration(audioID);
                     

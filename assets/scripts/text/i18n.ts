@@ -3,12 +3,14 @@ import * as en from "./langs/en";
 import * as es from "./langs/es";
 import * as fr from "./langs/fr";
 import * as pt from "./langs/pt";
+import * as el from "./langs/el";
 
 const text_data = {
     "en" : en.data,
     "es" : es.data,
     "fr" : fr.data,
     "pt" : pt.data,
+    "el" : el.data,
 }
 
 let polyglot = new Polyglot();

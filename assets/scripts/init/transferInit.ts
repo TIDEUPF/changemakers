@@ -16,6 +16,6 @@ export default class transferInit extends cc.Component {
     }
 
     update (dt) {
-        Scene.load('palace');
+        /*Scene.load('palace');*/
     }
 }
