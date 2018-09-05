@@ -152,13 +152,14 @@ export default class SceneInit extends cc.Component {
         Sound.sceneFX(fx_scene_sound);
 */
 
-        Scene.init();
-
         gd.observer.addEvent({
             "type": "scene_start",
+            "game_scene": gd.scene["game_scene"],
             "scene": gd.scene["current"],
             //"step": player_data["data"]["current_step"],
         });
+
+        Scene.init();
 
         const characters_information:Object = {
             "Captain":"high",

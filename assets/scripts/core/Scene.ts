@@ -52,6 +52,9 @@ export const Scene:{ [s: string]: Function } = {
                                     "ending",
                                     "ending_courtyard",
                                     "start_screen",
+                                    //"cutscene_2",
+                                    //"cutscene_7",
+                                    //"cutscene_8",
                                 ]},
                         },
                     ],
@@ -67,6 +70,7 @@ export const Scene:{ [s: string]: Function } = {
                                     "workshop_messenger",
                                     "workshop",
                                     "ideation",
+                                    //"cutscene_1",
                                 ]},
                         },
                     ],
@@ -85,6 +89,33 @@ export const Scene:{ [s: string]: Function } = {
                                     "S5S1_1",
                                     "S5S1_2",
                                     "S5S1_3",
+                                    "map",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "1.3_White_noise_(town_sounds)",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "game_scene": {
+                                "$containsAny": [
+                                    "cutscene_5",
+                                ]},
+                        },
+                    ],
+                },
+
+                {
+                    "audio_id": "4.1 Medieval market",
+                    "events": [
+                        {
+                            "type": "scene_start",
+                            "game_scene": {
+                                "$containsAny": [
+                                    "cutscene_5",
                                 ]},
                         },
                     ],
@@ -99,6 +130,7 @@ export const Scene:{ [s: string]: Function } = {
                                 "$containsAny": [
                                     "workshop_messenger",
                                     "workshop",
+                                    //"cutscene_1",
                                 ]},
                         },
                     ],
@@ -112,9 +144,10 @@ export const Scene:{ [s: string]: Function } = {
                             "scene": {
                                 "$containsAny": [
                                     "disruption_3",
-                                    "cutscene_5",
+                                    //"cutscene_5",
+                                    //"cutscene_3",
                                     "courtyard",
-                                    "map_feedback",
+                                    "map",
                                     "S5S1_1",
                                     "S5S1_2",
                                     "S5S1_3",
@@ -122,7 +155,9 @@ export const Scene:{ [s: string]: Function } = {
                         },
                     ],
                 },
-                {
+
+
+/*                {
                     "audio_id": "4.1 Medieval market",
                     "events": [
                         {
@@ -131,7 +166,7 @@ export const Scene:{ [s: string]: Function } = {
                         },
                     ],
                 },
-
+*/
                 {
                     "audio_id": "4.4 Gravel walking",
                     "events": [
@@ -139,7 +174,7 @@ export const Scene:{ [s: string]: Function } = {
                             "type": "scene_start",
                             "scene": {
                                 "$containsAny": [
-                                    "cutscene_5",
+                                    //"cutscene_5",
                                     "courtyard",
                                     "ideation_1",
                                     "ideation_2",
@@ -160,7 +195,7 @@ export const Scene:{ [s: string]: Function } = {
                             "type": "scene_start",
                             "scene": {
                                 "$containsAny": [
-                                    "cutscene_5",
+                                    //"cutscene_5",
                                     "courtyard",
                                 ]},
                         },

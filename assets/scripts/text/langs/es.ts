@@ -130,5 +130,6 @@ export const data = {
     "S6A4": "hermoso, rodeando el carruaje con animadores (m\u00fasicos, artistas), banderas y animales, \u00a1para ir al congreso de reyes y reinas! Apuesto a que todos quedar\u00e1n muy impresionados.",
     "S6A5": "Respetuoso con el medio ambiente, dise\u00f1ando el carro para que se pueda compartir. La mayor\u00eda de los carruajes est\u00e1n estacionados el 80% de su tiempo. \u00a1Comp\u00e1rtanlo!",
     "S6A6": "\u00bfTiene alguna sugerencia para m\u00ed?",
-    "S6A7": "S\u00ed mi rey, quiz\u00e1s podr\u00eda proteger su carruaje prepar\u00e1ndolo para la guerra. No es suficiente con una carrocer\u00eda fuerte, debe rodear su carruaje con soldados y escudos. Seguramente impresionar\u00e1 a sus posibles atacantes."
+    "S6A7": "S\u00ed mi rey, quiz\u00e1s podr\u00eda proteger su carruaje prepar\u00e1ndolo para la guerra. No es suficiente con una carrocer\u00eda fuerte, debe rodear su carruaje con soldados y escudos. Seguramente impresionar\u00e1 a sus posibles atacantes.",
+    "ending": "Fin",
 }

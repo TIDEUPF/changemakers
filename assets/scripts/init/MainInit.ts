@@ -250,7 +250,7 @@ export default class SceneInit extends cc.Component {
 
     onLoad() {
         //current language
-        var lang = window["lang"] || "el";
+        var lang = window["lang"] || "en";
 
         // init logic
         var init = this;
@@ -295,40 +295,21 @@ export default class SceneInit extends cc.Component {
                 */
 
                 /*
-               player_data["data"]["current_step"] = 5;
-               player_data["data"]["steps"]["5"]["stage"] = 1;
-               Scene.load('map_feedback');
+                player_data["data"]["current_step"] = 5;
+                player_data["data"]["steps"]["5"]["stage"] = 1;
+                Scene.load('map_feedback');
                */
-
-                //Notebook.initVisitedCharacters();
-                /*
-                gd.observer.clearSubscriptions();
-                gd.directory.clearElements();
-                gd.directory.clearNodes();
-                Notebook.initCarriage();
-                gd.frame["dt"] = 0;
-                gd.observer.notifyEvents();
-                */
-                //gd.observer.notifyEvents();
-
-                /*
-                Notebook.registerEvents();
-                Notebook.show();
-                */
 
                 /*
                 gd.scene["next"] = "workshop_messenger";
                 Scene.load('cutscene_1');
                 */
                 
-                
-
                 /*
                 player_data["data"]["current_step"] = 1;
                 player_data["data"]["steps"]["1"]["stage"] = 4;
-                Scene.load('map');
+                Scene.load('map');            
                 */
-                
                 
                 /*
                 player_data["data"]["current_step"] = 5;
@@ -336,20 +317,17 @@ export default class SceneInit extends cc.Component {
                 cc.director.loadScene('map_disruption');
                 */
                 
-
-                
-
                 /*
                 gd.scene["next"] = "palace";
                 Scene.load('cutscene_2');
                 */
+                
                 
                /*
                gd.scene["next"] = "courtyard";
                Scene.load('cutscene_4');
                */
                
-
                /*
                 gd.scene["next"] = "S3S1_2";
                 Scene.load('ideation_1');
@@ -362,7 +340,7 @@ export default class SceneInit extends cc.Component {
                */
                
 
-/*
+               /*
                player_data["data"]["current_step"] = 4;
                Scene.load('workshop');
                */
@@ -371,13 +349,6 @@ export default class SceneInit extends cc.Component {
                player_data["data"]["current_step"] = 5;
                player_data["data"]["steps"]["5"]["stage"] = 1;
                Scene.load('map_feedback');
-               */
-               
-
-               /*
-               player_data["data"]["current_step"] = 6;
-               gd.scene["next"] = "ending_courtyard";
-               Scene.load('cutscene_8');
                */
 
                /*
@@ -391,16 +362,21 @@ export default class SceneInit extends cc.Component {
                carriage["data"]["parts"]["shield"]["active"] = true;
                carriage["data"]["parts"]["shield"]["part"] = "shield1";
        
-               carriage["data"]["parts"]["entertainers"]["active"] = true;
-               carriage["data"]["parts"]["entertainers"]["part"] = "entertainers1";
+               //carriage["data"]["parts"]["entertainers"]["active"] = true;
+               //carriage["data"]["parts"]["entertainers"]["part"] = "entertainers1";
        
-               //carriage["data"] = {"parts":{"wheels":{"part":"wheel3"},"chassis":{"part":"chassis3"},"pattern":{"part":"pattern1"},"seat":{"part":"seat3"},"pseat":{"part":"pseat3","hidden":true},"dseat":{"part":"dseat3","active":false,"hidden":false},"shield":{"part":"shield3","active":false},"entertainers":{"part":"none","active":false},"boot":{"part":"boot1"}}};
+               carriage["data"] = {"parts":{"wheels":{"part":"wheel3"},"chassis":{"part":"chassis3"},"pattern":{"part":"pattern1"},"seat":{"part":"seat3"},"pseat":{"part":"pseat3","hidden":true},"dseat":{"part":"dseat3","active":false,"hidden":false},"shield":{"part":"shield3","active":false},"entertainers":{"part":"none","active":false},"boot":{"part":"boot1"}}};
                player_data["data"]["steps"]["6"]["stage"] = 1;
                gd.scene["next"] = "ending";
                Scene.load('cutscene_7');
                */
                
-               
+
+               /*
+               player_data["data"]["current_step"] = 6;
+               gd.scene["next"] = "ending_courtyard";
+               Scene.load('cutscene_8');
+               */
                
             }
         }, 200);

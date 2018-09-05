@@ -4,6 +4,7 @@ import * as es from "./langs/es";
 import * as fr from "./langs/fr";
 import * as pt from "./langs/pt";
 import * as el from "./langs/el";
+import * as no from "./langs/no";
 
 const text_data = {
     "en" : en.data,
@@ -11,6 +12,7 @@ const text_data = {
     "fr" : fr.data,
     "pt" : pt.data,
     "el" : el.data,
+    "no" : no.data,
 }
 
 let polyglot = new Polyglot();
