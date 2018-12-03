@@ -47,11 +47,11 @@ export default class StartScreen extends cc.Component {
         });
 
         if(SaveManager.save_exists()) {
-            gd.directory.getNode("/Canvas/background/B11").active = true;
+            gd.directory.getNode("/Canvas/background/sprite_load").active = true;
             var username = SaveManager.get_save_username();
 
             if(username && username !== "undefined") {
-                gd.directory.getNode("/Canvas/background/B11").getComponent("cc.Label").string += ' - ' + username;
+                gd.directory.getNode("/Canvas/background/sprite_load/B11").getComponent("cc.Label").string += ' - ' + username;
             }
 
             gd.observer.addSubscription({
