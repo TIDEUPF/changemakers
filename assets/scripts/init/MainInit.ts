@@ -251,6 +251,11 @@ export default class SceneInit extends cc.Component {
     onLoad() {
         //current language
         var lang = window["lang"] || "en";
+        gd.directory.addStatus({
+            "id": "settings",
+            "language": lang,
+        });
+
 
         // init logic
         var init = this;

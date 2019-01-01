@@ -82,6 +82,7 @@ export const ActivityLog = {
         if(to_send.length === 0)
             return;
 
+            /*
         console.log(to_send);
 
         var log_url = window["log_url"] || "http://192.168.1.200/cmk_log/log.php";
@@ -99,7 +100,8 @@ export const ActivityLog = {
                 },
                 timeout: 30*1000,
             });
-        }//url: "https://ilde2.upf.edu/cmk_log/log.php",
+        }
+        */
     },
     register: function() {
         return Date.now();

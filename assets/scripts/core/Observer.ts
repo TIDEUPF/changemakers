@@ -123,7 +123,9 @@ export default class Observer {
 
     constructor() {
         this.directory = gd.directory;
-        this._db = new Loki('eventsdb');
+        this._db = new Loki('eventsdb', {
+            "persistenceMethod" : "memory",
+        });
         this._cl = this._db.addCollection('gameEvents');
         this._cls = this._db.addCollection('gameEventsScheduled');
         

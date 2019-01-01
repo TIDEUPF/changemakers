@@ -78,7 +78,9 @@ export default class Directory {
         this.elementKeys = {};
         this.nodePath = {};
 
-        this._db = new Loki('directory.json');
+        this._db = new Loki('directory.json', {
+            "persistenceMethod" : "memory",
+        });
         this._cl = this._db.addCollection('directory')
     }
 }

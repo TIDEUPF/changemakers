@@ -28,6 +28,12 @@ export default class StartScreen extends cc.Component {
 
         var id_count=0;
 
+        var settings = gd.directory.searchId("settings");
+        if(settings["language"] === "el") {
+            gd.directory.getNode("/Canvas/background/cover_title").active = false;
+            gd.directory.getNode("/Canvas/background/greek_title").active = true;
+        }
+
         gd.observer.addEvent({
             "type": "scene_start",
             "scene": "start_screen",
@@ -35,7 +41,7 @@ export default class StartScreen extends cc.Component {
 
         Scene.init();
 
-
+        //start new game
         gd.observer.addSubscription({
             listener : function(event) {
                 cc.director.loadScene("player_select");
@@ -64,6 +70,43 @@ export default class StartScreen extends cc.Component {
                 }
             });
         }
+
+        //show credits
+        var credits_node = gd.directory.getNode("/Canvas/background/credits");
+        var credits_iframe_node = gd.directory.getNode("/Canvas/background/credits/credits_webview");
+        var credits_iframe_component: cc.WebView = credits_iframe_node.getComponent("cc.WebView");
+        var url_folder;
+
+        if(window["location"]["href"].endsWith("/")) {
+            url_folder = window["location"]["href"];
+        } else {
+            var slice_pos = window["location"]["href"].lastIndexOf("/");
+            url_folder = window["location"]["href"].slice(0,slice_pos+1);
+        }
+
+        credits_iframe_component.url = url_folder + 'res/raw-assets/html/credits/index.html?t=' + Date.now();
+        
+        gd.observer.addSubscription({
+            listener : function(event) {
+                credits_node.y = 0;
+            },
+            event:{
+                type : "click",
+                "data.custom": "show_credits",
+            }
+        });
+
+        //close credits
+        gd.observer.addSubscription({
+            listener : function(event) {
+                credits_node.y = 772;
+            },
+            event:{
+                type : "click",
+                "data.custom": "close_credits",
+            }
+        });
+
 
     }
 
