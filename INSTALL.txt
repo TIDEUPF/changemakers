@@ -1,0 +1,14 @@
+-Installation
+
+Copy the contents of this folders to a web server.
+
+Start your web browser and type the url where the files have been installed.
+
+For each language there is a different file you must run.
+
+English http://localhost/mygame/index.en.html
+French http://localhost/mygame/index.fr.html
+Greek http://localhost/mygame/index.el.html
+Spanish http://localhost/mygame/index.es.html
+Norwegian http://localhost/mygame/index.no.html
+Portuguese http://localhost/mygame/index.pt.html

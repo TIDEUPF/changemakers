@@ -1,0 +1,26 @@
+-Build instructions
+
+Prerequisites:
+    CocosCreator 1.9.2 for Windows
+    npm
+
+Build steps:
+    Open CocosCreator, on the topbar click on Open other… and select the this 
+    folder.
+
+    Open a console this folder and install the dependencies running
+        npm install
+
+    Once the project is loaded select Project->Build. Change the build path 
+    to an empty folder on you computer.
+
+    Click the build button. Once the project build is finished the files 
+    should be on the build path.
+
+    Copy the following source folders to the build folder "res\raw-assets\"
+        assets\sound_mp3
+        assets\html
+
+Finally copy the build destination folder to a web server and run the game with
+a browser.
+
