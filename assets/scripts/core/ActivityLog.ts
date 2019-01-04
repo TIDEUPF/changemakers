@@ -82,12 +82,10 @@ export const ActivityLog = {
         if(to_send.length === 0)
             return;
 
-            /*
         console.log(to_send);
 
-        var log_url = window["log_url"] || "http://192.168.1.200/cmk_log/log.php";
-
-        if(window["$"]) {
+        if(window["$"] && window["log_url"]) {
+            var log_url = window["log_url"];
             if(!sender_ready)
                 return;
             sender_ready = false;
@@ -101,7 +99,7 @@ export const ActivityLog = {
                 timeout: 30*1000,
             });
         }
-        */
+        
     },
     register: function() {
         return Date.now();
